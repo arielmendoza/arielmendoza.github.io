@@ -11,3 +11,6 @@ collections:
   categories:
     output: true
     permalink: /categorias/:path/
+# Permite imágenes externas
+whitelist:
+  - https://m.media-amazon.com/
