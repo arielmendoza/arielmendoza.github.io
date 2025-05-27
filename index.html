@@ -105,21 +105,32 @@
     </div>
   </footer>
 
-  <!-- JavaScript para filtros -->
   <script>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelector('.filter-btn.active').classList.remove('active');
-        btn.classList.add('active');
-        
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.post-card').forEach(card => {
-          card.style.display = (filter === 'all' || card.dataset.category === filter) 
-            ? 'flex' 
-            : 'none';
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remover clase active de todos los botones
+      filterButtons.forEach(b => b.classList.remove('active'));
+      
+      // Añadir clase active al botón clickeado
+      this.classList.add('active');
+      
+      const filter = this.dataset.filter;
+      const cards = document.querySelectorAll('.post-card');
+      
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
     });
+  });
+});
+</script>
   </script>
 </body>
 </html>
