@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <!-- Añade esto para responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  {{ content }}
+</body>
+</html>
