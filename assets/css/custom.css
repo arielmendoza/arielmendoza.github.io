@@ -268,3 +268,49 @@ body {
   border-radius: 4px;
   color: #0066cc;
 }
+/* Estilos para precios */
+.price-container {
+  margin: 12px 0;
+  line-height: 1.4;
+}
+
+.current-price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #B12704;
+  margin-right: 8px;
+}
+
+.original-price {
+  font-size: 1rem;
+  text-decoration: line-through;
+  color: #565959;
+}
+
+.price-save {
+  display: block;
+  font-size: 0.9rem;
+  color: #067D62;
+  font-weight: 500;
+}
+
+/* Ribbon de descuento */
+.badge-ribbon {
+  position: absolute;
+  top: 10px;
+  right: -5px;
+  background: #B12704;
+  color: white;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 10px 50%);
+  width: 60px;
+  text-align: center;
+}
+
+.post-card {
+  position: relative; /* Necesario para el ribbon */
+  overflow: visible; /* Para que se vea el ribbon */
+}
