@@ -314,3 +314,40 @@ body {
   position: relative; /* Necesario para el ribbon */
   overflow: visible; /* Para que se vea el ribbon */
 }
+.price-detail {
+  background: #F5F5F5;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.price-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-now {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #B12704;
+}
+
+.price-was {
+  text-decoration: line-through;
+  color: #565959;
+}
+
+.price-discount {
+  background: #B12704;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.price-savings {
+  margin-top: 5px;
+  color: #067D62;
+  font-weight: 500;
+}
