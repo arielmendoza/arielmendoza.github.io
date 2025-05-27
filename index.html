@@ -1,17 +1,46 @@
----
-layout: default
-title: Herramientas de Bricolaje
----
-
-# 🛠️ Reseñas de herramientas DIY
-
-<div class="post-list">
-  {% for post in site.posts %}
-    <div class="post-card">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <img src="{{ post.featured_image | relative_url }}" alt="{{ post.title }}" class="tool-image">
-      <p><strong>Valoración:</strong> {{ post.rating }}/5</p>
-      <a href="{{ post.url | relative_url }}" class="btn">Ver reseña completa</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Herramientas de Bricolaje - Reseñas profesionales</title>
+  <meta name="description" content="Reseñas honestas de herramientas para bricolaje y DIY. Comparativas, análisis y ofertas.">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper">
+      <h1 class="site-title">🛠️ Herramientas DIY</h1>
+      <nav class="site-nav">
+        <a href="/">Inicio</a>
+        <a href="/categorias">Categorías</a>
+        <a href="/politica-privacidad">Política de privacidad</a>
+      </nav>
     </div>
-  {% endfor %}
-</div>
+  </header>
+
+  <main class="page-content">
+    <div class="wrapper">
+      <h1>🛠️ Reseñas de herramientas DIY</h1>
+
+      <div class="post-list">
+        <div class="post-card">
+          <img src="/assets/images/taladro-black-decker.jpg" alt="Taladro BLACK+DECKER 20V MAX" class="tool-image">
+          <div class="post-card-content">
+            <h2><a href="/herramientas-electricas/2024/05/26/taladro-black-decker.html">Taladro BLACK+DECKER 20V MAX - Análisis Profesional</a></h2>
+            <p><strong>Valoración:</strong> 4.8/5</p>
+            <p>El taladro perfecto para proyectos domésticos y profesionales. Batería de larga duración y accesorios incluidos.</p>
+            <a href="/herramientas-electricas/2024/05/26/taladro-black-decker.html" class="btn">Ver reseña completa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <p>© 2024 Herramientas de Bricolaje - <a href="/politica-privacidad">Política de privacidad</a></p>
+    </div>
+  </footer>
+</body>
+</html>
