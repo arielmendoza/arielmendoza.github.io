@@ -1,12 +1,8 @@
-theme: minima
 plugins:
-  - jekyll-seo-tag
-  - jekyll-feed
+  - jekyll-sass-converter # Añade esto si usas SCSS
 
 defaults:
   - scope:
       path: ""
-      type: posts
     values:
-      layout: post
-      comments: true
+      layout: "default"
