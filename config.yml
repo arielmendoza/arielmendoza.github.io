@@ -6,3 +6,8 @@ defaults:
       path: ""
     values:
       layout: "default"
+
+collections:
+  categories:
+    output: true
+    permalink: /categorias/:path/
