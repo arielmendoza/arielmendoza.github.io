@@ -4,20 +4,506 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HerramientasExpertas - Reseñas de Herramientas Profesionales</title>
- <link rel="stylesheet" href="./assets/css/style.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Variables y estilos globales */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #e74c3c;
+      --accent: #3498db;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --gray: #95a5a6;
+      --light-gray: #f5f7fa;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    h1, h2, h3, h4 {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: var(--secondary);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary);
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      margin-left: 10px;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+    
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .navbar li {
+      margin-left: 25px;
+    }
+    
+    .navbar a {
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 5px 0;
+      position: relative;
+    }
+    
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.3s;
+    }
+    
+    .navbar a:hover::after,
+    .navbar a.active::after {
+      width: 100%;
+    }
+    
+    .navbar a.active {
+      color: var(--secondary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 120px 0;
+      text-align: center;
+    }
+    
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--secondary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 10;
+    }
+    
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .product-info {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .rating {
+      color: #f39c12;
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .product-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    
+    .pricing {
+      margin: 15px 0;
+    }
+    
+    .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .old-price {
+      font-size: 1rem;
+      color: var(--gray);
+      text-decoration: line-through;
+      margin-left: 10px;
+    }
+    
+    .product-info .btn {
+      width: 100%;
+      text-align: center;
+      margin-top: 15px;
+      padding: 12px;
+    }
+    
+    /* Categories */
+    .categories {
+      background: var(--light-gray);
+      padding: 60px 0;
+      margin: 60px 0;
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .category-card {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      height: 200px;
+      box-shadow: var(--shadow);
+    }
+    
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .category-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .category-card h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+    
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(to right, var(--primary), var(--dark));
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 10px;
+      margin: 60px 0;
+    }
+    
+    .newsletter h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    
+    .newsletter-form {
+      max-width: 500px;
+      margin: 30px auto 0;
+      display: flex;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .newsletter-form button:hover {
+      background: #c0392b;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer h3, .footer h4 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+    
+    .footer-about p {
+      margin-bottom: 20px;
+      color: #ecf0f1;
+      line-height: 1.8;
+    }
+    
+    .footer-links ul, .footer-legal ul {
+      list-style: none;
+    }
+    
+    .footer-links li, .footer-legal li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a, .footer-legal a {
+      color: #ecf0f1;
+      display: block;
+      padding: 5px 0;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover, .footer-legal a:hover {
+      color: var(--secondary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+    }
+    
+    .disclaimer {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 5px;
+      margin: 40px 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    .disclaimer strong {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: #bdc3c7;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header .container {
+        flex-direction: column;
+      }
+      
+      .navbar {
+        margin-top: 20px;
+      }
+      
+      .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .navbar li {
+        margin: 5px 10px;
+      }
+      
+      .hero {
+        padding: 80px 0;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input,
+      .newsletter-form button {
+        width: 100%;
+        border-radius: 4px;
+        margin: 5px 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <div class="logo">
-        <h1>🛠️ HerramientasExpertas</h1>
-        <p>Reseñas honestas para aficionados y profesionales</p>
+        <span class="logo-icon">🛠️</span>
+        <h1>HerramientasExpertas</h1>
       </div>
       <nav class="navbar">
         <ul>
-          <li><a href="/" class="active">Inicio</a></li>
+          <li><a href="#" class="active">Inicio</a></li>
           <li><a href="#destacados">Destacados</a></li>
           <li><a href="#categorias">Categorías</a></li>
           <li><a href="#ofertas">Ofertas</a></li>
@@ -26,118 +512,276 @@
     </div>
   </header>
 
-  <main class="main-content">
-    <section class="hero">
-      <div class="container">
-        <h2>Encuentra las mejores herramientas para tus proyectos</h2>
-        <p>Reseñas detalladas basadas en pruebas reales</p>
-        <a href="#destacados" class="btn">Ver análisis</a>
-      </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>Encuentra las mejores herramientas para tus proyectos</h2>
+      <p>Reseñas detalladas basadas en pruebas reales y análisis profesionales</p>
+      <a href="#destacados" class="btn">Explorar herramientas</a>
+    </div>
+  </section>
 
-    <section id="destacados" class="featured-products">
-      <div class="container">
-        <h2 class="section-title">Herramientas Destacadas</h2>
-        <div class="product-grid">
-          
-          <!-- Product 1 -->
-          <div class="product-card">
-            <div class="badge">Top Ventas</div>
-            <img src="https://m.media-amazon.com/images/I/71YHjVXyR0L._AC_SL1500_.jpg" 
-                 alt="Taladro Percutor BLACK+DECKER" 
-                 loading="lazy"
-                 width="300"
-                 height="300">
-            <div class="product-info">
-              <span class="rating">★★★★★ 4.8</span>
-              <h3><a href="productos/taladro.html">Taladro Percutor BLACK+DECKER</a></h3>
-              <div class="pricing">
-                <span class="price">€129,99</span>
-                <span class="old-price">€159,99</span>
-              </div>
-              <p>20V MAX con 2 baterías y maletín. Perfecto para proyectos domésticos.</p>
-              <a href="productos/taladro.html" class="btn">Ver análisis completo</a>
+  <!-- Featured Products -->
+  <section id="destacados" class="featured-products">
+    <div class="container">
+      <h2 class="section-title">Herramientas Destacadas</h2>
+      <div class="product-grid">
+        
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="badge">Top Ventas</div>
+          <img src="https://m.media-amazon.com/images/I/71YHjVXyR0L._AC_SL1500_.jpg" 
+               alt="Taladro Percutor BLACK+DECKER" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.8</span>
+            <h3>Taladro Percutor BLACK+DECKER</h3>
+            <div class="pricing">
+              <span class="price">€129,99</span>
+              <span class="old-price">€159,99</span>
             </div>
+            <p>20V MAX con 2 baterías y maletín. Perfecto para proyectos domésticos.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
           </div>
+        </div>
 
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="badge">Novedad</div>
-            <img src="https://m.media-amazon.com/images/I/71Yy5h0QwvL._AC_SL1500_.jpg" 
-                 alt="Sierra Circular Einhell" 
-                 loading="lazy"
-                 width="300"
-                 height="300">
-            <div class="product-info">
-              <span class="rating">★★★★☆ 4.5</span>
-              <h3><a href="productos/sierra.html">Sierra Circular Einhell</a></h3>
-              <div class="pricing">
-                <span class="price">€89,90</span>
-                <span class="old-price">€109,99</span>
-              </div>
-              <p>1200W con guía láser y ajuste de profundidad. Precisión profesional.</p>
-              <a href="productos/sierra.html" class="btn">Ver análisis completo</a>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="badge">Novedad</div>
+          <img src="https://m.media-amazon.com/images/I/71Yy5h0QwvL._AC_SL1500_.jpg" 
+               alt="Sierra Circular Einhell" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★☆ 4.5</span>
+            <h3>Sierra Circular Einhell</h3>
+            <div class="pricing">
+              <span class="price">€89,90</span>
+              <span class="old-price">€109,99</span>
             </div>
+            <p>1200W con guía láser y ajuste de profundidad. Precisión profesional.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
           </div>
+        </div>
 
-          <!-- Additional products (3-10) -->
-          <!-- ... repeat structure with unique content ... -->
-          
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="badge">-30%</div>
+          <img src="https://m.media-amazon.com/images/I/71wRZb4m5bL._AC_SL1500_.jpg" 
+               alt="Lijadora Orbital BOSCH Professional" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.7</span>
+            <h3>Lijadora Orbital BOSCH</h3>
+            <div class="pricing">
+              <span class="price">€74,95</span>
+              <span class="old-price">€106,99</span>
+            </div>
+            <p>Lijado profesional sin vibraciones. Ideal para trabajos de precisión.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="badge">Mejor Precio</div>
+          <img src="https://m.media-amazon.com/images/I/81mSd6Dk6GL._AC_SL1500_.jpg" 
+               alt="Set Brocas para Metal y Madera" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★☆ 4.4</span>
+            <h3>Set Brocas Profesional 32pcs</h3>
+            <div class="pricing">
+              <span class="price">€24,99</span>
+              <span class="old-price">€34,99</span>
+            </div>
+            <p>Set completo para todo tipo de materiales. Calidad industrial.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="badge">Top Calidad</div>
+          <img src="https://m.media-amazon.com/images/I/71y4Z0dX6kL._AC_SL1500_.jpg" 
+               alt="Nivel Láser Autonivelante" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.9</span>
+            <h3>Nivel Láser Huepar</h3>
+            <div class="pricing">
+              <span class="price">€89,99</span>
+              <span class="old-price">€129,99</span>
+            </div>
+            <p>Autonivelante con 3 líneas. Precisión profesional para todo tipo de trabajos.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <div class="badge">-25%</div>
+          <img src="https://m.media-amazon.com/images/I/71C3OoPZgKL._AC_SL1500_.jpg" 
+               alt="Aspirador de Obra Makita" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★☆ 4.3</span>
+            <h3>Aspirador Obra Makita</h3>
+            <div class="pricing">
+              <span class="price">€149,00</span>
+              <span class="old-price">€199,00</span>
+            </div>
+            <p>18V con filtro HEPA. Potente y compacto para mantener tu espacio limpio.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+          <div class="badge">Top Profesional</div>
+          <img src="https://m.media-amazon.com/images/I/71r2v3w1CUL._AC_SL1500_.jpg" 
+               alt="Cortatubos Manual RIDGID" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.8</span>
+            <h3>Cortatubos RIDGID</h3>
+            <div class="pricing">
+              <span class="price">€52,45</span>
+              <span class="old-price">€64,99</span>
+            </div>
+            <p>Cortes precisos en cobre, aluminio y plástico. Herramienta profesional.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+          <div class="badge">Nuevo</div>
+          <img src="https://m.media-amazon.com/images/I/71bVH-6vYGL._AC_SL1500_.jpg" 
+               alt="Compresor de Aire Portátil" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★☆ 4.2</span>
+            <h3>Compresor Portátil Einhell</h3>
+            <div class="pricing">
+              <span class="price">€79,90</span>
+              <span class="old-price">€99,90</span>
+            </div>
+            <p>8 bar de presión, 24L. Ideal para inflar, pintar y herramientas neumáticas.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card">
+          <div class="badge">Mejor Valorado</div>
+          <img src="https://m.media-amazon.com/images/I/81q9l7WXf1L._AC_SL1500_.jpg" 
+               alt="Set Llaves Allen" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.7</span>
+            <h3>Set Llaves Allen PROFESSIONAL</h3>
+            <div class="pricing">
+              <span class="price">€18,99</span>
+              <span class="old-price">€24,99</span>
+            </div>
+            <p>Set de 32 piezas en estuche. Acero al cromo vanadio para máxima durabilidad.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card">
+          <div class="badge">-15%</div>
+          <img src="https://m.media-amazon.com/images/I/71S8S6C1tVL._AC_SL1500_.jpg" 
+               alt="Amoladora Angular DeWalt" 
+               loading="lazy">
+          <div class="product-info">
+            <span class="rating">★★★★★ 4.8</span>
+            <h3>Amoladora Angular DeWalt</h3>
+            <div class="pricing">
+              <span class="price">€95,50</span>
+              <span class="old-price">€112,35</span>
+            </div>
+            <p>125mm, 1400W. Potente y segura con protección contra rearranque.</p>
+            <a href="#" class="btn">Ver análisis completo</a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="categorias" class="categories">
-      <div class="container">
-        <h2 class="section-title">Categorías Populares</h2>
-        <div class="category-grid">
-          <a href="#" class="category-card">
-            <img src="https://m.media-amazon.com/images/I/71O8Xf--UCL._AC_SL1500_.jpg" alt="Herramientas Eléctricas">
-            <h3>Eléctricas</h3>
-          </a>
-          <a href="#" class="category-card">
-            <img src="https://m.media-amazon.com/images/I/71d4sDn4YGL._AC_SL1500_.jpg" alt="Herramientas Manuales">
-            <h3>Manuales</h3>
-          </a>
-          <a href="#" class="category-card">
-            <img src="https://m.media-amazon.com/images/I/71kF1o2tTaL._AC_SL1500_.jpg" alt="Medición y Nivelación">
-            <h3>Medición</h3>
-          </a>
-        </div>
+  <!-- Categories -->
+  <section id="categorias" class="categories">
+    <div class="container">
+      <h2 class="section-title">Categorías Populares</h2>
+      <div class="category-grid">
+        <a href="#" class="category-card">
+          <img src="https://m.media-amazon.com/images/I/71O8Xf--UCL._AC_SL1500_.jpg" alt="Herramientas Eléctricas">
+          <h3>Eléctricas</h3>
+        </a>
+        <a href="#" class="category-card">
+          <img src="https://m.media-amazon.com/images/I/71d4sDn4YGL._AC_SL1500_.jpg" alt="Herramientas Manuales">
+          <h3>Manuales</h3>
+        </a>
+        <a href="#" class="category-card">
+          <img src="https://m.media-amazon.com/images/I/71kF1o2tTaL._AC_SL1500_.jpg" alt="Medición y Nivelación">
+          <h3>Medición</h3>
+        </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Recibe las mejores ofertas en tu email</h2>
+      <p>Suscríbete para recibir alertas de descuentos exclusivos en herramientas profesionales</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Tu correo electrónico" required>
+        <button type="submit">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
           <h3>HerramientasExpertas</h3>
-          <p>Proporcionamos reseñas honestas e independientes de herramientas para bricolaje y profesionales.</p>
+          <p>Proporcionamos reseñas honestas e independientes de herramientas para bricolaje y profesionales. Nuestra misión es ayudarte a encontrar las mejores herramientas para tus proyectos.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="YouTube">📺</a>
+          </div>
         </div>
         
         <div class="footer-links">
-          <h4>Enlaces</h4>
+          <h4>Enlaces Rápidos</h4>
           <ul>
-            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Inicio</a></li>
             <li><a href="#destacados">Productos Destacados</a></li>
             <li><a href="#categorias">Categorías</a></li>
-            <li><a href="#ofertas">Ofertas</a></li>
+            <li><a href="#ofertas">Ofertas Especiales</a></li>
           </ul>
         </div>
         
         <div class="footer-legal">
-          <h4>Legal</h4>
+          <h4>Información Legal</h4>
           <ul>
-            <li><a href="afiliados.html">Programa de Afiliados</a></li>
-            <li><a href="privacidad.html">Política de Privacidad</a></li>
-            <li><a href="cookies.html">Política de Cookies</a></li>
+            <li><a href="#">Programa de Afiliados</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Cookies</a></li>
           </ul>
         </div>
       </div>
       
       <div class="disclaimer">
         <p><strong>Descargo de responsabilidad:</strong> HerramientasExpertas participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como asociado de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
+        <p>Las reseñas y opiniones expresadas en este sitio son propias y basadas en nuestra experiencia personal. Los precios y disponibilidad de los productos son exactos en la fecha/hora indicada y están sujetos a cambios.</p>
       </div>
       
       <div class="copyright">
@@ -145,7 +789,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="./assets/js/script.js"></script>
 </body>
 </html>
