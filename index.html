@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HerramientasExpertas - Reseñas de Herramientas Profesionales v2</title>
+  <title>HerramientasExpertas - Reseñas de Herramientas Profesionales</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -28,6 +28,8 @@
       background-color: #f9f9f9;
       color: #333;
       line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
     }
     
     .container {
@@ -312,6 +314,7 @@
       background: var(--dark);
       color: white;
       padding: 60px 0 20px;
+      margin-top: 60px;
     }
     
     .footer-grid {
@@ -397,6 +400,12 @@
       overflow: hidden;
       position: relative;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: modalFadeIn 0.3s;
+    }
+    
+    @keyframes modalFadeIn {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
     }
     
     .close-modal {
@@ -414,10 +423,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s;
     }
     
     .close-modal:hover {
       color: var(--secondary);
+      transform: rotate(90deg);
     }
     
     .modal-header {
@@ -475,6 +486,7 @@
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
+      box-shadow: var(--shadow);
     }
     
     .performance-table th, .performance-table td {
@@ -493,6 +505,7 @@
       border-radius: 8px;
       text-align: center;
       margin-top: 30px;
+      box-shadow: var(--shadow);
     }
     
     .final-rating {
@@ -914,8 +927,4 @@
         </table>
         
         <h3>Veredicto final</h3>
-        <p>El BLACK+DECKER 20V MAX es una excelente opción para usuarios domésticos que necesitan un taladro versátil para tareas habituales. Su relación calidad-precio es destacable, especialmente en oferta. Profesionales que requieran uso intensivo podrían considerar modelos más robustos.</p>
-        
-        <div class="score-card">
-          <h4>Calificación general</h4>
-          <div class="
+        <p>
