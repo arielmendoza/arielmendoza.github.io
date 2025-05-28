@@ -4,8 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HerramientasExpertas - Reseñas de Herramientas Profesionales</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Variables y estilos globales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     :root {
       --primary: #2c3e50;
       --secondary: #e74c3c;
@@ -17,17 +24,10 @@
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
       background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
     }
     
     .container {
@@ -35,60 +35,6 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 15px;
-    }
-    
-    h1, h2, h3, h4 {
-      color: var(--primary);
-      font-weight: 700;
-    }
-    
-    a {
-      text-decoration: none;
-      color: var(--accent);
-      transition: color 0.3s;
-    }
-    
-    a:hover {
-      color: var(--secondary);
-    }
-    
-    .btn {
-      display: inline-block;
-      background: var(--secondary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-weight: 500;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-    
-    .btn:hover {
-      background: #c0392b;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-      color: var(--primary);
-      font-size: 2rem;
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: var(--secondary);
     }
     
     /* Header */
@@ -115,6 +61,7 @@
     .logo h1 {
       font-size: 1.8rem;
       margin-left: 10px;
+      color: var(--primary);
     }
     
     .logo-icon {
@@ -137,6 +84,7 @@
       font-size: 1.1rem;
       padding: 5px 0;
       position: relative;
+      text-decoration: none;
     }
     
     .navbar a::after {
@@ -181,6 +129,47 @@
       max-width: 700px;
       margin: 0 auto 40px;
       text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    
+    .btn:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary);
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary);
     }
     
     /* Product Grid */
@@ -247,6 +236,7 @@
     .product-info h3 {
       font-size: 1.3rem;
       margin-bottom: 10px;
+      color: var(--primary);
     }
     
     .pricing {
@@ -317,50 +307,6 @@
       font-size: 1.4rem;
     }
     
-    /* Newsletter */
-    .newsletter {
-      background: linear-gradient(to right, var(--primary), var(--dark));
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-      border-radius: 10px;
-      margin: 60px 0;
-    }
-    
-    .newsletter h2 {
-      color: white;
-      margin-bottom: 20px;
-    }
-    
-    .newsletter-form {
-      max-width: 500px;
-      margin: 30px auto 0;
-      display: flex;
-    }
-    
-    .newsletter-form input {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      border-radius: 4px 0 0 4px;
-      font-size: 1rem;
-    }
-    
-    .newsletter-form button {
-      background: var(--secondary);
-      color: white;
-      border: none;
-      padding: 0 25px;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s;
-    }
-    
-    .newsletter-form button:hover {
-      background: #c0392b;
-    }
-    
     /* Footer */
     .footer {
       background: var(--dark);
@@ -400,31 +346,11 @@
       display: block;
       padding: 5px 0;
       transition: color 0.3s;
+      text-decoration: none;
     }
     
     .footer-links a:hover, .footer-legal a:hover {
       color: var(--secondary);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      transition: background 0.3s;
-    }
-    
-    .social-links a:hover {
-      background: var(--secondary);
     }
     
     .disclaimer {
@@ -504,7 +430,7 @@
     
     .modal-images {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 15px;
       margin: 20px 0;
     }
@@ -605,17 +531,6 @@
       
       .section-title {
         font-size: 1.6rem;
-      }
-      
-      .newsletter-form {
-        flex-direction: column;
-      }
-      
-      .newsletter-form input,
-      .newsletter-form button {
-        width: 100%;
-        border-radius: 4px;
-        margin: 5px 0;
       }
       
       .modal-images,
@@ -863,18 +778,6 @@
     </div>
   </section>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <div class="container">
-      <h2>Recibe las mejores ofertas en tu email</h2>
-      <p>Suscríbete para recibir alertas de descuentos exclusivos en herramientas profesionales</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Tu correo electrónico" required>
-        <button type="submit">Suscribirme</button>
-      </form>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -882,12 +785,6 @@
         <div class="footer-about">
           <h3>HerramientasExpertas</h3>
           <p>Proporcionamos reseñas honestas e independientes de herramientas para bricolaje y profesionales. Nuestra misión es ayudarte a encontrar las mejores herramientas para tus proyectos.</p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-            <a href="#" aria-label="Instagram">📸</a>
-            <a href="#" aria-label="YouTube">📺</a>
-          </div>
         </div>
         
         <div class="footer-links">
@@ -922,33 +819,32 @@
     </div>
   </footer>
 
-  <!-- Modals for product details -->
-  <!-- Modal 1 -->
-  <div id="modal-1" class="modal">
+  <!-- Modal for product details -->
+  <div id="product-modal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
       <div class="modal-header">
-        <h2>Taladro Percutor BLACK+DECKER 20V MAX</h2>
-        <div class="rating">★★★★★ 4.8/5 (127 reseñas)</div>
+        <h2 id="modal-title">Taladro Percutor BLACK+DECKER 20V MAX</h2>
+        <div id="modal-rating" class="rating">★★★★★ 4.8/5 (127 reseñas)</div>
       </div>
       <div class="modal-body">
         <div class="modal-images">
-          <img src="https://images.unsplash.com/photo-1583316178700-0d4b5b2d6b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Taladro Percutor profesional">
-          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3556e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accesorios incluidos">
+          <img id="modal-img1" src="https://images.unsplash.com/photo-1583316178700-0d4b5b2d6b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Taladro Percutor profesional">
+          <img id="modal-img2" src="https://images.unsplash.com/photo-1605100804763-247f67b3556e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accesorios incluidos">
         </div>
         
         <div class="pricing">
           <div class="price-block">
-            <span class="price">€129,99</span>
-            <span class="old-price">€159,99</span>
-            <span class="discount">Ahorra 19%</span>
+            <span id="modal-price" class="price">€129,99</span>
+            <span id="modal-old-price" class="old-price">€159,99</span>
+            <span id="modal-discount" class="discount">Ahorra 19%</span>
           </div>
-          <p class="shipping">Envío GRATIS <strong>mañana</strong></p>
+          <p id="modal-shipping" class="shipping">Envío GRATIS <strong>mañana</strong></p>
         </div>
 
         <div class="features">
           <h3>Características principales:</h3>
-          <ul>
+          <ul id="modal-features">
             <li><strong>Batería de iones de litio 20V MAX</strong> (2 incluidas)</li>
             <li><strong>2 velocidades</strong> (0-650 y 0-2000 rpm)</li>
             <li><strong>Percutor</strong> con 24 posiciones de par</li>
@@ -962,4 +858,62 @@
         </a>
         
         <h3>Nuestra experiencia de uso</h3>
-        <p>Hemos probado este taladro durante 3 semanas en diversos proyectos de bricolaje, desde montar muebles hasta perforar paredes de ladrillo. La primera impresión es su diseño ergonómico y peso equilibrado, que permite trabajar durante horas sin fatiga.</p>
+        <p id="modal-description">Hemos probado este taladro durante 3 semanas en diversos proyectos de bricolaje, desde montar muebles hasta perforar paredes de ladrillo. La primera impresión es su diseño ergonómico y peso equilibrado, que permite trabajar durante horas sin fatiga.</p>
+        
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>Ventajas:</h4>
+            <ul id="modal-pros">
+              <li>Autonomía excelente (≈150 agujeros de 6mm por batería)</li>
+              <li>Muy silencioso comparado con modelos similares</li>
+              <li>Mandril metálico de 13mm con buen agarre</li>
+              <li>Iluminación LED efectiva en espacios oscuros</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>Limitaciones:</h4>
+            <ul id="modal-cons">
+              <li>No incluye cargador rápido (4 horas de carga)</li>
+              <li>El selector de funciones requiere ambas manos</li>
+              <li>No recomendado para hormigón armado</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h3>Prueba de rendimiento</h3>
+        <p>Realizamos una prueba estandarizada perforando diferentes materiales:</p>
+        <table class="performance-table">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Tiempo (10cm)</th>
+              <th>Dificultad</th>
+              <th>Broca recomendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Madera de pino</td>
+              <td>8 segundos</td>
+              <td>Muy fácil</td>
+              <td>HSS 6mm</td>
+            </tr>
+            <tr>
+              <td>Ladrillo hueco</td>
+              <td>12 segundos</td>
+              <td>Fácil</td>
+              <td>Widia 6mm</td>
+            </tr>
+            <tr>
+              <td>Ladrillo macizo</td>
+              <td>25 segundos</td>
+              <td>Media</td>
+              <td>Widia 6mm</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3>Veredicto final</h3>
+        <p>El BLACK+DECKER 20V MAX es una excelente opción para usuarios domésticos que necesitan un taladro versátil para tareas habituales. Su relación calidad-precio es destacable, especialmente en oferta. Profesionales que requieran uso intensivo podrían considerar modelos más robustos.</p>
+        
+        <div class="score
