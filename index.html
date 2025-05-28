@@ -517,4 +517,770 @@
         
         .pros-cons {
             display: grid;
-            grid-template-columns
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .pros, .cons {
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .pros {
+            background: rgba(0, 200, 83, 0.1);
+            border-left: 3px solid #00C853;
+        }
+        
+        .cons {
+            background: rgba(255, 82, 82, 0.1);
+            border-left: 3px solid #FF5252;
+        }
+        
+        .pros h3, .cons h3 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pros h3 i {
+            color: #00C853;
+            margin-right: 8px;
+        }
+        
+        .cons h3 i {
+            color: #FF5252;
+            margin-right: 8px;
+        }
+        
+        .pros ul, .cons ul {
+            padding-left: 20px;
+        }
+        
+        .pros li, .cons li {
+            margin-bottom: 8px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-product {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 8px;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .product-card {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+        .product-card:nth-child(9) { animation-delay: 0.9s; }
+        .product-card:nth-child(10) { animation-delay: 1s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <span>Expertos en Bricolaje</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Reseñas</a></li>
+                    <li><a href="#">Guías</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Las Mejores Herramientas de Bricolaje</h1>
+            <p>Reseñas honestas y análisis detallados para ayudarte a elegir las herramientas adecuadas para tus proyectos</p>
+        </div>
+    </section>
+
+    <!-- Amazon Disclosure -->
+    <div class="disclaimer">
+        <div class="container">
+            <p><strong>Transparencia:</strong> Expertos en Bricolaje participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es.</p>
+            <p class="disclosure">Como Asociado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
+        </div>
+    </div>
+
+    <!-- Featured Reviews -->
+    <section class="container">
+        <h2 class="section-title">Reseñas Destacadas</h2>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Taladro Percutor Bosch">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Taladro Percutor Bosch Professional</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 90%"></span>
+                        </div>
+                        <span class="rating-value">4.5</span>
+                        <span class="reviews-count">(1,245)</span>
+                    </div>
+                    <p class="product-description">Potente taladro percutor con batería de litio, ideal para trabajos profesionales. Excelente relación calidad-precio.</p>
+                    <button class="btn btn-detail" onclick="openModal(0)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1604671800806-3a40cc5b3ea0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Juego de Llaves de Vaso">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Juego de Llaves de Vaso Profesional</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 100%"></span>
+                        </div>
+                        <span class="rating-value">5.0</span>
+                        <span class="reviews-count">(892)</span>
+                    </div>
+                    <p class="product-description">Set completo de 72 piezas con estuche resistente. Calidad profesional a precio asequible.</p>
+                    <button class="btn btn-detail" onclick="openModal(1)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591637333184-19aa3ed1e0f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sierra Circular Inalámbrica">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Sierra Circular Inalámbrica DeWalt</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 80%"></span>
+                        </div>
+                        <span class="rating-value">4.0</span>
+                        <span class="reviews-count">(743)</span>
+                    </div>
+                    <p class="product-description">Potente y precisa, con batería de larga duración. Perfecta para cortes rápidos y profesionales.</p>
+                    <button class="btn btn-detail" onclick="openModal(2)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Lijadora Orbital">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Lijadora Orbital Black+Decker</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 90%"></span>
+                        </div>
+                        <span class="rating-value">4.5</span>
+                        <span class="reviews-count">(567)</span>
+                    </div>
+                    <p class="product-description">Ligera y potente, con sistema de extracción de polvo. Resultados profesionales en superficies de madera.</p>
+                    <button class="btn btn-detail" onclick="openModal(3)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Set de Destornilladores">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Set de Destornilladores Profesionales</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 100%"></span>
+                        </div>
+                        <span class="rating-value">5.0</span>
+                        <span class="reviews-count">(1,102)</span>
+                    </div>
+                    <p class="product-description">32 piezas con mangos antideslizantes. Ideal para trabajos de precisión y electrónica.</p>
+                    <button class="btn btn-detail" onclick="openModal(4)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1585891641544-29b8e3ba6dcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Martillo de Carpintero">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Martillo de Carpintero Estwing</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 80%"></span>
+                        </div>
+                        <span class="rating-value">4.0</span>
+                        <span class="reviews-count">(432)</span>
+                    </div>
+                    <p class="product-description">Fabricado en una sola pieza de acero. Balance perfecto y mango de cuero genuino para máxima durabilidad.</p>
+                    <button class="btn btn-detail" onclick="openModal(5)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Nivel Láser">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Nivel Láser Autonivelante</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 70%"></span>
+                        </div>
+                        <span class="rating-value">3.5</span>
+                        <span class="reviews-count">(321)</span>
+                    </div>
+                    <p class="product-description">Preciso y fácil de usar, con alcance de 30 metros. Ideal para colgar cuadros, instalar muebles y trabajos de albañilería.</p>
+                    <button class="btn btn-detail" onclick="openModal(6)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1632862928798-9c0cbe4c9d8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Pistola de Calor">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Pistola de Calor Bosch Professional</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 90%"></span>
+                        </div>
+                        <span class="rating-value">4.5</span>
+                        <span class="reviews-count">(498)</span>
+                    </div>
+                    <p class="product-description">Temperatura ajustable de 50°C a 630°C. Perfecta para decapado de pintura, soldadura plástica y trabajos de embalaje.</p>
+                    <button class="btn btn-detail" onclick="openModal(7)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1604061986760-d423e4d74cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Alicates Universales">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Alicates Universales Knipex</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 100%"></span>
+                        </div>
+                        <span class="rating-value">5.0</span>
+                        <span class="reviews-count">(679)</span>
+                    </div>
+                    <p class="product-description">Fabricados en acero al cromo vanadio. Corte preciso y agarre firme para todo tipo de trabajos.</p>
+                    <button class="btn btn-detail" onclick="openModal(8)">Ver Reseña Completa</button>
+                </div>
+            </div>
+            
+            <!-- Product 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Escalera de Tijera">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Escalera de Tijera Aluminio 4 Peldaños</h3>
+                    <div class="rating-container">
+                        <div class="stars">
+                            <span style="width: 70%"></span>
+                        </div>
+                        <span class="rating-value">3.5</span>
+                        <span class="reviews-count">(389)</span>
+                    </div>
+                    <p class="product-description">Ligera, resistente y estable. Altura máxima de trabajo: 2.8m. Perfecta para trabajos en interiores.</p>
+                    <button class="btn btn-detail" onclick="openModal(9)">Ver Reseña Completa</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Expertos en Bricolaje</h3>
+                    <p>Tu fuente confiable de reseñas y guías sobre herramientas de bricolaje. Ofrecemos análisis honestos y comparativas para ayudarte a tomar la mejor decisión de compra.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Reseñas</a></li>
+                        <li><a href="#">Guías de Compra</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Afiliados</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Expertos en Bricolaje. Todos los derechos reservados.</p>
+                <p>Expertos en Bricolaje participa en el Programa de Afiliados de Amazon EU, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Reseña Completa</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-product">
+                    <div class="modal-image">
+                        <img id="modal-img" src="" alt="">
+                    </div>
+                    <div class="modal-info">
+                        <h2 id="modal-product-title"></h2>
+                        <div class="rating-container">
+                            <div class="stars">
+                                <span id="modal-stars"></span>
+                            </div>
+                            <span class="rating-value" id="modal-rating-value"></span>
+                            <span class="reviews-count" id="modal-reviews"></span>
+                        </div>
+                        <div class="modal-price">€<span id="modal-price"></span></div>
+                        <a href="#" class="btn btn-amazon" id="amazon-link" target="_blank"><i class="fab fa-amazon"></i> Ver en Amazon</a>
+                    </div>
+                </div>
+                
+                <div class="review-details">
+                    <div class="review-author">
+                        <div class="author-info">
+                            <div class="author-avatar">EB</div>
+                            <span>Equipo de Expertos en Bricolaje</span>
+                        </div>
+                        <span class="review-date" id="review-date"></span>
+                    </div>
+                    <div class="review-content" id="review-content"></div>
+                    
+                    <div class="pros-cons" id="pros-cons"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de productos con reseñas originales
+        const products = [
+            {
+                title: "Taladro Percutor Bosch Professional",
+                image: "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "129,99",
+                rating: 4.5,
+                reviews: "1,245 reseñas",
+                date: "15 de Julio, 2023",
+                content: `<p>Este taladro percutor Bosch ha sido mi compañero en numerosos proyectos de reforma en casa. Su potencia es impresionante - atraviesa hormigón sin problemas y el sistema de percusión funciona a la perfección. La batería dura mucho más que en modelos anteriores de la marca.</p>
+                <p>Lo que más aprecio es la ergonomía del diseño. Tras horas de trabajo continuo, no noto fatiga en la muñeca gracias al equilibrio perfecto entre peso y distribución. El sistema de cambio rápido de brocas también es un gran acierto.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Puntos fuertes</h3>
+                        <ul>
+                            <li>Potencia excepcional para trabajos pesados</li>
+                            <li>Batería de larga duración (más de 2 horas continuas)</li>
+                            <li>Diseño ergonómico que reduce la fatiga</li>
+                            <li>Sistema de cambio rápido de brocas</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Aspectos a mejorar</h3>
+                        <ul>
+                            <li>El maletín incluido es algo frágil</li>
+                            <li>Peso elevado para trabajos en altura</li>
+                            <li>El precio está en el límite alto de su categoría</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Juego de Llaves de Vaso Profesional",
+                image: "https://images.unsplash.com/photo-1604671800806-3a40cc5b3ea0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "59,90",
+                rating: 5,
+                reviews: "892 reseñas",
+                date: "3 de Junio, 2023",
+                content: `<p>Como profesional que trabaja con herramientas diariamente, este juego de llaves ha superado mis expectativas. La calidad del acero es notable - he utilizado las llaves repetidamente en tuercas oxidadas y no muestran signos de desgaste.</p>
+                <p>El estuche organizador es robusto y mantiene todo en su lugar, algo que agradezco cuando trabajo en espacios reducidos. La variedad de tamaños cubre prácticamente todas las necesidades que puedas tener en un taller doméstico.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Lo que me gusta</h3>
+                        <ul>
+                            <li>Acero de alta resistencia a la torsión</li>
+                            <li>Estuche robusto con organización lógica</li>
+                            <li>Amplia gama de tamaños para múltiples usos</li>
+                            <li>Precio muy competitivo para la calidad</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Lo que no me convence</h3>
+                        <ul>
+                            <li>Falta una llave para bujías</li>
+                            <li>El separador del estuche se desliza con movimientos bruscos</li>
+                            <li>Los tamaños no están grabados en las llaves</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Sierra Circular Inalámbrica DeWalt",
+                image: "https://images.unsplash.com/photo-1591637333184-19aa3ed1e0f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "189,00",
+                rating: 4,
+                reviews: "743 reseñas",
+                date: "22 de Agosto, 2023",
+                content: `<p>Esta sierra circular ha transformado mi forma de trabajar con madera. La potencia del motor es impresionante para un equipo inalámbrico - corta tablones de roble de 5cm sin problemas. La precisión es otro punto fuerte, especialmente con la guía láser que facilita cortes perfectamente rectos.</p>
+                <p>La única limitación que he encontrado es la duración de la batería en trabajos intensivos. Para proyectos grandes, recomiendo tener una segunda batería a mano.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Ventajas</h3>
+                        <ul>
+                            <li>Potencia comparable a modelos cableados</li>
+                            <li>Guía láser precisa y bien calibrada</li>
+                            <li>Diseño equilibrado para cortes verticales</li>
+                            <li>Sistema de cambio rápido de hojas</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Desventajas</h3>
+                        <ul>
+                            <li>Autonomía limitada en trabajos intensivos</li>
+                            <li>Precio elevado comparado con la competencia</li>
+                            <li>La hoja incluida no es la mejor para maderas duras</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Lijadora Orbital Black+Decker",
+                image: "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "54,99",
+                rating: 4.5,
+                reviews: "567 reseñas",
+                date: "10 de Mayo, 2023",
+                content: `<p>Esta lijadora se ha convertido en una de mis herramientas favoritas para proyectos de carpintería. Es increíblemente ligera pero potente, y el sistema de extracción de polvo funciona mejor de lo esperado. He podido restaurar varios muebles antiguos sin llenar todo el taller de serrín.</p>
+                <p>La única observación es que las almohadillas de lijado se desgastan algo rápido con uso intensivo, pero son fáciles de reemplazar y económicas.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Aciertos</h3>
+                        <ul>
+                            <li>Peso ligero que reduce la fatiga</li>
+                            <li>Sistema de extracción de polvo muy eficaz</li>
+                            <li>Manejo cómodo incluso con una sola mano</li>
+                            <li>Precio muy razonable para sus prestaciones</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Puntos débiles</h3>
+                        <ul>
+                            <li>Almohadillas de lijado se desgastan rápido</li>
+                            <li>El cable podría ser más largo</li>
+                            <li>Vibración notable a máxima potencia</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Set de Destornilladores Profesionales",
+                image: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "29,95",
+                rating: 5,
+                reviews: "1,102 reseñas",
+                date: "30 de Abril, 2023",
+                content: `<p>Este set de destornilladores ha sido una sorpresa muy positiva. La calidad de las puntas es excepcional - tras meses de uso intensivo no muestran desgaste en las estrías. Los mangos ergonómicos con acabado antideslizante hacen que trabajar con ellos sea cómodo incluso con guantes.</p>
+                <p>La organización en el estuche es práctica y evita que se mezclen las piezas. Es un set que recomendaría tanto a aficionados como a profesionales que necesiten herramientas fiables.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Lo mejor</h3>
+                        <ul>
+                            <li>Puntas de acero endurecido de alta calidad</li>
+                            <li>Mangos ergonómicos con agarre antideslizante</li>
+                            <li>Estuche organizador bien diseñado</li>
+                            <li>Excelente relación calidad-precio</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Mejoras posibles</h3>
+                        <ul>
+                            <li>Falta un destornillador de estrella pequeño</li>
+                            <li>El estuche no es muy resistente a golpes</li>
+                            <li>Los imanes en las puntas podrían ser más fuertes</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Martillo de Carpintero Estwing",
+                image: "https://images.unsplash.com/photo-1585891641544-29b8e3ba6dcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "42,50",
+                rating: 4,
+                reviews: "432 reseñas",
+                date: "12 de Marzo, 2023",
+                content: `<p>Este martillo es un ejemplo de herramienta bien diseñada. Fabricado en una sola pieza de acero, tiene un balance perfecto que hace que cada golpe sea eficiente. El mango de cuero genuino no solo es cómodo sino que absorbe bien las vibraciones.</p>
+                <p>He usado este martillo en proyectos de construcción y carpintería durante meses y sigue como nuevo. Es una inversión que vale cada céntimo si buscas una herramienta duradera.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Puntos positivos</h3>
+                        <ul>
+                            <li>Construcción monolítica extremadamente duradera</li>
+                            <li>Balance perfecto para golpes precisos</li>
+                            <li>Mango de cuero cómodo que absorbe vibraciones</li>
+                            <li>Garra eficiente para sacar clavos</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Puntos negativos</h3>
+                        <ul>
+                            <li>Precio elevado para un martillo</li>
+                            <li>Requiere mantenimiento del mango de cuero</li>
+                            <li>Peso algo elevado para trabajos de precisión</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Nivel Láser Autonivelante",
+                image: "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "89,99",
+                rating: 3.5,
+                reviews: "321 reseñas",
+                date: "5 de Septiembre, 2023",
+                content: `<p>Este nivel láser ha sido útil en varios proyectos de reforma. La función de autonivelamiento funciona razonablemente bien en superficies planas, aunque en terrenos irregulares requiere recalibración frecuente. Los haces son visibles en interiores con luz normal, pero en exteriores con sol directo apenas se distinguen.</p>
+                <p>El soporte magnético es práctico cuando encuentras superficies metálicas adecuadas. Es una buena opción para trabajos domésticos, aunque profesionales podrían necesitar algo más avanzado.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Lo que funciona bien</h3>
+                        <ul>
+                            <li>Autonivelamiento preciso en superficies planas</li>
+                            <li>Soporte magnético muy práctico</li>
+                            <li>Fácil de usar con instrucciones claras</li>
+                            <li>Buen alcance para trabajos interiores</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Problemas encontrados</h3>
+                        <ul>
+                            <li>Visibilidad limitada en exteriores</li>
+                            <li>Requiere recalibración frecuente</li>
+                            <li>Batería de corta duración</li>
+                            <li>No funciona bien en terrenos irregulares</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Pistola de Calor Bosch Professional",
+                image: "https://images.unsplash.com/photo-1632862928798-9c0cbe4c9d8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "74,95",
+                rating: 4.5,
+                reviews: "498 reseñas",
+                date: "18 de Agosto, 2023",
+                content: `<p>Esta pistola de calor ha demostrado ser una herramienta versátil en mi taller. El control preciso de temperatura me permite trabajar desde plásticos delicados hasta tareas de decapado agresivo. La pantalla LCD es clara y fácil de leer incluso en condiciones de poca luz.</p>
+                <p>El flujo de aire es potente y uniforme, lo que acelera trabajos como el encogido de tubos termorretráctiles. La única limitación es que tarda unos minutos en enfriarse después de uso prolongado a máxima temperatura.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Aspectos destacables</h3>
+                        <ul>
+                            <li>Control de temperatura preciso con pantalla LCD</li>
+                            <li>Rango amplio de temperaturas (50°C a 630°C)</li>
+                            <li>Flujo de aire potente y uniforme</li>
+                            <li>Diseño ergonómico para uso prolongado</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Limitaciones</h3>
+                        <ul>
+                            <li>Tarda en enfriarse después de uso intensivo</li>
+                            <li>El cable podría ser más largo</li>
+                            <li>Las boquillas se calientan mucho y son difíciles de cambiar</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Alicates Universales Knipex",
+                image: "https://images.unsplash.com/photo-1604061986760-d423e4d74cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "27,90",
+                rating: 5,
+                reviews: "679 reseñas",
+                date: "25 de Julio, 2023",
+                content: `<p>Estos alicates Knipex son simplemente excepcionales. La calidad del acero es notablemente superior a otras marcas. Cortan alambre de acero sin esfuerzo y mantienen el filo incluso después de meses de uso intensivo. El agarre es firme sin dañar las piezas, lo que es esencial para trabajos de precisión.</p>
+                <p>El precio es más alto que alicates estándar, pero la diferencia en calidad y durabilidad justifica completamente la inversión. Son alicates que probablemente durarán toda la vida.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Fortalezas</h3>
+                        <ul>
+                            <li>Calidad de acero superior que mantiene el filo</li>
+                            <li>Corte preciso incluso en materiales duros</li>
+                            <li>Agarre firme sin dañar superficies</li>
+                            <li>Durabilidad excepcional</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Debilidades</h3>
+                        <ul>
+                            <li>Precio elevado comparado con otras opciones</li>
+                            <li>El mango podría tener mejor aislamiento</li>
+                            <li>No incluye funda protectora</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                title: "Escalera de Tijera Aluminio 4 Peldaños",
+                image: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                price: "119,00",
+                rating: 3.5,
+                reviews: "389 reseñas",
+                date: "8 de Junio, 2023",
+                content: `<p>Esta escalera ha sido útil para trabajos de pintura y reparaciones en altura dentro de casa. Es ligera y fácil de transportar, aunque noto cierta flexión cuando estoy en el último peldaño. El sistema de bloqueo es seguro y fácil de operar, incluso con guantes.</p>
+                <p>Los peldaños antideslizantes cumplen su función, aunque podrían ser más anchos para mayor comodidad. Es una buena opción para trabajos domésticos ocasionales, pero para uso profesional diario recomendaría algo más robusto.</p>`,
+                prosCons: `
+                    <div class="pros">
+                        <h3><i class="fas fa-check-circle"></i> Lo que vale la pena</h3>
+                        <ul>
+                            <li>Muy ligera y fácil de transportar</li>
+                            <li>Sistema de bloqueo seguro</li>
+                            <li>Peldaños antideslizantes efectivos</li>
+                            <li>Buena estabilidad para trabajos interiores</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3><i class="fas fa-exclamation-circle"></i> Lo que decepciona</h3>
+                        <ul>
+                            <li>Flexión notable en altura máxima</li>
+                            <li>Peldaños podrían ser más anchos</li>
+                            <li>Precio elevado para una escalera de 4 peldaños</li>
+                            <li>No es adecuada para terrenos irregulares</li>
+                        </ul>
+                    </div>
+                `
+            }
+        ];
+
+        // Función para abrir modal
+        function openModal(index) {
+            const product = products[index];
+            document.getElementById('modal-title').textContent = "Reseña: " + product.title;
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-product-title').textContent = product.title;
+            document.getElementById('modal-price').textContent = product.price;
+            document.getElementById('review-date').textContent = product.date;
+            document.getElementById('review-content').innerHTML = product.content;
+            document.getElementById('pros-cons').innerHTML = product.prosCons;
+            document.getElementById('modal-rating-value').textContent = product.rating;
+            document.getElementById('modal-reviews').textContent = product.reviews;
+            
+            // Generar estrellas
+            const starsWidth = (product.rating / 5) * 100;
+            document.getElementById('modal-stars').style.width = starsWidth + "%";
+            
+            document.getElementById('reviewModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Función para cerrar modal
+        function closeModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('reviewModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
