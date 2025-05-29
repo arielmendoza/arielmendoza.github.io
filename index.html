@@ -4,355 +4,193 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Herramientas de Bricolaje - Afiliados Amazon</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+
 <style>
+  /* Reset y base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
+    font-family: 'Montserrat', sans-serif;
+    background: #f9fafb;
     margin: 0;
-    padding: 20px;
-    color: #333;
+    padding: 30px 20px 60px;
+    color: #2c3e50;
+    min-height: 100vh;
   }
   h1 {
     text-align: center;
-    margin-bottom: 40px;
     font-weight: 700;
-    color: #222;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #34495e;
+    letter-spacing: 1px;
   }
+
+  /* Contenedor listado */
   .tool-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 25px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
   }
+
+  /* Tarjetas producto */
   .tool-item {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    user-select: none;
   }
-  .tool-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
+  .tool-item:hover, .tool-item:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgb(0 0 0 / 0.12);
   }
   .tool-item img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
-    margin-bottom: 15px;
-    background: #f3f3f3;
-    border-radius: 8px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background: #ecf0f1;
+    box-shadow: inset 0 0 15px #bdc3c7;
   }
   .tool-name {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     text-align: center;
-    margin-bottom: 8px;
-    min-height: 56px;
-    color: #111;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    min-height: 64px;
   }
   .tool-price {
     font-weight: 700;
-    color: #27ae60;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    color: #e67e22;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
   }
   button.detail-btn {
-    background: #ff9900;
+    background: #e67e22;
     border: none;
     color: white;
-    padding: 10px 18px;
-    border-radius: 25px;
-    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgb(230 126 34 / 0.5);
     cursor: pointer;
-    box-shadow: 0 4px 8px rgb(255 153 0 / 0.5);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
-  button.detail-btn:hover {
-    background: #e68a00;
+  button.detail-btn:hover, button.detail-btn:focus {
+    background: #d35400;
+    box-shadow: 0 8px 20px rgb(211 84 0 / 0.7);
+    outline: none;
   }
+  button.detail-btn:focus-visible {
+    outline: 3px solid #f39c12;
+    outline-offset: 3px;
+  }
+
+  /* Modal overlay */
   #modalOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(44, 62, 80, 0.85);
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 10000;
     padding: 20px;
   }
+
+  /* Modal content */
   #modalContent {
     background: white;
-    border-radius: 12px;
-    max-width: 750px;
+    border-radius: 20px;
+    max-width: 800px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 50px rgb(44 62 80 / 0.3);
     position: relative;
-    padding: 30px 40px 40px 40px;
+    padding: 40px 50px 50px;
+    font-size: 1rem;
+    color: #34495e;
   }
   #modalContent img {
     width: 100%;
-    max-height: 280px;
+    max-height: 320px;
     object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    background: #f3f3f3;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px #bdc3c7;
   }
   #modalContent h2 {
     margin-top: 0;
-    color: #222;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
   }
   #modalContent .price {
     font-weight: 700;
-    color: #27ae60;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
+    color: #e67e22;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
   }
   #modalContent .price del {
-    color: #999;
+    color: #95a5a6;
     font-weight: 400;
-    margin-right: 12px;
+    margin-right: 15px;
   }
   #modalContent .section {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
   #modalContent .section strong {
-    font-size: 1.1rem;
-    color: #444;
+    font-size: 1.2rem;
+    color: #34495e;
+    display: block;
+    margin-bottom: 12px;
   }
   #modalContent .section p {
-    line-height: 1.5;
-    margin-top: 8px;
-    font-size: 1rem;
+    line-height: 1.6;
     color: #555;
   }
   #modalContent ul {
-    padding-left: 20px;
+    padding-left: 22px;
     color: #555;
     font-size: 1rem;
+    line-height: 1.5;
   }
   #modalContent ul li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
+
+  /* Modal buttons */
   .modal-buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 20px;
     flex-wrap: wrap;
+    margin-top: 40px;
   }
   #modalContent a.button, #modalBackBtn {
     display: inline-block;
-    background: #ff9900;
+    background: #e67e22;
     color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
+    padding: 14px 36px;
+    border-radius: 40px;
     font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 6px 12px rgba(255,153,0,0.6);
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  #modalContent a.button:hover, #modalBackBtn:hover {
-    background: #e68a00;
-  }
-  #modalBackBtn {
-    background: #888;
-    box-shadow: 0 6px 12px rgba(100,100,100,0.2);
-    margin-right: 0;
-  }
-  #modalBackBtn:hover {
-    background: #444;
-  }
-  #modalClose {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #999;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  #modalClose:hover {
-    color: #333;
-  }
-  footer {
-    max-width: 900px;
-    margin: 50px auto 20px auto;
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
-  }
-</style>
-</head>
-<body>
-
-<h1>Herramientas de Bricolaje - Top Productos</h1>
-
-<div class="tool-list" role="list" id="toolList">
-  <!-- Productos se cargarán aquí -->
-</div>
-
-<div id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
-  <div id="modalContent" tabindex="0">
-    <!-- Contenido dinámico -->
-  </div>
-</div>
-
-<footer>
-  <p><strong>Disclaimer:</strong> Como Asociado de Amazon, gano con las compras que califican a través de los enlaces en este sitio. Esto no implica costo adicional para ti. Mi objetivo es recomendar productos que considero útiles y de calidad para los aficionados al bricolaje.<br>
-  <strong>Nota:</strong> Los precios mostrados son orientativos y pueden variar según la disponibilidad y ofertas de Amazon.</p>
-</footer>
-
-<script>
-  // Función para cargar y parsear XML
-  async function loadXML() {
-    try {
-      const response = await fetch('productos.xml');
-      if (!response.ok) throw new Error('No se pudo cargar el archivo XML');
-      const text = await response.text();
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(text, "application/xml");
-      return xmlDoc;
-    } catch (error) {
-      console.error(error);
-      alert('Error cargando datos de productos.');
-    }
-  }
-
-  // Función para crear el listado
-  function renderList(xmlDoc) {
-    const productos = xmlDoc.getElementsByTagName('producto');
-    const container = document.getElementById('toolList');
-    container.innerHTML = '';
-
-    Array.from(productos).forEach(producto => {
-      const id = producto.getAttribute('id');
-      const nombre = producto.getElementsByTagName('nombre')[0].textContent;
-      const imagen = producto.getElementsByTagName('imagen')[0].textContent;
-      const precio = producto.getElementsByTagName('precio')[0].textContent;
-      const precioDescuentoTag = producto.getElementsByTagName('precioDescuento')[0];
-      const precioDescuento = precioDescuentoTag ? precioDescuentoTag.textContent : null;
-
-      const priceHTML = precioDescuento && precioDescuento !== precio
-        ? `<del>${precio} €</del> <span style="color:#e74c3c;">${precioDescuento} €</span>`
-        : `${precio} €`;
-
-      const article = document.createElement('article');
-      article.className = 'tool-item';
-      article.setAttribute('role', 'listitem');
-      article.setAttribute('tabindex', '0');
-      article.setAttribute('aria-label', nombre);
-
-      article.innerHTML = `
-        <img src="${imagen}" alt="${nombre}" />
-        <div class="tool-name">${nombre}</div>
-        <div class="tool-price">${priceHTML}</div>
-        <button class="detail-btn" data-id="${id}" aria-haspopup="dialog">Ver detalle</button>
-      `;
-
-      container.appendChild(article);
-    });
-
-    // Añadir evento a botones
-    container.querySelectorAll('.detail-btn').forEach(btn => {
-      btn.addEventListener('click', () => openDetail(productos, btn.dataset.id));
-    });
-  }
-
-  // Función para abrir modal con detalle
-  function openDetail(productos, id) {
-    const producto = Array.from(productos).find(p => p.getAttribute('id') === id);
-    if (!producto) return alert('Producto no encontrado');
-
-    const nombre = producto.getElementsByTagName('nombre')[0].textContent;
-    const imagen = producto.getElementsByTagName('imagen')[0].textContent;
-    const precio = producto.getElementsByTagName('precio')[0].textContent;
-    const precioDescuentoTag = producto.getElementsByTagName('precioDescuento')[0];
-    const precioDescuento = precioDescuentoTag ? precioDescuentoTag.textContent : null;
-    const enlaceAfiliado = producto.getElementsByTagName('enlaceAfiliado')[0].textContent;
-    const review = producto.getElementsByTagName('review')[0].textContent;
-
-    const prosNodes = producto.getElementsByTagName('pros')[0].getElementsByTagName('item');
-    const contrasNodes = producto.getElementsByTagName('contras')[0].getElementsByTagName('item');
-
-    const pros = Array.from(prosNodes).map(n => n.textContent);
-    const contras = Array.from(contrasNodes).map(n => n.textContent);
-
-    let priceHTML = '';
-    if (precioDescuento && precioDescuento !== precio) {
-      priceHTML = `<del aria-label="Precio anterior">${precio} €</del><span aria-label="Precio con descuento" style="color:#e74c3c;">${precioDescuento} €</span>`;
-    } else {
-      priceHTML = `${precio} €`;
-    }
-
-    const modal = document.getElementById('modalOverlay');
-    const content = document.getElementById('modalContent');
-
-    content.innerHTML = `
-      <button id="modalClose" aria-label="Cerrar ventana">&times;</button>
-      <h2 id="modalTitle">${nombre}</h2>
-      <img src="${imagen}" alt="${nombre}" />
-      <div class="price">${priceHTML}</div>
-      <div class="section">
-        <strong>Opinión:</strong>
-        <p>${review}</p>
-      </div>
-      <div class="section">
-        <strong>Pros:</strong>
-        <ul>${pros.map(p => `<li>${p}</li>`).join('')}</ul>
-      </div>
-      <div class="section">
-        <strong>Contras:</strong>
-        <ul>${contras.map(c => `<li>${c}</li>`).join('')}</ul>
-      </div>
-      <div class="modal-buttons">
-        <button id="modalBackBtn" aria-label="Volver al listado">&larr; Volver atrás</button>
-        <a href="${enlaceAfiliado}" target="_blank" rel="nofollow noopener" class="button" aria-label="Comprar ${nombre} en Amazon">Comprar en Amazon</a>
-      </div>
-    `;
-
-    modal.style.display = 'flex';
-
-    document.getElementById('modalClose').onclick = closeModal;
-    document.getElementById('modalBackBtn').onclick = closeModal;
-    modal.onclick = function(e) {
-      if (e.target === modal) closeModal();
-    };
-    document.onkeydown = function(e) {
-      if (e.key === "Escape") closeModal();
-    };
-
-    function closeModal() {
-      modal.style.display = 'none';
-      content.innerHTML = '';
-      document.onkeydown = null;
-    }
-  }
-
-  // Carga inicial
-  loadXML().then(xmlDoc => {
-    if (xmlDoc) renderList(xmlDoc);
-  });
-</script>
-
-</body>
-</html>
+    font-size: 1.1rem;
+    text-decoration: none
