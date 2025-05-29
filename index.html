@@ -1,377 +1,358 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Mejores Herramientas de Bricolaje - Afiliados Amazon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        .tool-item {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .tool-item:last-child {
-            border-bottom: none;
-        }
-        .tool-image {
-            flex: 0 0 200px; /* Ancho fijo para la imagen */
-            margin-right: 20px;
-            text-align: center;
-        }
-        .tool-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        .tool-details {
-            flex: 1;
-            min-width: 300px; /* Asegura que el texto no se comprima demasiado */
-        }
-        .tool-details h2 {
-            margin-top: 0;
-            color: #555;
-        }
-        .price {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #e67e22;
-            margin-bottom: 10px;
-        }
-        .rating {
-            color: #f39c12; /* Amarillo estrella */
-            margin-bottom:10px;
-        }
-        .amazon-button {
-            display: inline-block;
-            background-color: #FF9900; /* Color Amazon */
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
-        .amazon-button:hover {
-            background-color: #E68A00;
-        }
-        .review {
-            margin-top: 15px;
-            font-style: italic;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #eee;
-        }
-        .review h3 {
-            margin-top:0;
-            font-style: normal;
-            color: #444;
-        }
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #777;
-        }
-        /* Para la actualización de precios */
-        .price-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .price-value {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #e67e22;
-            margin-right:10px;
-        }
-        .price-update-info {
-            font-size:0.8em;
-            color: #666;
-        }
-
-        /* Estilos para móviles */
-        @media (max-width: 600px) {
-            .tool-item {
-                flex-direction: column;
-            }
-            .tool-image {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Herramientas de Bricolaje - Afiliados Amazon</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #222;
+  }
+  .tool-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tool-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .tool-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
+  }
+  .tool-item img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background: #f3f3f3;
+    border-radius: 8px;
+  }
+  .tool-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 8px;
+    min-height: 56px;
+    color: #111;
+  }
+  .tool-price {
+    font-weight: 700;
+    color: #27ae60;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  button.detail-btn {
+    background: #ff9900;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgb(255 153 0 / 0.5);
+    transition: background-color 0.3s ease;
+  }
+  button.detail-btn:hover {
+    background: #e68a00;
+  }
+  #modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+  #modalContent {
+    background: white;
+    border-radius: 12px;
+    max-width: 750px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    padding: 30px 40px 40px 40px;
+  }
+  #modalContent img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #f3f3f3;
+  }
+  #modalContent h2 {
+    margin-top: 0;
+    color: #222;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  #modalContent .price {
+    font-weight: 700;
+    color: #27ae60;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  #modalContent .price del {
+    color: #999;
+    font-weight: 400;
+    margin-right: 12px;
+  }
+  #modalContent .section {
+    margin-bottom: 25px;
+  }
+  #modalContent .section strong {
+    font-size: 1.1rem;
+    color: #444;
+  }
+  #modalContent .section p {
+    line-height: 1.5;
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #555;
+  }
+  #modalContent ul {
+    padding-left: 20px;
+    color: #555;
+    font-size: 1rem;
+  }
+  #modalContent ul li {
+    margin-bottom: 8px;
+  }
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+  }
+  #modalContent a.button, #modalBackBtn {
+    display: inline-block;
+    background: #ff9900;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(255,153,0,0.6);
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  #modalContent a.button:hover, #modalBackBtn:hover {
+    background: #e68a00;
+  }
+  #modalBackBtn {
+    background: #888;
+    box-shadow: 0 6px 12px rgba(100,100,100,0.2);
+    margin-right: 0;
+  }
+  #modalBackBtn:hover {
+    background: #444;
+  }
+  #modalClose {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  #modalClose:hover {
+    color: #333;
+  }
+  footer {
+    max-width: 900px;
+    margin: 50px auto 20px auto;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Top 10 Herramientas de Bricolaje Esenciales</h1>
-        <p style="text-align:center; margin-bottom:20px;">Descubre las herramientas mejor valoradas que no pueden faltar en tu taller. Nota: Como afiliado de Amazon, gano por compras calificadas.</p>
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Taladro+Percutor" alt="Taladro Percutor Inalámbrico">
-            </div>
-            <div class="tool-details">
-                <h2>1. Taladro Percutor Inalámbrico de Alta Potencia</h2>
-                <div class="rating">★★★★☆ (4.5/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-1">€89.99</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Entusiasta del Bricolaje:</h3>
-                    <p>Desde que incorporé este taladro percutor inalámbrico a mi arsenal de herramientas, mis proyectos de bricolaje han subido a otro nivel. Antes, tareas como colgar estanterías pesadas en paredes de hormigón o montar muebles complejos me llevaban una eternidad y, a menudo, terminaban en frustración. La libertad que te da no depender de un cable es, sencillamente, transformadora. Puedo moverme por toda la casa, e incluso trabajar en el jardín, sin preocuparme por encontrar un enchufe cercano o tropezar con alargaderas.</p>
-                    <p>Lo que más me ha impresionado es su potencia y versatilidad. Viene con dos baterías de litio de buena duración, lo que significa que raramente me quedo sin energía a mitad de una tarea; mientras una se carga, la otra está en uso. El selector de par de apriete es muy preciso, permitiéndome desde atornillar delicados componentes electrónicos hasta perforar materiales resistentes como ladrillo o metal ligero con la función de percusión. El portabrocas sin llave es otra maravilla, facilitando el cambio de brocas y puntas de forma rápida y segura. Además, su diseño ergonómico y el peso equilibrado hacen que sea cómodo de usar incluso durante periodos prolongados, reduciendo la fatiga en la mano y la muñeca. La luz LED integrada es un detalle que se agradece enormemente cuando trabajas en rincones oscuros o bajo muebles. Sinceramente, considero que es una inversión que se amortiza rápidamente por la eficiencia y profesionalidad que aporta a cualquier tarea doméstica o proyecto creativo. Lo recomiendo sin dudarlo a cualquier aficionado o incluso a semiprofesionales que busquen una herramienta fiable y potente.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="TALADRO001">Ver en Amazon</a>
-            </div>
-        </div>
+<h1>Herramientas de Bricolaje - Top Productos</h1>
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Lijadora+Orbital" alt="Lijadora Orbital">
-            </div>
-            <div class="tool-details">
-                <h2>2. Lijadora Orbital Compacta y Eficiente</h2>
-                <div class="rating">★★★★☆ (4.6/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-2">€45.50</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Restaurador Aficionado:</h3>
-                    <p>La adquisición de esta lijadora orbital ha supuesto un antes y un después en mis proyectos de restauración de muebles. Anteriormente, el proceso de lijado era la parte más tediosa y que más tiempo consumía, realizándolo a mano con resultados inconsistentes y un cansancio considerable. Desde que uso esta máquina, la preparación de superficies se ha vuelto no solo más rápida, sino también más placentera y con acabados mucho más profesionales. Su tamaño compacto y diseño ergonómico son dos de sus grandes ventajas. Se adapta perfectamente a la mano, permitiendo un control preciso incluso en superficies curvas o de difícil acceso. Además, su peso ligero evita la fatiga prematura, lo cual es crucial cuando se trabaja en piezas grandes o durante varias horas seguidas.</p>
-                    <p>La potencia del motor es sorprendente para su tamaño, y el sistema de recolección de polvo, aunque no es perfecto como en ninguna lijadora de esta gama, es bastante eficiente si se conecta a una aspiradora externa, manteniendo el área de trabajo relativamente limpia. El cambio de las hojas de lija es sumamente sencillo gracias a su sistema de velcro, lo que agiliza mucho el flujo de trabajo cuando se necesita pasar por diferentes grosores de grano. He trabajado con maderas blandas, duras, e incluso en la eliminación de viejas capas de barniz y pintura, y en todos los casos el rendimiento ha sido sobresaliente, dejando las superficies suaves y listas para el siguiente tratamiento. La vibración es moderada, algo importante para la comodidad y para evitar marcas indeseadas en la madera. En resumen, es una herramienta indispensable para cualquiera que disfrute del bricolaje con madera, ofreciendo una excelente relación calidad-precio y unos resultados que superan las expectativas para un uso doméstico intensivo.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="LIJADORA002">Ver en Amazon</a>
-            </div>
-        </div>
+<div class="tool-list" role="list" id="toolList">
+  <!-- Productos se cargarán aquí -->
+</div>
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Sierra+de+Calar" alt="Sierra de Calar">
-            </div>
-            <div class="tool-details">
-                <h2>3. Sierra de Calar Versátil con Guía Láser</h2>
-                <div class="rating">★★★★★ (4.8/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-3">€65.75</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Manitas Creativo:</h3>
-                    <p>Esta sierra de calar se ha convertido rápidamente en una de mis herramientas favoritas, y con razón. Su versatilidad para realizar cortes curvos y rectos en una amplia variedad de materiales como madera, plástico y metal fino es simplemente impresionante. Lo que realmente la distingue para mí es la inclusión de una guía láser. Al principio era un poco escéptico sobre su utilidad, pero después de usarla en varios proyectos, puedo decir que marca una diferencia significativa en la precisión de los cortes, especialmente en líneas largas y rectas. Ya no tengo que depender tanto de marcar minuciosamente cada línea; el láser proyecta una guía clara y visible directamente sobre la pieza de trabajo.</p>
-                    <p>El cambio de hojas sin herramientas es otra característica que valoro enormemente, permite pasar de cortar madera a metal en cuestión de segundos, sin necesidad de buscar llaves Allen u otros accesorios. La acción pendular ajustable es muy útil, permitiendo cortes más rápidos en materiales blandos o cortes más finos y precisos cuando es necesario. La potencia del motor es adecuada para la mayoría de las tareas de bricolaje, y no he experimentado atascos ni pérdida de rendimiento, siempre y cuando se utilice la hoja correcta para el material y la velocidad adecuada. El soplador de polvo integrado ayuda a mantener la línea de corte visible, aunque para trabajos más limpios siempre es recomendable conectarla a un sistema de aspiración. Su empuñadura es cómoda y proporciona un buen agarre, lo que se traduce en un mayor control y seguridad durante el uso. Desde cortar formas intrincadas para proyectos de decoración hasta ajustar tableros para estanterías, esta sierra de calar ha demostrado ser una compañera fiable y precisa. Es una excelente opción tanto para principiantes como para usuarios más experimentados que busquen una herramienta completa y a un precio razonable.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="SIERRACALAR003">Ver en Amazon</a>
-            </div>
-        </div>
+<div id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+  <div id="modalContent" tabindex="0">
+    <!-- Contenido dinámico -->
+  </div>
+</div>
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Nivel+Láser" alt="Nivel Láser Autonivelante">
-            </div>
-            <div class="tool-details">
-                <h2>4. Nivel Láser Autonivelante de Cruz</h2>
-                <div class="rating">★★★★☆ (4.7/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-4">€55.90</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Perfeccionista del Hogar:</h3>
-                    <p>Si eres de los que no soportan un cuadro torcido o una estantería ligeramente inclinada, este nivel láser autonivelante es una herramienta que cambiará tu vida. Olvídate de los engorrosos niveles de burbuja tradicionales, especialmente para proyectos que requieren alinear múltiples puntos o trazar líneas largas. Este dispositivo proyecta una cruz láser (horizontal y vertical) perfectamente nivelada en cuestión de segundos gracias a su sistema de autonivelación. La precisión que aporta a tareas como colgar cuadros, instalar rieles de cortinas, colocar azulejos o montar cocinas es simplemente invaluable. Ahorra una cantidad de tiempo increíble y reduce drásticamente la posibilidad de errores.</p>
-                    <p>Me encanta su facilidad de uso: lo colocas sobre una superficie relativamente estable o en su trípode (muchos modelos lo incluyen o es compatible con trípodes estándar), lo enciendes, y él hace el resto. Si está fuera de su rango de autonivelación, generalmente parpadea para avisarte. La visibilidad del láser es bastante buena en interiores, incluso en habitaciones bien iluminadas, aunque para exteriores en días muy soleados podría necesitarse un detector. Muchos modelos también ofrecen la opción de bloquear el péndulo para proyectar líneas en ángulo, lo cual es útil para barandillas de escaleras o elementos decorativos inclinados. Su tamaño compacto y la bolsa de transporte que suele acompañarlo facilitan su almacenamiento y protección. He utilizado este nivel para alinear una galería completa de fotos en una pared, instalar un salpicadero de cocina y asegurarme de que todos los armarios estaban perfectamente horizontales, y los resultados han sido impecables en cada ocasión. Es una de esas herramientas que, una vez que la pruebas, te preguntas cómo has podido vivir sin ella. Totalmente recomendado para cualquier persona que valore la precisión y la eficiencia en sus proyectos de mejora del hogar.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="NIVELASER004">Ver en Amazon</a>
-            </div>
-        </div>
+<footer>
+  <p><strong>Disclaimer:</strong> Como Asociado de Amazon, gano con las compras que califican a través de los enlaces en este sitio. Esto no implica costo adicional para ti. Mi objetivo es recomendar productos que considero útiles y de calidad para los aficionados al bricolaje.<br>
+  <strong>Nota:</strong> Los precios mostrados son orientativos y pueden variar según la disponibilidad y ofertas de Amazon.</p>
+</footer>
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Multímetro+Digital" alt="Multímetro Digital">
-            </div>
-            <div class="tool-details">
-                <h2>5. Multímetro Digital Esencial para Electricidad</h2>
-                <div class="rating">★★★★☆ (4.4/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-5">€18.99</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Aficionado a la Electrónica y Reparaciones:</h3>
-                    <p>Un multímetro digital es una herramienta fundamental para cualquiera que se aventure en el mundo de la electricidad doméstica o la electrónica básica, y este modelo en particular ofrece una excelente combinación de funcionalidad y facilidad de uso a un precio muy asequible. Antes de tenerlo, cualquier problema eléctrico, por pequeño que fuera, me generaba una gran incertidumbre. Ahora, puedo diagnosticar problemas con mucha más confianza, desde comprobar si una pila está gastada hasta verificar la continuidad de un cable o medir el voltaje de un enchufe (¡siempre con las debidas precauciones, por supuesto!). La pantalla LCD es clara y fácil de leer, y los rangos de medición son suficientemente amplios para la mayoría de las aplicaciones domésticas y de hobby.</p>
-                    <p>Lo utilizo regularmente para comprobar baterías de todo tipo, desde las pequeñas AA hasta las de coche, ahorrándome dinero al no desechar las que aún tienen carga útil. También ha sido indispensable para pequeñas reparaciones de electrodomésticos, ayudándome a identificar fusibles fundidos o interruptores defectuosos. La función de prueba de continuidad con avisador acústico es especialmente útil para rastrear cables rotos. Aunque no es un equipo de gama profesional, su precisión es más que adecuada para el bricolaje. Las puntas de prueba son de calidad decente y el selector de funciones es intuitivo. Valoro también su tamaño compacto y la funda de goma protectora que suelen incorporar muchos modelos, que le da robustez ante caídas accidentales. Para alguien que está aprendiendo o que necesita una herramienta fiable para tareas ocasionales de diagnóstico eléctrico, este tipo de multímetro es una compra inteligente. Es una pequeña inversión que puede ahorrar muchos quebraderos de cabeza y dinero en reparaciones o sustituciones innecesarias. Indispensable para la caja de herramientas de cualquier manitas moderno.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="MULTIMETRO005">Ver en Amazon</a>
-            </div>
-        </div>
+<script>
+  // Función para cargar y parsear XML
+  async function loadXML() {
+    try {
+      const response = await fetch('productos.xml');
+      if (!response.ok) throw new Error('No se pudo cargar el archivo XML');
+      const text = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(text, "application/xml");
+      return xmlDoc;
+    } catch (error) {
+      console.error(error);
+      alert('Error cargando datos de productos.');
+    }
+  }
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Destornilladores+Precisión" alt="Juego de Destornilladores de Precisión">
-            </div>
-            <div class="tool-details">
-                <h2>6. Juego de Destornilladores de Precisión (30+ piezas)</h2>
-                <div class="rating">★★★★★ (4.9/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-6">€22.50</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Técnico Aficionado:</h3>
-                    <p>Este juego de destornilladores de precisión ha sido una auténtica salvación para mí en innumerables ocasiones. Como alguien a quien le gusta desmontar y reparar pequeños aparatos electrónicos, gafas, juguetes o cualquier cosa con tornillos diminutos, un buen set de precisión es absolutamente crucial. Antes de tener este, luchaba con destornilladores inadecuados que terminaban dañando las cabezas de los tornillos o simplemente no encajaban. Este kit, con su amplia variedad de puntas (Phillips, planos, Torx, hexagonales, pentalobe, etc.), cubre prácticamente cualquier necesidad que pueda surgir al trabajar con electrónica de consumo moderna, desde smartphones y portátiles hasta consolas de videojuegos y drones. La calidad de las puntas, generalmente de acero CR-V o similar, es bastante buena, ofreciendo durabilidad y un ajuste preciso.</p>
-                    <p>El mango suele ser ergonómico, con una cabeza giratoria que facilita mucho el trabajo con una sola mano, permitiendo aplicar presión mientras se gira con facilidad. Muchos sets vienen en un estuche compacto y bien organizado, lo que no solo protege las piezas, sino que también hace muy fácil encontrar la punta correcta rápidamente. Algunos incluso incluyen herramientas adicionales como pinzas, púas de apertura o una extensión flexible, lo que los convierte en un kit de reparación muy completo. He utilizado este tipo de juego para reemplazar la batería de mi viejo smartphone, ajustar las patillas de mis gafas, abrir la carcasa de un disco duro externo e incluso para reparar los pequeños tornillos de las bisagras de un portátil. La sensación de tener la herramienta adecuada para cada tornillo minúsculo es muy gratificante y evita mucha frustración. Es una inversión pequeña que ofrece un valor enorme si te gusta trastear con la tecnología o realizar reparaciones delicadas. Un imprescindible absoluto.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="PRECISIONSET006">Ver en Amazon</a>
-            </div>
-        </div>
+  // Función para crear el listado
+  function renderList(xmlDoc) {
+    const productos = xmlDoc.getElementsByTagName('producto');
+    const container = document.getElementById('toolList');
+    container.innerHTML = '';
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Pistola+Pegamento" alt="Pistola de Pegamento Caliente">
-            </div>
-            <div class="tool-details">
-                <h2>7. Pistola de Pegamento Caliente Rápida y Segura</h2>
-                <div class="rating">★★★★☆ (4.3/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-7">€15.99</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Amante de las Manualidades:</h3>
-                    <p>La pistola de pegamento caliente es una de esas herramientas sencillas pero increíblemente versátiles que todo aficionado a las manualidades, las reparaciones rápidas o los proyectos DIY debería tener. Desde que compré la mía, la he usado para una cantidad asombrosa de tareas: fijar elementos decorativos en proyectos de scrapbooking, asegurar cables sueltos para que no estorben, reparar juguetes de plástico rotos, crear adornos navideños personalizados, e incluso para pequeñas reparaciones en textiles o madera donde no se requiere una unión estructuralmente crítica. La rapidez con la que calienta y la facilidad con la que se aplica el pegamento la hacen ideal para trabajos que necesitan una solución de unión casi instantánea.</p>
-                    <p>Lo que más me gusta es su simplicidad. Cargas la barra de pegamento, la enchufas, esperas unos minutos a que alcance la temperatura adecuada y ya está lista para usar. El gatillo permite controlar el flujo de pegamento con bastante precisión, y aunque algunas gotas pueden caer de la boquilla cuando está en reposo (un pequeño trozo de cartón debajo soluciona esto), la limpieza general es mínima. He encontrado que las barras de pegamento transparente son las más versátiles, pero también es interesante explorar las de colores o con purpurina para proyectos más creativos. Es importante elegir una pistola con un buen soporte para mantenerla en posición vertical y segura mientras está caliente y no se usa. Además, algunos modelos vienen con boquillas de diferentes tamaños para aplicaciones más finas o más gruesas. Por el precio que suelen tener, el retorno de la inversión es altísimo por la cantidad de usos que se le puede dar. Es una herramienta que fomenta la creatividad y soluciona pequeños problemas cotidianos de forma eficiente. ¡Una maravilla para el día a día!</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="PISTOLAPEGA007">Ver en Amazon</a>
-            </div>
-        </div>
+    Array.from(productos).forEach(producto => {
+      const id = producto.getAttribute('id');
+      const nombre = producto.getElementsByTagName('nombre')[0].textContent;
+      const imagen = producto.getElementsByTagName('imagen')[0].textContent;
+      const precio = producto.getElementsByTagName('precio')[0].textContent;
+      const precioDescuentoTag = producto.getElementsByTagName('precioDescuento')[0];
+      const precioDescuento = precioDescuentoTag ? precioDescuentoTag.textContent : null;
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Llave+Inglesa" alt="Llave Inglesa Ajustable">
-            </div>
-            <div class="tool-details">
-                <h2>8. Llave Inglesa Ajustable Robusta</h2>
-                <div class="rating">★★★★☆ (4.6/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-8">€19.95</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Fontanero Aficionado:</h3>
-                    <p>Tener una buena llave inglesa ajustable en la caja de herramientas es, en mi opinión, tan fundamental como tener un buen destornillador o un martillo. Su capacidad para adaptarse a diferentes tamaños de tuercas y tornillos la convierte en una herramienta increíblemente polivalente, ahorrándote la necesidad de cargar con un juego completo de llaves fijas para muchas tareas comunes del hogar. Desde que adquirí una de buena calidad, con un mecanismo de ajuste suave y preciso, he podido acometer con éxito pequeñas reparaciones de fontanería, como apretar grifos que gotean o cambiar latiguillos, así como el montaje de muebles o el mantenimiento de la bicicleta. La versatilidad es su mayor baza.</p>
-                    <p>Lo crucial en una llave inglesa es la calidad de su fabricación. Un acero resistente asegura que las mordazas no se deformen bajo presión y que el tornillo de ajuste funcione correctamente durante mucho tiempo. Las mordazas deben ser paralelas y tener un buen agarre para no redondear las tuercas. Los modelos con una escala grabada en la cabeza son muy útiles para preajustar el tamaño antes de aplicarla a la tuerca. También valoro mucho un mango ergonómico, preferiblemente con algún tipo de recubrimiento antideslizante, que proporcione comodidad y un agarre firme, especialmente cuando se necesita aplicar bastante fuerza. He tenido llaves inglesas baratas en el pasado y la diferencia es abismal: se desajustan solas, las mordazas tienen holgura y acaban dañando más que ayudando. Invertir un poco más en una llave de una marca reconocida o con buenas críticas merece totalmente la pena. Es una herramienta que, con un mínimo cuidado, puede durar toda la vida y te sacará de más de un apuro. No puede faltar en ningún kit básico de bricolaje.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="LLAVEINGLESA008">Ver en Amazon</a>
-            </div>
-        </div>
+      const priceHTML = precioDescuento && precioDescuento !== precio
+        ? `<del>${precio} €</del> <span style="color:#e74c3c;">${precioDescuento} €</span>`
+        : `${precio} €`;
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Flexómetro" alt="Flexómetro Profesional">
-            </div>
-            <div class="tool-details">
-                <h2>9. Flexómetro Profesional (5 metros)</h2>
-                <div class="rating">★★★★★ (4.8/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-9">€12.50</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Planificador Meticuloso:</h3>
-                    <p>Puede parecer una herramienta simple, pero la importancia de un buen flexómetro o cinta métrica en cualquier proyecto de bricolaje, decoración o incluso para tareas cotidianas es incuestionable. Mide dos veces, corta una vez; este viejo adagio sigue siendo la regla de oro, y para ello necesitas una cinta fiable y precisa. Desde que invertí en un flexómetro de calidad profesional, he notado una gran diferencia respecto a los modelos más básicos que solía usar. La robustez de la carcasa, a menudo con recubrimiento de goma para protegerla de caídas, es una gran ventaja. La cinta en sí suele ser más ancha en los modelos de mayor calidad, lo que le permite extenderse más sin doblarse ("standout"), facilitando la medición de distancias largas por una sola persona.</p>
-                    <p>El mecanismo de bloqueo es otro aspecto crucial. Un buen flexómetro tiene un bloqueo firme y fácil de accionar, que mantiene la cinta en su sitio sin que se recoja accidentalmente. La legibilidad de los números y las marcas también es superior, a menudo con recubrimientos antirreflejos o impresiones de alto contraste. Detalles como una punta magnética pueden ser increíblemente útiles al medir entre superficies metálicas, o un clip de cinturón robusto para tenerla siempre a mano. La he utilizado para todo: medir habitaciones para comprar muebles, calcular la cantidad de pintura necesaria, cortar madera para estanterías, diseñar la distribución de un jardín... La precisión es clave, y una cinta que no se deforma y cuyas marcas son exactas te ahorra muchos errores costosos y frustraciones. Un flexómetro de 5 metros es, para mí, el tamaño ideal para la mayoría de las tareas domésticas, ofreciendo un buen equilibrio entre alcance y manejabilidad. Es una herramienta fundamental, y optar por una de buena calidad es una inversión que se agradece en cada uso.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="FLEXOMETRO009">Ver en Amazon</a>
-            </div>
-        </div>
+      const article = document.createElement('article');
+      article.className = 'tool-item';
+      article.setAttribute('role', 'listitem');
+      article.setAttribute('tabindex', '0');
+      article.setAttribute('aria-label', nombre);
 
-        <div class="tool-item">
-            <div class="tool-image">
-                <img src="https://via.placeholder.com/200x200.png?text=Sierra+Circular+Compacta" alt="Sierra Circular Compacta">
-            </div>
-            <div class="tool-details">
-                <h2>10. Mini Sierra Circular de Mano</h2>
-                <div class="rating">★★★★☆ (4.5/5 estrellas)</div>
-                <div class="price-container">
-                    <span class="price-value" id="price-10">€75.00</span>
-                    <span class="price-update-info">(Precio de ejemplo, verificar en Amazon)</span>
-                </div>
-                <div class="review">
-                    <h3>Opinión Anónima de un Entusiasta de los Proyectos Rápidos:</h3>
-                    <p>La mini sierra circular de mano ha sido una adición sorprendentemente útil a mi colección de herramientas, llenando un nicho que no sabía que necesitaba cubrir hasta que la probé. Es perfecta para esos trabajos donde una sierra circular de tamaño completo es excesiva y una sierra de calar no ofrece la misma facilidad para cortes rectos y rápidos en tableros o listones. Su principal ventaja es su manejabilidad y tamaño compacto. Puedo operarla con una sola mano con bastante comodidad, lo que me da mucha agilidad para cortes en madera, contrachapado, MDF e incluso azulejos finos o plástico, dependiendo del disco que se utilice. La profundidad de corte es limitada en comparación con sus hermanas mayores, pero para la mayoría de los trabajos de bricolaje como cortar baldas, rodapiés, o paneles finos, es más que suficiente.</p>
-                    <p>Lo que realmente aprecio es la rapidez con la que puedo ponerla en marcha para un corte sencillo. No es tan intimidante como una sierra circular grande, lo que la hace más accesible para tareas rápidas. Muchos modelos vienen con una guía lateral para asegurar cortes rectos y paralelos, y algunos incluso con una guía láser, similar a las sierras de calar. La extracción de polvo, si se conecta a una aspiradora, funciona razonablemente bien, manteniendo el área de trabajo más limpia y la línea de corte visible. El cambio de disco suele ser sencillo. Obviamente, hay que ser siempre muy cuidadoso con la seguridad, como con cualquier herramienta de corte, utilizando gafas de protección y asegurándose de que la pieza de trabajo está bien sujeta. Para quien busca una solución ágil para cortes rectos en materiales de espesor moderado sin el engorro de una sierra más grande, o para complementar otras herramientas de corte, una mini sierra circular es una opción fantástica que ahorra tiempo y esfuerzo en muchos proyectos de bricolaje y carpintería ligera.</p>
-                </div>
-                <a href="#" target="_blank" class="amazon-button" data-product-id="MINISIERRA010">Ver en Amazon</a>
-            </div>
-        </div>
+      article.innerHTML = `
+        <img src="${imagen}" alt="${nombre}" />
+        <div class="tool-name">${nombre}</div>
+        <div class="tool-price">${priceHTML}</div>
+        <button class="detail-btn" data-id="${id}" aria-haspopup="dialog">Ver detalle</button>
+      `;
 
-        <div class="footer-note">
-            <p><strong>Importante sobre los precios y disponibilidad:</strong> Los precios y la disponibilidad de los productos pueden variar. Esta página muestra precios de ejemplo y deben ser verificados en Amazon. Para obtener la información más actualizada, por favor, visita los enlaces correspondientes en Amazon.es.</p>
-            <p>Como participante en el Programa de Afiliados de Amazon UE, ingreso por compras adscritas. Amazon y el logo de Amazon son marcas registradas de Amazon.com, Inc. o sus afiliados.</p>
-            <p><strong>Nota sobre la actualización automática de precios:</strong> Este sitio web está alojado en GitHub Pages como una página estática. La actualización automática y en tiempo real de los precios de Amazon requeriría el uso de la API de Publicidad de Productos de Amazon y una solución de backend o JavaScript más compleja que no es directamente soportada por el alojamiento estático. Para mantener los precios actualizados, se recomienda consultar directamente en Amazon o implementar una solución personalizada con la API de Amazon.</p>
-        </div>
+      container.appendChild(article);
+    });
 
-    </div>
+    // Añadir evento a botones
+    container.querySelectorAll('.detail-btn').forEach(btn => {
+      btn.addEventListener('click', () => openDetail(productos, btn.dataset.id));
+    });
+  }
 
-    <script>
-        // EJEMPLO MUY BÁSICO DE CÓMO PODRÍAS INTENTAR ACTUALIZAR PRECIOS CON JAVASCRIPT
-        // Esto NO funcionará para obtener precios de Amazon directamente sin una API
-        // y un backend debido a las restricciones de CORS y la política de Amazon.
-        // ES SÓLO ILUSTRATIVO de dónde iría el código si tuvieras un endpoint de API propio.
+  // Función para abrir modal con detalle
+  function openDetail(productos, id) {
+    const producto = Array.from(productos).find(p => p.getAttribute('id') === id);
+    if (!producto) return alert('Producto no encontrado');
 
-        /*
-        async function fetchPrice(productId, priceElementId) {
-            // En un escenario real, aquí llamarías a tu propio backend,
-            // el cual a su vez llamaría a la API de Amazon Product Advertising.
-            // Ejemplo: const response = await fetch(`https://api.tuservidor.com/getPrice?id=${productId}&amazonTag=tuTag-21`);
-            // const data = await response.json();
-            // document.getElementById(priceElementId).textContent = `€${data.price}`;
+    const nombre = producto.getElementsByTagName('nombre')[0].textContent;
+    const imagen = producto.getElementsByTagName('imagen')[0].textContent;
+    const precio = producto.getElementsByTagName('precio')[0].textContent;
+    const precioDescuentoTag = producto.getElementsByTagName('precioDescuento')[0];
+    const precioDescuento = precioDescuentoTag ? precioDescuentoTag.textContent : null;
+    const enlaceAfiliado = producto.getElementsByTagName('enlaceAfiliado')[0].textContent;
+    const review = producto.getElementsByTagName('review')[0].textContent;
 
-            // Simulación (ya que no podemos llamar a Amazon directamente):
-            console.log(`Simulando obtención de precio para ${productId}. Se mantiene el precio de ejemplo.`);
-        }
+    const prosNodes = producto.getElementsByTagName('pros')[0].getElementsByTagName('item');
+    const contrasNodes = producto.getElementsByTagName('contras')[0].getElementsByTagName('item');
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Se podrían obtener los product-id de los botones o de otro atributo
-            // fetchPrice('TALADRO001', 'price-1');
-            // fetchPrice('LIJADORA002', 'price-2');
-            // ... y así para los demás productos.
+    const pros = Array.from(prosNodes).map(n => n.textContent);
+    const contras = Array.from(contrasNodes).map(n => n.textContent);
 
-            // Es importante reiterar: la obtención de precios de Amazon en el lado del cliente
-            // directamente es problemática y generalmente requiere un backend que interactúe con la API de Amazon.
-            // Para un sitio estático en GitHub Pages, la mejor aproximación para precios "actualizados"
-            // sería regenerar el HTML periódicamente (manual o automáticamente con GitHub Actions)
-            // después de obtener los precios a través de la API de Amazon con un script.
-        });
-        */
-    </script>
+    let priceHTML = '';
+    if (precioDescuento && precioDescuento !== precio) {
+      priceHTML = `<del aria-label="Precio anterior">${precio} €</del><span aria-label="Precio con descuento" style="color:#e74c3c;">${precioDescuento} €</span>`;
+    } else {
+      priceHTML = `${precio} €`;
+    }
+
+    const modal = document.getElementById('modalOverlay');
+    const content = document.getElementById('modalContent');
+
+    content.innerHTML = `
+      <button id="modalClose" aria-label="Cerrar ventana">&times;</button>
+      <h2 id="modalTitle">${nombre}</h2>
+      <img src="${imagen}" alt="${nombre}" />
+      <div class="price">${priceHTML}</div>
+      <div class="section">
+        <strong>Opinión:</strong>
+        <p>${review}</p>
+      </div>
+      <div class="section">
+        <strong>Pros:</strong>
+        <ul>${pros.map(p => `<li>${p}</li>`).join('')}</ul>
+      </div>
+      <div class="section">
+        <strong>Contras:</strong>
+        <ul>${contras.map(c => `<li>${c}</li>`).join('')}</ul>
+      </div>
+      <div class="modal-buttons">
+        <button id="modalBackBtn" aria-label="Volver al listado">&larr; Volver atrás</button>
+        <a href="${enlaceAfiliado}" target="_blank" rel="nofollow noopener" class="button" aria-label="Comprar ${nombre} en Amazon">Comprar en Amazon</a>
+      </div>
+    `;
+
+    modal.style.display = 'flex';
+
+    document.getElementById('modalClose').onclick = closeModal;
+    document.getElementById('modalBackBtn').onclick = closeModal;
+    modal.onclick = function(e) {
+      if (e.target === modal) closeModal();
+    };
+    document.onkeydown = function(e) {
+      if (e.key === "Escape") closeModal();
+    };
+
+    function closeModal() {
+      modal.style.display = 'none';
+      content.innerHTML = '';
+      document.onkeydown = null;
+    }
+  }
+
+  // Carga inicial
+  loadXML().then(xmlDoc => {
+    if (xmlDoc) renderList(xmlDoc);
+  });
+</script>
 
 </body>
 </html>
