@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productos>
+  <producto id="taladro-percutor">
+    <nombre>Taladro Percutor Inalámbrico Bosch Professional GSB 18V-55</nombre>
+    <imagen>img/producto1.jpg</imagen>
+    <precio>199.99</precio>
+    <precioDescuento>179.99</precioDescuento>
+    <enlaceAfiliado>https://tuenlaceafiliado.com/taladro-percutor</enlaceAfiliado>
+    <review>El taladro percutor inalámbrico se ha convertido en la espina dorsal de cualquier taller...</review>
+    <pros>
+      <item>Versatilidad: Taladra, atornilla y perfora con percusión.</item>
+      <item>Movilidad: Sin cables, permite trabajar en cualquier lugar.</item>
+    </pros>
+    <contras>
+      <item>Precio inicial elevado.</item>
+      <item>Peso algo elevado para uso prolongado.</item>
+    </contras>
+  </producto>
+  <producto id="lijadora-orbital">
+    <nombre>Lijadora Orbital Bosch PSS 250 AE</nombre>
+    <imagen>img/producto2.jpg</imagen>
+    <precio>79.99</precio>
+    <enlaceAfiliado>https://tuenlaceafiliado.com/lijadora-orbital</enlaceAfiliado>
+    <review>La lijadora orbital es una herramienta indispensable para lograr acabados...</review>
+    <pros>
+      <item>Acabados uniformes y lisos.</item>
+      <item>Sistema de recogida de polvo eficiente.</item>
+    </pros>
+    <contras>
+      <item>No apta para grandes desbastes.</item>
+      <item>Genera ruido durante el funcionamiento.</item>
+    </contras>
+  </producto>
+  <!-- Añade más productos aquí -->
+</productos>
+
+
+
+
