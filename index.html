@@ -17,7 +17,7 @@
     line-height: 1.6;
   }
   header {
-    background: #0B2545;
+    background: linear-gradient(90deg, #0B2545 0%, #1E3A8A 100%);
     color: #FFFFFF;
     padding: 1.5rem 2rem;
     text-align: center;
@@ -25,6 +25,9 @@
     font-weight: 700;
     letter-spacing: 1.2px;
     box-shadow: 0 3px 8px rgba(11, 37, 69, 0.7);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   main {
     max-width: 960px;
@@ -73,37 +76,40 @@
     margin: 0 0 0.5rem 0;
     color: #0B2545;
   }
+  .rating-button-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   .rating {
     color: #FF9900;
     font-weight: 700;
     font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-  }
-  .price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #333333;
-    margin-bottom: 0.6rem;
-  }
-  .price.offer {
-    color: #B12704; /* rojo Amazon para ofertas */
   }
   button.details-btn {
     background: #FF9900;
     color: #111111;
     border: none;
-    padding: 0.65rem 1.4rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 7px;
     cursor: pointer;
     font-weight: 700;
-    align-self: flex-start;
-    transition: background-color 0.3s ease;
     white-space: nowrap;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
     font-size: 1rem;
     box-shadow: 0 3px 8px rgba(255,153,0,0.6);
   }
   button.details-btn:hover {
     background: #e68a00;
+  }
+  .price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333333;
+  }
+  .price.offer {
+    color: #B12704; /* rojo Amazon para ofertas */
   }
   footer {
     max-width: 960px;
@@ -333,12 +339,9 @@
 </div>
 
 <script>
-  // Función para parsear pros y contras del review
   function parseReview(reviewNode) {
     const parser = new DOMParser();
     const xml = parser.parseFromString('<root>' + reviewNode + '</root>', 'text/xml');
-
-    // Extraer texto limpio (sin pros/cons)
     let textNodes = [];
     for (let node of xml.documentElement.childNodes) {
       if (node.nodeType === 3) {
@@ -346,8 +349,6 @@
       }
     }
     const reviewText = textNodes.filter(t => t.length > 0).join('\n\n');
-
-    // Extraer pros
     const pros = [];
     const prosNodes = xml.getElementsByTagName('pros');
     if (prosNodes.length > 0) {
@@ -356,8 +357,6 @@
         pros.push(proItems[i].textContent.trim());
       }
     }
-
-    // Extraer cons
     const cons = [];
     const consNodes = xml.getElementsByTagName('cons');
     if (consNodes.length > 0) {
@@ -366,7 +365,6 @@
         cons.push(conItems[i].textContent.trim());
       }
     }
-
     return { reviewText, pros, cons };
   }
 
@@ -387,7 +385,6 @@
 
     let toolsData = [];
 
-    // Cargar XML externo
     fetch('tools.xml')
       .then(response => {
         if (!response.ok) throw new Error('No se pudo cargar el XML');
@@ -396,15 +393,11 @@
       .then(xmlText => {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-
-        // Cargar disclaimer
         const disclaimerNode = xmlDoc.getElementsByTagName('disclaimer')[0];
         if (disclaimerNode) {
           disclaimerEl.textContent = disclaimerNode.textContent.trim();
         }
-
         const toolsNodes = xmlDoc.getElementsByTagName('tool');
-
         for (let i = 0; i < toolsNodes.length; i++) {
           const t = toolsNodes[i];
           const id = t.getAttribute('id');
@@ -420,16 +413,11 @@
           const currency = priceNode.getAttribute('currency') || 'EUR';
           const offer = t.getElementsByTagName('offer')[0].textContent === 'true';
           const reviewRaw = t.getElementsByTagName('review')[0].textContent.trim();
-
-          // Enlace afiliado
           const affiliateLinkNode = t.getElementsByTagName('affiliateLink')[0];
           const affiliateLink = affiliateLinkNode ? affiliateLinkNode.textContent.trim() : null;
-
           const { reviewText, pros, cons } = parseReview(reviewRaw);
-
           toolsData.push({ id, name, photos, rating, price, currency, offer, reviewText, pros, cons, affiliateLink });
         }
-
         renderList();
       })
       .catch(err => {
@@ -446,9 +434,11 @@
           <img src="${tool.photos[0]}" alt="${tool.name} foto principal" class="tool-photo" loading="lazy" />
           <div class="tool-info">
             <h3 class="tool-name">${tool.name}</h3>
-            <div class="rating" aria-label="Valoración en Amazon: ${tool.rating} de 5 estrellas">${'⭐'.repeat(Math.round(tool.rating))} (${tool.rating.toFixed(1)})</div>
+            <div class="rating-button-group">
+              <div class="rating" aria-label="Valoración en Amazon: ${tool.rating} de 5 estrellas">${'⭐'.repeat(Math.round(tool.rating))} (${tool.rating.toFixed(1)})</div>
+              <button class="details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">Ver detalles</button>
+            </div>
             <div class="price ${tool.offer ? 'offer' : ''}">${priceFormatted}${tool.offer ? ' - ¡Oferta!' : ''}</div>
-            <button class="details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">Ver detalles</button>
           </div>
         `;
         container.appendChild(card);
@@ -457,7 +447,6 @@
 
     function showModal(tool) {
       modalTitle.textContent = tool.name;
-
       modalPhotosContainer.innerHTML = '';
       tool.photos.forEach((src, i) => {
         const img = document.createElement('img');
@@ -474,13 +463,11 @@
       });
       modalMainPhoto.src = tool.photos[0];
       modalMainPhoto.alt = `${tool.name} foto principal`;
-
       const priceFormatted = new Intl.NumberFormat('es-ES', { style: 'currency', currency: tool.currency }).format(tool.price);
       modalInfo.innerHTML = `
         <p><strong>Valoración:</strong> ${tool.rating.toFixed(1)} ⭐</p>
         <p><strong>Precio:</strong> ${priceFormatted} ${tool.offer ? '<span style="color:#B12704;font-weight:700;">- ¡Oferta!</span>' : ''}</p>
       `;
-
       prosList.innerHTML = '';
       if (tool.pros.length > 0) {
         tool.pros.forEach(pro => {
@@ -491,7 +478,6 @@
       } else {
         prosList.innerHTML = '<li>No disponible</li>';
       }
-
       consList.innerHTML = '';
       if (tool.cons.length > 0) {
         tool.cons.forEach(con => {
@@ -502,16 +488,13 @@
       } else {
         consList.innerHTML = '<li>No disponible</li>';
       }
-
       modalReview.textContent = tool.reviewText;
-
       if (tool.affiliateLink) {
         amazonLink.href = tool.affiliateLink;
         amazonLink.style.display = 'inline-flex';
       } else {
         amazonLink.style.display = 'none';
       }
-
       modal.classList.add('active');
       closeBtn.focus();
     }
