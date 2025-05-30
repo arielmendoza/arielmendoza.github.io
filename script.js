@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = modal.querySelector('.modal-close');
   const backBtn = document.getElementById('back-to-list');
   const amazonLink = document.getElementById('amazon-link');
-  const disclaimerEl = document.getElementById('disclaimer');
 
   let toolsData = [];
 
@@ -88,12 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (xmlDoc.querySelector('parsererror')) {
         throw new Error('Error al parsear el XML');
-      }
-      
-      // Cargar disclaimer
-      const disclaimerNode = xmlDoc.querySelector('disclaimer');
-      if (disclaimerNode) {
-        disclaimerEl.textContent = disclaimerNode.textContent.trim();
       }
       
       // Procesar herramientas
