@@ -5,207 +5,206 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Herramientas de Bricolaje - Afiliados Amazon España</title>
 <style>
- /* Reset básico */
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #F9FAFB;
-  margin: 0;
-  color: #2E2E2E;
-  line-height: 1.6;
-}
-header {
-  background: #1E3A8A;
-  color: #FFFFFF;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.3);
-}
-main {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-.tool-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 1.5rem;
-}
-.tool-card {
-  background: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.3s ease;
-}
-.tool-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-.tool-name {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #1E3A8A;
-}
-.photos {
-  display: flex;
-  gap: 0.4rem;
-  margin-bottom: 0.8rem;
-}
-.photos img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid #D1D5DB;
-  transition: border-color 0.3s ease;
-}
-.photos img:hover {
-  border-color: #2563EB;
-}
-.rating {
-  margin-bottom: 0.5rem;
-  color: #2563EB;
-  font-weight: 600;
-}
-.price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #2E2E2E;
-}
-.price.offer {
-  color: #B91C1C;
-}
-button.details-btn {
-  margin-top: auto;
-  background: #1E3A8A;
-  color: white;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-button.details-btn:hover {
-  background: #2563EB;
-}
-footer {
-  max-width: 1000px;
-  margin: 3rem auto 1rem;
-  padding: 0 1rem;
-  font-size: 0.9rem;
-  color: #6B7280;
-  text-align: center;
-}
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #F9FAFB;
+    margin: 0;
+    color: #2E2E2E;
+    line-height: 1.6;
+  }
+  header {
+    background: #1E3A8A;
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 6px rgba(30, 58, 138, 0.3);
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .tool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .tool-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: box-shadow 0.3s ease;
+  }
+  .tool-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  .tool-photo {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #D1D5DB;
+  }
+  .tool-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+  }
+  .tool-name {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.3rem 0;
+    color: #1E3A8A;
+  }
+  .rating {
+    color: #2563EB;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2E2E2E;
+  }
+  .price.offer {
+    color: #B91C1C;
+  }
+  button.details-btn {
+    background: #1E3A8A;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+  }
+  button.details-btn:hover {
+    background: #2563EB;
+  }
+  footer {
+    max-width: 900px;
+    margin: 3rem auto 1rem;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: #6B7280;
+    text-align: center;
+  }
 
-/* Modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0; top: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(30, 58, 138, 0.6);
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-.modal.active {
-  display: flex;
-}
-.modal-content {
-  background: #FFFFFF;
-  border-radius: 8px;
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 1.5rem;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
-}
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: transparent;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #1E3A8A;
-  transition: color 0.3s ease;
-}
-.modal-close:hover {
-  color: #2563EB;
-}
-.modal-title {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: #1E3A8A;
-}
-.modal-photos {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  overflow-x: auto;
-}
-.modal-photos img {
-  height: 120px;
-  border-radius: 6px;
-  object-fit: cover;
-  flex-shrink: 0;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-}
-.modal-photos img.selected {
-  border-color: #1E3A8A;
-}
-.modal-main-photo {
-  width: 100%;
-  max-height: 400px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border: 1px solid #D1D5DB;
-}
-.modal-info {
-  margin-bottom: 1rem;
-  color: #2E2E2E;
-}
-.modal-info span {
-  font-weight: 700;
-}
-.modal-review {
-  white-space: pre-wrap;
-  font-size: 1rem;
-  color: #444;
-}
-.pros-cons {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-.pros-cons > div {
-  flex: 1;
-}
-.pros-cons h3 {
-  margin-bottom: 0.5rem;
-  color: #1E3A8A;
-}
-.pros-cons ul {
-  list-style: disc inside;
-  color: #333;
-}
-
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30, 58, 138, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  .modal.active {
+    display: flex;
+  }
+  .modal-content {
+    background: #FFFFFF;
+    border-radius: 8px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #1E3A8A;
+    transition: color 0.3s ease;
+  }
+  .modal-close:hover {
+    color: #2563EB;
+  }
+  .modal-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #1E3A8A;
+  }
+  .modal-main-photo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #D1D5DB;
+  }
+  .modal-photos {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+  .modal-photos img {
+    height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .modal-photos img.selected {
+    border-color: #1E3A8A;
+  }
+  .modal-info {
+    margin-bottom: 1rem;
+    color: #2E2E2E;
+  }
+  .modal-info span {
+    font-weight: 700;
+  }
+  .modal-review {
+    white-space: pre-wrap;
+    font-size: 1rem;
+    color: #444;
+  }
+  .pros-cons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .pros-cons > div {
+    flex: 1;
+  }
+  .pros-cons h3 {
+    margin-bottom: 0.5rem;
+    color: #1E3A8A;
+  }
+  .pros-cons ul {
+    list-style: disc inside;
+    color: #333;
+  }
 </style>
 </head>
 <body>
@@ -214,13 +213,13 @@ footer {
 
 <main>
   <section id="tool-list" class="tool-list" aria-label="Listado de herramientas de bricolaje">
-    <!-- Aquí se cargan las herramientas -->
+    <!-- Productos cargados dinámicamente -->
   </section>
 </main>
 
 <footer>
-  <p id="disclaimer" style="max-width: 1000px; margin: 3rem auto 1rem; padding: 0 1rem; font-size: 0.9rem; color: #666; text-align: center;">
-    <!-- Se carga el disclaimer aquí -->
+  <p id="disclaimer" style="max-width: 900px; margin: 3rem auto 1rem; padding: 0 1rem; font-size: 0.9rem; color: #6B7280; text-align: center;">
+    <!-- Disclaimer cargado dinámicamente -->
   </p>
 </footer>
 
@@ -247,7 +246,7 @@ footer {
 </div>
 
 <script>
-  // XML completo aquí (por simplicidad solo un producto, añade los demás)
+  // XML completo aquí (ejemplo con 2 productos, añade el resto igual)
   const xmlString = `<?xml version="1.0" encoding="UTF-8"?>
   <tools>
     <tool id="1">
@@ -282,16 +281,12 @@ footer {
       <name>Multiherramienta Dremel 3000</name>
       <photos>
         <photo>images/dremel1.jpg</photo>
-        <photo>images/dremel2.jpg</photo>
-        <photo>images/dremel3.jpg</photo>
-        <photo>images/dremel4.jpg</photo>
-        <photo>images/dremel5.jpg</photo>
       </photos>
       <rating>4.5</rating>
       <price currency="EUR">69.90</price>
       <offer>false</offer>
       <review><![CDATA[
-      La multiherramienta Dremel 3000 es perfecta para trabajos de precisión y detalle en bricolaje, manualidades y reparaciones. Su motor potente y regulable permite adaptar la velocidad según el material, ofreciendo gran versatilidad. Entre sus ventajas está la amplia gama de accesorios compatibles y su tamaño compacto que facilita el trabajo en espacios pequeños.
+      La multiherramienta Dremel 3000 es perfecta para trabajos de precisión y detalle en bricolaje, manualidades y reparaciones. Su motor potente y regulable permite adaptar la velocidad según el material, ofreciendo gran versatilidad.
 
       <pros>
         <pro>Amplia gama de accesorios</pro>
@@ -306,29 +301,26 @@ footer {
       Es una herramienta recomendable para aficionados y profesionales que necesiten precisión.
       ]]></review>
     </tool>
-    <!-- Añade los demás productos aquí con la misma estructura -->
     <disclaimer><![CDATA[
     Este sitio web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad afiliada diseñado para proporcionar un medio para ganar comisiones mediante enlaces a Amazon.es. Los precios y la disponibilidad de los productos pueden variar sin previo aviso.
     ]]></disclaimer>
   </tools>`;
 
-  // Función para parsear el XML y extraer pros y contras del review
+  // Función para parsear pros y contras del review
   function parseReview(reviewNode) {
-    // El reviewNode es un string con CDATA que incluye texto + tags <pros> y <cons>
-    // Para parsear, creamos un DOMParser con tipo text/xml
     const parser = new DOMParser();
     const xml = parser.parseFromString('<root>' + reviewNode + '</root>', 'text/xml');
 
-    // Extraemos texto limpio (sin pros/cons)
+    // Extraer texto limpio (sin pros/cons)
     let textNodes = [];
     for (let node of xml.documentElement.childNodes) {
-      if (node.nodeType === 3) { // texto
+      if (node.nodeType === 3) {
         textNodes.push(node.textContent.trim());
       }
     }
     const reviewText = textNodes.filter(t => t.length > 0).join('\n\n');
 
-    // Extraemos pros
+    // Extraer pros
     const pros = [];
     const prosNodes = xml.getElementsByTagName('pros');
     if (prosNodes.length > 0) {
@@ -338,7 +330,7 @@ footer {
       }
     }
 
-    // Extraemos cons
+    // Extraer cons
     const cons = [];
     const consNodes = xml.getElementsByTagName('cons');
     if (consNodes.length > 0) {
@@ -351,12 +343,11 @@ footer {
     return { reviewText, pros, cons };
   }
 
-  // Carga y muestra productos
   document.addEventListener('DOMContentLoaded', () => {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
 
-    // Disclaimer
+    // Cargar disclaimer
     const disclaimerNode = xmlDoc.getElementsByTagName('disclaimer')[0];
     if (disclaimerNode) {
       document.getElementById('disclaimer').textContent = disclaimerNode.textContent.trim();
@@ -382,24 +373,24 @@ footer {
       const offer = t.getElementsByTagName('offer')[0].textContent === 'true';
       const reviewRaw = t.getElementsByTagName('review')[0].textContent.trim();
 
-      // Parse pros/cons y texto limpio
       const { reviewText, pros, cons } = parseReview(reviewRaw);
 
       toolsData.push({ id, name, photos, rating, price, currency, offer, reviewText, pros, cons });
     }
 
-    // Render listado
+    // Render listado: cada producto fila completa, solo primera foto
     toolsData.forEach(tool => {
-      const photosHTML = tool.photos.slice(0, 5).map((src, i) => `<img src="${src}" alt="${tool.name} foto ${i + 1}" loading="lazy" />`).join('');
       const priceFormatted = new Intl.NumberFormat('es-ES', { style: 'currency', currency: tool.currency }).format(tool.price);
       const card = document.createElement('article');
       card.className = 'tool-card';
       card.innerHTML = `
-        <h3 class="tool-name">${tool.name}</h3>
-        <div class="photos">${photosHTML}</div>
-        <div class="rating" aria-label="Valoración en Amazon: ${tool.rating} de 5 estrellas">${'⭐'.repeat(Math.round(tool.rating))} (${tool.rating.toFixed(1)})</div>
-        <div class="price ${tool.offer ? 'offer' : ''}">${priceFormatted}${tool.offer ? ' - ¡Oferta!' : ''}</div>
-        <button class="details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">Ver detalles</button>
+        <img src="${tool.photos[0]}" alt="${tool.name} foto principal" class="tool-photo" loading="lazy" />
+        <div class="tool-info">
+          <h3 class="tool-name">${tool.name}</h3>
+          <div class="rating" aria-label="Valoración en Amazon: ${tool.rating} de 5 estrellas">${'⭐'.repeat(Math.round(tool.rating))} (${tool.rating.toFixed(1)})</div>
+          <div class="price ${tool.offer ? 'offer' : ''}">${priceFormatted}${tool.offer ? ' - ¡Oferta!' : ''}</div>
+          <button class="details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">Ver detalles</button>
+        </div>
       `;
       container.appendChild(card);
     });
@@ -415,7 +406,6 @@ footer {
     const consList = document.getElementById('cons-list');
     const closeBtn = modal.querySelector('.modal-close');
 
-    // Función para mostrar modal
     function showModal(tool) {
       modalTitle.textContent = tool.name;
 
@@ -429,24 +419,20 @@ footer {
         img.addEventListener('click', () => {
           modalMainPhoto.src = src;
           modalMainPhoto.alt = img.alt;
-          // Actualizar selección
           modalPhotosContainer.querySelectorAll('img').forEach(im => im.classList.remove('selected'));
           img.classList.add('selected');
         });
         modalPhotosContainer.appendChild(img);
       });
-      // Foto principal inicial
       modalMainPhoto.src = tool.photos[0];
       modalMainPhoto.alt = `${tool.name} foto principal`;
 
-      // Info
       const priceFormatted = new Intl.NumberFormat('es-ES', { style: 'currency', currency: tool.currency }).format(tool.price);
       modalInfo.innerHTML = `
         <p><strong>Valoración:</strong> ${tool.rating.toFixed(1)} ⭐</p>
-        <p><strong>Precio:</strong> ${priceFormatted} ${tool.offer ? '<span style="color:#d32f2f;font-weight:700;">- ¡Oferta!</span>' : ''}</p>
+        <p><strong>Precio:</strong> ${priceFormatted} ${tool.offer ? '<span style="color:#B91C1C;font-weight:700;">- ¡Oferta!</span>' : ''}</p>
       `;
 
-      // Pros
       prosList.innerHTML = '';
       if (tool.pros.length > 0) {
         tool.pros.forEach(pro => {
@@ -458,7 +444,6 @@ footer {
         prosList.innerHTML = '<li>No disponible</li>';
       }
 
-      // Contras
       consList.innerHTML = '';
       if (tool.cons.length > 0) {
         tool.cons.forEach(con => {
@@ -470,23 +455,18 @@ footer {
         consList.innerHTML = '<li>No disponible</li>';
       }
 
-      // Opinión completa
       modalReview.textContent = tool.reviewText;
 
       modal.classList.add('active');
-      // Foco accesible
       closeBtn.focus();
     }
 
-    // Cerrar modal
     function closeModal() {
       modal.classList.remove('active');
-      // Restaurar aria-expanded en botón
       const expandedBtn = container.querySelector('button[aria-expanded="true"]');
       if (expandedBtn) expandedBtn.setAttribute('aria-expanded', 'false');
     }
 
-    // Evento click en botones detalles
     container.addEventListener('click', e => {
       if (e.target.classList.contains('details-btn')) {
         const id = e.target.getAttribute('data-id');
@@ -498,17 +478,14 @@ footer {
       }
     });
 
-    // Cerrar modal con botón
     closeBtn.addEventListener('click', closeModal);
 
-    // Cerrar modal al hacer clic fuera del contenido
     modal.addEventListener('click', e => {
       if (e.target === modal) {
         closeModal();
       }
     });
 
-    // Cerrar modal con Escape
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeModal();
