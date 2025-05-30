@@ -3,16 +3,16 @@
   <tool id="1">
     <name>Taladro inalámbrico Bosch Professional GSR 18V-28</name>
     <photos>
-      <photo>images/bosch1.jpg</photo>
-      <photo>images/bosch2.jpg</photo>
-      <photo>images/bosch3.jpg</photo>
-      <photo>images/bosch4.jpg</photo>
-      <photo>images/bosch5.jpg</photo>
+      <photo>https://placehold.co/600x400?text=Taladro+Bosch+1</photo>
+      <photo>https://placehold.co/600x400?text=Taladro+Bosch+2</photo>
+      <photo>https://placehold.co/600x400?text=Taladro+Bosch+3</photo>
+      <photo>https://placehold.co/600x400?text=Taladro+Bosch+4</photo>
+      <photo>https://placehold.co/600x400?text=Taladro+Bosch+5</photo>
     </photos>
     <rating>4.7</rating>
     <price currency="EUR">129.99</price>
     <offer>true</offer>
-    <affiliateLink>https://www.amazon.es/dp/ASIN1?tag=tuIDafiliado-21</affiliateLink>
+    <affiliateLink>https://www.amazon.es/dp/B07P6ZQW6J?tag=tuIDafiliado-21</affiliateLink>
     <review><![CDATA[
       El taladro inalámbrico Bosch Professional GSR 18V-28 es una herramienta potente y versátil, ideal para bricolaje y uso profesional ligero. Su batería de 18V ofrece una autonomía adecuada para trabajos prolongados sin perder potencia. El diseño ergonómico facilita su manejo, incluso en espacios reducidos.
 
@@ -33,16 +33,16 @@
   <tool id="2">
     <name>Multiherramienta Dremel 3000</name>
     <photos>
-      <photo>images/dremel1.jpg</photo>
-      <photo>images/dremel2.jpg</photo>
-      <photo>images/dremel3.jpg</photo>
-      <photo>images/dremel4.jpg</photo>
-      <photo>images/dremel5.jpg</photo>
+      <photo>https://placehold.co/600x400?text=Multiherramienta+Dremel+1</photo>
+      <photo>https://placehold.co/600x400?text=Multiherramienta+Dremel+2</photo>
+      <photo>https://placehold.co/600x400?text=Multiherramienta+Dremel+3</photo>
+      <photo>https://placehold.co/600x400?text=Multiherramienta+Dremel+4</photo>
+      <photo>https://placehold.co/600x400?text=Multiherramienta+Dremel+5</photo>
     </photos>
     <rating>4.5</rating>
     <price currency="EUR">69.90</price>
     <offer>false</offer>
-    <affiliateLink>https://www.amazon.es/dp/ASIN2?tag=tuIDafiliado-21</affiliateLink>
+    <affiliateLink>https://www.amazon.es/dp/B002L3VOEA?tag=tuIDafiliado-21</affiliateLink>
     <review><![CDATA[
       La multiherramienta Dremel 3000 es perfecta para trabajos de precisión y detalle en bricolaje, manualidades y reparaciones. Su motor potente y regulable permite adaptar la velocidad según el material, ofreciendo gran versatilidad.
 
@@ -60,9 +60,93 @@
     ]]></review>
   </tool>
 
-  <!-- Añade aquí los demás productos con la misma estructura -->
+  <tool id="3">
+    <name>Atornillador de impacto Makita TD110DZ</name>
+    <photos>
+      <photo>https://placehold.co/600x400?text=Atornillador+Makita+1</photo>
+      <photo>https://placehold.co/600x400?text=Atornillador+Makita+2</photo>
+      <photo>https://placehold.co/600x400?text=Atornillador+Makita+3</photo>
+      <photo>https://placehold.co/600x400?text=Atornillador+Makita+4</photo>
+      <photo>https://placehold.co/600x400?text=Atornillador+Makita+5</photo>
+    </photos>
+    <rating>4.8</rating>
+    <price currency="EUR">99.00</price>
+    <offer>true</offer>
+    <affiliateLink>https://www.amazon.es/dp/B07Q2ZQ9Q9?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      El atornillador de impacto Makita TD110DZ destaca por su potencia y ligereza, ideal para trabajos de montaje y construcción. Su diseño compacto permite acceder a zonas difíciles y su batería de litio ofrece buena autonomía.
 
-  <disclaimer><![CDATA[
-    Este sitio web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad afiliada diseñado para proporcionar un medio para ganar comisiones mediante enlaces a Amazon.es. Los precios y la disponibilidad de los productos pueden variar sin previo aviso.
-  ]]></disclaimer>
+      <pros>
+        <pro>Velocidad variable y control de torque</pro>
+        <pro>Diseño compacto y ligero</pro>
+        <pro>Buena autonomía de batería</pro>
+      </pros>
+      <cons>
+        <con>Batería vendida por separado</con>
+        <con>Precio algo elevado</con>
+      </cons>
+
+      Es una herramienta muy recomendada para usuarios exigentes.
+    ]]></review>
+  </tool>
+
+  <tool id="4">
+    <name>Sierra de calar Bosch PST 650</name>
+    <photos>
+      <photo>https://placehold.co/600x400?text=Sierra+Bosch+1</photo>
+      <photo>https://placehold.co/600x400?text=Sierra+Bosch+2</photo>
+      <photo>https://placehold.co/600x400?text=Sierra+Bosch+3</photo>
+      <photo>https://placehold.co/600x400?text=Sierra+Bosch+4</photo>
+      <photo>https://placehold.co/600x400?text=Sierra+Bosch+5</photo>
+    </photos>
+    <rating>4.3</rating>
+    <price currency="EUR">59.95</price>
+    <offer>false</offer>
+    <affiliateLink>https://www.amazon.es/dp/B01MZ0Y9QZ?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      La sierra de calar Bosch PST 650 es una herramienta accesible y fácil de usar, ideal para cortes rectos y curvos en madera y otros materiales ligeros. Su peso reducido y empuñadura ergonómica facilitan el manejo.
+
+      <pros>
+        <pro>Sistema de cambio rápido de hojas</pro>
+        <pro>Base ajustable para cortes en bisel</pro>
+        <pro>Ligera y manejable</pro>
+      </pros>
+      <cons>
+        <con>Potencia limitada para trabajos exigentes</con>
+        <con>Cable algo corto</con>
+      </cons>
+
+      Es una buena opción para bricoladores principiantes.
+    ]]></review>
+  </tool>
+
+  <tool id="5">
+    <name>Lijadora orbital Black+Decker BDEOS400</name>
+    <photos>
+      <photo>https://placehold.co/600x400?text=Lijadora+BlackDecker+1</photo>
+      <photo>https://placehold.co/600x400?text=Lijadora+BlackDecker+2</photo>
+      <photo>https://placehold.co/600x400?text=Lijadora+BlackDecker+3</photo>
+      <photo>https://placehold.co/600x400?text=Lijadora+BlackDecker+4</photo>
+      <photo>https://placehold.co/600x400?text=Lijadora+BlackDecker+5</photo>
+    </photos>
+    <rating>4.1</rating>
+    <price currency="EUR">39.99</price>
+    <offer>true</offer>
+    <affiliateLink>https://www.amazon.es/dp/B00E3W19MO?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      La lijadora orbital Black+Decker BDEOS400 es una herramienta económica y ligera, adecuada para trabajos de lijado en superficies planas. Su sistema de recogida de polvo ayuda a mantener el área limpia.
+
+      <pros>
+        <pro>Precio competitivo</pro>
+        <pro>Fácil de manejar</pro>
+        <pro>Sistema de recogida de polvo</pro>
+      </pros>
+      <cons>
+        <con>Potencia limitada</con>
+        <con>No apta para trabajos intensivos</con>
+      </cons>
+
+      Ideal para aficionados y trabajos puntuales.
+    ]]></review>
+  </tool>
 </tools>
