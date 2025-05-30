@@ -585,16 +585,11 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  transition: max-height 0.3s ease-out;
-  overflow: hidden;
+  transition: all 0.3s ease-out;
 }
 
-.footer-disclaimers.collapsed {
-  max-height: 80px;
-}
-
-.footer-disclaimers.expanded {
-  max-height: 500px;
+.footer-disclaimers.collapsed .footer-disclaimer:not(:first-child) {
+  display: none;
 }
 
 .footer-disclaimer {
@@ -606,9 +601,10 @@ footer {
   background: var(--gray-700);
   border-radius: var(--radius);
   margin-bottom: 1rem;
+  transition: all 0.3s ease-out;
 }
 
-.footer-disclaimer:first-child {
+.footer-disclaimer:last-child {
   margin-bottom: 0;
 }
 
@@ -629,7 +625,7 @@ footer {
   align-items: center;
   gap: 0.5rem;
   margin: 1rem auto;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
 .footer-toggle:hover {
