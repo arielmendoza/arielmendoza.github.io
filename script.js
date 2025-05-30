@@ -234,18 +234,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Actualizar contenido
     modalDescription.textContent = tool.description || 'Descripción no disponible';
-    modalFeatures.innerHTML = tool.features.length > 0
-      ? tool.features.map(feature => `<p>• ${feature}</p>`).join('')
-      : '<p>Características no disponibles</p>';
     
     modalReview.textContent = tool.reviewText || '';
     
     // Actualizar pros y cons
-    prosList.innerHTML = tool.pros.length > 0
+    prosList.innerHTML = tool.pros && tool.pros.length > 0
       ? tool.pros.map(pro => `<li>${pro}</li>`).join('')
       : '<li>No se especificaron ventajas</li>';
     
-    consList.innerHTML = tool.cons.length > 0
+    consList.innerHTML = tool.cons && tool.cons.length > 0
       ? tool.cons.map(con => `<li>${con}</li>`).join('')
       : '<li>No se especificaron desventajas</li>';
     
