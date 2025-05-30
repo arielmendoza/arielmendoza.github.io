@@ -289,15 +289,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const footerToggle = document.querySelector('.footer-toggle');
   const footerDisclaimers = document.querySelector('.footer-disclaimers');
   
-  footerToggle.addEventListener('click', () => {
-    const isExpanded = footerDisclaimers.classList.contains('expanded');
-    footerDisclaimers.classList.toggle('collapsed');
-    footerDisclaimers.classList.toggle('expanded');
-    footerToggle.classList.toggle('expanded');
-    footerToggle.innerHTML = isExpanded 
-      ? 'Ver más información <span class="icon">▼</span>'
-      : 'Ver menos información <span class="icon">▼</span>';
-  });
+  if (footerToggle && footerDisclaimers) {
+    footerToggle.addEventListener('click', () => {
+      const isExpanded = footerDisclaimers.classList.contains('expanded');
+      
+      if (isExpanded) {
+        footerDisclaimers.classList.remove('expanded');
+        footerDisclaimers.classList.add('collapsed');
+        footerToggle.innerHTML = 'Ver más información <span class="icon">▼</span>';
+      } else {
+        footerDisclaimers.classList.remove('collapsed');
+        footerDisclaimers.classList.add('expanded');
+        footerToggle.innerHTML = 'Ver menos información <span class="icon">▼</span>';
+      }
+      
+      footerToggle.classList.toggle('expanded');
+    });
+  }
 
   // Iniciar la aplicación
   loadToolsData();
