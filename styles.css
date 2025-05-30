@@ -184,11 +184,38 @@ header {
 .tool-description {
   color: var(--gray-600);
   margin-bottom: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   flex: 1;
+  position: relative;
+  height: 4.8em; /* 3 líneas de texto */
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+/* Estilizar la barra de scroll */
+.tool-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tool-description::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: 3px;
+}
+
+.tool-description::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 3px;
+}
+
+.tool-description::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* Firefox */
+.tool-description {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) var(--gray-100);
 }
 
 .tool-actions {
