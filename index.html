@@ -616,3 +616,355 @@
           <div class="modal-subtitle">
             <div class="modal-rating"></div>
             <div class="modal-price"></div>
+          </div>
+        </div>
+        
+        <div class="modal-gallery">
+          <div class="modal-main-photo">
+            <img src="" alt="" id="modal-main-photo" />
+          </div>
+          <div class="modal-thumbnails" aria-label="Galería de fotos del producto"></div>
+        </div>
+        
+        <div class="modal-details">
+          <div class="modal-section">
+            <h3 class="modal-section-title">Descripción</h3>
+            <div id="modal-description" class="modal-review"></div>
+          </div>
+          
+          <div class="modal-section">
+            <h3 class="modal-section-title">Características</h3>
+            <div id="modal-features" class="modal-info"></div>
+          </div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Análisis</h3>
+          <div class="modal-review" id="modal-review"></div>
+        </div>
+        
+        <div class="modal-details">
+          <div class="modal-section">
+            <h3 class="modal-section-title">Ventajas</h3>
+            <ul id="pros-list" class="pros-cons-list pros-list"></ul>
+          </div>
+          
+          <div class="modal-section">
+            <h3 class="modal-section-title">Desventajas</h3>
+            <ul id="cons-list" class="pros-cons-list cons-list"></ul>
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button id="back-to-list" class="btn btn-secondary">Volver al listado</button>
+          <a id="amazon-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver en Amazon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Variables globales
+      const container = document.getElementById('tool-list');
+      const modal = document.getElementById('modal');
+      const modalTitle = modal.querySelector('.modal-title');
+      const modalRating = modal.querySelector('.modal-rating');
+      const modalPrice = modal.querySelector('.modal-price');
+      const modalMainPhoto = document.getElementById('modal-main-photo');
+      const modalThumbnailsContainer = modal.querySelector('.modal-thumbnails');
+      const modalDescription = document.getElementById('modal-description');
+      const modalFeatures = document.getElementById('modal-features');
+      const modalReview = document.getElementById('modal-review');
+      const prosList = document.getElementById('pros-list');
+      const consList = document.getElementById('cons-list');
+      const closeBtn = modal.querySelector('.modal-close');
+      const backBtn = document.getElementById('back-to-list');
+      const amazonLink = document.getElementById('amazon-link');
+      const disclaimerEl = document.getElementById('disclaimer');
+
+      let toolsData = [];
+
+      // Función para parsear la revisión XML
+      function parseReview(reviewNode) {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString('<root>' + reviewNode + '</root>', 'text/xml');
+        
+        // Extraer descripción
+        const descriptionNode = xml.getElementsByTagName('description')[0];
+        const description = descriptionNode ? descriptionNode.textContent.trim() : '';
+        
+        // Extraer características
+        const featuresNode = xml.getElementsByTagName('features')[0];
+        let features = '';
+        if (featuresNode) {
+          const featureItems = featuresNode.getElementsByTagName('feature');
+          features = Array.from(featureItems).map(item => item.textContent.trim()).join('\n');
+        }
+        
+        // Extraer análisis
+        const reviewNodeContent = xml.getElementsByTagName('review-content')[0];
+        const reviewText = reviewNodeContent ? reviewNodeContent.textContent.trim() : '';
+        
+        // Extraer pros y cons
+        const pros = [];
+        const prosNodes = xml.getElementsByTagName('pros');
+        if (prosNodes.length > 0) {
+          const proItems = prosNodes[0].getElementsByTagName('pro');
+          for (let i = 0; i < proItems.length; i++) {
+            pros.push(proItems[i].textContent.trim());
+          }
+        }
+        
+        const cons = [];
+        const consNodes = xml.getElementsByTagName('cons');
+        if (consNodes.length > 0) {
+          const conItems = consNodes[0].getElementsByTagName('con');
+          for (let i = 0; i < conItems.length; i++) {
+            cons.push(conItems[i].textContent.trim());
+          }
+        }
+        
+        return { description, features, reviewText, pros, cons };
+      }
+
+      // Cargar datos del XML
+      async function loadToolsData() {
+        try {
+          const response = await fetch('tools.xml');
+          if (!response.ok) throw new Error('No se pudo cargar el XML');
+          const xmlText = await response.text();
+          
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+          
+          // Cargar disclaimer
+          const disclaimerNode = xmlDoc.getElementsByTagName('disclaimer')[0];
+          if (disclaimerNode) {
+            disclaimerEl.textContent = disclaimerNode.textContent.trim();
+          }
+          
+          // Procesar herramientas
+          const toolsNodes = xmlDoc.getElementsByTagName('tool');
+          toolsData = Array.from(toolsNodes).map(t => {
+            const id = t.getAttribute('id');
+            const name = t.getElementsByTagName('name')[0].textContent;
+            
+            // Procesar fotos
+            const photosNodes = t.getElementsByTagName('photo');
+            const photos = Array.from(photosNodes).map(p => p.textContent);
+            
+            // Procesar rating y precio
+            const rating = parseFloat(t.getElementsByTagName('rating')[0].textContent);
+            const priceNode = t.getElementsByTagName('price')[0];
+            const price = parseFloat(priceNode.textContent);
+            const currency = priceNode.getAttribute('currency') || 'EUR';
+            const offer = t.getElementsByTagName('offer')[0].textContent === 'true';
+            
+            // Procesar enlace de afiliado
+            const affiliateLinkNode = t.getElementsByTagName('affiliateLink')[0];
+            const affiliateLink = affiliateLinkNode ? affiliateLinkNode.textContent.trim() : null;
+            
+            // Procesar review
+            const reviewRaw = t.getElementsByTagName('review')[0].textContent.trim();
+            const { description, features, reviewText, pros, cons } = parseReview(reviewRaw);
+            
+            return {
+              id, name, photos, rating, price, currency, offer,
+              description, features, reviewText, pros, cons, affiliateLink
+            };
+          });
+          
+          renderList();
+        } catch (err) {
+          console.error('Error al cargar los datos:', err);
+          container.innerHTML = `
+            <div class="error-message">
+              <p>Error al cargar los datos. Por favor, inténtelo de nuevo más tarde.</p>
+            </div>
+          `;
+        }
+      }
+
+      // Renderizar lista de herramientas
+      function renderList() {
+        container.innerHTML = '';
+        
+        toolsData.forEach(tool => {
+          const priceFormatted = new Intl.NumberFormat('es-ES', { 
+            style: 'currency', 
+            currency: tool.currency 
+          }).format(tool.price);
+          
+          const card = document.createElement('article');
+          card.className = 'tool-card fade-in';
+          card.setAttribute('data-id', tool.id);
+          
+          card.innerHTML = `
+            <div class="tool-photo-container">
+              ${tool.offer ? '<span class="tool-badge">OFERTA</span>' : ''}
+              <img src="${tool.photos[0]}" alt="${tool.name}" class="tool-photo" loading="lazy" />
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-name">${tool.name}</h3>
+              <div class="tool-meta">
+                <div class="tool-rating" aria-label="Valoración: ${tool.rating} de 5 estrellas">
+                  ${'★'.repeat(Math.round(tool.rating))}${'☆'.repeat(5 - Math.round(tool.rating))}
+                  <span>${tool.rating.toFixed(1)}</span>
+                </div>
+                <div class="tool-price ${tool.offer ? 'offer' : ''}">
+                  ${priceFormatted}
+                </div>
+              </div>
+              <p class="tool-description">${tool.description || 'Descripción no disponible'}</p>
+              <div class="tool-actions">
+                <button class="btn btn-secondary details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">
+                  Detalles
+                </button>
+                ${tool.affiliateLink ? `
+                  <a href="${tool.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Comprar
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          `;
+          
+          container.appendChild(card);
+        });
+      }
+
+      // Mostrar modal con detalles de la herramienta
+      function showModal(tool) {
+        // Actualizar información básica
+        modalTitle.textContent = tool.name;
+        
+        // Actualizar rating y precio
+        modalRating.innerHTML = `
+          ${'★'.repeat(Math.round(tool.rating))}${'☆'.repeat(5 - Math.round(tool.rating))}
+          <span>${tool.rating.toFixed(1)} de 5</span>
+        `;
+        
+        const priceFormatted = new Intl.NumberFormat('es-ES', { 
+          style: 'currency', 
+          currency: tool.currency 
+        }).format(tool.price);
+        
+        modalPrice.innerHTML = `
+          ${priceFormatted}
+          ${tool.offer ? '<span style="color: var(--error); margin-left: 0.5rem;">¡Oferta!</span>' : ''}
+        `;
+        
+        // Actualizar galería de fotos
+        modalThumbnailsContainer.innerHTML = '';
+        tool.photos.forEach((src, i) => {
+          const thumbnail = document.createElement('div');
+          thumbnail.className = `modal-thumbnail ${i === 0 ? 'selected' : ''}`;
+          thumbnail.innerHTML = `<img src="${src}" alt="${tool.name} - Foto ${i + 1}" />`;
+          
+          thumbnail.addEventListener('click', () => {
+            modalMainPhoto.src = src;
+            modalMainPhoto.alt = `${tool.name} - Foto ${i + 1}`;
+            modalThumbnailsContainer.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('selected'));
+            thumbnail.classList.add('selected');
+          });
+          
+          modalThumbnailsContainer.appendChild(thumbnail);
+        });
+        
+        // Establecer foto principal
+        if (tool.photos.length > 0) {
+          modalMainPhoto.src = tool.photos[0];
+          modalMainPhoto.alt = `${tool.name} - Foto principal`;
+        }
+        
+        // Actualizar descripción y características
+        modalDescription.textContent = tool.description || 'Descripción no disponible';
+        modalFeatures.innerHTML = tool.features 
+          ? tool.features.split('\n').map(f => `<p>• ${f}</p>`).join('')
+          : '<p>Características no disponibles</p>';
+        
+        // Actualizar análisis
+        modalReview.textContent = tool.reviewText || 'Análisis no disponible';
+        
+        // Actualizar pros y cons
+        prosList.innerHTML = '';
+        if (tool.pros.length > 0) {
+          tool.pros.forEach(pro => {
+            const li = document.createElement('li');
+            li.textContent = pro;
+            prosList.appendChild(li);
+          });
+        } else {
+          prosList.innerHTML = '<li>No se especificaron ventajas</li>';
+        }
+        
+        consList.innerHTML = '';
+        if (tool.cons.length > 0) {
+          tool.cons.forEach(con => {
+            const li = document.createElement('li');
+            li.textContent = con;
+            consList.appendChild(li);
+          });
+        } else {
+          consList.innerHTML = '<li>No se especificaron desventajas</li>';
+        }
+        
+        // Actualizar enlace de afiliado
+        if (tool.affiliateLink) {
+          amazonLink.href = tool.affiliateLink;
+          amazonLink.style.display = 'flex';
+        } else {
+          amazonLink.style.display = 'none';
+        }
+        
+        // Mostrar modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      // Cerrar modal
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Restablecer estado de los botones
+        const expandedBtn = container.querySelector('button[aria-expanded="true"]');
+        if (expandedBtn) expandedBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      // Event listeners
+      container.addEventListener('click', e => {
+        const detailsBtn = e.target.closest('.details-btn');
+        if (detailsBtn) {
+          const id = detailsBtn.getAttribute('data-id');
+          const tool = toolsData.find(t => t.id === id);
+          if (tool) {
+            showModal(tool);
+            detailsBtn.setAttribute('aria-expanded', 'true');
+          }
+        }
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backBtn.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      // Iniciar la aplicación
+      loadToolsData();
+    });
+  </script>
+</body>
+</html>
