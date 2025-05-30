@@ -5,190 +5,207 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Herramientas de Bricolaje - Afiliados Amazon España</title>
 <style>
-  /* Reset básico */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
-    margin: 0;
-    color: #333;
-    line-height: 1.6;
-  }
-  header {
-    background: #0073e6;
-    color: white;
-    padding: 1rem 2rem;
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  main {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  .tool-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 1.5rem;
-  }
-  .tool-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .tool-name {
-    font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #0073e6;
-  }
-  .photos {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 0.8rem;
-  }
-  .photos img {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
-  .rating {
-    margin-bottom: 0.5rem;
-    color: #f5a623;
-    font-weight: 600;
-  }
-  .price {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .price.offer {
-    color: #d32f2f;
-  }
-  button.details-btn {
-    margin-top: auto;
-    background: #0073e6;
-    color: white;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  button.details-btn:hover {
-    background: #005bb5;
-  }
-  footer {
-    max-width: 1000px;
-    margin: 3rem auto 1rem;
-    padding: 0 1rem;
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-  }
+ /* Reset básico */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #F9FAFB;
+  margin: 0;
+  color: #2E2E2E;
+  line-height: 1.6;
+}
+header {
+  background: #1E3A8A;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.3);
+}
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 1.5rem;
+}
+.tool-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+.tool-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.tool-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #1E3A8A;
+}
+.photos {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+.photos img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #D1D5DB;
+  transition: border-color 0.3s ease;
+}
+.photos img:hover {
+  border-color: #2563EB;
+}
+.rating {
+  margin-bottom: 0.5rem;
+  color: #2563EB;
+  font-weight: 600;
+}
+.price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2E2E2E;
+}
+.price.offer {
+  color: #B91C1C;
+}
+button.details-btn {
+  margin-top: auto;
+  background: #1E3A8A;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+button.details-btn:hover {
+  background: #2563EB;
+}
+footer {
+  max-width: 1000px;
+  margin: 3rem auto 1rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #6B7280;
+  text-align: center;
+}
 
-  /* Modal styles */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-  }
-  .modal.active {
-    display: flex;
-  }
-  .modal-content {
-    background: white;
-    border-radius: 8px;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 1.5rem;
-    position: relative;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
-  }
-  .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: transparent;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #555;
-  }
-  .modal-title {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    color: #0073e6;
-  }
-  .modal-photos {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    overflow-x: auto;
-  }
-  .modal-photos img {
-    height: 120px;
-    border-radius: 6px;
-    object-fit: cover;
-    flex-shrink: 0;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-  }
-  .modal-photos img.selected {
-    border-color: #0073e6;
-  }
-  .modal-main-photo {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  .modal-info {
-    margin-bottom: 1rem;
-  }
-  .modal-info span {
-    font-weight: 700;
-  }
-  .modal-review {
-    white-space: pre-wrap;
-    font-size: 1rem;
-    color: #444;
-  }
-  .pros-cons {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  .pros-cons > div {
-    flex: 1;
-  }
-  .pros-cons h3 {
-    margin-bottom: 0.5rem;
-    color: #0073e6;
-  }
-  .pros-cons ul {
-    list-style: disc inside;
-    color: #333;
-  }
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(30, 58, 138, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.modal.active {
+  display: flex;
+}
+.modal-content {
+  background: #FFFFFF;
+  border-radius: 8px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.3);
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #1E3A8A;
+  transition: color 0.3s ease;
+}
+.modal-close:hover {
+  color: #2563EB;
+}
+.modal-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #1E3A8A;
+}
+.modal-photos {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+.modal-photos img {
+  height: 120px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+.modal-photos img.selected {
+  border-color: #1E3A8A;
+}
+.modal-main-photo {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #D1D5DB;
+}
+.modal-info {
+  margin-bottom: 1rem;
+  color: #2E2E2E;
+}
+.modal-info span {
+  font-weight: 700;
+}
+.modal-review {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: #444;
+}
+.pros-cons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.pros-cons > div {
+  flex: 1;
+}
+.pros-cons h3 {
+  margin-bottom: 0.5rem;
+  color: #1E3A8A;
+}
+.pros-cons ul {
+  list-style: disc inside;
+  color: #333;
+}
+
 </style>
 </head>
 <body>
