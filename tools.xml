@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools>
+  <tool id="1">
+    <name>Taladro inalámbrico Bosch Professional GSR 18V-28</name>
+    <photos>
+      <photo>images/bosch1.jpg</photo>
+      <photo>images/bosch2.jpg</photo>
+      <photo>images/bosch3.jpg</photo>
+      <photo>images/bosch4.jpg</photo>
+      <photo>images/bosch5.jpg</photo>
+    </photos>
+    <rating>4.7</rating>
+    <price currency="EUR">129.99</price>
+    <offer>true</offer>
+    <affiliateLink>https://www.amazon.es/dp/ASIN1?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      El taladro inalámbrico Bosch Professional GSR 18V-28 es una herramienta potente y versátil, ideal para bricolaje y uso profesional ligero. Su batería de 18V ofrece una autonomía adecuada para trabajos prolongados sin perder potencia. El diseño ergonómico facilita su manejo, incluso en espacios reducidos.
+
+      <pros>
+        <pro>Buena duración de la batería</pro>
+        <pro>Variedad de velocidades</pro>
+        <pro>Portabrocas sin llave que agiliza el cambio de accesorios</pro>
+      </pros>
+      <cons>
+        <con>Peso algo elevado para trabajos en altura</con>
+        <con>Precio superior a opciones básicas</con>
+      </cons>
+
+      En general, es una inversión que vale la pena para quienes buscan calidad y durabilidad.
+    ]]></review>
+  </tool>
+
+  <tool id="2">
+    <name>Multiherramienta Dremel 3000</name>
+    <photos>
+      <photo>images/dremel1.jpg</photo>
+      <photo>images/dremel2.jpg</photo>
+      <photo>images/dremel3.jpg</photo>
+      <photo>images/dremel4.jpg</photo>
+      <photo>images/dremel5.jpg</photo>
+    </photos>
+    <rating>4.5</rating>
+    <price currency="EUR">69.90</price>
+    <offer>false</offer>
+    <affiliateLink>https://www.amazon.es/dp/ASIN2?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      La multiherramienta Dremel 3000 es perfecta para trabajos de precisión y detalle en bricolaje, manualidades y reparaciones. Su motor potente y regulable permite adaptar la velocidad según el material, ofreciendo gran versatilidad.
+
+      <pros>
+        <pro>Amplia gama de accesorios</pro>
+        <pro>Tamaño compacto</pro>
+        <pro>Motor regulable</pro>
+      </pros>
+      <cons>
+        <con>Cable limita movilidad</con>
+        <con>Se puede calentar en trabajos intensivos</con>
+      </cons>
+
+      Es una herramienta recomendable para aficionados y profesionales que necesiten precisión.
+    ]]></review>
+  </tool>
+
+  <!-- Añade aquí los demás productos con la misma estructura -->
+
+  <disclaimer><![CDATA[
+    Este sitio web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad afiliada diseñado para proporcionar un medio para ganar comisiones mediante enlaces a Amazon.es. Los precios y la disponibilidad de los productos pueden variar sin previo aviso.
+  ]]></disclaimer>
+</tools>
