@@ -173,8 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
               Detalles
             </button>
             ${tool.affiliateLink ? `
-              <a href="${tool.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                Comprar
+              <a href="${tool.affiliateLink}" target="_blank" rel="noopener noreferrer" class="btn-amazon">
+                <span class="icon">🛒</span>
+                Ver en Amazon
               </a>
             ` : ''}
           </div>
@@ -242,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualizar enlace
     if (tool.affiliateLink) {
       amazonLink.href = tool.affiliateLink;
+      amazonLink.className = 'btn-amazon compact';
+      amazonLink.innerHTML = '<span class="icon">🛒</span>Ver en Amazon';
       amazonLink.style.display = 'flex';
     } else {
       amazonLink.style.display = 'none';
