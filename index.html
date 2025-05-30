@@ -7,578 +7,8 @@
   <title>Herramientas de Bricolaje - Análisis y Comparativas | Afiliados Amazon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --primary-light: #3b82f6;
-      --secondary: #f59e0b;
-      --secondary-dark: #d97706;
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-300: #d1d5db;
-      --gray-400: #9ca3af;
-      --gray-500: #6b7280;
-      --gray-600: #4b5563;
-      --gray-700: #374151;
-      --gray-800: #1f2937;
-      --gray-900: #111827;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --error: #ef4444;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --radius-sm: 0.25rem;
-      --radius: 0.5rem;
-      --radius-md: 0.75rem;
-      --radius-lg: 1rem;
-      --radius-xl: 1.5rem;
-      --transition: all 0.2s ease-in-out;
-    }
-
-    /* Reset y base */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--gray-50);
-      color: var(--gray-900);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    button {
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    /* Layout */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-      color: white;
-      padding: 1.5rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: var(--shadow-md);
-    }
-
-    .header-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .header-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin: 0;
-    }
-
-    .header-subtitle {
-      font-size: 1rem;
-      font-weight: 500;
-      opacity: 0.9;
-      margin: 0;
-    }
-
-    /* Main content */
-    main {
-      padding: 2rem 0;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 3rem;
-      height: 3px;
-      background: var(--secondary);
-      border-radius: 3px;
-    }
-
-    /* Tool list */
-    .tool-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* Tool card */
-    .tool-card {
-      background: white;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .tool-photo-container {
-      position: relative;
-      padding-top: 75%; /* 4:3 aspect ratio */
-      overflow: hidden;
-    }
-
-    .tool-photo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .tool-card:hover .tool-photo {
-      transform: scale(1.03);
-    }
-
-    .tool-badge {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      background-color: var(--error);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--radius-sm);
-      z-index: 10;
-    }
-
-    .tool-content {
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .tool-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .tool-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .tool-rating {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-weight: 600;
-      color: var(--warning);
-    }
-
-    .tool-price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gray-800);
-    }
-
-    .tool-price.offer {
-      color: var(--error);
-    }
-
-    .tool-description {
-      color: var(--gray-600);
-      font-size: 0.9375rem;
-      margin-bottom: 1.25rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .tool-actions {
-      margin-top: auto;
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.625rem 1.25rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      border: none;
-      font-size: 0.9375rem;
-    }
-
-    .btn-primary {
-      background-color: var(--secondary);
-      color: var(--gray-900);
-      flex-grow: 1;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--secondary-dark);
-      color: white;
-    }
-
-    .btn-secondary {
-      background-color: var(--gray-100);
-      color: var(--gray-700);
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--gray-200);
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 100;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background-color: white;
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow-xl);
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .modal.active .modal-content {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--gray-500);
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: var(--transition);
-      z-index: 10;
-    }
-
-    .modal-close:hover {
-      background-color: var(--gray-100);
-      color: var(--gray-700);
-    }
-
-    .modal-body {
-      padding: 2rem;
-    }
-
-    .modal-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .modal-subtitle {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-rating {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-weight: 600;
-      color: var(--warning);
-    }
-
-    .modal-price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gray-800);
-    }
-
-    .modal-price.offer {
-      color: var(--error);
-    }
-
-    .modal-gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .modal-main-photo {
-      grid-column: 1 / -1;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background-color: var(--gray-100);
-      aspect-ratio: 16/9;
-    }
-
-    .modal-main-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .modal-thumbnails {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-    }
-
-    .modal-thumbnail {
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: var(--transition);
-      aspect-ratio: 1;
-      background-color: var(--gray-100);
-    }
-
-    .modal-thumbnail.selected {
-      border-color: var(--secondary);
-    }
-
-    .modal-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .modal-details {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .modal-details {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .modal-section {
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-section-title {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--gray-800);
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.25rem;
-      border-bottom: 2px solid var(--secondary);
-    }
-
-    .pros-cons-list {
-      list-style: none;
-    }
-
-    .pros-cons-list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pros-cons-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5rem;
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 50%;
-    }
-
-    .pros-list li::before {
-      background-color: var(--success);
-    }
-
-    .cons-list li::before {
-      background-color: var(--error);
-    }
-
-    .modal-review {
-      white-space: pre-line;
-      line-height: 1.6;
-      color: var(--gray-700);
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .modal-actions .btn {
-      flex: 1;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--gray-800);
-      color: white;
-      padding: 2rem 0;
-      margin-top: 3rem;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .footer-disclaimer {
-      font-size: 0.875rem;
-      color: var(--gray-300);
-      max-width: 800px;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-copyright {
-      font-size: 0.8125rem;
-      color: var(--gray-400);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .tool-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .modal-gallery {
-        grid-template-columns: 1fr;
-      }
-      
-      .modal-thumbnails {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .modal-actions {
-        flex-direction: column;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    /* Accessibility */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-
-    [aria-hidden="true"] {
-      display: none;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
@@ -602,7 +32,7 @@
       <p id="disclaimer" class="footer-disclaimer">
         <!-- Disclaimer cargado dinámicamente -->
       </p>
-      <p class="footer-copyright">© 2023 Herramientas de Bricolaje. Todos los derechos reservados.</p>
+      <p class="footer-copyright">© 2024 Herramientas de Bricolaje. Todos los derechos reservados.</p>
     </div>
   </footer>
 
@@ -629,7 +59,7 @@
         <div class="modal-details">
           <div class="modal-section">
             <h3 class="modal-section-title">Descripción</h3>
-            <div id="modal-description" class="modal-review"></div>
+            <div id="modal-description" class="modal-info"></div>
           </div>
           
           <div class="modal-section">
@@ -685,47 +115,44 @@
 
       let toolsData = [];
 
+      // Función para extraer texto de un nodo XML con manejo de errores
+      function getNodeText(parentNode, tagName) {
+        const node = parentNode.querySelector(tagName);
+        return node ? node.textContent.trim() : '';
+      }
+
+      // Función para extraer lista de elementos de un nodo XML
+      function getNodeList(parentNode, containerTag, itemTag) {
+        const container = parentNode.querySelector(containerTag);
+        if (!container) return [];
+        return Array.from(container.querySelectorAll(itemTag))
+          .map(node => node.textContent.trim())
+          .filter(text => text.length > 0);
+      }
+
       // Función para parsear la revisión XML
-      function parseReview(reviewNode) {
+      function parseReview(reviewText) {
         const parser = new DOMParser();
-        const xml = parser.parseFromString('<root>' + reviewNode + '</root>', 'text/xml');
+        const doc = parser.parseFromString(reviewText, 'text/xml');
         
-        // Extraer descripción
-        const descriptionNode = xml.getElementsByTagName('description')[0];
-        const description = descriptionNode ? descriptionNode.textContent.trim() : '';
-        
-        // Extraer características
-        const featuresNode = xml.getElementsByTagName('features')[0];
-        let features = '';
-        if (featuresNode) {
-          const featureItems = featuresNode.getElementsByTagName('feature');
-          features = Array.from(featureItems).map(item => item.textContent.trim()).join('\n');
+        if (doc.querySelector('parsererror')) {
+          console.error('Error al parsear XML:', reviewText);
+          return {
+            description: '',
+            features: [],
+            reviewText: '',
+            pros: [],
+            cons: []
+          };
         }
-        
-        // Extraer análisis
-        const reviewNodeContent = xml.getElementsByTagName('review-content')[0];
-        const reviewText = reviewNodeContent ? reviewNodeContent.textContent.trim() : '';
-        
-        // Extraer pros y cons
-        const pros = [];
-        const prosNodes = xml.getElementsByTagName('pros');
-        if (prosNodes.length > 0) {
-          const proItems = prosNodes[0].getElementsByTagName('pro');
-          for (let i = 0; i < proItems.length; i++) {
-            pros.push(proItems[i].textContent.trim());
-          }
-        }
-        
-        const cons = [];
-        const consNodes = xml.getElementsByTagName('cons');
-        if (consNodes.length > 0) {
-          const conItems = consNodes[0].getElementsByTagName('con');
-          for (let i = 0; i < conItems.length; i++) {
-            cons.push(conItems[i].textContent.trim());
-          }
-        }
-        
-        return { description, features, reviewText, pros, cons };
+
+        return {
+          description: getNodeText(doc, 'description'),
+          features: getNodeList(doc, 'features', 'feature'),
+          reviewText: getNodeText(doc, 'review-content'),
+          pros: getNodeList(doc, 'pros', 'pro'),
+          cons: getNodeList(doc, 'cons', 'con')
+        };
       }
 
       // Cargar datos del XML
@@ -738,40 +165,50 @@
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
           
+          if (xmlDoc.querySelector('parsererror')) {
+            throw new Error('Error al parsear el XML');
+          }
+          
           // Cargar disclaimer
-          const disclaimerNode = xmlDoc.getElementsByTagName('disclaimer')[0];
+          const disclaimerNode = xmlDoc.querySelector('disclaimer');
           if (disclaimerNode) {
             disclaimerEl.textContent = disclaimerNode.textContent.trim();
           }
           
           // Procesar herramientas
-          const toolsNodes = xmlDoc.getElementsByTagName('tool');
-          toolsData = Array.from(toolsNodes).map(t => {
-            const id = t.getAttribute('id');
-            const name = t.getElementsByTagName('name')[0].textContent;
+          const tools = Array.from(xmlDoc.querySelectorAll('tool'));
+          toolsData = tools.map(tool => {
+            // Extraer datos básicos
+            const id = tool.getAttribute('id');
+            const name = getNodeText(tool, 'name');
+            const photos = getNodeList(tool, 'photos', 'photo');
+            const rating = parseFloat(getNodeText(tool, 'rating')) || 0;
             
-            // Procesar fotos
-            const photosNodes = t.getElementsByTagName('photo');
-            const photos = Array.from(photosNodes).map(p => p.textContent);
-            
-            // Procesar rating y precio
-            const rating = parseFloat(t.getElementsByTagName('rating')[0].textContent);
-            const priceNode = t.getElementsByTagName('price')[0];
-            const price = parseFloat(priceNode.textContent);
-            const currency = priceNode.getAttribute('currency') || 'EUR';
-            const offer = t.getElementsByTagName('offer')[0].textContent === 'true';
+            // Procesar precio
+            const priceNode = tool.querySelector('price');
+            const price = priceNode ? parseFloat(priceNode.textContent) || 0 : 0;
+            const currency = priceNode?.getAttribute('currency') || 'EUR';
+            const offer = getNodeText(tool, 'offer') === 'true';
             
             // Procesar enlace de afiliado
-            const affiliateLinkNode = t.getElementsByTagName('affiliateLink')[0];
-            const affiliateLink = affiliateLinkNode ? affiliateLinkNode.textContent.trim() : null;
+            const affiliateLink = getNodeText(tool, 'affiliateLink');
             
             // Procesar review
-            const reviewRaw = t.getElementsByTagName('review')[0].textContent.trim();
-            const { description, features, reviewText, pros, cons } = parseReview(reviewRaw);
+            const reviewNode = tool.querySelector('review');
+            const reviewData = reviewNode 
+              ? parseReview(reviewNode.innerHTML)
+              : { description: '', features: [], reviewText: '', pros: [], cons: [] };
             
             return {
-              id, name, photos, rating, price, currency, offer,
-              description, features, reviewText, pros, cons, affiliateLink
+              id,
+              name,
+              photos,
+              rating,
+              price,
+              currency,
+              offer,
+              affiliateLink,
+              ...reviewData
             };
           });
           
@@ -803,7 +240,7 @@
           card.innerHTML = `
             <div class="tool-photo-container">
               ${tool.offer ? '<span class="tool-badge">OFERTA</span>' : ''}
-              <img src="${tool.photos[0]}" alt="${tool.name}" class="tool-photo" loading="lazy" />
+              <img src="${tool.photos[0] || ''}" alt="${tool.name}" class="tool-photo" loading="lazy" />
             </div>
             <div class="tool-content">
               <h3 class="tool-name">${tool.name}</h3>
@@ -836,10 +273,8 @@
 
       // Mostrar modal con detalles de la herramienta
       function showModal(tool) {
-        // Actualizar información básica
         modalTitle.textContent = tool.name;
         
-        // Actualizar rating y precio
         modalRating.innerHTML = `
           ${'★'.repeat(Math.round(tool.rating))}${'☆'.repeat(5 - Math.round(tool.rating))}
           <span>${tool.rating.toFixed(1)} de 5</span>
@@ -855,62 +290,45 @@
           ${tool.offer ? '<span style="color: var(--error); margin-left: 0.5rem;">¡Oferta!</span>' : ''}
         `;
         
-        // Actualizar galería de fotos
+        // Actualizar galería
         modalThumbnailsContainer.innerHTML = '';
-        tool.photos.forEach((src, i) => {
+        modalMainPhoto.src = tool.photos[0] || '';
+        modalMainPhoto.alt = tool.name;
+        
+        tool.photos.forEach((photo, index) => {
           const thumbnail = document.createElement('div');
-          thumbnail.className = `modal-thumbnail ${i === 0 ? 'selected' : ''}`;
-          thumbnail.innerHTML = `<img src="${src}" alt="${tool.name} - Foto ${i + 1}" />`;
+          thumbnail.className = `modal-thumbnail ${index === 0 ? 'selected' : ''}`;
+          thumbnail.innerHTML = `<img src="${photo}" alt="${tool.name} - Foto ${index + 1}" />`;
           
           thumbnail.addEventListener('click', () => {
-            modalMainPhoto.src = src;
-            modalMainPhoto.alt = `${tool.name} - Foto ${i + 1}`;
-            modalThumbnailsContainer.querySelectorAll('.modal-thumbnail').forEach(t => t.classList.remove('selected'));
-            thumbnail.classList.add('selected');
+            modalMainPhoto.src = photo;
+            modalMainPhoto.alt = `${tool.name} - Foto ${index + 1}`;
+            modalThumbnailsContainer.querySelectorAll('.modal-thumbnail').forEach(t => 
+              t.classList.toggle('selected', t === thumbnail)
+            );
           });
           
           modalThumbnailsContainer.appendChild(thumbnail);
         });
         
-        // Establecer foto principal
-        if (tool.photos.length > 0) {
-          modalMainPhoto.src = tool.photos[0];
-          modalMainPhoto.alt = `${tool.name} - Foto principal`;
-        }
-        
-        // Actualizar descripción y características
+        // Actualizar contenido
         modalDescription.textContent = tool.description || 'Descripción no disponible';
-        modalFeatures.innerHTML = tool.features 
-          ? tool.features.split('\n').map(f => `<p>• ${f}</p>`).join('')
+        modalFeatures.innerHTML = tool.features.length > 0
+          ? tool.features.map(feature => `<p>• ${feature}</p>`).join('')
           : '<p>Características no disponibles</p>';
         
-        // Actualizar análisis
         modalReview.textContent = tool.reviewText || 'Análisis no disponible';
         
         // Actualizar pros y cons
-        prosList.innerHTML = '';
-        if (tool.pros.length > 0) {
-          tool.pros.forEach(pro => {
-            const li = document.createElement('li');
-            li.textContent = pro;
-            prosList.appendChild(li);
-          });
-        } else {
-          prosList.innerHTML = '<li>No se especificaron ventajas</li>';
-        }
+        prosList.innerHTML = tool.pros.length > 0
+          ? tool.pros.map(pro => `<li>${pro}</li>`).join('')
+          : '<li>No se especificaron ventajas</li>';
         
-        consList.innerHTML = '';
-        if (tool.cons.length > 0) {
-          tool.cons.forEach(con => {
-            const li = document.createElement('li');
-            li.textContent = con;
-            consList.appendChild(li);
-          });
-        } else {
-          consList.innerHTML = '<li>No se especificaron desventajas</li>';
-        }
+        consList.innerHTML = tool.cons.length > 0
+          ? tool.cons.map(con => `<li>${con}</li>`).join('')
+          : '<li>No se especificaron desventajas</li>';
         
-        // Actualizar enlace de afiliado
+        // Actualizar enlace
         if (tool.affiliateLink) {
           amazonLink.href = tool.affiliateLink;
           amazonLink.style.display = 'flex';
@@ -929,9 +347,10 @@
         modal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Restablecer estado de los botones
         const expandedBtn = container.querySelector('button[aria-expanded="true"]');
-        if (expandedBtn) expandedBtn.setAttribute('aria-expanded', 'false');
+        if (expandedBtn) {
+          expandedBtn.setAttribute('aria-expanded', 'false');
+        }
       }
 
       // Event listeners
@@ -949,22 +368,12 @@
 
       closeBtn.addEventListener('click', closeModal);
       backBtn.addEventListener('click', closeModal);
-
-      modal.addEventListener('click', e => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      modal.addEventListener('click', e => e.target === modal && closeModal());
+      document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
 
       // Iniciar la aplicación
       loadToolsData();
     });
   </script>
 </body>
-</html>
+</html> 
