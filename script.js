@@ -36,11 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función para parsear la revisión XML
   function parseReview(reviewText) {
+    // Extraer el contenido del CDATA si existe
+    const cdataMatch = reviewText.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+    const cleanText = cdataMatch ? cdataMatch[1].trim() : reviewText.trim();
+    
+    // Crear un XML válido con el contenido
+    const xmlContent = `<?xml version="1.0" encoding="UTF-8"?><review>${cleanText}</review>`;
+    
     const parser = new DOMParser();
-    const doc = parser.parseFromString(reviewText, 'text/xml');
+    const doc = parser.parseFromString(xmlContent, 'text/xml');
     
     if (doc.querySelector('parsererror')) {
-      console.error('Error al parsear XML:', reviewText);
+      console.error('Error al parsear XML:', cleanText);
       return {
         description: '',
         reviewText: '',
@@ -50,13 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Extraer el texto principal (todo lo que está antes de los pros/cons)
-    const description = reviewText
+    const description = cleanText
       .split('<pros>')[0]
       .trim()
       .replace(/\s+/g, ' ');
 
     // Extraer el texto final (todo lo que está después de los cons)
-    const reviewContent = reviewText
+    const reviewContent = cleanText
       .split('</cons>')[1]
       ?.trim()
       .replace(/\s+/g, ' ') || '';
