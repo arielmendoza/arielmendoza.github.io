@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Herramientas de Bricolaje - Afiliados Amazon España</title>
 <style>
-  /* Reset básico */
+  /* Reset y base */
   * {
     box-sizing: border-box;
   }
@@ -17,74 +17,73 @@
     line-height: 1.6;
   }
   header {
-  background: #0B2545; /* Azul oscuro profesional */
-  color: #FFFFFF;
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(11, 37, 69, 0.7);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
+    background: #0B2545;
+    color: #FFFFFF;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    box-shadow: 0 3px 8px rgba(11, 37, 69, 0.7);
+  }
   main {
-    max-width: 900px;
-    margin: 2rem auto;
+    max-width: 960px;
+    margin: 2.5rem auto;
     padding: 0 1rem;
   }
   .tool-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .tool-card {
     background: #F5F5F5;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    padding: 1.2rem 1.5rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+    gap: 1.5rem;
     transition: box-shadow 0.3s ease;
+    cursor: default;
   }
   .tool-card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
   }
   .tool-photo {
     flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 8px;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
     object-fit: cover;
     border: 1px solid #D1D5DB;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
   .tool-info {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 120px;
+    height: 140px;
     min-width: 0;
   }
   .tool-name {
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin: 0 0 0.3rem 0;
-    color: #111111;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: #0B2545;
   }
   .rating {
     color: #FF9900;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
   }
   .price {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #333333;
+    margin-bottom: 0.6rem;
   }
   .price.offer {
     color: #B12704; /* rojo Amazon para ofertas */
@@ -93,19 +92,21 @@
     background: #FF9900;
     color: #111111;
     border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
+    padding: 0.65rem 1.4rem;
+    border-radius: 7px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     align-self: flex-start;
     transition: background-color 0.3s ease;
     white-space: nowrap;
+    font-size: 1rem;
+    box-shadow: 0 3px 8px rgba(255,153,0,0.6);
   }
   button.details-btn:hover {
     background: #e68a00;
   }
   footer {
-    max-width: 900px;
+    max-width: 960px;
     margin: 3rem auto 1rem;
     padding: 0 1rem;
     font-size: 0.9rem;
@@ -113,14 +114,14 @@
     text-align: center;
   }
 
-  /* Modal styles */
+  /* Modal */
   .modal {
     display: none;
     position: fixed;
     z-index: 9999;
     left: 0; top: 0;
     width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(11, 37, 69, 0.85);
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -130,21 +131,21 @@
   }
   .modal-content {
     background: #FFFFFF;
-    border-radius: 8px;
-    max-width: 800px;
+    border-radius: 12px;
+    max-width: 850px;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 1.5rem;
+    padding: 2rem 2.5rem;
     position: relative;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(11, 37, 69, 0.5);
   }
   .modal-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 18px;
+    right: 18px;
     background: transparent;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
     color: #FF9900;
     transition: color 0.3s ease;
@@ -153,75 +154,86 @@
     color: #e68a00;
   }
   .modal-title {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    color: #111111;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0B2545;
+    font-weight: 800;
   }
   .modal-main-photo {
     width: 100%;
-    max-height: 400px;
+    max-height: 420px;
     object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
     border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
   .modal-photos {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
     overflow-x: auto;
   }
   .modal-photos img {
-    height: 120px;
-    border-radius: 6px;
+    height: 130px;
+    border-radius: 8px;
     object-fit: cover;
     flex-shrink: 0;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     transition: border-color 0.3s;
   }
   .modal-photos img.selected {
     border-color: #FF9900;
   }
   .modal-info {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #333333;
+    font-size: 1.1rem;
   }
-  .modal-info span {
+  .modal-info strong {
     font-weight: 700;
+    color: #0B2545;
   }
   .modal-review {
     white-space: pre-wrap;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #444444;
+    margin-bottom: 2rem;
   }
   .pros-cons {
     display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
+    gap: 3rem;
+    margin-bottom: 2rem;
   }
   .pros-cons > div {
     flex: 1;
   }
   .pros-cons h3 {
-    margin-bottom: 0.5rem;
-    color: #111111;
+    margin-bottom: 0.7rem;
+    color: #0B2545;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #FF9900;
+    padding-bottom: 0.3rem;
   }
   .pros-cons ul {
     list-style: disc inside;
     color: #333333;
+    font-size: 1rem;
+    line-height: 1.5;
   }
   .modal-buttons {
-    margin-top: 1rem;
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
+    justify-content: center;
   }
   .modal-buttons button,
   .modal-buttons a {
     flex: 1;
-    padding: 0.6rem 1rem;
-    border-radius: 5px;
-    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
@@ -229,6 +241,8 @@
     justify-content: center;
     align-items: center;
     border: none;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(255,153,0,0.5);
     transition: background-color 0.3s ease;
   }
   .modal-buttons button {
@@ -245,6 +259,35 @@
   .modal-buttons a:hover {
     background: #e68a00;
   }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .tool-card {
+      flex-direction: column;
+      height: auto;
+      align-items: flex-start;
+    }
+    .tool-photo {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      border-radius: 10px 10px 0 0;
+    }
+    .tool-info {
+      height: auto;
+      margin-top: 1rem;
+    }
+    .modal-buttons {
+      flex-direction: column;
+    }
+    .modal-buttons button,
+    .modal-buttons a {
+      width: 100%;
+    }
+    .pros-cons {
+      flex-direction: column;
+    }
+  }
 </style>
 </head>
 <body>
@@ -258,7 +301,7 @@
 </main>
 
 <footer>
-  <p id="disclaimer" style="max-width: 900px; margin: 3rem auto 1rem; padding: 0 1rem; font-size: 0.9rem; color: #666666; text-align: center;">
+  <p id="disclaimer" style="max-width: 960px; margin: 3rem auto 1rem; padding: 0 1rem; font-size: 0.9rem; color: #666666; text-align: center;">
     <!-- Disclaimer cargado dinámicamente -->
   </p>
 </footer>
