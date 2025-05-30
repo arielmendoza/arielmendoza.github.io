@@ -285,6 +285,20 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', e => e.target === modal && closeModal());
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
 
+  // Footer toggle
+  const footerToggle = document.querySelector('.footer-toggle');
+  const footerDisclaimers = document.querySelector('.footer-disclaimers');
+  
+  footerToggle.addEventListener('click', () => {
+    const isExpanded = footerDisclaimers.classList.contains('expanded');
+    footerDisclaimers.classList.toggle('collapsed');
+    footerDisclaimers.classList.toggle('expanded');
+    footerToggle.classList.toggle('expanded');
+    footerToggle.innerHTML = isExpanded 
+      ? 'Ver más información <span class="icon">▼</span>'
+      : 'Ver menos información <span class="icon">▼</span>';
+  });
+
   // Iniciar la aplicación
   loadToolsData();
 }); 
