@@ -181,6 +181,7 @@ header {
 .tool-actions {
   display: flex;
   gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 /* Buttons */
@@ -195,12 +196,12 @@ header {
   transition: all 0.2s;
   border: none;
   cursor: pointer;
+  gap: 0.5rem;
 }
 
 .btn-primary {
   background: var(--primary);
   color: white;
-  flex: 1;
 }
 
 .btn-primary:hover {
@@ -210,10 +211,49 @@ header {
 .btn-secondary {
   background: var(--gray-100);
   color: var(--gray-700);
+  flex: 1;
 }
 
 .btn-secondary:hover {
   background: var(--gray-200);
+}
+
+.btn-amazon {
+  background: linear-gradient(to bottom, #FFD814, #FCD200);
+  color: #0F1111;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  border: 1px solid #FCD200;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, .5);
+  white-space: nowrap;
+}
+
+.btn-amazon:hover {
+  background: linear-gradient(to bottom, #FFE914, #FFD800);
+  border-color: #F2C200;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 7px rgba(213, 217, 217, .7);
+}
+
+.btn-amazon .icon {
+  font-size: 1.25rem;
+  color: #0F1111;
+}
+
+.btn-amazon.compact {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-amazon.compact .icon {
+  font-size: 1rem;
 }
 
 /* Modal */
@@ -470,33 +510,11 @@ header {
 
 .modal-actions {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--gray-200);
-}
-
-.btn-amazon {
-  background: #FF9900;
-  color: var(--gray-900);
-  font-weight: 700;
-  padding: 0.875rem 1.5rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s;
-}
-
-.btn-amazon:hover {
-  background: #E88B00;
-}
-
-.btn-amazon .icon {
-  font-size: 1.25rem;
 }
 
 /* Footer */
@@ -580,6 +598,10 @@ footer {
   
   .footer-disclaimer {
     font-size: 0.8125rem;
+  }
+
+  .btn-amazon {
+    width: 100%;
   }
 }
 
