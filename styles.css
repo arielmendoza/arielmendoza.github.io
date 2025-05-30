@@ -98,6 +98,9 @@ header {
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .tool-card:hover {
@@ -109,6 +112,7 @@ header {
   position: relative;
   padding-top: 66.67%;
   background: var(--gray-100);
+  min-height: 200px;
 }
 
 .tool-photo {
@@ -135,6 +139,9 @@ header {
 
 .tool-content {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .tool-name {
@@ -142,6 +149,11 @@ header {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--gray-900);
+  min-height: 3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .tool-meta {
@@ -176,12 +188,13 @@ header {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
 
 .tool-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: auto;
 }
 
 /* Buttons */
@@ -508,13 +521,25 @@ header {
   background: var(--error);
 }
 
+/* Modal actions */
 .modal-actions {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--gray-200);
+}
+
+.modal-actions .btn,
+.modal-actions .btn-amazon {
+  width: 100%;
+  justify-content: center;
+}
+
+.modal-actions .btn-amazon.compact {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
 }
 
 /* Footer */
@@ -572,6 +597,12 @@ footer {
   
   .modal-thumbnails {
     grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .tool-card {
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
   }
   
   .tool-actions {
