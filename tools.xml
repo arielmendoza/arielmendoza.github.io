@@ -29,4 +29,33 @@
       Para trabajos de precisión, este kit ofrece una excelente relación calidad-precio y versatilidad para usuarios tanto amateurs como profesionales.
     ]]></review>
   </tool>
+  <tool id="2" source="https://www.amazon.es/gp/product/B07KGL5DS9/ref=ewc_pr_img_1?smid=A1AT7YVPFBWXBL&th=1">
+    <name>BLACK+DECKER Taladro percutor BEH850K-QS</name>
+    <photos>
+      <photo>https://m.media-amazon.com/images/I/71z+7vZV0lL._AC_SL1500_.jpg</photo>
+      <photo>https://m.media-amazon.com/images/I/61z+7vZV0lL._AC_SL1500_.jpg</photo>
+      <photo>https://m.media-amazon.com/images/I/51z+7vZV0lL._AC_SL1500_.jpg</photo>
+      <photo>https://m.media-amazon.com/images/I/41z+7vZV0lL._AC_SL1500_.jpg</photo>
+      <photo>https://m.media-amazon.com/images/I/31z+7vZV0lL._AC_SL1500_.jpg</photo>
+    </photos>
+    <rating>4.5</rating>
+    <price currency="EUR">32.99</price>
+    <offer>true</offer>
+    <affiliateLink>https://www.amazon.es/gp/product/B07KGL5DS9/ref=ewc_pr_img_1?smid=A1AT7YVPFBWXBL&th=1?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      El BLACK+DECKER BEH850K-QS es un taladro percutor con cable de 850W, diseñado para tareas domésticas y bricolaje. Su velocidad variable y bloqueo del eje lo hacen versátil para perforar madera, metal, mampostería y plástico. Incluye 6 brocas y una caja de herramientas para facilitar su almacenamiento y transporte.
+
+      <pros>
+        <pro>Potente motor de 850W</pro>
+        <pro>Velocidad variable para mayor control</pro>
+        <pro>Incluye brocas y maletín</pro>
+      </pros>
+      <cons>
+        <con>Solo tiene una marcha</con>
+        <con>El sistema de apriete de brocas es manual</con>
+      </cons>
+
+      Ideal para tareas ocasionales en el hogar, ofrece una buena relación calidad-precio.
+    ]]></review>
+  </tool>
 </tools>
