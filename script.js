@@ -157,8 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const affiliateLink = tool.querySelector('affiliateLink');
     if (affiliateLink) {
       const link = affiliateLink.textContent.trim();
-      if (!link.startsWith('https://www.amazon.es/')) {
-        errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser de Amazon España`);
+      try {
+        const url = new URL(link);
+        if (!url.hostname.includes('amazon')) {
+          errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser de Amazon España (amazon.es)`);
+        }
+      } catch (e) {
+        errors.push(`Herramienta #${index + 1}: El enlace de afiliado no es una URL válida`);
       }
     }
 
