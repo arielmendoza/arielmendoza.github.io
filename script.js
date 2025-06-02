@@ -101,8 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'name': 'nombre',
       'photos': 'fotos',
       'rating': 'valoración',
-      'price': 'precio',
-      'affiliateLink': 'enlace de afiliado'
+      'price': 'precio'
     };
 
     Object.entries(requiredFields).forEach(([field, label]) => {
@@ -155,15 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Validar enlace de afiliado
     const affiliateLink = tool.querySelector('affiliateLink');
-    if (affiliateLink) {
+    if (affiliateLink && affiliateLink.textContent.trim()) {
       const link = affiliateLink.textContent.trim();
-      try {
-        const url = new URL(link);
-        if (!url.hostname.includes('amazon')) {
-          errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser de Amazon España (amazon.es)`);
-        }
-      } catch (e) {
-        errors.push(`Herramienta #${index + 1}: El enlace de afiliado no es una URL válida`);
+      if (link && !link.startsWith('http')) {
+        errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser una URL válida que comience con http:// o https://`);
       }
     }
 
@@ -218,9 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const currency = priceNode?.getAttribute('currency') || 'EUR';
         const offer = getNodeText(tool, 'offer') === 'true';
         
-        // Procesar enlace de afiliado
-        const affiliateLink = getNodeText(tool, 'affiliateLink');
-        
         // Procesar review
         const reviewNode = tool.querySelector('review');
         const reviewData = reviewNode 
@@ -235,7 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
           price,
           currency,
           offer,
-          affiliateLink,
           ...reviewData
         };
       });
