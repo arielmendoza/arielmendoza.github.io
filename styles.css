@@ -267,11 +267,13 @@ header {
   margin-bottom: 1.5rem;
   flex: 1;
   position: relative;
-  height: 4.8em; /* 3 líneas de texto */
+  max-height: 11.2em; /* 7 líneas de texto (1.6em * 7) */
   overflow-y: auto;
   padding-right: 0.5rem;
   line-height: 1.6;
   font-size: 0.9375rem;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* Estilizar la barra de scroll */
@@ -578,16 +580,11 @@ header {
   border-radius: var(--radius-sm);
 }
 
-.modal-info {
+.modal-info, .modal-review {
   color: var(--gray-700);
   line-height: 1.7;
-  white-space: pre-line;
-}
-
-.modal-review {
-  color: var(--gray-700);
-  line-height: 1.7;
-  white-space: pre-line;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .pros-cons-grid {
@@ -805,6 +802,11 @@ footer {
 
   .sort-select {
     flex: 1;
+  }
+
+  .tool-description {
+    max-height: 9.6em; /* 6 líneas en móvil */
+    font-size: 0.875rem;
   }
 }
 
