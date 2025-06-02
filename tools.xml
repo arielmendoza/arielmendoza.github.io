@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tools>
-  <tool id="1" source="https://www.amazon.es/Destornilladores-Precisi%C3%B3n-Magn%C3%A9ticos-Profesionales-Reparaci%C3%B3n/dp/B0D2HGJFL2/">
-    <name>Set de destornilladores de precisión magnéticos profesionales para reparación electrónica y bricolaje</name>
-    <photos>
-      <photo>https://m.media-amazon.com/images/I/71+NVe5NivL._AC_SL1500_.jpg</photo>
-      <photo>https://m.media-amazon.com/images/I/81XfFMxT1pL._AC_SL1500_.jpg</photo>
-      <photo>https://m.media-amazon.com/images/I/61jAFqBbdqL._AC_SL1500_.jpg</photo>
-      <photo>https://m.media-amazon.com/images/I/71m1ZTzvJnL._AC_SL1500_.jpg</photo>
-      <photo>https://m.media-amazon.com/images/I/61SxpjkVlvL._AC_SL1500_.jpg</photo>
-    </photos>
-    <rating>4.6</rating>
-    <price currency="EUR">19.99</price>
-    <offer>false</offer>
-    <affiliateLink>https://www.amazon.es/Destornilladores-Precisi%C3%B3n-Magn%C3%A9ticos-Profesionales-Reparaci%C3%B3n/dp/B0D2HGJFL2?tag=tuIDafiliado-21</affiliateLink>
-    <review><![CDATA[
-      Este set de destornilladores de precisión es un aliado imprescindible para cualquier bricolador o técnico que necesite manejar reparaciones delicadas con precisión y seguridad. La magnetización facilita el trabajo con tornillos pequeños, y la variedad de puntas cubre múltiples necesidades. Su diseño compacto y ergonómico mejora el agarre y la comodidad en tareas prolongadas.
-
-      <pros>
-        <pro>Puntas magnéticas que evitan pérdida de tornillos</pro>
-        <pro>Variedad de tamaños y tipos de punta</pro>
-        <pro>Ergonómico y compacto</pro>
-      </pros>
-      <cons>
-        <con>El estuche podría ser más resistente</con>
-        <con>Algunos imanes no son muy potentes</con>
-      </cons>
-
-      Para trabajos de precisión, este kit ofrece una excelente relación calidad-precio y versatilidad para usuarios tanto amateurs como profesionales.
-    ]]></review>
-  </tool>
-  <tool id="2" source="https://www.amazon.es/gp/product/B07KGL5DS9/ref=ewc_pr_img_1?smid=A1AT7YVPFBWXBL&th=1">
+  <tool id="1" source="https://www.amazon.es/gp/product/B07KGL5DS9/ref=ewc_pr_img_1?smid=A1AT7YVPFBWXBL&th=1">
     <name>BLACK+DECKER Taladro percutor BEH850K-QS</name>
     <photos>
       <photo>https://m.media-amazon.com/images/I/71z+7vZV0lL._AC_SL1500_.jpg</photo>
