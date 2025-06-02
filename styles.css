@@ -194,6 +194,7 @@ header {
   padding-top: 66.67%;
   background: var(--gray-100);
   min-height: 200px;
+  overflow: hidden;
 }
 
 .tool-photo {
@@ -204,6 +205,11 @@ header {
   height: 100%;
   object-fit: contain;
   padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.tool-photo:hover {
+  transform: scale(1.05);
 }
 
 .tool-badge {
@@ -216,6 +222,13 @@ header {
   border-radius: var(--radius);
   font-weight: 600;
   font-size: 0.875rem;
+  z-index: 2;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.tool-badge:hover {
+  transform: translateY(-2px);
 }
 
 .tool-content {
@@ -807,6 +820,15 @@ footer {
   .tool-description {
     max-height: 9.6em; /* 6 líneas en móvil */
     font-size: 0.875rem;
+  }
+
+  .tool-photo-container {
+    min-height: 150px;
+  }
+
+  .tool-badge {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8125rem;
   }
 }
 
