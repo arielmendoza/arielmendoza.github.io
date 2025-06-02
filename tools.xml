@@ -5,9 +5,11 @@
     <photos>
       <photo>1</photo>
       <photo>2</photo>
+      <photo>3</photo>
+      <photo>4</photo>
     </photos>
     <rating>4.5</rating>
-    <price currency="EUR">32.99</price>
+    <price currency="EUR">66,90</price>
     <offer>true</offer>
     <affiliateLink>https://www.amazon.es/gp/product/B07KGL5DS9?tag=tuIDafiliado-21</affiliateLink>
     <review><![CDATA[
