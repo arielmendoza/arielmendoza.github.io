@@ -15,6 +15,28 @@
     <div class="container header-content">
       <h1 class="header-title">Herramientas de Bricolaje</h1>
       <p class="header-subtitle">Comparativas y análisis con enlaces de afiliados</p>
+      
+      <div class="filters-bar">
+        <div class="filters-group">
+          <button class="filter-btn" data-filter="all">
+            Todos
+          </button>
+          <button class="filter-btn" data-filter="offer">
+            <span class="icon">🏷️</span> Ofertas
+          </button>
+        </div>
+
+        <div class="sort-group">
+          <label for="sort-select">Ordenar por:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="default">Relevancia</option>
+            <option value="price-asc">Precio: Menor a mayor</option>
+            <option value="price-desc">Precio: Mayor a menor</option>
+            <option value="rating-desc">Mejor valorados</option>
+            <option value="rating-asc">Menor valoración</option>
+          </select>
+        </div>
+      </div>
     </div>
   </header>
 
