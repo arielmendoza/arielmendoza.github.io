@@ -153,10 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Validar enlace de afiliado
-    const affiliateLink = tool.querySelector('affiliateLink');
-    if (affiliateLink && affiliateLink.textContent.trim()) {
-      const link = affiliateLink.textContent.trim();
-      if (link && !link.startsWith('http')) {
+    const affiliateLink = getNodeText(tool, 'affiliateLink').replace(/^@/, '');
+    if (affiliateLink && affiliateLink.length > 0) {
+      if (!affiliateLink.startsWith('http')) {
         errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser una URL válida que comience con http:// o https://`);
       }
     }
@@ -218,6 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
           ? parseReview(reviewNode.innerHTML)
           : { description: '', reviewText: '', pros: [], cons: [] };
         
+        // Procesar enlace de afiliado
+        const affiliateLink = getNodeText(tool, 'affiliateLink').replace(/^@/, '');
+        
         return {
           id,
           name,
@@ -226,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
           price,
           currency,
           offer,
+          affiliateLink,
           ...reviewData
         };
       });
