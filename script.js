@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const amazonLink = document.getElementById('amazon-link');
 
   let toolsData = [];
+  let currentFilter = 'all';
+  let currentSort = 'default';
 
   // Función para extraer texto de un nodo XML con manejo de errores
   function getNodeText(parentNode, tagName) {
@@ -137,11 +139,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Función para filtrar y ordenar herramientas
+  function filterAndSortTools() {
+    let filteredTools = [...toolsData];
+    
+    // Aplicar filtro
+    if (currentFilter === 'offer') {
+      filteredTools = filteredTools.filter(tool => tool.offer);
+    }
+    
+    // Aplicar ordenación
+    switch (currentSort) {
+      case 'price-asc':
+        filteredTools.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        filteredTools.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating-desc':
+        filteredTools.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'rating-asc':
+        filteredTools.sort((a, b) => a.rating - b.rating);
+        break;
+      default:
+        // Mantener el orden original
+        break;
+    }
+    
+    return filteredTools;
+  }
+
   // Renderizar lista de herramientas
   function renderList() {
     container.innerHTML = '';
+    const filteredTools = filterAndSortTools();
     
-    toolsData.forEach(tool => {
+    if (filteredTools.length === 0) {
+      container.innerHTML = `
+        <div class="no-results">
+          <p>No se encontraron herramientas que coincidan con los filtros seleccionados.</p>
+        </div>
+      `;
+      return;
+    }
+    
+    filteredTools.forEach(tool => {
       const priceFormatted = new Intl.NumberFormat('es-ES', { 
         style: 'currency', 
         currency: tool.currency 
@@ -306,6 +349,27 @@ document.addEventListener('DOMContentLoaded', () => {
       footerToggle.classList.toggle('expanded');
     });
   }
+
+  // Event listeners para filtros y ordenación
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const sortSelect = document.getElementById('sort-select');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderList();
+    });
+  });
+
+  sortSelect.addEventListener('change', (e) => {
+    currentSort = e.target.value;
+    renderList();
+  });
+
+  // Activar el filtro "Todos" por defecto
+  document.querySelector('[data-filter="all"]').classList.add('active');
 
   // Iniciar la aplicación
   loadToolsData();
