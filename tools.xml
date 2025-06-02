@@ -3,11 +3,8 @@
   <tool id="1">
     <name>BLACK+DECKER Taladro percutor BEH850K-QS</name>
     <photos>
-      <photo>1</photo>
-      <photo>2</photo>
-      <photo>3</photo>
-      <photo>4</photo>
-      <photo>5</photo>
+      <photo>images/id1_1.jpg</photo>
+      <photo>images/id1_2.jpg</photo>
     </photos>
     <rating>4.5</rating>
     <price currency="EUR">32.99</price>
