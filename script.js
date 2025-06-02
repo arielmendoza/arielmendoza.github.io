@@ -77,22 +77,114 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Función para validar un nodo de herramienta
+  function validateTool(tool, index) {
+    const errors = [];
+    
+    // Validar ID
+    if (!tool.hasAttribute('id')) {
+      errors.push(`Herramienta #${index + 1}: Falta el atributo 'id'`);
+    }
+
+    // Validar campos requeridos
+    const requiredFields = {
+      'name': 'nombre',
+      'photos': 'fotos',
+      'rating': 'valoración',
+      'price': 'precio',
+      'affiliateLink': 'enlace de afiliado'
+    };
+
+    Object.entries(requiredFields).forEach(([field, label]) => {
+      const node = tool.querySelector(field);
+      if (!node) {
+        errors.push(`Herramienta #${index + 1}: Falta el campo '${label}'`);
+      }
+    });
+
+    // Validar fotos
+    const photos = tool.querySelector('photos');
+    if (photos) {
+      const photoNodes = photos.querySelectorAll('photo');
+      if (photoNodes.length === 0) {
+        errors.push(`Herramienta #${index + 1}: Debe tener al menos una foto`);
+      }
+      photoNodes.forEach((photo, photoIndex) => {
+        if (!photo.textContent.trim()) {
+          errors.push(`Herramienta #${index + 1}: La foto #${photoIndex + 1} está vacía`);
+        }
+      });
+    }
+
+    // Validar rating
+    const rating = tool.querySelector('rating');
+    if (rating) {
+      const ratingValue = parseFloat(rating.textContent);
+      if (isNaN(ratingValue) || ratingValue < 0 || ratingValue > 5) {
+        errors.push(`Herramienta #${index + 1}: La valoración debe ser un número entre 0 y 5`);
+      }
+    }
+
+    // Validar precio
+    const price = tool.querySelector('price');
+    if (price) {
+      const priceValue = parseFloat(price.textContent);
+      if (isNaN(priceValue) || priceValue < 0) {
+        errors.push(`Herramienta #${index + 1}: El precio debe ser un número positivo`);
+      }
+      if (!price.hasAttribute('currency')) {
+        errors.push(`Herramienta #${index + 1}: Falta el atributo 'currency' en el precio`);
+      }
+    }
+
+    // Validar enlace de afiliado
+    const affiliateLink = tool.querySelector('affiliateLink');
+    if (affiliateLink) {
+      const link = affiliateLink.textContent.trim();
+      if (!link.startsWith('https://www.amazon.es/')) {
+        errors.push(`Herramienta #${index + 1}: El enlace de afiliado debe ser de Amazon España`);
+      }
+    }
+
+    return errors;
+  }
+
   // Cargar datos del XML
   async function loadToolsData() {
     try {
       const response = await fetch('tools.xml');
-      if (!response.ok) throw new Error('No se pudo cargar el XML');
+      if (!response.ok) throw new Error('No se pudo cargar el archivo XML');
       const xmlText = await response.text();
       
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
       
-      if (xmlDoc.querySelector('parsererror')) {
-        throw new Error('Error al parsear el XML');
+      // Verificar si hay errores de parsing
+      const parserError = xmlDoc.querySelector('parsererror');
+      if (parserError) {
+        throw new Error('Error al parsear el XML: ' + parserError.textContent);
+      }
+
+      // Validar estructura básica
+      const tools = Array.from(xmlDoc.querySelectorAll('tool'));
+      if (tools.length === 0) {
+        throw new Error('El XML no contiene herramientas');
+      }
+
+      // Validar cada herramienta
+      const allErrors = [];
+      tools.forEach((tool, index) => {
+        const errors = validateTool(tool, index);
+        allErrors.push(...errors);
+      });
+
+      // Si hay errores, mostrarlos
+      if (allErrors.length > 0) {
+        const errorList = allErrors.map(err => `• ${err}`).join('\n');
+        throw new Error('Se encontraron los siguientes errores:\n' + errorList);
       }
       
       // Procesar herramientas
-      const tools = Array.from(xmlDoc.querySelectorAll('tool'));
       toolsData = tools.map(tool => {
         // Extraer datos básicos
         const id = tool.getAttribute('id');
@@ -133,7 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error al cargar los datos:', err);
       container.innerHTML = `
         <div class="error-message">
-          <p>Error al cargar los datos. Por favor, inténtelo de nuevo más tarde.</p>
+          <h2>Error al cargar los datos</h2>
+          <p>Se encontraron los siguientes errores al cargar el archivo XML:</p>
+          <pre>${err.message}</pre>
+          <p>Por favor, corrige los errores y vuelve a intentarlo.</p>
         </div>
       `;
     }
