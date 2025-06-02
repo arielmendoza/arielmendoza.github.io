@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tools>
-  <tool id="1" >
+  <tool id="1">
     <name>BLACK+DECKER Taladro percutor BEH850K-QS</name>
     <photos>
       <photo>https://m.media-amazon.com/images/I/71z+7vZV0lL._AC_SL1500_.jpg</photo>
@@ -12,22 +12,25 @@
     <rating>4.5</rating>
     <price currency="EUR">32.99</price>
     <offer>true</offer>
-    <affiliateLink>https://www.amazon.es/gp/product/B07KGL5DS9/ref=ewc_pr_img_1?smid=A1AT7YVPFBWXBL&amp;th=1?tag=tuIDafiliado-21</affiliateLink>
-    <review>
-      <![CDATA[
-      El BLACK+DECKER BEH850K-QS es un taladro percutor con cable de 850W, diseñado para tareas domésticas y bricolaje. Su velocidad variable y bloqueo del eje lo hacen versátil para perforar madera, metal, mampostería y plástico. Incluye 6 brocas y una caja de herramientas para facilitar su almacenamiento y transporte.
+    <affiliateLink>https://www.amazon.es/gp/product/B07KGL5DS9?tag=tuIDafiliado-21</affiliateLink>
+    <review><![CDATA[
+      El BLACK+DECKER BEH850K-QS es un taladro percutor con cable de 850W, pensado para bricolaje y tareas domésticas. Cuenta con velocidad variable que permite un control preciso, bloqueo del eje para trabajos de atornillado y sistema de apriete manual. Incluye un maletín y 6 brocas, ideal para perforar madera, metal, plástico y mampostería.
 
-      Pros:
-      - Potente motor de 850W
-      - Velocidad variable para mayor control
-      - Incluye brocas y maletín
+      <pros>
+        <pro>Motor potente de 850W</pro>
+        <pro>Velocidad variable y bloqueo del eje</pro>
+        <pro>Incluye maletín y brocas</pro>
+      </pros>
+      <cons>
+        <con>Solo una marcha</con>
+        <con>Portabrocas manual</con>
+      </cons>
 
-      Contras:
-      - Solo tiene una marcha
-      - El sistema de apriete de brocas es manual
-
-      Ideal para tareas ocasionales en el hogar, ofrece una buena relación calidad-precio.
-      ]]>
-    </review>
+      Una opción económica y funcional para quienes buscan un taladro percutor fiable para uso ocasional.
+    ]]></review>
   </tool>
+
+  <disclaimer><![CDATA[
+    Este sitio web participa en el Programa de Afiliados de Amazon EU, un programa de publicidad afiliada diseñado para proporcionar un medio para ganar comisiones mediante enlaces a Amazon.es. Los precios y la disponibilidad de los productos pueden variar sin previo aviso.
+  ]]></disclaimer>
 </tools>
