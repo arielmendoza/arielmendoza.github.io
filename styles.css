@@ -816,4 +816,51 @@ footer {
 
 .fade-in {
   animation: fadeIn 0.3s ease-out;
+}
+
+/* Error messages */
+.error-message {
+  background: var(--error);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: var(--shadow);
+}
+
+.error-message h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.error-message pre {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.error-message pre::-webkit-scrollbar {
+  width: 6px;
+}
+
+.error-message pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.error-message pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.error-message pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 } 
