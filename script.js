@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return Array.from(photoNodes).map((photo, index) => {
       const photoNumber = photo.textContent.trim();
       const toolId = tool.getAttribute('id');
-      return `images/id${toolId}_${photoNumber}.jpg`;
+      return `https://arielmendoza.github.io/images/id${toolId}_${photoNumber}.jpg`;
     });
   }
 
@@ -127,10 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const photoNumber = photo.textContent.trim();
           if (!photoNumber || isNaN(photoNumber)) {
             errors.push(`Herramienta #${id}: La foto #${index + 1} debe tener un número válido`);
-          } else {
-            const imgPath = `images/id${id}_${photoNumber}.jpg`;
-            // Advertir sobre el archivo esperado
-            errors.push(`Herramienta #${id}: Asegúrate de que existe el archivo ${imgPath}`);
           }
         });
       }
