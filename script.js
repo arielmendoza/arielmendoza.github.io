@@ -77,6 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  // Función para generar las URLs de las imágenes
+  function getImageUrls(tool) {
+    const photoNodes = tool.querySelectorAll('photos photo');
+    return Array.from(photoNodes).map((photo, index) => {
+      const photoNumber = photo.textContent.trim();
+      const toolId = tool.getAttribute('id');
+      return `images/id${toolId}_${photoNumber}.jpg`;
+    });
+  }
+
   // Función para validar un nodo de herramienta
   function validateTool(tool, index) {
     const errors = [];
@@ -109,11 +119,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (photoNodes.length === 0) {
         errors.push(`Herramienta #${index + 1}: Debe tener al menos una foto`);
       }
-      photoNodes.forEach((photo, photoIndex) => {
-        if (!photo.textContent.trim()) {
-          errors.push(`Herramienta #${index + 1}: La foto #${photoIndex + 1} está vacía`);
-        }
-      });
+      
+      // Validar que los números de foto sean válidos
+      const id = tool.getAttribute('id');
+      if (id) {
+        photoNodes.forEach((photo, index) => {
+          const photoNumber = photo.textContent.trim();
+          if (!photoNumber || isNaN(photoNumber)) {
+            errors.push(`Herramienta #${id}: La foto #${index + 1} debe tener un número válido`);
+          } else {
+            const imgPath = `images/id${id}_${photoNumber}.jpg`;
+            // Advertir sobre el archivo esperado
+            errors.push(`Herramienta #${id}: Asegúrate de que existe el archivo ${imgPath}`);
+          }
+        });
+      }
     }
 
     // Validar rating
@@ -178,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         allErrors.push(...errors);
       });
 
-      // Si hay errores, mostrarlos
       if (allErrors.length > 0) {
         const errorList = allErrors.map(err => `• ${err}`).join('\n');
         throw new Error('Se encontraron los siguientes errores:\n' + errorList);
@@ -189,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Extraer datos básicos
         const id = tool.getAttribute('id');
         const name = getNodeText(tool, 'name');
-        const photos = getNodeList(tool, 'photos', 'photo');
+        const photos = getImageUrls(tool);
         const rating = parseFloat(getNodeText(tool, 'rating')) || 0;
         
         // Procesar precio
