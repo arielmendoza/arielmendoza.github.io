@@ -75,6 +75,9 @@
       <photo>1</photo>
       <photo>2</photo>
       <photo>3</photo>
+      <photo>4</photo>
+      <photo>5</photo>
+      <photo>6</photo>
     </photos>
     <rating>4.6</rating>
     <price currency="EUR">13.99</price>
@@ -106,6 +109,11 @@
       <photo>1</photo>
       <photo>2</photo>
       <photo>3</photo>
+      <photo>4</photo>
+      <photo>5</photo>
+      <photo>6</photo>
+      <photo>7</photo>
+      <photo>8</photo>
     </photos>
     <rating>4.4</rating>
     <price currency="EUR">9.98</price>
