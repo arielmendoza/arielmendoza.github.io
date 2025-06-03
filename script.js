@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const backBtn = document.getElementById('back-to-list');
   const amazonLink = document.getElementById('amazon-link');
 
+  // Variables para el zoom
+  const zoomModal = document.getElementById('zoom-modal');
+  const zoomImage = document.getElementById('zoom-image');
+  const zoomClose = zoomModal.querySelector('.zoom-close');
+  const prevButton = zoomModal.querySelector('.prev-image');
+  const nextButton = zoomModal.querySelector('.next-image');
+  let currentImageIndex = 0;
+  let currentImages = [];
+
   let toolsData = [];
   let currentFilter = 'all';
   let currentSort = 'default';
@@ -519,6 +528,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Activar el filtro "Todos" por defecto
   document.querySelector('[data-filter="all"]').classList.add('active');
+
+  // Función para mostrar imagen en zoom
+  function showZoomImage(index) {
+    currentImageIndex = index;
+    const image = currentImages[index];
+    zoomImage.src = image;
+    zoomImage.alt = `Foto ${index + 1}`;
+    
+    // Actualizar estado de los botones de navegación
+    prevButton.disabled = index === 0;
+    nextButton.disabled = index === currentImages.length - 1;
+    
+    zoomModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Función para cerrar el zoom
+  function closeZoom() {
+    zoomModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Event listeners para el zoom
+  modalMainPhoto.addEventListener('click', () => {
+    currentImages = Array.from(modalThumbnailsContainer.querySelectorAll('img')).map(img => img.src);
+    const mainPhotoIndex = currentImages.indexOf(modalMainPhoto.src);
+    showZoomImage(mainPhotoIndex);
+  });
+
+  zoomClose.addEventListener('click', closeZoom);
+  zoomModal.addEventListener('click', e => {
+    if (e.target === zoomModal || e.target === zoomImage) {
+      closeZoom();
+    }
+  });
+
+  prevButton.addEventListener('click', () => {
+    if (currentImageIndex > 0) {
+      showZoomImage(currentImageIndex - 1);
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (currentImageIndex < currentImages.length - 1) {
+      showZoomImage(currentImageIndex + 1);
+    }
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', e => {
+    if (!zoomModal.classList.contains('active')) return;
+    
+    switch (e.key) {
+      case 'ArrowLeft':
+        if (!prevButton.disabled) {
+          showZoomImage(currentImageIndex - 1);
+        }
+        break;
+      case 'ArrowRight':
+        if (!nextButton.disabled) {
+          showZoomImage(currentImageIndex + 1);
+        }
+        break;
+      case 'Escape':
+        closeZoom();
+        break;
+    }
+  });
 
   // Iniciar la aplicación
   loadToolsData();
