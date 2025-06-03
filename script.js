@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentFilter = 'all';
   let currentSort = 'default';
 
+  // Determinar la página actual y el archivo XML correspondiente
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const xmlFile = currentPage === 'index.html' ? 'tools.xml' : 'otros-productos.xml';
+
   // Función para extraer texto de un nodo XML con manejo de errores
   function getNodeText(parentNode, tagName) {
     const node = parentNode.querySelector(tagName);
@@ -185,8 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cargar datos del XML
   async function loadToolsData() {
     try {
-      const response = await fetch('tools.xml');
-      if (!response.ok) throw new Error('No se pudo cargar el archivo XML');
+      const response = await fetch(xmlFile);
+      if (!response.ok) throw new Error(`No se pudo cargar el archivo ${xmlFile}`);
       const xmlText = await response.text();
       
       const parser = new DOMParser();
@@ -201,44 +205,38 @@ document.addEventListener('DOMContentLoaded', () => {
       // Validar estructura básica
       const tools = Array.from(xmlDoc.querySelectorAll('tool'));
       if (tools.length === 0) {
-        throw new Error('El XML no contiene herramientas');
+        throw new Error(`El archivo ${xmlFile} no contiene productos`);
       }
 
-      // Validar cada herramienta
-      const allErrors = [];
+      // Validar cada producto
+      const errors = [];
       tools.forEach((tool, index) => {
-        const errors = validateTool(tool, index);
-        allErrors.push(...errors);
+        const toolErrors = validateTool(tool, index);
+        errors.push(...toolErrors);
       });
 
-      if (allErrors.length > 0) {
-        const errorList = allErrors.map(err => `• ${err}`).join('\n');
+      if (errors.length > 0) {
+        const errorList = errors.map(err => `• ${err}`).join('\n');
         throw new Error('Se encontraron los siguientes errores:\n' + errorList);
       }
       
-      // Procesar herramientas
+      // Procesar productos
       toolsData = tools.map(tool => {
-        // Extraer datos básicos
         const id = tool.getAttribute('id');
         const name = getNodeText(tool, 'name');
         const photos = getImageUrls(tool);
         const rating = parseFloat(getNodeText(tool, 'rating')) || 0;
-        
-        // Procesar precio
         const priceNode = tool.querySelector('price');
         const price = priceNode ? parseFloat(priceNode.textContent) || 0 : 0;
         const currency = priceNode?.getAttribute('currency') || 'EUR';
         const offer = getNodeText(tool, 'offer') === 'true';
+        const affiliateLink = getNodeText(tool, 'affiliateLink').replace(/^@/, '');
         
-        // Procesar review
         const reviewNode = tool.querySelector('review');
         const reviewData = reviewNode 
           ? parseReview(reviewNode.innerHTML)
           : { description: '', reviewText: '', pros: [], cons: [] };
-        
-        // Procesar enlace de afiliado
-        const affiliateLink = getNodeText(tool, 'affiliateLink').replace(/^@/, '');
-        
+
         return {
           id,
           name,
@@ -266,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Función para filtrar y ordenar herramientas
+  // Función para filtrar y ordenar productos
   function filterAndSortTools() {
     let filteredTools = [...toolsData];
     
