@@ -324,15 +324,22 @@ header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
 }
 
 .sort-group label {
   font-size: 0.875rem;
-  color: var(--gray-600);
+  color: var(--gray-900);
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .sort-select {
-  background: var(--gray-100);
+  background: var(--gray-50);
   border: 1px solid var(--gray-200);
   padding: 0.5rem 2rem 0.5rem 1rem;
   border-radius: var(--radius);
@@ -344,6 +351,7 @@ header {
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 1rem;
+  min-width: 200px;
 }
 
 .sort-select:hover {
@@ -1002,10 +1010,14 @@ footer {
 
   .sort-group {
     width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem;
   }
 
   .sort-select {
     flex: 1;
+    min-width: 0;
+    max-width: 70%;
   }
 
   .tool-description {
