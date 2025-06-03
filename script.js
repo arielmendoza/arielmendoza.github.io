@@ -103,10 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Función para generar las URLs de las imágenes
   function getImageUrls(tool) {
     const photoNodes = tool.querySelectorAll('photos photo');
+    const baseUrl = 'https://arielmendoza.github.io/';
+    const imagesFolder = currentPage === 'index.html' ? 'images' : 'images_otros';
+    
     return Array.from(photoNodes).map((photo, index) => {
       const photoNumber = photo.textContent.trim();
       const toolId = tool.getAttribute('id');
-      return `https://arielmendoza.github.io/images/id${toolId}_${photoNumber}.jpg`;
+      return `${baseUrl}${imagesFolder}/id${toolId}_${photoNumber}.jpg`;
     });
   }
 
