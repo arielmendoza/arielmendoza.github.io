@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Las mejores ofertas de productos con enlaces de afiliados a Amazon España" />
+  <title>Ofertas y Descuentos | Afiliados Amazon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        🛠️ BricoAmazon
+      </a>
+      <button class="mobile-menu-btn" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Herramientas</a></li>
+        <li><a href="otros-productos.html">Otros Productos</a></li>
+        <li><a href="ofertas.html" class="active">🔥 Ofertas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container header-content">
+      <h1 class="header-title">Ofertas y Descuentos</h1>
+      <p class="header-subtitle">Las mejores ofertas actualizadas diariamente</p>
+      
+      <div class="filters-bar">
+        <div class="filters-group">
+          <button class="filter-btn" data-filter="tools">
+            🛠️ Herramientas
+          </button>
+          <button class="filter-btn" data-filter="others">
+            📦 Otros
+          </button>
+        </div>
+
+        <div class="sort-group">
+          <label for="sort-select">Ordenar por:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="discount-desc">Mayor descuento</option>
+            <option value="price-asc">Precio: Menor a mayor</option>
+            <option value="price-desc">Precio: Mayor a menor</option>
+            <option value="rating-desc">Mejor valorados</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="deals-heading">
+      <h2 id="deals-heading" class="section-title">Ofertas Destacadas</h2>
+      <div id="tool-list" class="tool-list">
+        <!-- Productos cargados dinámicamente -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-disclaimers collapsed">
+        <p class="footer-disclaimer">
+          <strong>Programa de Afiliados de Amazon:</strong> Como participante del Programa de Afiliados de Amazon, este sitio obtiene ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Precios y Disponibilidad:</strong> Los precios y ofertas mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Última Actualización:</strong> Las ofertas se actualizan varias veces al día, pero pueden existir variaciones entre el momento de la actualización y tu visita.
+        </p>
+      </div>
+      <button class="footer-toggle">
+        Ver más información <span class="icon">▼</span>
+      </button>
+      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal para detalles -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 id="modal-title" class="modal-title"></h2>
+          <div class="modal-subtitle">
+            <div class="modal-rating"></div>
+            <div class="modal-price"></div>
+          </div>
+        </div>
+        
+        <div class="modal-gallery">
+          <div class="modal-main-photo">
+            <img src="" alt="" id="modal-main-photo" />
+          </div>
+          <div class="modal-thumbnails" aria-label="Galería de fotos del producto"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Descripción</h3>
+          <div id="modal-description" class="modal-info"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Análisis</h3>
+          <div class="modal-review" id="modal-review"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Valoración</h3>
+          <div class="pros-cons-grid">
+            <div>
+              <h4 class="text-success font-semibold mb-2">Ventajas</h4>
+              <ul id="pros-list" class="pros-cons-list pros-list"></ul>
+            </div>
+            <div>
+              <h4 class="text-error font-semibold mb-2">Desventajas</h4>
+              <ul id="cons-list" class="pros-cons-list cons-list"></ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button id="back-to-list" class="btn btn-secondary">Volver al listado</button>
+          <a id="amazon-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-amazon">
+            <span class="icon">🛒</span>
+            Ver precio en Amazon
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
