@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let toolsData = [];
   let currentFilter = 'all';
   let currentSort = 'default';
+  let currentSearch = '';
 
   // Determinar la página actual y el archivo XML correspondiente
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -271,6 +272,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterAndSortTools() {
     let filteredTools = [...toolsData];
     
+    // Aplicar búsqueda
+    if (currentSearch.trim()) {
+      const searchTerm = currentSearch.toLowerCase().trim();
+      filteredTools = filteredTools.filter(tool => 
+        tool.name.toLowerCase().includes(searchTerm) ||
+        tool.description.toLowerCase().includes(searchTerm)
+      );
+    }
+    
     // Aplicar filtro
     if (currentFilter === 'offer') {
       filteredTools = filteredTools.filter(tool => tool.offer);
@@ -481,6 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event listeners para filtros y ordenación
   const filterButtons = document.querySelectorAll('.filter-btn');
   const sortSelect = document.getElementById('sort-select');
+  const searchInput = document.getElementById('search-input');
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -494,6 +505,16 @@ document.addEventListener('DOMContentLoaded', () => {
   sortSelect.addEventListener('change', (e) => {
     currentSort = e.target.value;
     renderList();
+  });
+
+  // Añadir event listener para búsqueda con debounce
+  let searchTimeout;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      currentSearch = e.target.value;
+      renderList();
+    }, 300); // Esperar 300ms después de que el usuario deje de escribir
   });
 
   // Activar el filtro "Todos" por defecto
