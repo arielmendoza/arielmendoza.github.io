@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu functionality
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+        mobileMenuBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    });
+  }
+
   // Variables globales
   const container = document.getElementById('tool-list');
   const modal = document.getElementById('modal');
