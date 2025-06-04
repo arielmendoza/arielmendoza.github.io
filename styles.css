@@ -1197,6 +1197,23 @@ footer {
   overflow-y: auto;
 }
 
+.error-message pre::-webkit-scrollbar {
+  width: 6px;
+}
+
+.error-message pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.error-message pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.error-message pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 /* Formatted content styles for modal */
 .modal-info p, .modal-review p {
   margin-bottom: 1rem;
@@ -1352,6 +1369,108 @@ footer {
   border-radius: var(--radius-sm);
   padding: 1rem;
   margin: 1rem 0;
+}
+
+/* Specification highlights */
+.spec-highlight {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.spec-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.spec-highlight strong {
+  color: var(--primary);
+}
+
+/* Numbered items */
+.numbered-item {
+  background: #f8f9fa;
+  border-left: 3px solid var(--primary);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.number {
+  color: var(--primary);
+  font-weight: bold;
+  flex-shrink: 0;
+  min-width: 1.5rem;
+}
+
+/* Comparison headers */
+h4.comparison {
+  background: #e3f2fd;
+  color: var(--primary);
+  padding: 0.5rem 0.75rem;
+  margin: 1rem 0 0.5rem;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--primary);
+}
+
+/* Enhanced blockquote styling */
+.modal-info blockquote, .modal-review blockquote {
+  background: #f8f9fa;
+  border-left: 4px solid var(--primary);
+  margin: 1rem 0;
+  padding: 1rem;
+  font-style: italic;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  position: relative;
+}
+
+.modal-info blockquote cite, .modal-review blockquote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.modal-info blockquote::before, .modal-review blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary);
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  opacity: 0.3;
+}
+
+/* Responsive improvements for formatted content */
+@media (max-width: 768px) {
+  .spec-highlight {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .numbered-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .modal-info blockquote, .modal-review blockquote {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+  }
+  
+  .modal-info blockquote::before, .modal-review blockquote::before {
+    font-size: 2rem;
+    top: -0.25rem;
+  }
 }
 
 /* Zoom Modal */
