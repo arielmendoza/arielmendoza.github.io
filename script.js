@@ -110,15 +110,57 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/<cons>[\s\S]*?<\/cons>/g, '')
       .trim();
     
+    // Generar resumen corto para la vista de lista
+    const summary = generateSummary(mainContent);
+    
     // Procesar el HTML del contenido principal
     mainContent = processHtmlContent(mainContent);
     
     return {
       description: mainContent,
+      summary: summary,
       reviewText: '',
       pros: pros,
       cons: cons
     };
+  }
+
+  // Función para generar un resumen corto
+  function generateSummary(content) {
+    // Limpiar HTML y markdown del contenido
+    let cleanContent = content
+      .replace(/<[^>]*>/g, ' ')  // Remover HTML
+      .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remover negrita
+      .replace(/[✅❌💡⚠️📊🔧🏆🔬📏🔩⚡🏋️💪🌡️🎯⚙️📋🔍🏠🛠️🎨🏗️🚿🍽️🚽🏢🧰📱🧽💾]/g, '')  // Remover emojis
+      .replace(/\s+/g, ' ')  // Normalizar espacios
+      .trim();
+    
+    // Extraer las primeras dos oraciones más significativas
+    const sentences = cleanContent.split(/[.!?]+/).filter(s => s.trim().length > 20);
+    
+    // Buscar una oración que contenga información clave del producto
+    let summary = '';
+    
+    // Priorizar oraciones que describan el producto
+    const keyPhrases = ['es una', 'representa', 'se ha convertido', 'ha demostrado', 'combina', 'ofrece'];
+    const keyInfo = sentences.find(sentence => 
+      keyPhrases.some(phrase => sentence.toLowerCase().includes(phrase))
+    );
+    
+    if (keyInfo) {
+      summary = keyInfo.trim() + '.';
+    } else if (sentences.length > 0) {
+      // Si no encuentra una oración clave, usar las primeras dos
+      summary = sentences.slice(0, 2).join('. ').trim();
+      if (!summary.endsWith('.')) summary += '.';
+    }
+    
+    // Limitar a máximo 200 caracteres
+    if (summary.length > 200) {
+      summary = summary.substring(0, 197) + '...';
+    }
+    
+    return summary || 'Producto de alta calidad con excelentes prestaciones.';
   }
 
   // Función para procesar contenido HTML
@@ -379,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const searchTerm = currentSearch.toLowerCase().trim();
       filteredTools = filteredTools.filter(tool => 
         tool.name.toLowerCase().includes(searchTerm) ||
-        tool.description.toLowerCase().includes(searchTerm)
+        tool.summary.toLowerCase().includes(searchTerm)
       );
     }
     
@@ -450,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${priceFormatted}
             </div>
           </div>
-          <p class="tool-description">${tool.description || 'Descripción no disponible'}</p>
+          <p class="tool-description">${tool.summary || 'Descripción no disponible'}</p>
           <div class="tool-actions">
             <button class="btn btn-secondary details-btn" aria-expanded="false" aria-controls="modal" data-id="${tool.id}">
               Detalles
