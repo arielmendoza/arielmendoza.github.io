@@ -1197,21 +1197,161 @@ footer {
   overflow-y: auto;
 }
 
-.error-message pre::-webkit-scrollbar {
-  width: 6px;
+/* Formatted content styles for modal */
+.modal-info p, .modal-review p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
-.error-message pre::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+.modal-info strong, .modal-review strong {
+  color: var(--primary);
+  font-weight: 600;
 }
 
-.error-message pre::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+.modal-info ul, .modal-review ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
 }
 
-.error-message pre::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+.modal-info li, .modal-review li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Icon styles for formatted content */
+.check-icon {
+  color: #28a745;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.cross-icon {
+  color: #dc3545;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.tip-icon {
+  color: #ffc107;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.warning-icon {
+  color: #fd7e14;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.chart-icon {
+  color: #6f42c1;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.tool-icon {
+  color: #6c757d;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.trophy-icon {
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+/* Enhanced modal content formatting */
+.modal-info h3, .modal-review h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.modal-info h4, .modal-review h4 {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+/* Testimonial quotes styling */
+.modal-info blockquote, .modal-review blockquote {
+  background: #f8f9fa;
+  border-left: 4px solid var(--primary);
+  margin: 1rem 0;
+  padding: 1rem;
+  font-style: italic;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Technical specifications styling */
+.modal-info table, .modal-review table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.modal-info th, .modal-review th,
+.modal-info td, .modal-review td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-info th, .modal-review th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Code and pre formatting */
+.modal-info code, .modal-review code {
+  background: #f8f9fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #e83e8c;
+}
+
+.modal-info pre, .modal-review pre {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Highlight boxes */
+.modal-info .highlight, .modal-review .highlight {
+  background: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.modal-info .warning, .modal-review .warning {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.modal-info .success, .modal-review .success {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 /* Zoom Modal */
