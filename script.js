@@ -578,6 +578,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    
+    // Hacer scroll hacia arriba del modal
+    setTimeout(() => {
+      const modalContent = modal.querySelector('.modal-content');
+      if (modalContent) {
+        modalContent.scrollTop = 0;
+      }
+    }, 100);
+    
     closeBtn.focus();
   }
 
