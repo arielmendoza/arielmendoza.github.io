@@ -123,28 +123,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función para procesar contenido HTML
   function processHtmlContent(content) {
-    // Convertir etiquetas strong a HTML válido
-    content = content.replace(/<strong>([\s\S]*?)<\/strong>/g, '<strong>$1</strong>');
+    // Limpiar contenido inicial
+    content = content.trim();
     
-    // Convertir saltos de línea dobles en párrafos
-    content = content.replace(/\n\s*\n/g, '</p><p>');
+    // Procesar secciones con strong
+    content = content.replace(/<strong>([^<]+):<\/strong>/g, '<h3>$1</h3>');
+    content = content.replace(/<strong>([^<]+)<\/strong>/g, '<strong>$1</strong>');
     
-    // Envolver en párrafo si no empieza con una etiqueta de bloque
-    if (!content.startsWith('<')) {
-      content = '<p>' + content;
+    // Procesar testimonios (texto entre comillas con autor)
+    content = content.replace(/"([^"]+)"\s*-\s*([^.,\n]+(?:,\s*[^.\n]+)?)\./g, 
+      '<blockquote>"$1" <cite>- $2</cite></blockquote>');
+    
+    // Procesar listas con bullets específicos
+    content = content.replace(/(?:^|\n)\s*([✅❌💡⚠️📊🔧🏆🔬📏🔩⚡🏋️💪🌡️🎯⚙️📋🔍🎯🏠🛠️🔧⚡🎨🏗️🚿🍽️🚽🏢🧰📱🧽💾])\s*\*\*([^*]+)\*\*:\s*([^\n]+)/g,
+      '<div class="spec-highlight"><span class="spec-icon">$1</span><strong>$2:</strong> $3</div>');
+    
+    // Procesar listas numeradas
+    content = content.replace(/(?:^|\n)\s*(\d+)\.\s*\*\*([^*]+)\*\*:\s*([^\n]+)/g,
+      '<div class="numbered-item"><span class="number">$1.</span><strong>$2:</strong> $3</div>');
+    
+    // Procesar listas con guiones
+    content = content.replace(/(?:^|\n)\s*-\s*([^\n]+)/g, '<li>$1</li>');
+    
+    // Envolver listas consecutivas en ul
+    content = content.replace(/(<li>.*<\/li>)/gs, (match) => {
+      return '<ul>' + match + '</ul>';
+    });
+    
+    // Limpiar listas anidadas
+    content = content.replace(/<\/ul>\s*<ul>/g, '');
+    
+    // Procesar párrafos (líneas que no son listas ni headers)
+    const lines = content.split('\n');
+    const processedLines = [];
+    let inList = false;
+    
+    for (let line of lines) {
+      line = line.trim();
+      if (!line) continue;
+      
+      // Si ya es una etiqueta HTML, mantenerla
+      if (line.startsWith('<')) {
+        processedLines.push(line);
+        inList = false;
+      } 
+      // Si es texto normal, envolver en párrafo
+      else if (!line.match(/^\s*[-*]\s/) && !line.match(/^\s*\d+\./)) {
+        processedLines.push('<p>' + line + '</p>');
+        inList = false;
+      } else {
+        processedLines.push(line);
+      }
     }
-    if (!content.endsWith('>')) {
-      content = content + '</p>';
-    }
     
-    // Limpiar párrafos vacíos
-    content = content.replace(/<p>\s*<\/p>/g, '');
+    content = processedLines.join('\n');
     
-    // Procesar listas
-    content = content.replace(/(\n|^)\s*-\s*([^\n]+)/g, '<li>$2</li>');
-    content = content.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
+    // Procesar comparativas (vs. texto)
+    content = content.replace(/\*\*(vs\.[^*]+)\*\*:/g, '<h4 class="comparison">$1</h4>');
     
-    // Procesar emojis y bullets
+    // Procesar subsecciones (**Texto**:)
+    content = content.replace(/\*\*([^*]+)\*\*:/g, '<h4>$1</h4>');
+    
+    // Procesar texto en negrita simple
+    content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    
+    // Procesar iconos standalone
     content = content.replace(/✅\s*/g, '<span class="check-icon">✅</span> ');
     content = content.replace(/❌\s*/g, '<span class="cross-icon">❌</span> ');
     content = content.replace(/💡\s*/g, '<span class="tip-icon">💡</span> ');
@@ -152,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
     content = content.replace(/📊\s*/g, '<span class="chart-icon">📊</span> ');
     content = content.replace(/🔧\s*/g, '<span class="tool-icon">🔧</span> ');
     content = content.replace(/🏆\s*/g, '<span class="trophy-icon">🏆</span> ');
+    
+    // Limpiar párrafos vacíos y espacios extra
+    content = content.replace(/<p>\s*<\/p>/g, '');
+    content = content.replace(/\n\s*\n/g, '\n');
     
     return content;
   }
