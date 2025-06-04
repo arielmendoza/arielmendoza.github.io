@@ -74,40 +74,86 @@ document.addEventListener('DOMContentLoaded', () => {
     const cdataMatch = reviewText.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
     const cleanText = cdataMatch ? cdataMatch[1].trim() : reviewText.trim();
     
-    // Crear un XML válido con el contenido
-    const xmlContent = `<?xml version="1.0" encoding="UTF-8"?><review>${cleanText}</review>`;
+    // Dividir el contenido en secciones
+    const prosMatch = cleanText.match(/<pros>([\s\S]*?)<\/pros>/);
+    const consMatch = cleanText.match(/<cons>([\s\S]*?)<\/cons>/);
     
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(xmlContent, 'text/xml');
+    // Extraer pros y cons
+    const pros = [];
+    const cons = [];
     
-    if (doc.querySelector('parsererror')) {
-      console.error('Error al parsear XML:', cleanText);
-      return {
-        description: '',
-        reviewText: '',
-        pros: [],
-        cons: []
-      };
+    if (prosMatch) {
+      const prosContent = prosMatch[1];
+      const prosMatches = prosContent.match(/<pro>([\s\S]*?)<\/pro>/g);
+      if (prosMatches) {
+        prosMatches.forEach(match => {
+          const content = match.replace(/<\/?pro>/g, '').trim();
+          if (content) pros.push(content);
+        });
+      }
     }
-
-    // Extraer el texto principal (todo lo que está antes de los pros/cons)
-    const description = cleanText
-      .split('<pros>')[0]
-      .trim()
-      .replace(/\s+/g, ' ');
-
-    // Extraer el texto final (todo lo que está después de los cons)
-    const reviewContent = cleanText
-      .split('</cons>')[1]
-      ?.trim()
-      .replace(/\s+/g, ' ') || '';
-
+    
+    if (consMatch) {
+      const consContent = consMatch[1];
+      const consMatches = consContent.match(/<con>([\s\S]*?)<\/con>/g);
+      if (consMatches) {
+        consMatches.forEach(match => {
+          const content = match.replace(/<\/?con>/g, '').trim();
+          if (content) cons.push(content);
+        });
+      }
+    }
+    
+    // Extraer el contenido principal (sin pros/cons)
+    let mainContent = cleanText
+      .replace(/<pros>[\s\S]*?<\/pros>/g, '')
+      .replace(/<cons>[\s\S]*?<\/cons>/g, '')
+      .trim();
+    
+    // Procesar el HTML del contenido principal
+    mainContent = processHtmlContent(mainContent);
+    
     return {
-      description,
-      reviewText: reviewContent,
-      pros: getNodeList(doc, 'pros', 'pro'),
-      cons: getNodeList(doc, 'cons', 'con')
+      description: mainContent,
+      reviewText: '',
+      pros: pros,
+      cons: cons
     };
+  }
+
+  // Función para procesar contenido HTML
+  function processHtmlContent(content) {
+    // Convertir etiquetas strong a HTML válido
+    content = content.replace(/<strong>([\s\S]*?)<\/strong>/g, '<strong>$1</strong>');
+    
+    // Convertir saltos de línea dobles en párrafos
+    content = content.replace(/\n\s*\n/g, '</p><p>');
+    
+    // Envolver en párrafo si no empieza con una etiqueta de bloque
+    if (!content.startsWith('<')) {
+      content = '<p>' + content;
+    }
+    if (!content.endsWith('>')) {
+      content = content + '</p>';
+    }
+    
+    // Limpiar párrafos vacíos
+    content = content.replace(/<p>\s*<\/p>/g, '');
+    
+    // Procesar listas
+    content = content.replace(/(\n|^)\s*-\s*([^\n]+)/g, '<li>$2</li>');
+    content = content.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
+    
+    // Procesar emojis y bullets
+    content = content.replace(/✅\s*/g, '<span class="check-icon">✅</span> ');
+    content = content.replace(/❌\s*/g, '<span class="cross-icon">❌</span> ');
+    content = content.replace(/💡\s*/g, '<span class="tip-icon">💡</span> ');
+    content = content.replace(/⚠️\s*/g, '<span class="warning-icon">⚠️</span> ');
+    content = content.replace(/📊\s*/g, '<span class="chart-icon">📊</span> ');
+    content = content.replace(/🔧\s*/g, '<span class="tool-icon">🔧</span> ');
+    content = content.replace(/🏆\s*/g, '<span class="trophy-icon">🏆</span> ');
+    
+    return content;
   }
 
   // Función para generar las URLs de las imágenes
@@ -416,10 +462,10 @@ document.addEventListener('DOMContentLoaded', () => {
       modalThumbnailsContainer.appendChild(thumbnail);
     });
     
-    // Actualizar contenido
-    modalDescription.textContent = tool.description || 'Descripción no disponible';
+    // Actualizar contenido - USAR innerHTML en lugar de textContent
+    modalDescription.innerHTML = tool.description || '<p>Descripción no disponible</p>';
     
-    modalReview.textContent = tool.reviewText || '';
+    modalReview.innerHTML = tool.reviewText || '';
     
     // Actualizar pros y cons
     prosList.innerHTML = tool.pros && tool.pros.length > 0
