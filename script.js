@@ -597,6 +597,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Manejo de avisos desplegables
+  const disclaimers = document.querySelector('.footer-disclaimers');
+  const toggleButton = document.querySelector('.toggle-disclaimers');
+
+  if (disclaimers && toggleButton) {
+    toggleButton.addEventListener('click', function() {
+      disclaimers.classList.toggle('collapsed');
+      disclaimers.classList.toggle('expanded');
+      
+      const icon = toggleButton.querySelector('.icon');
+      if (icon) {
+        icon.textContent = disclaimers.classList.contains('expanded') ? '▼' : '▲';
+      }
+      
+      toggleButton.setAttribute('aria-expanded', 
+        disclaimers.classList.contains('expanded').toString()
+      );
+    });
+  }
+
   // Iniciar la aplicación
   loadToolsData();
 }); 
