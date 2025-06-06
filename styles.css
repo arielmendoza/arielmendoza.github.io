@@ -3225,4 +3225,100 @@ button[aria-pressed="true"] {
   }
 }
 
-/* ... existing code ... */
+/* ================================
+   OTROS PRODUCTOS STYLES (APPLE)
+   ================================ */
+
+.filters-bar-apple {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.search-group-apple {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-input-apple {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.search-input-apple:focus {
+  outline: none;
+  border-color: #007aff;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.filters-group-apple {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-btn-apple {
+  padding: 10px 20px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  color: #666;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn-apple:hover,
+.filter-btn-apple.active {
+  background: #007aff;
+  color: white;
+  border-color: #007aff;
+}
+
+.sort-group-apple {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-select-apple {
+  padding: 10px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-select-apple:focus {
+  outline: none;
+  border-color: #007aff;
+}
+
+@media (max-width: 768px) {
+  .filters-bar-apple {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .search-group-apple {
+    width: 100%;
+  }
+  
+  .filters-group-apple {
+    justify-content: center;
+  }
+}
