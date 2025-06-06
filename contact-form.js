@@ -1,19 +1,6 @@
 // =================================
-// FORMULARIO DE CONTACTO - EmailJS
+// FORMULARIO DE CONTACTO - SIMPLE
 // =================================
-
-// Configuración de EmailJS
-(function() {
-    // Inicializar EmailJS con tu clave pública
-    emailjs.init("8SXLJ1Hx9AbKtgkC_"); // Esta es una clave de ejemplo, debes usar la tuya
-})();
-
-// Configuración del servicio
-const EMAILJS_CONFIG = {
-    serviceID: 'service_hxdpdrw', // Debes configurar esto en EmailJS
-    templateID: 'template_nk51j4d', // Debes configurar esto en EmailJS
-    userID: '8SXLJ1Hx9AbKtgkC_' // Tu clave pública de EmailJS
-};
 
 // Elementos del DOM
 let contactForm, formMessage, submitButton, btnText, btnLoading;
@@ -57,41 +44,40 @@ async function handleFormSubmit(e) {
         // Obtener datos del formulario
         const formData = new FormData(contactForm);
         
-        // Preparar datos para EmailJS
-        const templateParams = {
-            from_name: formData.get('user_name'),
-            from_email: formData.get('user_email'),
-            subject: formData.get('subject'),
-            message: formData.get('message'),
-            to_email: 'contacto@bricoexpertos.com', // Tu email de destino
-            reply_to: formData.get('user_email')
-        };
-
-        // Enviar email usando EmailJS
-        const response = await emailjs.send(
-            EMAILJS_CONFIG.serviceID,
-            EMAILJS_CONFIG.templateID,
-            templateParams,
-            EMAILJS_CONFIG.userID
-        );
-
-        console.log('Email enviado exitosamente:', response);
+        // Simular envío (2 segundos de "procesamiento")
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // Mostrar mensaje de éxito
+        // Crear enlace mailto
+        const subject = encodeURIComponent(`[BricoExpertos] ${formData.get('subject')}`);
+        const body = encodeURIComponent(
+            `Nombre: ${formData.get('user_name')}\n` +
+            `Email: ${formData.get('user_email')}\n` +
+            `Asunto: ${formData.get('subject')}\n\n` +
+            `Mensaje:\n${formData.get('message')}`
+        );
+        
+        const mailtoLink = `mailto:contacto@bricoexpertos.com?subject=${subject}&body=${body}`;
+        
+        // Mostrar mensaje de éxito y abrir cliente de email
         showMessage(
-            '✅ ¡Mensaje enviado con éxito! Te responderemos pronto.',
+            '✅ ¡Formulario procesado! Se abrirá tu cliente de email para enviar el mensaje.',
             'success'
         );
         
         // Limpiar formulario
         contactForm.reset();
+        
+        // Abrir cliente de email después de 1 segundo
+        setTimeout(() => {
+            window.location.href = mailtoLink;
+        }, 1000);
 
     } catch (error) {
-        console.error('Error enviando email:', error);
+        console.error('Error procesando formulario:', error);
         
         // Mostrar mensaje de error
         showMessage(
-            '❌ Error enviando el mensaje. Por favor, inténtalo de nuevo o contáctanos directamente.',
+            '❌ Error procesando el formulario. Por favor, inténtalo de nuevo.',
             'error'
         );
     } finally {

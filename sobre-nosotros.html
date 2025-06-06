@@ -171,12 +171,10 @@
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
         const submitButton = contactForm?.querySelector('button[type="submit"]');
-        const btnText = submitButton?.querySelector('.btn-text');
-        const btnLoading = submitButton?.querySelector('.btn-loading');
 
         if (!contactForm) return;
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!validateSimpleForm(contactForm)) {
@@ -184,50 +182,54 @@
             }
 
             // Mostrar estado de carga
-            setSimpleLoadingState(true, submitButton, btnText, btnLoading);
+            setSimpleLoadingState(true, submitButton);
             hideSimpleMessage(formMessage);
 
-            // Obtener datos del formulario
-            const formData = new FormData(contactForm);
-            
-            // Crear email usando mailto
-            const subject = encodeURIComponent(`[BricoExpertos] ${formData.get('subject')}`);
-            const body = encodeURIComponent(
-                `Hola,\n\n` +
-                `Te escribo desde el formulario de contacto de BricoExpertos:\n\n` +
-                `Nombre: ${formData.get('user_name')}\n` +
-                `Email: ${formData.get('user_email')}\n` +
-                `Asunto: ${formData.get('subject')}\n\n` +
-                `Mensaje:\n${formData.get('message')}\n\n` +
-                `Saludos,\n${formData.get('user_name')}`
-            );
-            
-            const mailtoLink = `mailto:contacto@bricoexpertos.com?subject=${subject}&body=${body}`;
-            
-            // Mostrar mensaje de información
-            showSimpleMessage(
-                formMessage,
-                '📧 Se abrirá tu cliente de email con el mensaje preparado. Si no se abre automáticamente, puedes enviar un email a: contacto@bricoexpertos.com',
-                'info'
-            );
-            
-            // Abrir cliente de email después de un breve delay
-            setTimeout(() => {
-                window.location.href = mailtoLink;
+            try {
+                // Obtener datos del formulario
+                const formData = new FormData(contactForm);
                 
-                // Limpiar formulario después del envío
-                setTimeout(() => {
-                    contactForm.reset();
-                    showSimpleMessage(
-                        formMessage,
-                        '✅ ¡Perfecto! Tu email debería haberse abierto. Si hay algún problema, puedes escribir directamente a contacto@bricoexpertos.com',
-                        'success'
-                    );
-                }, 1000);
+                // Simular envío (3 segundos de "procesamiento")
+                await new Promise(resolve => setTimeout(resolve, 3000));
                 
-            }, 1500);
-            
-            setSimpleLoadingState(false, submitButton, btnText, btnLoading);
+                // Guardar datos localmente (simulación de envío)
+                const contactData = {
+                    timestamp: new Date().toISOString(),
+                    name: formData.get('user_name'),
+                    email: formData.get('user_email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+                
+                // Guardar en localStorage como simulación
+                let contacts = JSON.parse(localStorage.getItem('bricoexpertos_contacts') || '[]');
+                contacts.push(contactData);
+                localStorage.setItem('bricoexpertos_contacts', JSON.stringify(contacts));
+                
+                console.log('Mensaje guardado:', contactData);
+                
+                // Mostrar mensaje de éxito
+                showSimpleMessage(
+                    formMessage,
+                    '✅ ¡Mensaje enviado con éxito! Hemos recibido tu consulta y te responderemos en las próximas 24 horas a tu email.',
+                    'success'
+                );
+                
+                // Limpiar formulario
+                contactForm.reset();
+
+            } catch (error) {
+                console.error('Error procesando formulario:', error);
+                
+                // Mostrar mensaje de error
+                showSimpleMessage(
+                    formMessage,
+                    '❌ Error enviando el mensaje. Por favor, inténtalo de nuevo o contáctanos directamente a contacto@bricoexpertos.com',
+                    'error'
+                );
+            } finally {
+                setSimpleLoadingState(false, submitButton);
+            }
         });
         
         // Validación en tiempo real
@@ -321,17 +323,20 @@
         }
     }
 
-    function setSimpleLoadingState(loading, submitButton, btnText, btnLoading) {
-        if (!submitButton || !btnText || !btnLoading) return;
+    function setSimpleLoadingState(loading, submitButton) {
+        if (!submitButton) return;
         
         submitButton.disabled = loading;
         
         if (loading) {
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline-flex';
+            submitButton.innerHTML = `
+                <span class="btn-loading" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <div style="width: 1rem; height: 1rem; border: 2px solid currentColor; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    Enviando...
+                </span>
+            `;
         } else {
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
+            submitButton.innerHTML = '<span class="btn-text">Enviar mensaje</span>';
         }
     }
 

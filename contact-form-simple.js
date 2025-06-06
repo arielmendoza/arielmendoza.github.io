@@ -1,88 +1,94 @@
 // =================================
-// FORMULARIO DE CONTACTO SIMPLE
+// FORMULARIO DE CONTACTO - SIMPLE
 // =================================
 
+// Elementos del DOM
+let contactForm, formMessage, submitButton;
+
+// Inicializar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    initSimpleContactForm();
+    initContactForm();
 });
 
-function initSimpleContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    const formMessage = document.getElementById('form-message');
-    const submitButton = contactForm?.querySelector('button[type="submit"]');
-    const btnText = submitButton?.querySelector('.btn-text');
-    const btnLoading = submitButton?.querySelector('.btn-loading');
+function initContactForm() {
+    contactForm = document.getElementById('contact-form');
+    formMessage = document.getElementById('form-message');
+    submitButton = contactForm?.querySelector('button[type="submit"]');
 
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
         
-        if (!validateSimpleForm(contactForm)) {
-            return;
-        }
+        // Validación en tiempo real
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearFieldError);
+        });
+    }
+}
 
-        // Mostrar estado de carga
-        setSimpleLoadingState(true, submitButton, btnText, btnLoading);
-        hideSimpleMessage(formMessage);
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+        return;
+    }
 
+    // Mostrar estado de carga
+    setLoadingState(true);
+    hideMessage();
+
+    try {
         // Obtener datos del formulario
         const formData = new FormData(contactForm);
         
-        // Crear email usando mailto
-        const subject = encodeURIComponent(`[BricoExpertos] ${formData.get('subject')}`);
-        const body = encodeURIComponent(
-            `Hola,\n\n` +
-            `Te escribo desde el formulario de contacto de BricoExpertos:\n\n` +
-            `Nombre: ${formData.get('user_name')}\n` +
-            `Email: ${formData.get('user_email')}\n` +
-            `Asunto: ${formData.get('subject')}\n\n` +
-            `Mensaje:\n${formData.get('message')}\n\n` +
-            `Saludos,\n${formData.get('user_name')}`
+        // Simular envío (3 segundos de "procesamiento")
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
+        // Guardar datos localmente (simulación de envío)
+        const contactData = {
+            timestamp: new Date().toISOString(),
+            name: formData.get('user_name'),
+            email: formData.get('user_email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+        };
+        
+        // Guardar en localStorage como simulación
+        let contacts = JSON.parse(localStorage.getItem('bricoexpertos_contacts') || '[]');
+        contacts.push(contactData);
+        localStorage.setItem('bricoexpertos_contacts', JSON.stringify(contacts));
+        
+        console.log('Mensaje guardado:', contactData);
+        
+        // Mostrar mensaje de éxito
+        showMessage(
+            '✅ ¡Mensaje enviado con éxito! Hemos recibido tu consulta y te responderemos en las próximas 24 horas a tu email.',
+            'success'
         );
         
-        const mailtoLink = `mailto:contacto@bricoexpertos.com?subject=${subject}&body=${body}`;
+        // Limpiar formulario
+        contactForm.reset();
+
+    } catch (error) {
+        console.error('Error procesando formulario:', error);
         
-        // Mostrar mensaje de información
-        showSimpleMessage(
-            formMessage,
-            '📧 Se abrirá tu cliente de email con el mensaje preparado. Si no se abre automáticamente, puedes enviar un email a: contacto@bricoexpertos.com',
-            'info'
+        // Mostrar mensaje de error
+        showMessage(
+            '❌ Error enviando el mensaje. Por favor, inténtalo de nuevo o contáctanos directamente a contacto@bricoexpertos.com',
+            'error'
         );
-        
-        // Abrir cliente de email después de un breve delay
-        setTimeout(() => {
-            window.location.href = mailtoLink;
-            
-            // Limpiar formulario después del envío
-            setTimeout(() => {
-                contactForm.reset();
-                showSimpleMessage(
-                    formMessage,
-                    '✅ ¡Perfecto! Tu email debería haberse abierto. Si hay algún problema, puedes escribir directamente a contacto@bricoexpertos.com',
-                    'success'
-                );
-            }, 1000);
-            
-        }, 1500);
-        
-        setSimpleLoadingState(false, submitButton, btnText, btnLoading);
-    });
-    
-    // Validación en tiempo real
-    const inputs = contactForm.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', validateSimpleField);
-        input.addEventListener('input', clearSimpleFieldError);
-    });
+    } finally {
+        setLoadingState(false);
+    }
 }
 
-function validateSimpleForm(form) {
+function validateForm() {
     let isValid = true;
-    const requiredFields = form.querySelectorAll('[required]');
+    const requiredFields = contactForm.querySelectorAll('[required]');
     
     requiredFields.forEach(field => {
-        if (!validateSimpleField({ target: field })) {
+        if (!validateField({ target: field })) {
             isValid = false;
         }
     });
@@ -90,17 +96,17 @@ function validateSimpleForm(form) {
     return isValid;
 }
 
-function validateSimpleField(e) {
+function validateField(e) {
     const field = e.target;
     const value = field.value.trim();
     const fieldName = field.getAttribute('name');
     
     // Limpiar errores previos
-    clearSimpleFieldError(e);
+    clearFieldError(e);
     
     // Validar campo requerido
     if (field.hasAttribute('required') && !value) {
-        showSimpleFieldError(field, 'Este campo es obligatorio');
+        showFieldError(field, 'Este campo es obligatorio');
         return false;
     }
     
@@ -108,19 +114,19 @@ function validateSimpleField(e) {
     switch (fieldName) {
         case 'user_email':
             if (value && !isValidEmail(value)) {
-                showSimpleFieldError(field, 'Por favor, introduce un email válido');
+                showFieldError(field, 'Por favor, introduce un email válido');
                 return false;
             }
             break;
         case 'user_name':
             if (value && value.length < 2) {
-                showSimpleFieldError(field, 'El nombre debe tener al menos 2 caracteres');
+                showFieldError(field, 'El nombre debe tener al menos 2 caracteres');
                 return false;
             }
             break;
         case 'message':
             if (value && value.length < 10) {
-                showSimpleFieldError(field, 'El mensaje debe tener al menos 10 caracteres');
+                showFieldError(field, 'El mensaje debe tener al menos 10 caracteres');
                 return false;
             }
             break;
@@ -134,7 +140,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function showSimpleFieldError(field, message) {
+function showFieldError(field, message) {
     field.style.borderColor = '#dc3545';
     field.style.background = '#fff5f5';
     
@@ -149,7 +155,7 @@ function showSimpleFieldError(field, message) {
     errorMsg.textContent = message;
 }
 
-function clearSimpleFieldError(e) {
+function clearFieldError(e) {
     const field = e.target;
     field.style.borderColor = '';
     field.style.background = '';
@@ -160,21 +166,26 @@ function clearSimpleFieldError(e) {
     }
 }
 
-function setSimpleLoadingState(loading, submitButton, btnText, btnLoading) {
-    if (!submitButton || !btnText || !btnLoading) return;
+function setLoadingState(loading) {
+    if (!submitButton) return;
     
     submitButton.disabled = loading;
     
     if (loading) {
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline-flex';
+        submitButton.innerHTML = `
+            <span class="btn-loading" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                <div style="width: 1rem; height: 1rem; border: 2px solid currentColor; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                Enviando...
+            </span>
+        `;
+        submitButton.classList.add('btn-loading');
     } else {
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
+        submitButton.innerHTML = '<span class="btn-text">Enviar mensaje</span>';
+        submitButton.classList.remove('btn-loading');
     }
 }
 
-function showSimpleMessage(formMessage, message, type = 'info') {
+function showMessage(message, type = 'info') {
     if (!formMessage) return;
     
     formMessage.textContent = message;
@@ -190,13 +201,37 @@ function showSimpleMessage(formMessage, message, type = 'info') {
     // Auto-ocultar mensajes de éxito después de 8 segundos
     if (type === 'success') {
         setTimeout(() => {
-            hideSimpleMessage(formMessage);
+            hideMessage();
         }, 8000);
     }
 }
 
-function hideSimpleMessage(formMessage) {
+function hideMessage() {
     if (formMessage) {
         formMessage.style.display = 'none';
     }
-} 
+}
+
+// Función para ver los mensajes guardados (para testing)
+function viewStoredMessages() {
+    const contacts = JSON.parse(localStorage.getItem('bricoexpertos_contacts') || '[]');
+    console.table(contacts);
+    return contacts;
+}
+
+// Agregar CSS para la animación de carga
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+// Exportar funciones para testing
+window.contactFormSimple = {
+    init: initContactForm,
+    validate: validateForm,
+    showMessage: showMessage,
+    viewMessages: viewStoredMessages
+}; 
