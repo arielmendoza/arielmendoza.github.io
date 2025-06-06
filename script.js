@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu functionality
+  // Menu móvil
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
         mobileMenuBtn.classList.remove('active');
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Variables globales
+  // Variables principales
   const container = document.getElementById('tool-list');
   const modal = document.getElementById('modal');
   const modalTitle = modal.querySelector('.modal-title');
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const backBtn = document.getElementById('back-to-list');
   const amazonLink = document.getElementById('amazon-link');
 
-  // Variables para el zoom
+  // Zoom modal
   const zoomModal = document.getElementById('zoom-modal');
   const zoomImage = document.getElementById('zoom-image');
   const zoomClose = zoomModal.querySelector('.zoom-close');
@@ -49,17 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSort = 'default';
   let currentSearch = '';
 
-  // Determinar la página actual y el archivo XML correspondiente
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const xmlFile = currentPage === 'index.html' ? 'tools.xml' : 'otros-productos.xml';
 
-  // Función para extraer texto de un nodo XML con manejo de errores
+  // Funciones auxiliares XML
   function getNodeText(parentNode, tagName) {
     const node = parentNode.querySelector(tagName);
     return node ? node.textContent.trim() : '';
   }
 
-  // Función para extraer lista de elementos de un nodo XML
   function getNodeList(parentNode, containerTag, itemTag) {
     const container = parentNode.querySelector(containerTag);
     if (!container) return [];
@@ -68,13 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter(text => text.length > 0);
   }
 
-  // Función para parsear la revisión XML
   function parseReview(reviewText) {
-    // Extraer el contenido del CDATA si existe
     const cdataMatch = reviewText.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
     const cleanText = cdataMatch ? cdataMatch[1].trim() : reviewText.trim();
     
-    // Dividir el contenido en secciones
     const prosMatch = cleanText.match(/<pros>([\s\S]*?)<\/pros>/);
     const consMatch = cleanText.match(/<cons>([\s\S]*?)<\/cons>/);
     
@@ -104,16 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // Extraer el contenido principal (sin pros/cons)
     let mainContent = cleanText
       .replace(/<pros>[\s\S]*?<\/pros>/g, '')
       .replace(/<cons>[\s\S]*?<\/cons>/g, '')
       .trim();
     
-    // Generar resumen corto para la vista de lista
     const summary = generateSummary(mainContent);
-    
-    // Procesar el HTML del contenido principal
     mainContent = processHtmlContent(mainContent);
     
     return {
@@ -125,23 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Función para generar un resumen corto
+  // Generar resumen
   function generateSummary(content) {
-    // Limpiar HTML y markdown del contenido
     let cleanContent = content
-      .replace(/<[^>]*>/g, ' ')  // Remover HTML
-      .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remover negrita
-      .replace(/[✅❌💡⚠️📊🔧🏆🔬📏🔩⚡🏋️💪🌡️🎯⚙️📋🔍🏠🛠️🎨🏗️🚿🍽️🚽🏢🧰📱🧽💾]/g, '')  // Remover emojis
-      .replace(/\s+/g, ' ')  // Normalizar espacios
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/[✅❌💡⚠️📊🔧🏆🔬📏🔩⚡🏋️💪🌡️🎯⚙️📋🔍🏠🛠️🎨🏗️🚿🍽️🚽🏢🧰📱🧽💾]/g, '')
+      .replace(/\s+/g, ' ')
       .trim();
     
-    // Extraer las primeras dos oraciones más significativas
     const sentences = cleanContent.split(/[.!?]+/).filter(s => s.trim().length > 20);
-    
-    // Buscar una oración que contenga información clave del producto
     let summary = '';
     
-    // Priorizar oraciones que describan el producto
     const keyPhrases = ['es una', 'representa', 'se ha convertido', 'ha demostrado', 'combina', 'ofrece'];
     const keyInfo = sentences.find(sentence => 
       keyPhrases.some(phrase => sentence.toLowerCase().includes(phrase))
@@ -150,12 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (keyInfo) {
       summary = keyInfo.trim() + '.';
     } else if (sentences.length > 0) {
-      // Si no encuentra una oración clave, usar las primeras dos
       summary = sentences.slice(0, 2).join('. ').trim();
       if (!summary.endsWith('.')) summary += '.';
     }
     
-    // Limitar a máximo 200 caracteres
     if (summary.length > 200) {
       summary = summary.substring(0, 197) + '...';
     }
@@ -163,39 +146,29 @@ document.addEventListener('DOMContentLoaded', () => {
     return summary || 'Producto de alta calidad con excelentes prestaciones.';
   }
 
-  // Función para procesar contenido HTML
+  // Procesar contenido HTML
   function processHtmlContent(content) {
-    // Limpiar contenido inicial
     content = content.trim();
     
-    // Procesar secciones con strong
     content = content.replace(/<strong>([^<]+):<\/strong>/g, '<h3>$1</h3>');
     content = content.replace(/<strong>([^<]+)<\/strong>/g, '<strong>$1</strong>');
     
-    // Procesar testimonios (texto entre comillas con autor)
     content = content.replace(/"([^"]+)"\s*-\s*([^.,\n]+(?:,\s*[^.\n]+)?)\./g, 
       '<blockquote>"$1" <cite>- $2</cite></blockquote>');
     
-    // Procesar listas con bullets específicos
     content = content.replace(/(?:^|\n)\s*([✅❌💡⚠️📊🔧🏆🔬📏🔩⚡🏋️💪🌡️🎯⚙️📋🔍🎯🏠🛠️🔧⚡🎨🏗️🚿🍽️🚽🏢🧰📱🧽💾])\s*\*\*([^*]+)\*\*:\s*([^\n]+)/g,
       '<div class="spec-highlight"><span class="spec-icon">$1</span><strong>$2:</strong> $3</div>');
     
-    // Procesar listas numeradas
     content = content.replace(/(?:^|\n)\s*(\d+)\.\s*\*\*([^*]+)\*\*:\s*([^\n]+)/g,
       '<div class="numbered-item"><span class="number">$1.</span><strong>$2:</strong> $3</div>');
     
-    // Procesar listas con guiones
     content = content.replace(/(?:^|\n)\s*-\s*([^\n]+)/g, '<li>$1</li>');
     
-    // Envolver listas consecutivas en ul
     content = content.replace(/(<li>.*<\/li>)/gs, (match) => {
       return '<ul>' + match + '</ul>';
     });
     
-    // Limpiar listas anidadas
     content = content.replace(/<\/ul>\s*<ul>/g, '');
-    
-    // Procesar párrafos (líneas que no son listas ni headers)
     const lines = content.split('\n');
     const processedLines = [];
     let inList = false;

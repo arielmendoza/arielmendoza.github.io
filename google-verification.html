@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración SEO - Google Search Console y Analytics</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    .config-box { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; }
+    .step { margin-bottom: 30px; }
+    code { background: #e0e0e0; padding: 2px 6px; border-radius: 4px; }
+    .important { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<h1>🔍 Configuración SEO para BricoAmazon</h1>
+
+<div class="important">
+  <h2>⚠️ IMPORTANTE - Pasos a seguir después de subir el sitio:</h2>
+  <p>Este archivo contiene las instrucciones para configurar correctamente Google Analytics, Search Console y otras herramientas SEO.</p>
+</div>
+
+<div class="step">
+  <h2>📊 1. Google Analytics 4</h2>
+  <div class="config-box">
+    <h3>Configuración actual:</h3>
+    <p>✅ Archivo <code>analytics.js</code> creado con eventos personalizados</p>
+    <p>⚠️ <strong>ACCIÓN REQUERIDA:</strong> Reemplazar <code>G-XXXXXXXXXX</code> en todos los archivos HTML</p>
+    
+    <h3>Pasos para obtener tu ID de Google Analytics:</h3>
+    <ol>
+      <li>Ve a <a href="https://analytics.google.com/" target="_blank">Google Analytics</a></li>
+      <li>Crea una cuenta y propiedad nueva para tu sitio web</li>
+      <li>Configura una secuencia de datos web</li>
+      <li>Copia el ID que empieza por "G-" (ej: G-ABC123DEF4)</li>
+      <li>Reemplaza "G-XXXXXXXXXX" en todos los archivos HTML</li>
+    </ol>
+
+    <h3>Eventos configurados automáticamente:</h3>
+    <ul>
+      <li>🖱️ Clics en enlaces de Amazon</li>
+      <li>📊 Profundidad de scroll (25%, 50%, 75%, 100%)</li>
+      <li>⏱️ Tiempo en página (30s, 60s, 120s)</li>
+      <li>🔍 Búsquedas internas</li>
+      <li>📱 Navegación entre guías</li>
+      <li>⚠️ Errores JavaScript</li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>🔍 2. Google Search Console</h2>
+  <div class="config-box">
+    <h3>Configuración:</h3>
+    <ol>
+      <li>Ve a <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a></li>
+      <li>Añade tu dominio como nueva propiedad</li>
+      <li>Verifica la propiedad (puedes usar tu cuenta de Google Analytics)</li>
+      <li>Sube el archivo <code>sitemap.xml</code> desde la sección "Sitemaps"</li>
+      <li>Monitorea el archivo <code>robots.txt</code></li>
+    </ol>
+
+    <h3>URLs del sitemap y robots:</h3>
+    <ul>
+      <li>Sitemap: <code>https://tu-dominio.com/sitemap.xml</code></li>
+      <li>Robots: <code>https://tu-dominio.com/robots.txt</code></li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>🖼️ 3. Imágenes para Redes Sociales</h2>
+  <div class="config-box">
+    <h3>Imágenes necesarias (crear y subir):</h3>
+    <ul>
+      <li><strong>Open Graph (Facebook):</strong> 1200x630px</li>
+      <li><strong>Twitter Cards:</strong> 800x418px</li>
+      <li><strong>Favicon:</strong> 32x32px, 16x16px</li>
+      <li><strong>Apple Touch Icon:</strong> 180x180px</li>
+    </ul>
+
+    <h3>Nombres de archivo recomendados:</h3>
+    <ul>
+      <li><code>bricoamazon-og.jpg</code> (Open Graph general)</li>
+      <li><code>bricoamazon-twitter.jpg</code> (Twitter Card general)</li>
+      <li><code>favicon.ico</code>, <code>favicon-32x32.png</code>, <code>favicon-16x16.png</code></li>
+      <li><code>apple-touch-icon.png</code></li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>🏷️ 4. Meta Tags por Página</h2>
+  <div class="config-box">
+    <h3>Usar el archivo <code>seo-optimization.html</code> como plantilla:</h3>
+    <p>Para cada página, personalizar:</p>
+    <ul>
+      <li><strong>Title:</strong> 50-60 caracteres, incluir palabra clave principal</li>
+      <li><strong>Description:</strong> 150-160 caracteres, atractiva y descriptiva</li>
+      <li><strong>Keywords:</strong> 5-10 palabras clave relevantes</li>
+      <li><strong>URL Canonical:</strong> URL específica de la página</li>
+      <li><strong>Open Graph Image:</strong> Imagen específica por página</li>
+    </ul>
+
+    <h3>Palabras clave principales por página:</h3>
+    <ul>
+      <li><strong>index.html:</strong> "herramientas bricolaje 2025", "mejores herramientas amazon"</li>
+      <li><strong>guia-taladros:</strong> "guía taladros principiantes", "mejores taladros 2025"</li>
+      <li><strong>guia-martillos:</strong> "tipos martillos", "mejores martillos bricolaje"</li>
+      <li><strong>otros-productos:</strong> "herramientas especializadas", "productos bricolaje"</li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>📈 5. Monitorización y Métricas</h2>
+  <div class="config-box">
+    <h3>Métricas clave a monitorear:</h3>
+    <ul>
+      <li><strong>Tráfico orgánico:</strong> Visitas desde Google</li>
+      <li><strong>Palabras clave:</strong> Posicionamiento en buscadores</li>
+      <li><strong>Core Web Vitals:</strong> LCP, FID, CLS</li>
+      <li><strong>CTR:</strong> Clics en resultados de búsqueda</li>
+      <li><strong>Tiempo en página:</strong> Engagement del usuario</li>
+      <li><strong>Conversiones:</strong> Clics en enlaces de Amazon</li>
+    </ul>
+
+    <h3>Herramientas recomendadas:</h3>
+    <ul>
+      <li><strong>PageSpeed Insights:</strong> <a href="https://pagespeed.web.dev/" target="_blank">pagespeed.web.dev</a></li>
+      <li><strong>Core Web Vitals:</strong> <a href="https://web.dev/vitals/" target="_blank">web.dev/vitals</a></li>
+      <li><strong>Schema Markup Validator:</strong> <a href="https://validator.schema.org/" target="_blank">validator.schema.org</a></li>
+      <li><strong>Rich Results Test:</strong> <a href="https://search.google.com/test/rich-results" target="_blank">Rich Results Test</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>🚀 6. Optimizaciones Adicionales</h2>
+  <div class="config-box">
+    <h3>Implementaciones recomendadas:</h3>
+    <ul>
+      <li>✅ <strong>Sitemap XML:</strong> Creado y configurado</li>
+      <li>✅ <strong>Robots.txt:</strong> Optimizado para SEO</li>
+      <li>✅ <strong>Schema.org:</strong> Structured data implementado</li>
+      <li>✅ <strong>Open Graph:</strong> Meta tags para redes sociales</li>
+      <li>✅ <strong>Analytics:</strong> Eventos personalizados configurados</li>
+      <li>⚠️ <strong>HTTPS:</strong> Asegurar que el sitio use SSL</li>
+      <li>⚠️ <strong>CDN:</strong> Considerar Cloudflare para performance</li>
+      <li>⚠️ <strong>Compresión:</strong> Habilitar Gzip/Brotli en servidor</li>
+    </ul>
+
+    <h3>Performance optimizations:</h3>
+    <ul>
+      <li>🖼️ <strong>Imágenes WebP:</strong> Convertir imágenes a formato WebP</li>
+      <li>📱 <strong>Responsive:</strong> Todas las páginas son mobile-friendly</li>
+      <li>⚡ <strong>Lazy Loading:</strong> Implementado en imágenes</li>
+      <li>🎯 <strong>Critical CSS:</strong> CSS crítico inline</li>
+    </ul>
+  </div>
+</div>
+
+<div class="step">
+  <h2>📝 7. Checklist Final</h2>
+  <div class="config-box">
+    <h3>Antes de lanzar en producción:</h3>
+    <ul>
+      <li>□ Reemplazar "tu-dominio.com" por el dominio real</li>
+      <li>□ Configurar Google Analytics ID real</li>
+      <li>□ Subir imágenes optimizadas para redes sociales</li>
+      <li>□ Verificar que todos los enlaces internos funcionen</li>
+      <li>□ Probar la velocidad de carga en PageSpeed Insights</li>
+      <li>□ Verificar que el sitio sea mobile-friendly</li>
+      <li>□ Configurar Google Search Console</li>
+      <li>□ Enviar sitemap a Google</li>
+      <li>□ Verificar structured data con Schema Validator</li>
+      <li>□ Configurar SSL/HTTPS</li>
+    </ul>
+  </div>
+</div>
+
+<div class="important">
+  <h2>💡 Consejos para mejorar el SEO:</h2>
+  <ul>
+    <li><strong>Contenido de calidad:</strong> Actualizar regularmente las guías con información útil</li>
+    <li><strong>Enlaces internos:</strong> Crear más enlaces entre las guías relacionadas</li>
+    <li><strong>Blog:</strong> Considerar añadir una sección de blog con artículos sobre bricolaje</li>
+    <li><strong>FAQ:</strong> Añadir secciones de preguntas frecuentes en cada guía</li>
+    <li><strong>Reseñas:</strong> Incentivar comentarios y reseñas de usuarios</li>
+    <li><strong>Backlinks:</strong> Conseguir enlaces desde otros sitios de bricolaje</li>
+  </ul>
+</div>
+
+<hr>
+<p><em>Archivo generado automáticamente para la configuración SEO de BricoAmazon. Eliminar antes de subir a producción.</em></p>
+
+</body>
+</html> 

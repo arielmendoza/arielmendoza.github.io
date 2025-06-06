@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Permitir todos los archivos importantes
+Allow: /index.html
+Allow: /otros-productos.html
+Allow: /sobre-nosotros.html
+Allow: /guia-*.html
+
+# Bloquear archivos innecesarios para SEO
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.php$
+Disallow: /search?*
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Permitir bots importantes
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Sitemap
+Sitemap: https://tu-dominio.com/sitemap.xml
+
+# Crawl delay para evitar sobrecarga
+Crawl-delay: 1 
