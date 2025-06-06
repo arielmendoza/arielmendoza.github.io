@@ -596,20 +596,59 @@ document.addEventListener('DOMContentLoaded', () => {
   function setupFooterToggle() {
     document.addEventListener('click', function(e) {
       const btn = e.target.closest('.toggle-disclaimers');
+      if (!btn) return;
+      
       const disclaimers = document.querySelector('.footer-disclaimers');
-      if (btn && disclaimers) {
-        const expanded = disclaimers.classList.toggle('expanded');
-        disclaimers.classList.toggle('collapsed', !expanded);
-        btn.setAttribute('aria-expanded', expanded);
-        const icon = btn.querySelector('.icon');
-        if (icon) icon.textContent = expanded ? '▲' : '▼';
-        btn.innerHTML = expanded
-          ? 'Ver menos información <span class="icon">▲</span>'
-          : 'Ver más información <span class="icon">▼</span>';
+      if (!disclaimers) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const expanded = disclaimers.classList.toggle('expanded');
+      disclaimers.classList.toggle('collapsed', !expanded);
+      btn.setAttribute('aria-expanded', expanded);
+      
+      const icon = btn.querySelector('.icon');
+      if (icon) {
+        icon.textContent = expanded ? '▲' : '▼';
       }
+      
+      btn.innerHTML = expanded
+        ? 'Ver menos información <span class="icon">▲</span>'
+        : 'Ver más información <span class="icon">▼</span>';
     });
   }
+  
+  // Configurar el footer inmediatamente y también después de cargar el contenido dinámico
   setupFooterToggle();
+  
+  // Asegurar que funcione también cuando el footer se carga dinámicamente
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'childList') {
+        const addedNodes = Array.from(mutation.addedNodes);
+        const footerAdded = addedNodes.some(node => 
+          node.nodeType === 1 && (
+            node.matches && node.matches('.toggle-disclaimers') ||
+            node.querySelector && node.querySelector('.toggle-disclaimers')
+          )
+        );
+        if (footerAdded) {
+          setupFooterToggle();
+        }
+      }
+    });
+  });
+  
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+  
+  // Configurar después de un tiempo para asegurar que el footer dinámico se haya cargado
+  setTimeout(() => {
+    setupFooterToggle();
+  }, 1000);
 
   // Event listeners para filtros y ordenación
   const filterButtons = document.querySelectorAll('.filter-btn');
