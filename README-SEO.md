@@ -33,7 +33,7 @@
 
 2. **Obtener tu ID de medición**:
    - Busca el ID que empieza con "G-" (ej: G-ABC123DEF4)
-   - **IMPORTANTE**: Reemplaza `G-XXXXXXXXXX` en TODOS los archivos HTML
+   - **CONFIGURADO**: Google Analytics ID ya establecido: `G-FGY8WKCEQJ`
 
 3. **Archivos que necesitas actualizar**:
    ```bash
@@ -62,7 +62,7 @@
 
 **Busca y reemplaza en TODOS los archivos**:
 - `tu-dominio.com` → tu dominio real
-- `G-XXXXXXXXXX` → tu ID de Google Analytics real
+- `G-FGY8WKCEQJ` (Google Analytics ya configurado)
 
 ### 4. Crear imágenes para redes sociales
 

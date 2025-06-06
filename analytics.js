@@ -1,5 +1,5 @@
 // Google Analytics 4 Configuration
-// Reemplaza 'G-XXXXXXXXXX' con tu ID de medición real de GA4
+// ID de Google Analytics configurado: G-FGY8WKCEQJ
 
 // Configuración básica de GA4
 window.dataLayer = window.dataLayer || [];
@@ -7,7 +7,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 // Inicializar GA4 - CAMBIA por tu ID real
-gtag('config', 'G-XXXXXXXXXX', {
+gtag('config', 'G-FGY8WKCEQJ', {
   page_title: document.title,
   page_location: window.location.href,
   send_page_view: true

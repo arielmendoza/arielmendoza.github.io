@@ -22,7 +22,7 @@ const guidesFiles = [
 // Código de Google Analytics a insertar
 const analyticsCode = `  
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
   <script src="analytics.js"></script>
   `;
 
@@ -77,7 +77,7 @@ guidesFiles.forEach(filename => {
 
 console.log('\n✅ Proceso completado!');
 console.log('\n📝 RECORDATORIO:');
-console.log('- Reemplaza "G-XXXXXXXXXX" por tu ID real de Google Analytics');
+console.log('- Google Analytics ya configurado con ID: G-FGY8WKCEQJ');
 console.log('- Verifica que el archivo analytics.js existe en tu servidor');
 console.log('- Configura Google Search Console y sube el sitemap.xml');
 
