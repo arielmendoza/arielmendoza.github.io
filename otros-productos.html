@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Otros productos recomendados con enlaces de afiliados a Amazon España" />
-  <title>Otros Productos Recomendados</title>
+  <meta name="description" content="Catálogo completo de productos recomendados por BricoExpertos. Selección experta de herramientas y productos útiles para tu taller y hogar con los mejores precios." />
+  <title>🛒 Otros Productos Recomendados | BricoExpertos</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
@@ -17,30 +17,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Menú de navegación cargado dinámicamente -->
+  <!-- Menú de navegación -->
   <script src="menu-navegacion.js"></script>
 
-  <header>
-    <div class="container header-content">
-      <h1 class="header-title">Otros Productos Recomendados</h1>
-      <p class="header-subtitle">Selección de productos útiles para tu taller y hogar</p>
+  <!-- Hero Section -->
+  <section class="guide-header-apple">
+    <div class="container">
+      <h1 class="guide-title-apple">Otros Productos</h1>
+      <p class="guide-subtitle-apple">Selección experta de productos útiles para tu taller y hogar</p>
       
-      <div class="filters-bar">
-        <div class="search-group">
-          <input type="search" id="search-input" class="search-input" placeholder="Buscar productos..." aria-label="Buscar productos">
-        </div>
-        <div class="filters-group">
-          <button class="filter-btn" data-filter="all">
-            Todos
-          </button>
-          <button class="filter-btn" data-filter="offer">
-            <span class="icon">🏷️</span> Ofertas
-          </button>
-        </div>
+      <div class="guide-meta-apple">
+        <div class="meta-item-apple">🛒 Catálogo Completo</div>
+        <div class="meta-item-apple">⭐ Mejor Calidad</div>
+        <div class="meta-item-apple">💰 Mejores Precios</div>
+      </div>
+    </div>
+  </section>
 
-        <div class="sort-group">
-          <label for="sort-select">Ordenar por:</label>
-          <select id="sort-select" class="sort-select">
+  <!-- Filtros Modernos -->
+  <section class="section-apple" style="padding: 2rem 0; background: #f8f9fa;">
+    <div class="container">
+      <div class="filters-bar-apple">
+        <div class="search-group-apple">
+          <input type="search" id="search-input" class="search-input-apple" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </div>
+        <div class="filters-group-apple">
+          <button class="filter-btn-apple active" data-filter="all">Todos</button>
+          <button class="filter-btn-apple" data-filter="offer">🏷️ Ofertas</button>
+        </div>
+        <div class="sort-group-apple">
+          <select id="sort-select" class="sort-select-apple">
             <option value="default">Relevancia</option>
             <option value="price-asc">Precio: Menor a mayor</option>
             <option value="price-desc">Precio: Mayor a menor</option>
@@ -50,9 +56,9 @@
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
+  <main class="guide-content-apple">
     <section aria-labelledby="products-heading">
       <h2 id="products-heading" class="section-title">Productos Destacados</h2>
       <div class="product-grid">
@@ -72,6 +78,12 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
+        // Configurar el toggle del disclaimer después de cargar el footer
+        setTimeout(() => {
+          if (typeof window.setupFooterToggle === 'function') {
+            window.setupFooterToggle();
+          }
+        }, 100);
       });
   </script>
 
