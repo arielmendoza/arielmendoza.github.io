@@ -54,4 +54,48 @@
     
     <p class="footer-copyright">© 2025 BricoExpertos. Todos los derechos reservados.</p>
   </div>
-</footer> 
+</footer>
+
+<script>
+// JavaScript inline para asegurar que el botón funcione en todas las páginas
+(function() {
+  'use strict';
+  
+  function setupFooterToggle() {
+    const btn = document.querySelector('.toggle-disclaimers');
+    const disclaimers = document.querySelector('.footer-disclaimers');
+    
+    if (!btn || !disclaimers) return;
+    
+    // Eliminar event listeners previos si existen
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+    
+    newBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const expanded = disclaimers.classList.contains('expanded');
+      
+      if (expanded) {
+        disclaimers.classList.remove('expanded');
+        disclaimers.classList.add('collapsed');
+        newBtn.setAttribute('aria-expanded', 'false');
+        newBtn.innerHTML = 'Ver más información <span class="icon">▼</span>';
+      } else {
+        disclaimers.classList.remove('collapsed');
+        disclaimers.classList.add('expanded');
+        newBtn.setAttribute('aria-expanded', 'true');
+        newBtn.innerHTML = 'Ver menos información <span class="icon">▲</span>';
+      }
+    });
+  }
+  
+  // Configurar inmediatamente
+  setupFooterToggle();
+  
+  // Configurar después de un pequeño delay para asegurar que todo esté cargado
+  setTimeout(setupFooterToggle, 100);
+  setTimeout(setupFooterToggle, 500);
+})();
+</script> 
