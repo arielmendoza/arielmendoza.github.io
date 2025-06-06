@@ -5,14 +5,14 @@
 // Configuración de EmailJS
 (function() {
     // Inicializar EmailJS con tu clave pública
-    emailjs.init("H2RnMYhYI1KiEYdBj"); // Esta es una clave de ejemplo, debes usar la tuya
+    emailjs.init("8SXLJ1Hx9AbKtgkC_"); // Esta es una clave de ejemplo, debes usar la tuya
 })();
 
 // Configuración del servicio
 const EMAILJS_CONFIG = {
-    serviceID: 'service_contacto', // Debes configurar esto en EmailJS
-    templateID: 'template_contacto', // Debes configurar esto en EmailJS
-    userID: 'H2RnMYhYI1KiEYdBj' // Tu clave pública de EmailJS
+    serviceID: 'service_hxdpdrw', // Debes configurar esto en EmailJS
+    templateID: 'template_nk51j4d', // Debes configurar esto en EmailJS
+    userID: '8SXLJ1Hx9AbKtgkC_' // Tu clave pública de EmailJS
 };
 
 // Elementos del DOM

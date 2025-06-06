@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" itemscope itemtype="https://schema.org/WebSite">
 <head>
   <meta charset="UTF-8" />
@@ -133,6 +133,12 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
+        // Inicializar el toggle del footer
+        setTimeout(() => {
+          if (typeof window.initFooterToggle === 'function') {
+            window.initFooterToggle();
+          }
+        }, 200);
       });
   </script>
 

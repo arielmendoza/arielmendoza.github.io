@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -208,6 +208,10 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
+        // Inicializar el toggle del footer
+        if (typeof window.initFooterToggle === 'function') {
+          window.initFooterToggle();
+        }
       });
   </script>
 

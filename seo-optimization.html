@@ -1,4 +1,4 @@
-<!-- SEO OPTIMIZATION TEMPLATE -->
+﻿<!-- SEO OPTIMIZATION TEMPLATE -->
 <!-- Copia este código en el <head> de todas tus páginas HTML -->
 
 <!-- Meta Tags Esenciales -->
@@ -281,10 +281,16 @@ OPTIMIZACIÓN DE IMÁGENES:
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('footer-container').innerHTML = html;
-    });
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+        // Inicializar el toggle del footer
+        setTimeout(() => {
+          if (typeof window.initFooterToggle === 'function') {
+            window.initFooterToggle();
+          }
+        }, 200);
+      });
 </script>
 <script src="script.js"></script>
 </body> 
