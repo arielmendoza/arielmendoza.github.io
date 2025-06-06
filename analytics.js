@@ -205,4 +205,4 @@ function trackWebVitals() {
 trackWebVitals();
 
 console.log('🔍 Google Analytics 4 configurado correctamente');
-console.log('📊 Eventos personalizados activados para bricoAmazon'); 
+console.log('📊 Eventos personalizados activados para bricoExpertos'); 

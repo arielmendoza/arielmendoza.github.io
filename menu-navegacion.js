@@ -4,7 +4,7 @@
 const menuHTML = `
 <nav class="main-nav">
   <div class="container nav-container">
-    <a href="index.html" class="nav-logo">🛠️ BricoAmazon</a>
+    <a href="index.html" class="nav-logo">🛠️ BricoExpertos</a>
     <button class="mobile-menu-btn" aria-label="Abrir menú">
       <span class="hamburger"></span>
     </button>
@@ -122,7 +122,7 @@ if (document.readyState === 'loading') {
 }
 
 // Exportar funciones para uso externo
-window.BricoAmazonMenu = {
+window.BricoExpertosMenu = {
   insertar: insertarMenu,
   actualizar: actualizarMenu,
   marcarActiva: marcarPaginaActiva

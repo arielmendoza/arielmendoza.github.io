@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>🌿 Herramientas para el Jardín 2025 - Guía Completa | BricoAmazon</title>
+  <title>🌿 Herramientas para el Jardín 2025 - Guía Completa | BricoExpertos</title>
   <meta name="description" content="🔥 Guía completa de herramientas de jardinería: desde básicas hasta profesionales. ¡Todo lo que necesitas para un jardín perfecto!" />
   <meta name="keywords" content="herramientas jardín, jardinería, poda, cortacésped, herramientas jardín 2025, mejor jardinería" />
   
@@ -282,47 +282,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> BricoAmazon es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon. Te recomendamos verificar el precio final en Amazon antes de realizar tu compra.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <div class="footer-links">
-        <a href="sobre-nosotros.html">Sobre Nosotros</a> |
-        <a href="privacidad.html">Política de Privacidad</a> |
-        <a href="guia-taladros-principiantes.html">Guía Taladros</a> |
-        <a href="guia-sierras-de-calar.html">Sierras de Calar</a> |
-        <a href="guia-martillos.html">Martillos</a> |
-        <a href="guia-herramientas-inalambricas-vs-cable.html">Inalámbricas vs Cable</a> |
-        <a href="guia-herramientas-bano.html">Herramientas Baño</a> |
-        <a href="guia-llaves-inglesas.html">Llaves Inglesas</a> |
-        <a href="guia-destornilladores.html">Destornilladores</a> |
-        <a href="guia-llaves-fijas.html">Llaves Fijas</a> |
-        <a href="guia-niveles-medicion.html">Niveles y Medición</a> |
-        <a href="guia-herramientas-cocina.html">Herramientas Cocina</a> |
-        <a href="guia-alicates-tenazas.html">Alicates y Tenazas</a> |
-        <a href="guia-principiantes-absolutos.html">Para Principiantes</a> |
-        <a href="guia-herramientas-jardin.html">Herramientas Jardín</a> |
-        <a href="guia-mantenimiento-herramientas.html">Mantenimiento</a> |
-        <a href="guia-seguridad-taller.html">Seguridad Taller</a> |
-        <a href="10-herramientas-esenciales-bricolaje.html">10 Herramientas Esenciales</a> |
-        <a href="herramientas-baratas-menos-50-euros.html">Herramientas Baratas</a>
-      </div>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html> 

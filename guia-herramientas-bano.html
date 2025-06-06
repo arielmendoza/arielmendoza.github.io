@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>🚿 Herramientas para Renovar el Baño 2025 - Guía Completa | BricoAmazon</title>
+  <title>🚿 Herramientas para Renovar el Baño 2025 - Guía Completa | BricoExpertos</title>
   <meta name="description" content="🔥 Guía completa de herramientas para renovar tu baño: desde fontanería hasta alicatado. Lista completa, consejos y mejores marcas." />
   <meta name="keywords" content="herramientas baño, renovar baño, fontanería, alicatar, herramientas fontanero, reforma baño 2025" />
   
@@ -333,20 +333,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> Como participante del Programa de Afiliados de Amazon, este sitio obtiene ingresos por las compras realizadas a través de los enlaces de afiliado.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html> 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" itemscope itemtype="https://schema.org/WebPage">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,8 +22,8 @@
 
   <header>
     <div class="container header-content">
-      <h1 class="header-title">Sobre BricoAmazon</h1>
-      <p class="header-subtitle">Tu guía de confianza en el mundo del bricolaje y las herramientas</p>
+      <h1 class="header-title">Sobre Nosotros</h1>
+      <p class="header-subtitle">Conoce al equipo de BricoAmazon y nuestra misión</p>
     </div>
   </header>
 
@@ -267,32 +267,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> BricoAmazon es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <div class="footer-links">
-        <a href="sobre-nosotros.html">Sobre Nosotros</a> |
-        <a href="privacidad.html">Política de Privacidad</a> |
-        <a href="guia-taladros-principiantes.html">Guías</a> |
-        <a href="10-herramientas-esenciales-bricolaje.html">Kit Básico</a>
-      </div>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html> 

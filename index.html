@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags Optimizadas -->
-  <title>🛠️ Mejores Herramientas de Bricolaje 2025 - Análisis y Comparativas | BricoAmazon</title>
+  <title>🛠️ Mejores Herramientas de Bricolaje 2025 - Análisis y Comparativas | BricoExpertos</title>
   <meta name="description" content="✅ Análisis profesionales de herramientas de bricolaje, comparativas detalladas y guías de compra. Encuentra las mejores herramientas calidad-precio en Amazon España 2025." />
   <meta name="keywords" content="herramientas bricolaje, taladros, sierras, martillos, destornilladores, análisis herramientas, comparativas herramientas, mejores herramientas 2025, herramientas Amazon España, guía compra herramientas" />
-  <meta name="author" content="BricoAmazon" />
+  <meta name="author" content="BricoExpertos" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://tu-dominio.com/" />
   
@@ -18,7 +18,7 @@
   <meta property="og:title" content="🛠️ Mejores Herramientas de Bricolaje 2025 - Análisis y Comparativas" />
   <meta property="og:description" content="✅ Análisis profesionales de herramientas, comparativas detalladas y guías de compra. Las mejores herramientas calidad-precio." />
   <meta property="og:image" content="https://tu-dominio.com/images/herramientas-bricolaje-og.jpg" />
-  <meta property="og:site_name" content="BricoAmazon" />
+  <meta property="og:site_name" content="BricoExpertos" />
   <meta property="og:locale" content="es_ES" />
   
   <!-- Twitter -->
@@ -54,7 +54,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "BricoAmazon",
+    "name": "BricoExpertos",
     "description": "Análisis profesionales de herramientas de bricolaje, comparativas detalladas y guías de compra",
     "url": "https://tu-dominio.com",
     "potentialAction": {
@@ -64,7 +64,7 @@
     },
     "publisher": {
       "@type": "Organization",
-      "name": "BricoAmazon",
+      "name": "BricoExpertos",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tu-dominio.com/logo.png"
@@ -304,7 +304,7 @@
 
     <!-- Sección de contenido adicional para SEO -->
     <section style="margin-top: 4rem; background: #f8f9fa; padding: 2rem; border-radius: 8px;">
-      <h2>🏆 ¿Por qué BricoAmazon es tu mejor opción para herramientas?</h2>
+      <h2>🏆 ¿Por qué BricoExpertos es tu mejor opción para herramientas?</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
         <div>
           <h3>✅ Análisis Profesionales</h3>
@@ -326,31 +326,14 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> BricoAmazon es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon. Te recomendamos verificar el precio final en Amazon antes de realizar tu compra.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <div class="footer-links">
-        <a href="sobre-nosotros.html">Sobre Nosotros</a> |
-        <a href="privacidad.html">Política de Privacidad</a> |
-        <a href="guia-taladros-principiantes.html">Guías</a> |
-        <a href="10-herramientas-esenciales-bricolaje.html">Kit Básico</a>
-      </div>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 
   <!-- Modal para detalles -->
   <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags Optimizadas -->
-  <title>🪚 Guía Completa Sierras de Calar 2025 - Tipos, Mejores Modelos y Consejos | BricoAmazon</title>
+  <title>🪚 Guía Completa Sierras de Calar 2025 - Tipos, Mejores Modelos y Consejos | BricoExpertos</title>
   <meta name="description" content="🔥 Guía definitiva sobre sierras de calar: tipos, características, mejores modelos Bosch y Black&Decker, hojas adecuadas y técnicas profesionales. ¡Elige la sierra perfecta!" />
   <meta name="keywords" content="sierra de calar, sierras de calar Bosch, sierra calar Black+Decker, mejor sierra calar 2025, guía sierra calar, tipos sierras calar, hojas sierra calar, sierra calar batería, sierra calar cable" />
-  <meta name="author" content="BricoAmazon" />
+  <meta name="author" content="BricoExpertos" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://tu-dominio.com/guia-sierras-de-calar.html" />
   
@@ -18,9 +18,9 @@
   <meta property="og:title" content="🪚 Guía Completa Sierras de Calar 2025 - Tipos, Mejores Modelos y Consejos" />
   <meta property="og:description" content="🔥 Guía definitiva sobre sierras de calar: tipos, características, mejores modelos, hojas adecuadas y técnicas profesionales." />
   <meta property="og:image" content="https://tu-dominio.com/images/sierra-calar-guia-og.jpg" />
-  <meta property="og:site_name" content="BricoAmazon" />
+  <meta property="og:site_name" content="BricoExpertos" />
   <meta property="og:locale" content="es_ES" />
-  <meta property="article:author" content="BricoAmazon" />
+  <meta property="article:author" content="BricoExpertos" />
   <meta property="article:published_time" content="2025-01-27T00:00:00Z" />
   <meta property="article:modified_time" content="2025-01-27T00:00:00Z" />
   <meta property="article:section" content="Guías de Herramientas" />
@@ -72,11 +72,11 @@
     "image": "https://tu-dominio.com/images/sierra-calar-guia.jpg",
     "author": {
       "@type": "Organization",
-      "name": "BricoAmazon"
+      "name": "BricoExpertos"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "BricoAmazon",
+      "name": "BricoExpertos",
       "logo": {
         "@type": "ImageObject",
         "url": "https://tu-dominio.com/logo.png"
@@ -644,32 +644,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> BricoAmazon es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon.
-        </p>
-        <p class="footer-disclaimer">
-          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <div class="footer-links">
-        <a href="sobre-nosotros.html">Sobre Nosotros</a> |
-        <a href="privacidad.html">Política de Privacidad</a> |
-        <a href="guia-taladros-principiantes.html">Guías</a> |
-        <a href="10-herramientas-esenciales-bricolaje.html">Kit Básico</a>
-      </div>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html> 

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
-  <title>⚡ Herramientas Inalámbricas vs Cable 2025 - Guía Completa | BricoAmazon</title>
+  <title>⚡ Herramientas Inalámbricas vs Cable 2025 - Guía Completa | BricoExpertos</title>
   <meta name="description" content="🔥 Guía definitiva: herramientas a batería vs cable. Ventajas, desventajas, cuándo elegir cada una y mejores marcas. ¡Toma la decisión correcta!" />
   <meta name="keywords" content="herramientas inalámbricas, herramientas cable, batería vs cable, taladro batería, sierra batería, herramientas 18V, Makita, Bosch, DeWalt" />
-  <meta name="author" content="BricoAmazon" />
+  <meta name="author" content="BricoExpertos" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://tu-dominio.com/guia-herramientas-inalambricas-vs-cable.html" />
   
@@ -292,20 +292,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-disclaimers collapsed">
-        <p class="footer-disclaimer">
-          <strong>Programa de Afiliados de Amazon:</strong> Como participante del Programa de Afiliados de Amazon, este sitio obtiene ingresos por las compras realizadas a través de los enlaces de afiliado.
-        </p>
-      </div>
-      <button class="footer-toggle">
-        Ver más información <span class="icon">▼</span>
-      </button>
-      <p class="footer-copyright">© 2025 BricoAmazon. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html>
