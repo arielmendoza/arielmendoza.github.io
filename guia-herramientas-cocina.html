@@ -319,6 +319,12 @@
       .then(response => response.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
+        // Configurar el toggle del disclaimer después de cargar el footer
+        setTimeout(() => {
+          if (typeof window.setupFooterToggle === 'function') {
+            window.setupFooterToggle();
+          }
+        }, 100);
       });
   </script>
   <script src="script.js"></script>

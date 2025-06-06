@@ -57,27 +57,33 @@
 </footer>
 
 <script>
-// JavaScript inline para asegurar que el botón funcione en todas las páginas
-(function() {
-  'use strict';
-  
-  function setupFooterToggle() {
+// JavaScript mejorado para el toggle del disclaimer
+document.addEventListener('DOMContentLoaded', function() {
+  setupFooterToggle();
+});
+
+// También configurar cuando el footer se carga dinámicamente
+if (typeof window.setupFooterToggle === 'undefined') {
+  window.setupFooterToggle = function() {
     const btn = document.querySelector('.toggle-disclaimers');
     const disclaimers = document.querySelector('.footer-disclaimers');
     
-    if (!btn || !disclaimers) return;
+    if (!btn || !disclaimers) {
+      console.log('Footer disclaimers elements not found');
+      return;
+    }
     
-    // Eliminar event listeners previos si existen
-    const newBtn = btn.cloneNode(true);
-    btn.parentNode.replaceChild(newBtn, btn);
+    // Remover listeners anteriores
+    btn.replaceWith(btn.cloneNode(true));
+    const newBtn = document.querySelector('.toggle-disclaimers');
     
     newBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       
-      const expanded = disclaimers.classList.contains('expanded');
+      const isExpanded = disclaimers.classList.contains('expanded');
       
-      if (expanded) {
+      if (isExpanded) {
         disclaimers.classList.remove('expanded');
         disclaimers.classList.add('collapsed');
         newBtn.setAttribute('aria-expanded', 'false');
@@ -89,13 +95,13 @@
         newBtn.innerHTML = 'Ver menos información <span class="icon">▲</span>';
       }
     });
-  }
+    
+    console.log('Footer toggle configured successfully');
+  };
   
-  // Configurar inmediatamente
-  setupFooterToggle();
-  
-  // Configurar después de un pequeño delay para asegurar que todo esté cargado
+  // Configurar múltiples veces para asegurar funcionamiento
   setTimeout(setupFooterToggle, 100);
   setTimeout(setupFooterToggle, 500);
-})();
+  setTimeout(setupFooterToggle, 1000);
+}
 </script> 
