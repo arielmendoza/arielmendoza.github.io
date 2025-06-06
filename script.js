@@ -592,63 +592,38 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', e => e.target === modal && closeModal());
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
 
-  // Footer toggle accesible y robusto
-  function setupFooterToggle() {
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.toggle-disclaimers');
-      if (!btn) return;
-      
-      const disclaimers = document.querySelector('.footer-disclaimers');
-      if (!disclaimers) return;
-      
+  // Función global para el toggle del footer
+  window.toggleDisclaimer = function() {
+    const disclaimers = document.getElementById('disclaimers');
+    const button = document.getElementById('toggleBtn');
+    
+    if (!disclaimers || !button) {
+      console.log('Elementos del footer no encontrados');
+      return;
+    }
+    
+    const isCollapsed = disclaimers.classList.contains('collapsed');
+    
+    if (isCollapsed) {
+      disclaimers.classList.remove('collapsed');
+      disclaimers.classList.add('expanded');
+      button.innerHTML = 'Ver menos información <span class="icon">▲</span>';
+      button.setAttribute('aria-expanded', 'true');
+    } else {
+      disclaimers.classList.remove('expanded');
+      disclaimers.classList.add('collapsed');
+      button.innerHTML = 'Ver más información <span class="icon">▼</span>';
+      button.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  // Footer toggle usando event delegation para que funcione siempre
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.toggle-disclaimers')) {
       e.preventDefault();
-      e.stopPropagation();
-      
-      const expanded = disclaimers.classList.toggle('expanded');
-      disclaimers.classList.toggle('collapsed', !expanded);
-      btn.setAttribute('aria-expanded', expanded);
-      
-      const icon = btn.querySelector('.icon');
-      if (icon) {
-        icon.textContent = expanded ? '▲' : '▼';
-      }
-      
-      btn.innerHTML = expanded
-        ? 'Ver menos información <span class="icon">▲</span>'
-        : 'Ver más información <span class="icon">▼</span>';
-    });
-  }
-  
-  // Configurar el footer inmediatamente y también después de cargar el contenido dinámico
-  setupFooterToggle();
-  
-  // Asegurar que funcione también cuando el footer se carga dinámicamente
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'childList') {
-        const addedNodes = Array.from(mutation.addedNodes);
-        const footerAdded = addedNodes.some(node => 
-          node.nodeType === 1 && (
-            node.matches && node.matches('.toggle-disclaimers') ||
-            node.querySelector && node.querySelector('.toggle-disclaimers')
-          )
-        );
-        if (footerAdded) {
-          setupFooterToggle();
-        }
-      }
-    });
+      window.toggleDisclaimer();
+    }
   });
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-  
-  // Configurar después de un tiempo para asegurar que el footer dinámico se haya cargado
-  setTimeout(() => {
-    setupFooterToggle();
-  }, 1000);
 
   // Event listeners para filtros y ordenación
   const filterButtons = document.querySelectorAll('.filter-btn');
