@@ -183,15 +183,18 @@ img {
   top: 100%;
   left: 0;
   background: white;
-  min-width: 200px;
+  min-width: 250px;
+  max-height: 400px;
+  overflow-y: auto;
   box-shadow: var(--shadow-md);
   border-radius: var(--radius);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 9999;
   margin-top: 0.5rem;
+  border: 1px solid var(--gray-200);
 }
 
 .nav-item:hover .nav-dropdown {
