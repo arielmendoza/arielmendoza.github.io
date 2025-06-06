@@ -592,26 +592,37 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', e => e.target === modal && closeModal());
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
 
-  // Footer toggle
-  const footerToggle = document.querySelector('.footer-toggle');
-  const footerDisclaimers = document.querySelector('.footer-disclaimers');
-  
-  if (footerToggle && footerDisclaimers) {
-    footerToggle.addEventListener('click', () => {
-      const isExpanded = footerDisclaimers.classList.contains('expanded');
-      
-      if (isExpanded) {
-        footerDisclaimers.classList.remove('expanded');
-        footerDisclaimers.classList.add('collapsed');
-        footerToggle.innerHTML = 'Ver más información <span class="icon">▼</span>';
-      } else {
-        footerDisclaimers.classList.remove('collapsed');
-        footerDisclaimers.classList.add('expanded');
-        footerToggle.innerHTML = 'Ver menos información <span class="icon">▼</span>';
-      }
-      
-      footerToggle.classList.toggle('expanded');
+  // Footer toggle dinámico para footers cargados por JS
+  function initFooterToggle() {
+    const footerToggle = document.querySelector('.footer-toggle');
+    const footerDisclaimers = document.querySelector('.footer-disclaimers');
+    if (footerToggle && footerDisclaimers) {
+      footerToggle.addEventListener('click', () => {
+        const isExpanded = footerDisclaimers.classList.contains('expanded');
+        if (isExpanded) {
+          footerDisclaimers.classList.remove('expanded');
+          footerDisclaimers.classList.add('collapsed');
+          footerToggle.innerHTML = 'Ver más información <span class="icon">▼</span>';
+        } else {
+          footerDisclaimers.classList.remove('collapsed');
+          footerDisclaimers.classList.add('expanded');
+          footerToggle.innerHTML = 'Ver menos información <span class="icon">▲</span>';
+        }
+        footerToggle.classList.toggle('expanded');
+      });
+    }
+  }
+
+  // Si el footer se carga dinámicamente, observar el DOM
+  const footerContainer = document.getElementById('footer-container');
+  if (footerContainer) {
+    const observer = new MutationObserver(() => {
+      initFooterToggle();
     });
+    observer.observe(footerContainer, { childList: true, subtree: true });
+  } else {
+    // Si el footer ya está en el DOM al cargar la página
+    initFooterToggle();
   }
 
   // Event listeners para filtros y ordenación
