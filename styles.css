@@ -535,9 +535,23 @@ header {
 /* Tool Grid */
 .tool-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
   padding: 1rem 0;
+}
+
+@media (min-width: 1400px) {
+  .tool-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .tool-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
 }
 
 .tool-card {
@@ -558,9 +572,9 @@ header {
 
 .tool-photo-container {
   position: relative;
-  padding-top: 66.67%;
+  padding-top: 60%;
   background: var(--gray-100);
-  min-height: 200px;
+  min-height: 160px;
   overflow: hidden;
 }
 
@@ -571,7 +585,7 @@ header {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: transform 0.3s ease;
 }
 
@@ -581,14 +595,14 @@ header {
 
 .tool-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: var(--error);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: var(--radius);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   z-index: 2;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease;
@@ -599,29 +613,30 @@ header {
 }
 
 .tool-content {
-  padding: 1.5rem;
+  padding: 1.25rem;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .tool-name {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--gray-900);
-  min-height: 3rem;
+  min-height: 2.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 1.3;
 }
 
 .tool-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .tool-rating {
@@ -630,10 +645,11 @@ header {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  font-size: 0.9rem;
 }
 
 .tool-price {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--gray-900);
 }
@@ -644,14 +660,14 @@ header {
 
 .tool-description {
   color: var(--gray-600);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   flex: 1;
   position: relative;
-  max-height: 11.2em; /* 7 líneas de texto (1.6em * 7) */
+  max-height: 9em; /* 5-6 líneas de texto */
   overflow-y: auto;
   padding-right: 0.5rem;
-  line-height: 1.6;
-  font-size: 0.9375rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
   text-align: justify;
   hyphens: auto;
 }
@@ -2723,13 +2739,29 @@ button[aria-pressed="true"] {
   background: white;
 }
 
-/* Grid de productos estilo Apple */
+/* Grid de productos estilo Apple - Más compacto y responsivo */
 .tool-grid-apple {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+@media (min-width: 1400px) {
+  .tool-grid-apple {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .tool-grid-apple {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 1800px;
+  }
 }
 
 /* Guides Section */
@@ -2823,7 +2855,7 @@ button[aria-pressed="true"] {
   .guides-grid,
   .tool-grid-apple {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   
   .hero-apple {
@@ -3320,5 +3352,30 @@ button[aria-pressed="true"] {
   
   .filters-group-apple {
     justify-content: center;
+  }
+}
+
+@media (min-width: 1800px) {
+  .tool-grid-apple {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    max-width: 1800px;
+  }
+}
+
+/* Media queries para tablets y resoluciones intermedias */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .tool-list,
+  .tool-grid-apple {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .tool-list,
+  .tool-grid-apple {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
   }
 }
