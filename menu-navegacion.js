@@ -96,14 +96,27 @@ function inicializarMenuMovil() {
       }
     });
     
-    // Manejar el dropdown en móvil
+    // Manejar el dropdown en móvil y escritorio de forma robusta
     const dropdownToggle = document.querySelector('.dropdown-toggle');
     const dropdown = document.querySelector('.nav-dropdown');
     
     if (dropdownToggle && dropdown) {
+      // Alternar clase 'open' en el dropdown al hacer clic
       dropdownToggle.addEventListener('click', (e) => {
         e.preventDefault();
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+        // Cerrar otros dropdowns si existieran
+        document.querySelectorAll('.nav-dropdown').forEach(d => {
+          if (d !== dropdown) d.classList.remove('open');
+        });
+      });
+
+      // Cerrar el dropdown si se hace clic fuera
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && !dropdownToggle.contains(e.target)) {
+          dropdown.classList.remove('open');
+        }
       });
     }
   }
