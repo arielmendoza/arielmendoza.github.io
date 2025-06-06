@@ -20,26 +20,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // Variables principales
   const container = document.getElementById('tool-list');
   const modal = document.getElementById('modal');
-  const modalTitle = modal.querySelector('.modal-title');
-  const modalRating = modal.querySelector('.modal-rating');
-  const modalPrice = modal.querySelector('.modal-price');
-  const modalMainPhoto = document.getElementById('modal-main-photo');
-  const modalThumbnailsContainer = modal.querySelector('.modal-thumbnails');
-  const modalDescription = document.getElementById('modal-description');
-  const modalFeatures = document.getElementById('modal-features');
-  const modalReview = document.getElementById('modal-review');
-  const prosList = document.getElementById('pros-list');
-  const consList = document.getElementById('cons-list');
-  const closeBtn = modal.querySelector('.modal-close');
-  const backBtn = document.getElementById('back-to-list');
-  const amazonLink = document.getElementById('amazon-link');
+  
+  // Variables del modal (solo si el modal existe)
+  let modalTitle, modalRating, modalPrice, modalMainPhoto, modalThumbnailsContainer;
+  let modalDescription, modalFeatures, modalReview, prosList, consList;
+  let closeBtn, backBtn, amazonLink;
+  
+  // Variables del zoom modal (solo si existe)
+  let zoomModal, zoomImage, zoomClose, prevButton, nextButton;
+  
+  // Inicializar variables del modal si existen
+  if (modal) {
+    modalTitle = modal.querySelector('.modal-title');
+    modalRating = modal.querySelector('.modal-rating');
+    modalPrice = modal.querySelector('.modal-price');
+    modalMainPhoto = document.getElementById('modal-main-photo');
+    modalThumbnailsContainer = modal.querySelector('.modal-thumbnails');
+    modalDescription = document.getElementById('modal-description');
+    modalFeatures = document.getElementById('modal-features');
+    modalReview = document.getElementById('modal-review');
+    prosList = document.getElementById('pros-list');
+    consList = document.getElementById('cons-list');
+    closeBtn = modal.querySelector('.modal-close');
+    backBtn = document.getElementById('back-to-list');
+    amazonLink = document.getElementById('amazon-link');
+  }
 
-  // Zoom modal
-  const zoomModal = document.getElementById('zoom-modal');
-  const zoomImage = document.getElementById('zoom-image');
-  const zoomClose = zoomModal.querySelector('.zoom-close');
-  const prevButton = zoomModal.querySelector('.prev-image');
-  const nextButton = zoomModal.querySelector('.next-image');
+  // Inicializar variables del zoom modal si existe
+  zoomModal = document.getElementById('zoom-modal');
+  if (zoomModal) {
+    zoomImage = document.getElementById('zoom-image');
+    zoomClose = zoomModal.querySelector('.zoom-close');
+    prevButton = zoomModal.querySelector('.prev-image');
+    nextButton = zoomModal.querySelector('.next-image');
+  }
   let currentImageIndex = 0;
   let currentImages = [];
 
@@ -427,6 +441,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Renderizar lista de herramientas
   function renderList() {
+    if (!container) return;
+    
     container.innerHTML = '';
     const filteredTools = filterAndSortTools();
     
@@ -486,6 +502,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mostrar modal con detalles de la herramienta
   function showModal(tool) {
+    if (!modal || !modalTitle) {
+      console.log('Modal no disponible en esta página');
+      return;
+    }
+    
     modalTitle.textContent = tool.name;
     
     modalRating.innerHTML = `
@@ -565,32 +586,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cerrar modal
   function closeModal() {
+    if (!modal) return;
+    
     modal.classList.remove('active');
     document.body.style.overflow = '';
     
-    const expandedBtn = container.querySelector('button[aria-expanded="true"]');
-    if (expandedBtn) {
-      expandedBtn.setAttribute('aria-expanded', 'false');
+    if (container) {
+      const expandedBtn = container.querySelector('button[aria-expanded="true"]');
+      if (expandedBtn) {
+        expandedBtn.setAttribute('aria-expanded', 'false');
+      }
     }
   }
 
-  // Event listeners
-  container.addEventListener('click', e => {
-    const detailsBtn = e.target.closest('.details-btn');
-    if (detailsBtn) {
-      const id = detailsBtn.getAttribute('data-id');
-      const tool = toolsData.find(t => t.id === id);
-      if (tool) {
-        showModal(tool);
-        detailsBtn.setAttribute('aria-expanded', 'true');
+  // Event listeners (solo si container existe)
+  if (container) {
+    container.addEventListener('click', e => {
+      const detailsBtn = e.target.closest('.details-btn');
+      if (detailsBtn) {
+        const id = detailsBtn.getAttribute('data-id');
+        const tool = toolsData.find(t => t.id === id);
+        if (tool) {
+          showModal(tool);
+          detailsBtn.setAttribute('aria-expanded', 'true');
+        }
       }
-    }
-  });
+    });
+  }
 
-  closeBtn.addEventListener('click', closeModal);
-  backBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => e.target === modal && closeModal());
-  document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
+  // Event listeners del modal (solo si existen)
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backBtn) backBtn.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', e => e.target === modal && closeModal());
+    document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
+  }
 
   // Función global para el toggle del footer
   window.toggleDisclaimer = function() {
@@ -625,48 +655,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Event listeners para filtros y ordenación
+  // Event listeners para filtros y ordenación (solo si existen)
   const filterButtons = document.querySelectorAll('.filter-btn');
   const sortSelect = document.getElementById('sort-select');
   const searchInput = document.getElementById('search-input');
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
+  if (filterButtons.length > 0) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderList();
+      });
+    });
+  }
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      currentSort = e.target.value;
       renderList();
     });
-  });
-
-  sortSelect.addEventListener('change', (e) => {
-    currentSort = e.target.value;
-    renderList();
-  });
+  }
 
   // Añadir event listener para búsqueda con debounce
-  let searchTimeout;
-  searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-      currentSearch = e.target.value;
-      renderList();
-    }, 300); // Esperar 300ms después de que el usuario deje de escribir
-  });
+  if (searchInput) {
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        currentSearch = e.target.value;
+        renderList();
+      }, 300); // Esperar 300ms después de que el usuario deje de escribir
+    });
+  }
 
-  // Activar el filtro "Todos" por defecto
-  document.querySelector('[data-filter="all"]').classList.add('active');
+  // Activar el filtro "Todos" por defecto (solo si existe)
+  const allFilterBtn = document.querySelector('[data-filter="all"]');
+  if (allFilterBtn) {
+    allFilterBtn.classList.add('active');
+  }
 
   // Función para mostrar imagen en zoom
   function showZoomImage(index) {
+    if (!zoomModal || !zoomImage) return;
+    
     currentImageIndex = index;
     const image = currentImages[index];
     zoomImage.src = image;
     zoomImage.alt = `Foto ${index + 1}`;
     
     // Actualizar estado de los botones de navegación
-    prevButton.disabled = index === 0;
-    nextButton.disabled = index === currentImages.length - 1;
+    if (prevButton) prevButton.disabled = index === 0;
+    if (nextButton) nextButton.disabled = index === currentImages.length - 1;
     
     zoomModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -674,57 +715,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función para cerrar el zoom
   function closeZoom() {
+    if (!zoomModal) return;
+    
     zoomModal.classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  // Event listeners para el zoom
-  modalMainPhoto.addEventListener('click', () => {
-    currentImages = Array.from(modalThumbnailsContainer.querySelectorAll('img')).map(img => img.src);
-    const mainPhotoIndex = currentImages.indexOf(modalMainPhoto.src);
-    showZoomImage(mainPhotoIndex);
-  });
+  // Event listeners para el zoom (solo si existen)
+  if (modalMainPhoto && modalThumbnailsContainer) {
+    modalMainPhoto.addEventListener('click', () => {
+      currentImages = Array.from(modalThumbnailsContainer.querySelectorAll('img')).map(img => img.src);
+      const mainPhotoIndex = currentImages.indexOf(modalMainPhoto.src);
+      showZoomImage(mainPhotoIndex);
+    });
+  }
 
-  zoomClose.addEventListener('click', closeZoom);
-  zoomModal.addEventListener('click', e => {
-    if (e.target === zoomModal || e.target === zoomImage) {
-      closeZoom();
-    }
-  });
-
-  prevButton.addEventListener('click', () => {
-    if (currentImageIndex > 0) {
-      showZoomImage(currentImageIndex - 1);
-    }
-  });
-
-  nextButton.addEventListener('click', () => {
-    if (currentImageIndex < currentImages.length - 1) {
-      showZoomImage(currentImageIndex + 1);
-    }
-  });
-
-  // Navegación con teclado
-  document.addEventListener('keydown', e => {
-    if (!zoomModal.classList.contains('active')) return;
-    
-    switch (e.key) {
-      case 'ArrowLeft':
-        if (!prevButton.disabled) {
-          showZoomImage(currentImageIndex - 1);
-        }
-        break;
-      case 'ArrowRight':
-        if (!nextButton.disabled) {
-          showZoomImage(currentImageIndex + 1);
-        }
-        break;
-      case 'Escape':
+  if (zoomClose) {
+    zoomClose.addEventListener('click', closeZoom);
+  }
+  
+  if (zoomModal) {
+    zoomModal.addEventListener('click', e => {
+      if (e.target === zoomModal || e.target === zoomImage) {
         closeZoom();
-        break;
-    }
-  });
+      }
+    });
+  }
 
-  // Iniciar la aplicación
-  loadToolsData();
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      if (currentImageIndex > 0) {
+        showZoomImage(currentImageIndex - 1);
+      }
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      if (currentImageIndex < currentImages.length - 1) {
+        showZoomImage(currentImageIndex + 1);
+      }
+    });
+  }
+
+  // Navegación con teclado (solo si zoom modal existe)
+  if (zoomModal) {
+    document.addEventListener('keydown', e => {
+      if (!zoomModal.classList.contains('active')) return;
+      
+      switch (e.key) {
+        case 'ArrowLeft':
+          if (prevButton && !prevButton.disabled) {
+            showZoomImage(currentImageIndex - 1);
+          }
+          break;
+        case 'ArrowRight':
+          if (nextButton && !nextButton.disabled) {
+            showZoomImage(currentImageIndex + 1);
+          }
+          break;
+        case 'Escape':
+          closeZoom();
+          break;
+      }
+    });
+  }
+
+  // Iniciar la aplicación (solo si hay container para productos)
+  if (container) {
+    loadToolsData();
+  }
 }); 
