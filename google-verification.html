@@ -195,5 +195,14 @@
 <hr>
 <p><em>Archivo generado automáticamente para la configuración SEO de BricoExpertos. Eliminar antes de subir a producción.</em></p>
 
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    });
+</script>
+
 </body>
 </html> 

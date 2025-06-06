@@ -592,38 +592,24 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', e => e.target === modal && closeModal());
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
 
-  // Footer toggle dinámico para footers cargados por JS
-  function initFooterToggle() {
-    const footerToggle = document.querySelector('.footer-toggle');
-    const footerDisclaimers = document.querySelector('.footer-disclaimers');
-    if (footerToggle && footerDisclaimers) {
-      footerToggle.addEventListener('click', () => {
-        const isExpanded = footerDisclaimers.classList.contains('expanded');
-        if (isExpanded) {
-          footerDisclaimers.classList.remove('expanded');
-          footerDisclaimers.classList.add('collapsed');
-          footerToggle.innerHTML = 'Ver más información <span class="icon">▼</span>';
-        } else {
-          footerDisclaimers.classList.remove('collapsed');
-          footerDisclaimers.classList.add('expanded');
-          footerToggle.innerHTML = 'Ver menos información <span class="icon">▲</span>';
-        }
-        footerToggle.classList.toggle('expanded');
-      });
-    }
-  }
-
-  // Si el footer se carga dinámicamente, observar el DOM
-  const footerContainer = document.getElementById('footer-container');
-  if (footerContainer) {
-    const observer = new MutationObserver(() => {
-      initFooterToggle();
+  // Footer toggle accesible y robusto
+  function setupFooterToggle() {
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.toggle-disclaimers');
+      const disclaimers = document.querySelector('.footer-disclaimers');
+      if (btn && disclaimers) {
+        const expanded = disclaimers.classList.toggle('expanded');
+        disclaimers.classList.toggle('collapsed', !expanded);
+        btn.setAttribute('aria-expanded', expanded);
+        const icon = btn.querySelector('.icon');
+        if (icon) icon.textContent = expanded ? '▲' : '▼';
+        btn.innerHTML = expanded
+          ? 'Ver menos información <span class="icon">▲</span>'
+          : 'Ver más información <span class="icon">▼</span>';
+      }
     });
-    observer.observe(footerContainer, { childList: true, subtree: true });
-  } else {
-    // Si el footer ya está en el DOM al cargar la página
-    initFooterToggle();
   }
+  setupFooterToggle();
 
   // Event listeners para filtros y ordenación
   const filterButtons = document.querySelectorAll('.filter-btn');
@@ -724,26 +710,6 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
   });
-
-  // Manejo de avisos desplegables
-  const disclaimers = document.querySelector('.footer-disclaimers');
-  const toggleButton = document.querySelector('.toggle-disclaimers');
-
-  if (disclaimers && toggleButton) {
-    toggleButton.addEventListener('click', function() {
-      disclaimers.classList.toggle('collapsed');
-      disclaimers.classList.toggle('expanded');
-      
-      const icon = toggleButton.querySelector('.icon');
-      if (icon) {
-        icon.textContent = disclaimers.classList.contains('expanded') ? '▼' : '▲';
-      }
-      
-      toggleButton.setAttribute('aria-expanded', 
-        disclaimers.classList.contains('expanded').toString()
-      );
-    });
-  }
 
   // Iniciar la aplicación
   loadToolsData();

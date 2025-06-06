@@ -271,12 +271,13 @@
     </article>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <p class="footer-copyright">© 2025 BricoExpertos. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
 </body>
 </html> 

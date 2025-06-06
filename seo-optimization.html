@@ -276,4 +276,14 @@ OPTIMIZACIÓN DE IMÁGENES:
 □ Schema markup apropiado para el tipo de contenido
 □ Velocidad de carga optimizada
 □ Responsive design verificado
---> 
+-->
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    });
+</script>
+</body> 
