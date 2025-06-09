@@ -61,9 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentFilter = 'all';
   let currentSort = 'default';
   let currentSearch = '';
+  
+  // Variables de paginación
+  let currentPageNum = 1;
+  let itemsPerPage = 8; // Productos por página en acceso rápido
+  let filteredToolsCache = [];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const xmlFile = currentPage === 'index.html' ? 'tools.xml' : 'otros-productos.xml';
+  const paginationContainer = document.getElementById('pagination-container');
 
   // Funciones auxiliares XML
   function getNodeText(parentNode, tagName) {
@@ -436,7 +442,84 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
     
+    // Guardar en cache para paginación
+    filteredToolsCache = filteredTools;
     return filteredTools;
+  }
+
+  // Función para paginar productos
+  function getPaginatedTools(tools, page = 1) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return tools.slice(startIndex, endIndex);
+  }
+
+  // Función para renderizar paginación
+  function renderPagination(totalItems) {
+    if (!paginationContainer || totalItems <= itemsPerPage) {
+      if (paginationContainer) paginationContainer.style.display = 'none';
+      return;
+    }
+
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    paginationContainer.style.display = 'flex';
+    
+    let paginationHTML = '';
+
+    // Botón anterior
+    paginationHTML += `
+      <button class="pagination-btn ${currentPageNum === 1 ? 'disabled' : ''}" 
+              data-page="${currentPageNum - 1}" ${currentPageNum === 1 ? 'disabled' : ''}>
+        ← Anterior
+      </button>
+    `;
+
+    // Números de página
+    let startPage = Math.max(1, currentPageNum - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    
+    if (endPage - startPage < 4) {
+      startPage = Math.max(1, endPage - 4);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      paginationHTML += `
+        <button class="pagination-btn ${i === currentPageNum ? 'active' : ''}" 
+                data-page="${i}">
+          ${i}
+        </button>
+      `;
+    }
+
+    // Botón siguiente
+    paginationHTML += `
+      <button class="pagination-btn ${currentPageNum === totalPages ? 'disabled' : ''}" 
+              data-page="${currentPageNum + 1}" ${currentPageNum === totalPages ? 'disabled' : ''}>
+        Siguiente →
+      </button>
+    `;
+
+    // Información de página
+    const startItem = (currentPageNum - 1) * itemsPerPage + 1;
+    const endItem = Math.min(currentPageNum * itemsPerPage, totalItems);
+    paginationHTML += `
+      <div class="pagination-info">
+        ${startItem}-${endItem} de ${totalItems}
+      </div>
+    `;
+
+    paginationContainer.innerHTML = paginationHTML;
+
+    // Event listeners para paginación
+    paginationContainer.querySelectorAll('.pagination-btn:not(.disabled)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const page = parseInt(btn.dataset.page);
+        if (page && page !== currentPageNum && page >= 1 && page <= totalPages) {
+          currentPageNum = page;
+          renderList();
+        }
+      });
+    });
   }
 
   // Renderizar lista de herramientas
@@ -452,10 +535,22 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>No se encontraron herramientas que coincidan con los filtros seleccionados.</p>
         </div>
       `;
+      if (paginationContainer) paginationContainer.style.display = 'none';
       return;
     }
+
+    // Usar paginación tanto en index.html como en otros-productos.html
+    const shouldPaginate = currentPage === 'index.html' || currentPage === 'otros-productos.html';
+    const toolsToRender = shouldPaginate ? 
+                         getPaginatedTools(filteredTools, currentPageNum) : 
+                         filteredTools;
     
-    filteredTools.forEach(tool => {
+    // Renderizar paginación para ambas páginas
+    if (shouldPaginate) {
+      renderPagination(filteredTools.length);
+    }
+    
+    toolsToRender.forEach(tool => {
       const priceFormatted = new Intl.NumberFormat('es-ES', { 
         style: 'currency', 
         currency: tool.currency 
@@ -666,6 +761,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentFilter = btn.dataset.filter;
+        currentPageNum = 1; // Reiniciar a la primera página
         renderList();
       });
     });
@@ -674,6 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
       currentSort = e.target.value;
+      currentPageNum = 1; // Reiniciar a la primera página
       renderList();
     });
   }
@@ -685,6 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         currentSearch = e.target.value;
+        currentPageNum = 1; // Reiniciar a la primera página
         renderList();
       }, 300); // Esperar 300ms después de que el usuario deje de escribir
     });

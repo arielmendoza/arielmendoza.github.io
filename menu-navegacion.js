@@ -9,7 +9,7 @@ const menuHTML = `
       <span class="hamburger"></span>
     </button>
     <ul class="nav-links">
-      <li><a href="index.html">Herramientas</a></li>
+      <li><a href="index.html">Inicio</a></li>
       <li><a href="otros-productos.html">Otros Productos</a></li>
       <li class="nav-item">
         <a href="#" class="dropdown-toggle">Guías <span class="dropdown-arrow">▼</span></a>

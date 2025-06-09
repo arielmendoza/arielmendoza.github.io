@@ -21,56 +21,72 @@
   <script src="menu-navegacion.js"></script>
 
   <!-- Hero Section -->
-  <section class="guide-header-apple">
+  <section class="hero-apple">
     <div class="container">
-      <h1 class="guide-title-apple">Otros Productos</h1>
-      <p class="guide-subtitle-apple">Selección experta de productos útiles para tu taller y hogar</p>
+      <h1 class="hero-title">Otros productos recomendados</h1>
+      <p class="hero-subtitle">Selección experta de productos útiles para tu taller y hogar</p>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="values-apple">
+    <div class="container">
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🛒</div>
+          <h3>Catálogo completo</h3>
+          <p>Productos cuidadosamente seleccionados</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <h3>Mejor calidad</h3>
+          <p>Solo productos con las mejores valoraciones</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💰</div>
+          <h3>Mejores precios</h3>
+          <p>Monitoreamos ofertas constantemente</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-quick-access">
+    <div class="container">
+      <h2 class="section-title-apple">Productos destacados</h2>
+      <p class="section-subtitle">Descubre nuestra selección de productos útiles y accesorios</p>
       
-      <div class="guide-meta-apple">
-        <div class="meta-item-apple">🛒 Catálogo Completo</div>
-        <div class="meta-item-apple">⭐ Mejor Calidad</div>
-        <div class="meta-item-apple">💰 Mejores Precios</div>
+      <!-- Filtros minimalistas -->
+      <div class="filters-apple">
+        <div class="search-apple">
+          <input type="search" id="search-input" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="offer">Ofertas</button>
+        </div>
+        <select id="sort-select" class="sort-apple">
+          <option value="default">Más relevantes</option>
+          <option value="price-asc">Precio menor</option>
+          <option value="price-desc">Precio mayor</option>
+          <option value="rating-desc">Mejor valoradas</option>
+        </select>
+      </div>
+
+      <div id="tool-list" class="tool-list">
+        <!-- Productos cargados dinámicamente -->
+      </div>
+      
+      <div id="pagination-container" class="pagination" style="display: none;">
+        <!-- Paginación generada dinámicamente -->
+      </div>
+      
+      <div class="affiliate-notice" style="margin-top: 2rem; padding: 1rem; background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); font-size: 0.85rem; color: var(--gray-600); text-align: center;">
+        <p>🔍 Los precios y la disponibilidad de los productos son precisos a partir de la fecha/hora indicada y están sujetos a cambios. Cualquier información de precio y disponibilidad que se muestre en Amazon.es en el momento de la compra se aplicará a este producto.</p>
       </div>
     </div>
   </section>
-
-  <!-- Filtros Modernos -->
-  <section class="section-apple" style="padding: 2rem 0; background: #f8f9fa;">
-    <div class="container">
-      <div class="filters-bar-apple">
-        <div class="search-group-apple">
-          <input type="search" id="search-input" class="search-input-apple" placeholder="Buscar productos..." aria-label="Buscar productos">
-        </div>
-        <div class="filters-group-apple">
-          <button class="filter-btn-apple active" data-filter="all">Todos</button>
-          <button class="filter-btn-apple" data-filter="offer">🏷️ Ofertas</button>
-        </div>
-        <div class="sort-group-apple">
-          <select id="sort-select" class="sort-select-apple">
-            <option value="default">Relevancia</option>
-            <option value="price-asc">Precio: Menor a mayor</option>
-            <option value="price-desc">Precio: Mayor a menor</option>
-            <option value="rating-desc">Mejor valorados</option>
-            <option value="rating-asc">Menor valoración</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main class="guide-content-apple">
-    <section aria-labelledby="products-heading">
-      <h2 id="products-heading" class="section-title">Productos Destacados</h2>
-      <div class="product-grid">
-        <div class="affiliate-notice">
-          <p>🔍 Los precios y la disponibilidad de los productos son precisos a partir de la fecha/hora indicada y están sujetos a cambios. Cualquier información de precio y disponibilidad que se muestre en Amazon.es en el momento de la compra se aplicará a este producto.</p>
-        </div>
-        <div id="tool-list" class="tool-list">
-          <!-- Productos cargados dinámicamente -->
-        </div>
-      </div>
-    </section>
-  </main>
 
   <div id="footer-container"></div>
   <script>
