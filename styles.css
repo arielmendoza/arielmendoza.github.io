@@ -3988,50 +3988,35 @@ button[aria-pressed="true"] {
   }
   
   .products-quick-access .tool-list {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 0.6rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .products-quick-access .tool-card {
-    padding: 0.6rem;
+    padding: 1rem;
   }
   
   .products-quick-access .tool-photo-container {
-    height: 70px;
-  }
-  
-  .products-quick-access .tool-photo {
-    object-fit: contain;
-    max-width: 90%;
-    max-height: 90%;
+    height: 150px;
   }
   
   .products-quick-access .tool-name {
-    font-size: 0.7rem;
-    line-height: 1.2;
-    -webkit-line-clamp: 2;
-    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    -webkit-line-clamp: 3;
   }
   
   .products-quick-access .tool-rating {
-    font-size: 0.65rem;
-    margin-bottom: 0.2rem;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    min-height: 14px;
+    font-size: 0.8rem;
+    min-height: auto;
   }
   
   .products-quick-access .tool-price {
-    font-size: 0.75rem;
-    margin-bottom: 0.3rem;
+    font-size: 1rem;
   }
   
   .products-quick-access .tool-description {
-    font-size: 0.65rem;
-    -webkit-line-clamp: 1;
-    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
   }
   
   .products-quick-access .tool-actions {
@@ -4104,79 +4089,65 @@ button[aria-pressed="true"] {
   }
   
   .products-quick-access .tool-list {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .products-quick-access .tool-card {
-    padding: 0.5rem;
+    padding: 1rem;
+    max-width: 350px;
+    margin: 0 auto;
   }
   
   .products-quick-access .tool-photo-container {
-    height: 60px;
+    height: 200px;
   }
   
   .products-quick-access .tool-photo {
     object-fit: contain;
-    max-width: 85%;
-    max-height: 85%;
+    max-width: 90%;
+    max-height: 90%;
   }
   
   .products-quick-access .tool-name {
-    font-size: 0.7rem;
-    line-height: 1.1;
+    font-size: 1rem;
+    line-height: 1.3;
     -webkit-line-clamp: 2;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
   }
   
   .products-quick-access .tool-rating {
-    font-size: 0.6rem;
-    margin-bottom: 0.15rem;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    gap: 0.1rem;
-    min-height: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
   }
   
   .products-quick-access .tool-price {
-    font-size: 0.75rem;
-    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
   }
   
   .products-quick-access .tool-description {
-    display: none; /* Ocultar en móviles muy pequeños para ahorrar espacio */
+    display: block;
+    font-size: 0.9rem;
+    -webkit-line-clamp: 4;
+    margin-bottom: 1rem;
   }
   
   .products-quick-access .tool-actions {
-    flex-direction: column;
-    gap: 0.25rem;
-    align-items: stretch;
+    flex-direction: row;
+    gap: 1rem;
   }
   
   .products-quick-access .btn {
-    padding: 0.35rem 0.3rem;
-    font-size: 0.6rem;
-    min-height: 22px;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    flex: 1;
   }
   
   .products-quick-access .btn-amazon {
-    padding: 0.35rem 0.3rem;
-    font-size: 0.6rem;
-    width: 100%;
-    min-height: 22px;
-    text-align: center;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    justify-content: center;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    flex: 1.5;
   }
   
   .pagination-btn {
