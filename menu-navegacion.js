@@ -13,25 +13,31 @@ const menuHTML = `
       <li class="nav-item">
         <a href="#" class="dropdown-toggle">Guías <span class="dropdown-arrow">▼</span></a>
         <div class="nav-dropdown">
+          <p class="dropdown-header">PROYECTOS Y TEMAS</p>
+          <a href="guia-instalar-ventilador-techo.html">💡 Instalar Ventilador de Techo</a>
+          <a href="guia-pegar-cesped-artificial.html">🌿 Pegar Césped Artificial</a>
+          <a href="guia-mantenimiento-piscina.html">💧 Mantenimiento de Piscinas</a>
+          <a href="guia-herramientas-jardin.html">🌳 Herramientas de Jardín</a>
+          <a href="guia-herramientas-bano.html">🚿 Herramientas para Baño</a>
+          <a href="guia-herramientas-cocina.html">🍳 Herramientas para Cocina</a>
+
+          <p class="dropdown-header">HERRAMIENTAS</p>
           <a href="guia-taladros-principiantes.html">🔧 Guía de Taladros</a>
           <a href="guia-sierras-de-calar.html">🪚 Guía Sierras de Calar</a>
           <a href="guia-martillos.html">🔨 Guía Martillos</a>
-          <a href="guia-herramientas-inalambricas-vs-cable.html">🔋 Inalámbricas vs Cable</a>
-          <a href="guia-herramientas-bano.html">🚿 Herramientas para Baño</a>
-          <a href="guia-llaves-inglesas.html">🔧 Llaves Inglesas</a>
           <a href="guia-destornilladores.html">🪛 Destornilladores</a>
-          <a href="guia-llaves-fijas.html">🔩 Llaves Fijas</a>
-          <a href="guia-niveles-medicion.html">📏 Niveles y Medición</a>
-          <a href="guia-herramientas-cocina.html">🍳 Herramientas para Cocina</a>
           <a href="guia-alicates-tenazas.html">🗜️ Alicates y Tenazas</a>
-          <a href="guia-principiantes-absolutos.html">👨‍🔧 Para Principiantes</a>
-          <a href="guia-herramientas-jardin.html">🌿 Herramientas Jardín</a>
-          <a href="guia-instalar-ventilador-techo.html">💡 Instalar Ventilador de Techo</a>
-          <a href="guia-pegar-cesped-artificial.html">🌿 Pegar Césped Artificial</a>
-          <a href="guia-mantenimiento-herramientas.html">🛠️ Mantenimiento</a>
-          <a href="guia-seguridad-taller.html">⚠️ Seguridad Taller</a>
+          <a href="guia-niveles-medicion.html">📏 Niveles y Medición</a>
+          <a href="guia-llaves-inglesas.html">🔧 Llaves Inglesas</a>
+          <a href="guia-llaves-fijas.html">🔩 Llaves Fijas</a>
+          
+          <p class="dropdown-header">RECURSOS Y CONSEJOS</p>
+          <a href="guia-principiantes-absolutos.html">👨‍🔧 Guía para Principiantes</a>
           <a href="10-herramientas-esenciales-bricolaje.html">⭐ 10 Herramientas Esenciales</a>
-          <a href="herramientas-baratas-menos-50-euros.html">💰 Herramientas Baratas</a>
+          <a href="herramientas-baratas-menos-50-euros.html">💰 Herramientas por menos de 50€</a>
+          <a href="guia-herramientas-inalambricas-vs-cable.html">🔋 Inalámbricas vs Cable</a>
+          <a href="guia-mantenimiento-herramientas.html">🛠️ Mantenimiento de Herramientas</a>
+          <a href="guia-seguridad-taller.html">⚠️ Seguridad en el Taller</a>
         </div>
       </li>
       <li><a href="productos-recomendados.html">Productos Recomendados</a></li>
@@ -73,18 +79,19 @@ function setupNavigation() {
     });
   }
 
-  // Lógica para el dropdown en móvil
-  const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const navItem = dropdownToggle.closest('.nav-item');
-
-  if (dropdownToggle && navItem) {
-    dropdownToggle.addEventListener('click', (e) => {
+  // Lógica MEJORADA para el dropdown en móvil
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault(); // Prevenir la navegación en el enlace '#'
-        navItem.classList.toggle('dropdown-open');
+        const navItem = toggle.closest('.nav-item');
+        if (navItem) {
+          navItem.classList.toggle('dropdown-open');
+        }
       }
     });
-  }
+  });
 }
 
 // Ejecutar la configuración cuando el DOM esté listo
