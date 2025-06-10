@@ -10,7 +10,6 @@ const menuHTML = `
     </button>
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
-      <li><a href="otros-productos.html">Otros Productos</a></li>
       <li class="nav-item">
         <a href="#" class="dropdown-toggle">Guías <span class="dropdown-arrow">▼</span></a>
         <div class="nav-dropdown">
@@ -27,116 +26,72 @@ const menuHTML = `
           <a href="guia-alicates-tenazas.html">🗜️ Alicates y Tenazas</a>
           <a href="guia-principiantes-absolutos.html">👨‍🔧 Para Principiantes</a>
           <a href="guia-herramientas-jardin.html">🌿 Herramientas Jardín</a>
+          <a href="guia-instalar-ventilador-techo.html">💡 Instalar Ventilador de Techo</a>
+          <a href="guia-pegar-cesped-artificial.html">🌿 Pegar Césped Artificial</a>
           <a href="guia-mantenimiento-herramientas.html">🛠️ Mantenimiento</a>
           <a href="guia-seguridad-taller.html">⚠️ Seguridad Taller</a>
           <a href="10-herramientas-esenciales-bricolaje.html">⭐ 10 Herramientas Esenciales</a>
           <a href="herramientas-baratas-menos-50-euros.html">💰 Herramientas Baratas</a>
         </div>
       </li>
+      <li><a href="productos-recomendados.html">Productos Recomendados</a></li>
       <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
     </ul>
   </div>
 </nav>
 `;
 
-// Función para insertar el menú en la página
-function insertarMenu() {
-  // Buscar si ya existe un nav
-  const existingNav = document.querySelector('.main-nav');
-  if (existingNav) {
-    existingNav.remove();
+// Función para inyectar el menú y gestionar la lógica
+function setupNavigation() {
+  if (document.body.classList.contains('nav-loaded')) {
+    return;
   }
-  
+  document.body.classList.add('nav-loaded');
+
   // Insertar el nuevo menú al inicio del body
   document.body.insertAdjacentHTML('afterbegin', menuHTML);
-  
-  // Marcar la página actual como activa
-  marcarPaginaActiva();
-  
-  // Inicializar funcionalidad del menú móvil
-  inicializarMenuMovil();
-}
 
-// Función para marcar la página actual como activa
-function marcarPaginaActiva() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-links a');
-  
+  // Marcar la página actual como activa
+  const currentPage = window.location.pathname.split('/').pop();
+  const navLinks = document.querySelectorAll('.nav-links a, .nav-dropdown a');
+
   navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
+    const linkPage = link.getAttribute('href').split('/').pop();
+    if (linkPage === currentPage) {
       link.classList.add('active');
     }
   });
-}
 
-// Función para inicializar el menú móvil
-function inicializarMenuMovil() {
+  // Lógica para el menú móvil
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const navLinks = document.querySelector('.nav-links');
-  
-  if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileMenuBtn.classList.toggle('active');
-      
-      // Actualizar atributos ARIA para accesibilidad
-      const isOpen = navLinks.classList.contains('active');
-      mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-      navLinks.setAttribute('aria-expanded', isOpen);
-    });
-    
-    // Cerrar menú al hacer clic en un enlace (móvil)
-    navLinks.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' && e.target.getAttribute('href') !== '#') {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        navLinks.setAttribute('aria-expanded', 'false');
-      }
-    });
-    
-    // Manejar el dropdown en móvil y escritorio de forma robusta
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdown = document.querySelector('.nav-dropdown');
-    
-    if (dropdownToggle && dropdown) {
-      // Alternar clase 'open' en el dropdown al hacer clic
-      dropdownToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dropdown.classList.toggle('open');
-        // Cerrar otros dropdowns si existieran
-        document.querySelectorAll('.nav-dropdown').forEach(d => {
-          if (d !== dropdown) d.classList.remove('open');
-        });
-      });
+  const navLinksContainer = document.querySelector('.nav-links');
 
-      // Cerrar el dropdown si se hace clic fuera
-      document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target) && !dropdownToggle.contains(e.target)) {
-          dropdown.classList.remove('open');
-        }
-      });
-    }
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinksContainer.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
+    });
   }
 }
 
-// Función para actualizar el menú (útil para cambios dinámicos)
-function actualizarMenu() {
-  insertarMenu();
-}
-
-// Insertar menú cuando el DOM esté listo
+// Ejecutar la configuración cuando el DOM esté listo
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', insertarMenu);
+  document.addEventListener('DOMContentLoaded', setupNavigation);
 } else {
-  insertarMenu();
+  setupNavigation();
 }
 
 // Exportar funciones para uso externo
 window.BricoExpertosMenu = {
-  insertar: insertarMenu,
-  actualizar: actualizarMenu,
-  marcarActiva: marcarPaginaActiva
+  insertar: setupNavigation,
+  actualizar: setupNavigation,
+  marcarActiva: (page) => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === page) {
+        link.classList.add('active');
+      }
+    });
+  }
 }; 
