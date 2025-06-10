@@ -72,6 +72,19 @@ function setupNavigation() {
       mobileMenuBtn.classList.toggle('active');
     });
   }
+
+  // Lógica para el dropdown en móvil
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const navItem = dropdownToggle.closest('.nav-item');
+
+  if (dropdownToggle && navItem) {
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault(); // Prevenir la navegación en el enlace '#'
+        navItem.classList.toggle('dropdown-open');
+      }
+    });
+  }
 }
 
 // Ejecutar la configuración cuando el DOM esté listo

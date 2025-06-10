@@ -6394,6 +6394,6 @@ button[aria-pressed="true"] {
     max-width: 100%;
     height: auto;
     max-height: 50px; /* Ajusta la altura máxima de los logos */
-    object-fit: contain;
+  object-fit: contain;
     margin: 0 auto; /* Centra el logo si es más pequeño que el contenedor */
   }
