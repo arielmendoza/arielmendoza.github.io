@@ -74,42 +74,76 @@
     </div>
   </section>
 
+  <!-- Categories Section -->
+  <section class="categories-apple">
+    <div class="container">
+      <h2 class="section-title-apple">Explora por categorías</h2>
+      <div class="categories-grid">
+        <div class="category-card active" data-category="All">
+          <div class="category-icon">✨</div>
+          <h3>Todas</h3>
+          <p>Ver todas las guías</p>
+        </div>
+        <div class="category-card" data-category="Herramientas Eléctricas">
+          <div class="category-icon">🔌</div>
+          <h3>Herramientas Eléctricas</h3>
+          <p>Taladros, sierras, lijadoras y más</p>
+        </div>
+        <div class="category-card" data-category="Herramientas Manuales">
+          <div class="category-icon">🔧</div>
+          <h3>Herramientas Manuales</h3>
+          <p>Destornilladores, llaves, martillos</p>
+        </div>
+        <div class="category-card" data-category="Medición y Nivelación">
+          <div class="category-icon">📐</div>
+          <h3>Medición y Nivelación</h3>
+          <p>Niveles, metros, escuadras</p>
+        </div>
+        <div class="category-card" data-category="Renovación Hogar">
+          <div class="category-icon">🏠</div>
+          <h3>Renovación Hogar</h3>
+          <p>Baño, cocina, dormitorios</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Guides Section Principal -->
   <section id="guides" class="guides-apple">
     <div class="container">
       <h2 class="section-title-apple">Guías esenciales para bricolaje</h2>
       <div class="guides-grid">
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Eléctricas">
           <div class="guide-icon">🔧</div>
           <h3>Guía de Taladros</h3>
           <p>Todo lo que necesitas saber para elegir el taladro perfecto para cada trabajo</p>
           <a href="guia-taladros-principiantes.html" class="guide-link">Leer guía</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="General">
           <div class="guide-icon">🛠️</div>
           <h3>10 Herramientas Esenciales</h3>
           <p>Kit básico para empezar en bricolaje con garantía de éxito</p>
           <a href="10-herramientas-esenciales-bricolaje.html" class="guide-link">Ver kit</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="General">
           <div class="guide-icon">💰</div>
           <h3>Herramientas por menos de 50€</h3>
           <p>Calidad y precio en perfecta armonía para presupuestos ajustados</p>
           <a href="herramientas-baratas-menos-50-euros.html" class="guide-link">Descubrir</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Manuales">
           <div class="guide-icon">🔨</div>
           <h3>Guía de Martillos</h3>
           <p>Tipos, usos y cómo elegir el martillo perfecto para cada tarea</p>
           <a href="guia-martillos.html" class="guide-link">Leer guía</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Eléctricas">
           <div class="guide-icon">⚡</div>
           <h3>Herramientas Inalámbricas vs Cable</h3>
           <p>Ventajas, desventajas y cuándo usar cada tipo de herramienta</p>
           <a href="guia-herramientas-inalambricas-vs-cable.html" class="guide-link">Comparar</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Eléctricas">
           <div class="guide-icon">🪚</div>
           <h3>Guía de Sierras de Calar</h3>
           <p>Domina los cortes precisos con la sierra de calar perfecta</p>
@@ -124,71 +158,42 @@
     <div class="container">
       <h2 class="section-title-apple">Guías especializadas</h2>
       <div class="guides-grid">
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Manuales">
           <div class="guide-icon">🔩</div>
           <h3>Destornilladores</h3>
           <p>Tipos, sets y técnicas para atornillado profesional</p>
           <a href="guia-destornilladores.html" class="guide-link">Ver guía</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Manuales">
           <div class="guide-icon">🔧</div>
           <h3>Llaves Inglesas</h3>
           <p>Guía completa sobre llaves ajustables y su uso correcto</p>
           <a href="guia-llaves-inglesas.html" class="guide-link">Explorar</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Herramientas Manuales">
           <div class="guide-icon">⚙️</div>
           <h3>Llaves Fijas y de Tubo</h3>
           <p>Todo sobre llaves fijas, combinadas y de tubo para mecánica</p>
           <a href="guia-llaves-fijas.html" class="guide-link">Descubrir</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Medición y Nivelación">
           <div class="guide-icon">📏</div>
           <h3>Niveles y Medición</h3>
           <p>Precisión perfecta con las mejores herramientas de medición</p>
           <a href="guia-niveles-medicion.html" class="guide-link">Medir</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Renovación Hogar">
           <div class="guide-icon">🏠</div>
           <h3>Herramientas para Baño</h3>
           <p>Kit completo para renovar tu baño como un profesional</p>
           <a href="guia-herramientas-bano.html" class="guide-link">Renovar</a>
         </article>
-        <article class="guide-card">
+        <article class="guide-card" data-category="Renovación Hogar">
           <div class="guide-icon">🍳</div>
           <h3>Herramientas para Cocina</h3>
           <p>Todo lo necesario para renovar tu cocina paso a paso</p>
           <a href="guia-herramientas-cocina.html" class="guide-link">Cocinar</a>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section class="categories-apple">
-    <div class="container">
-      <h2 class="section-title-apple">Explora por categorías</h2>
-      <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon">🔌</div>
-          <h3>Herramientas Eléctricas</h3>
-          <p>Taladros, sierras, lijadoras y más</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🔧</div>
-          <h3>Herramientas Manuales</h3>
-          <p>Destornilladores, llaves, martillos</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">📐</div>
-          <h3>Medición y Nivelación</h3>
-          <p>Niveles, metros, escuadras</p>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">🏠</div>
-          <h3>Renovación Hogar</h3>
-          <p>Baño, cocina, dormitorios</p>
-        </div>
       </div>
     </div>
   </section>
@@ -239,6 +244,35 @@
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
       });
+  </script>
+
+  <!-- Script para filtrar guías por categoría -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryFilters = document.querySelectorAll('.categories-grid .category-card');
+      const guideCards = document.querySelectorAll('.guides-grid .guide-card');
+
+      categoryFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+          // Gestionar clase activa
+          categoryFilters.forEach(f => f.classList.remove('active'));
+          this.classList.add('active');
+
+          const selectedCategory = this.dataset.category;
+
+          guideCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const generalCategory = card.dataset.category === 'General';
+
+            if (selectedCategory === 'All' || cardCategory === selectedCategory || generalCategory) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
   </script>
 
   <!-- Modales (sin cambios) -->

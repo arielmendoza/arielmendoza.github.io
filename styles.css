@@ -3760,6 +3760,13 @@ button[aria-pressed="true"] {
   line-height: 1.5;
 }
 
+.category-card.active {
+  background: white;
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
 /* Acceso rápido a productos (index.html y otros-productos.html) */
 .products-quick-access {
   background: var(--gray-50);
