@@ -3705,2688 +3705,6 @@ button[aria-pressed="true"] {
   transform: scale(1.1);
 }
 
-/* Categorías */
-.categories-apple {
-  background: white;
-  padding: 5rem 0;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.category-card {
-  background: var(--gray-50);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  text-align: center;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.category-card:hover {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.category-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.category-card:hover .category-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.category-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-900);
-  margin-bottom: 0.5rem;
-}
-
-.category-card p {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-
-.category-card.active {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Acceso rápido a productos (index.html y otros-productos.html) */
-.products-quick-access {
-  background: var(--gray-50);
-  padding: 4rem 0;
-  border-top: 1px solid var(--gray-200);
-}
-
-.products-quick-access .tool-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.products-quick-access .tool-card {
-  padding: 1rem;
-  background: white;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
-  transition: all 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.products-quick-access .tool-photo-container {
-  height: 120px;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-  background: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.products-quick-access .tool-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover .tool-photo {
-  transform: scale(1.05);
-}
-
-.products-quick-access .tool-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.products-quick-access .tool-meta {
-  margin-bottom: 0.5rem;
-}
-
-.products-quick-access .tool-rating {
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.products-quick-access .tool-price {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.products-quick-access .tool-description {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  margin-bottom: 0.75rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: var(--gray-600);
-}
-
-.products-quick-access .tool-actions {
-  gap: 0.5rem;
-}
-
-.products-quick-access .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-}
-
-.products-quick-access .btn-amazon {
-  padding: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.pagination-btn {
-  padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid var(--gray-300);
-  border-radius: var(--radius);
-  color: var(--gray-700);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.pagination-btn:hover {
-  background: var(--gray-50);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.pagination-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: white;
-}
-
-.pagination-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.pagination-info {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  margin: 0 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 3rem;
-  font-weight: 400;
-}
-
-.products-cta {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
-}
-
-.products-cta p {
-  font-size: 1.1rem;
-  color: var(--gray-700);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.btn-secondary-apple {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  background: white;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.btn-secondary-apple:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Responsive para las nuevas secciones */
-@media (max-width: 768px) {
-  .guides-specialized,
-  .categories-apple,
-  .products-quick-access {
-    padding: 1.5rem 0;
-  }
-  
-  .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .category-card {
-    padding: 1.5rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2.5rem;
-  }
-  
-  .products-cta {
-    margin-top: 2rem;
-    padding: 1.5rem;
-  }
-  
-  .products-cta p {
-    font-size: 1rem;
-  }
-  
-  .btn-secondary-apple {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 150px;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.8rem;
-    min-height: auto;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1rem;
-  }
-  
-  .products-quick-access .tool-description {
-    font-size: 0.85rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: stretch;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    min-height: 24px;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    width: 100%;
-    min-height: 24px;
-    text-align: center;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    justify-content: center;
-  }
-  
-  .pagination-btn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
-    min-width: 38px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .categories-grid {
-    margin-top: 1.5rem;
-    gap: 1rem;
-  }
-  
-  .category-card {
-    padding: 1.25rem;
-  }
-  
-  .category-card h3 {
-    font-size: 1.1rem;
-  }
-  
-  .category-card p {
-    font-size: 0.9rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 200px;
-  }
-  
-  .products-quick-access .tool-photo {
-    object-fit: contain;
-    max-width: 90%;
-    max-height: 90%;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 1rem;
-    line-height: 1.3;
-    -webkit-line-clamp: 2;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-description {
-    display: block;
-    font-size: 0.9rem;
-    -webkit-line-clamp: 4;
-    margin-bottom: 1rem;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1.5;
-  }
-  
-  .pagination-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7rem;
-    min-width: 35px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.7rem;
-  }
-}
-
-/* ================================
-   PRODUCTOS RECOMENDADOS STYLES (APPLE)
-   ================================ */
-
-.filters-bar-apple {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-
-.search-group-apple {
-  flex: 1;
-  min-width: 200px;
-}
-
-.search-input-apple {
-  width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
-}
-
-.search-input-apple:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.filters-group-apple {
-  display: flex;
-  gap: 10px;
-}
-
-.filter-btn-apple {
-  padding: 10px 20px;
-  border: 2px solid #e0e0e0;
-  background: white;
-  color: #666;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn-apple:hover,
-.filter-btn-apple.active {
-  background: #007aff;
-  color: white;
-  border-color: #007aff;
-}
-
-.sort-group-apple {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sort-select-apple {
-  padding: 10px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 15px;
-  font-size: 14px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sort-select-apple:focus {
-  outline: none;
-  border-color: #007aff;
-}
-
-@media (max-width: 768px) {
-  .filters-bar-apple {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .search-group-apple {
-    width: 100%;
-  }
-  
-  .filters-group-apple {
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1800px) {
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    max-width: 1800px;
-  }
-}
-
-/* Media queries para tablets y resoluciones intermedias */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1399px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-/* =================================
-   FORMULARIO DE CONTACTO APPLE
-   ================================= */
-
-.contact-form-apple {
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e0e0;
-}
-
-.form-row-apple {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple {
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple label {
-  display: block;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.form-group-apple input,
-.form-group-apple select,
-.form-group-apple textarea {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: all 0.3s ease;
-  background: #f9f9f9;
-  box-sizing: border-box;
-}
-
-.form-group-apple input:focus,
-.form-group-apple select:focus,
-.form-group-apple textarea:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.form-group-apple textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.5;
-}
-
-.form-group-apple select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2rem;
-  padding-right: 3rem;
-}
-
-.form-submit-apple {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.contact-form-apple .btn-primary-apple {
-  min-width: 200px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form-apple .btn-primary-apple:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.form-message-apple {
-  margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.form-message-apple.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.form-message-apple.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.form-message-apple.info {
-  background: #d1ecf1;
-  color: #0c5460;
-  border: 1px solid #bee5eb;
-}
-
-/* Animación de envío */
-.btn-loading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-loading::after {
-  content: '';
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid currentColor;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive para formulario */
-@media (max-width: 768px) {
-  .contact-form-apple {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-  
-  .form-row-apple {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .form-group-apple {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group-apple input,
-  .form-group-apple select,
-  .form-group-apple textarea {
-    padding: 0.875rem 1rem;
-  }
-  
-  .contact-form-apple .btn-primary-apple {
-    width: 100%;
-    min-width: auto;
-  }
-}
-
-/* =================================
-   MEJORAS PARA BOTONES EN TARJETAS
-   ================================= */
-
-/* Hacer los botones verticales para que quepan mejor */
-.tool-actions {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-  margin-top: auto !important;
-  padding-top: 1.25rem !important;
-}
-
-/* Botones más compactos */
-.tool-actions .btn {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  text-align: center !important;
-  min-height: 2.5rem !important;
-  gap: 0.375rem !important;
-}
-
-.tool-actions .btn-amazon {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  gap: 0.375rem !important;
-}
-
-/* Más altura mínima para las tarjetas */
-.tool-card {
-  min-height: 520px !important;
-}
-
-/* Descripción más compacta */
-.tool-description {
-  max-height: 6em !important;
-  line-height: 1.4 !important;
-  margin-bottom: 1rem !important;
-}
-
-/* Mejor distribución del contenido */
-.tool-content {
-  padding: 1.75rem !important;
-  justify-content: space-between !important;
-}
-
-/* ===============================================
-   TOOL LIST STYLES - MEJOR FORMATO DE ENLACES
-   =============================================== */
-
-.tool-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.tool-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  transition: all 0.2s ease;
-}
-
-.tool-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  background: white;
-}
-
-.tool-desc {
-  color: var(--gray-700);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-
-.tool-item .btn-amazon {
-  align-self: flex-start;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .tool-list {
-    gap: 0.75rem;
-  }
-  
-  .tool-item {
-    padding: 0.75rem;
-  }
-  
-  .tool-desc {
-    font-size: 0.9rem;
-  }
-  
-  .tool-item .btn-amazon {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.75rem;
-    align-self: stretch;
-    text-align: center;
-  }
-}
-
-/* ===============================================
-   NUEVOS ESTILOS PARA ENFOQUE EN GUÍAS
-   =============================================== */
-
-/* Guías especializadas */
-.guides-specialized {
-  background: var(--gray-50);
-  padding: 5rem 0;
-}
-
-.guides-specialized .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.guide-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.guide-card:hover .guide-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* Categorías */
-.categories-apple {
-  background: white;
-  padding: 5rem 0;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.category-card {
-  background: var(--gray-50);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  text-align: center;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.category-card:hover {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.category-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.category-card:hover .category-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.category-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-900);
-  margin-bottom: 0.5rem;
-}
-
-.category-card p {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-
-.category-card.active {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Acceso rápido a productos (index.html y otros-productos.html) */
-.products-quick-access {
-  background: var(--gray-50);
-  padding: 4rem 0;
-  border-top: 1px solid var(--gray-200);
-}
-
-.products-quick-access .tool-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.products-quick-access .tool-card {
-  padding: 1rem;
-  background: white;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
-  transition: all 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.products-quick-access .tool-photo-container {
-  height: 120px;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-  background: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.products-quick-access .tool-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover .tool-photo {
-  transform: scale(1.05);
-}
-
-.products-quick-access .tool-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.products-quick-access .tool-meta {
-  margin-bottom: 0.5rem;
-}
-
-.products-quick-access .tool-rating {
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.products-quick-access .tool-price {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.products-quick-access .tool-description {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  margin-bottom: 0.75rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: var(--gray-600);
-}
-
-.products-quick-access .tool-actions {
-  gap: 0.5rem;
-}
-
-.products-quick-access .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-}
-
-.products-quick-access .btn-amazon {
-  padding: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.pagination-btn {
-  padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid var(--gray-300);
-  border-radius: var(--radius);
-  color: var(--gray-700);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.pagination-btn:hover {
-  background: var(--gray-50);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.pagination-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: white;
-}
-
-.pagination-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.pagination-info {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  margin: 0 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 3rem;
-  font-weight: 400;
-}
-
-.products-cta {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
-}
-
-.products-cta p {
-  font-size: 1.1rem;
-  color: var(--gray-700);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.btn-secondary-apple {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  background: white;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.btn-secondary-apple:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Responsive para las nuevas secciones */
-@media (max-width: 768px) {
-  .guides-specialized,
-  .categories-apple,
-  .products-quick-access {
-    padding: 1.5rem 0;
-  }
-  
-  .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .category-card {
-    padding: 1.5rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2.5rem;
-  }
-  
-  .products-cta {
-    margin-top: 2rem;
-    padding: 1.5rem;
-  }
-  
-  .products-cta p {
-    font-size: 1rem;
-  }
-  
-  .btn-secondary-apple {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 150px;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.8rem;
-    min-height: auto;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1rem;
-  }
-  
-  .products-quick-access .tool-description {
-    font-size: 0.85rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: stretch;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    min-height: 24px;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    width: 100%;
-    min-height: 24px;
-    text-align: center;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    justify-content: center;
-  }
-  
-  .pagination-btn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
-    min-width: 38px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .categories-grid {
-    margin-top: 1.5rem;
-    gap: 1rem;
-  }
-  
-  .category-card {
-    padding: 1.25rem;
-  }
-  
-  .category-card h3 {
-    font-size: 1.1rem;
-  }
-  
-  .category-card p {
-    font-size: 0.9rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 200px;
-  }
-  
-  .products-quick-access .tool-photo {
-    object-fit: contain;
-    max-width: 90%;
-    max-height: 90%;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 1rem;
-    line-height: 1.3;
-    -webkit-line-clamp: 2;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-description {
-    display: block;
-    font-size: 0.9rem;
-    -webkit-line-clamp: 4;
-    margin-bottom: 1rem;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1.5;
-  }
-  
-  .pagination-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7rem;
-    min-width: 35px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.7rem;
-  }
-}
-
-/* ================================
-   PRODUCTOS RECOMENDADOS STYLES (APPLE)
-   ================================ */
-
-.filters-bar-apple {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-
-.search-group-apple {
-  flex: 1;
-  min-width: 200px;
-}
-
-.search-input-apple {
-  width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
-}
-
-.search-input-apple:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.filters-group-apple {
-  display: flex;
-  gap: 10px;
-}
-
-.filter-btn-apple {
-  padding: 10px 20px;
-  border: 2px solid #e0e0e0;
-  background: white;
-  color: #666;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn-apple:hover,
-.filter-btn-apple.active {
-  background: #007aff;
-  color: white;
-  border-color: #007aff;
-}
-
-.sort-group-apple {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sort-select-apple {
-  padding: 10px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 15px;
-  font-size: 14px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sort-select-apple:focus {
-  outline: none;
-  border-color: #007aff;
-}
-
-@media (max-width: 768px) {
-  .filters-bar-apple {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .search-group-apple {
-    width: 100%;
-  }
-  
-  .filters-group-apple {
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1800px) {
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    max-width: 1800px;
-  }
-}
-
-/* Media queries para tablets y resoluciones intermedias */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1399px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-/* =================================
-   FORMULARIO DE CONTACTO APPLE
-   ================================= */
-
-.contact-form-apple {
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e0e0;
-}
-
-.form-row-apple {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple {
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple label {
-  display: block;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.form-group-apple input,
-.form-group-apple select,
-.form-group-apple textarea {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: all 0.3s ease;
-  background: #f9f9f9;
-  box-sizing: border-box;
-}
-
-.form-group-apple input:focus,
-.form-group-apple select:focus,
-.form-group-apple textarea:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.form-group-apple textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.5;
-}
-
-.form-group-apple select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2rem;
-  padding-right: 3rem;
-}
-
-.form-submit-apple {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.contact-form-apple .btn-primary-apple {
-  min-width: 200px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form-apple .btn-primary-apple:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.form-message-apple {
-  margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.form-message-apple.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.form-message-apple.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.form-message-apple.info {
-  background: #d1ecf1;
-  color: #0c5460;
-  border: 1px solid #bee5eb;
-}
-
-/* Animación de envío */
-.btn-loading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-loading::after {
-  content: '';
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid currentColor;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive para formulario */
-@media (max-width: 768px) {
-  .contact-form-apple {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-  
-  .form-row-apple {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .form-group-apple {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group-apple input,
-  .form-group-apple select,
-  .form-group-apple textarea {
-    padding: 0.875rem 1rem;
-  }
-  
-  .contact-form-apple .btn-primary-apple {
-    width: 100%;
-    min-width: auto;
-  }
-}
-
-/* =================================
-   MEJORAS PARA BOTONES EN TARJETAS
-   ================================= */
-
-/* Hacer los botones verticales para que quepan mejor */
-.tool-actions {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-  margin-top: auto !important;
-  padding-top: 1.25rem !important;
-}
-
-/* Botones más compactos */
-.tool-actions .btn {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  text-align: center !important;
-  min-height: 2.5rem !important;
-  gap: 0.375rem !important;
-}
-
-.tool-actions .btn-amazon {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  gap: 0.375rem !important;
-}
-
-/* Más altura mínima para las tarjetas */
-.tool-card {
-  min-height: 520px !important;
-}
-
-/* Descripción más compacta */
-.tool-description {
-  max-height: 6em !important;
-  line-height: 1.4 !important;
-  margin-bottom: 1rem !important;
-}
-
-/* Mejor distribución del contenido */
-.tool-content {
-  padding: 1.75rem !important;
-  justify-content: space-between !important;
-}
-
-/* ===============================================
-   TOOL LIST STYLES - MEJOR FORMATO DE ENLACES
-   =============================================== */
-
-.tool-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.tool-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  transition: all 0.2s ease;
-}
-
-.tool-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  background: white;
-}
-
-.tool-desc {
-  color: var(--gray-700);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-
-.tool-item .btn-amazon {
-  align-self: flex-start;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .tool-list {
-    gap: 0.75rem;
-  }
-  
-  .tool-item {
-    padding: 0.75rem;
-  }
-  
-  .tool-desc {
-    font-size: 0.9rem;
-  }
-  
-  .tool-item .btn-amazon {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.75rem;
-    align-self: stretch;
-    text-align: center;
-  }
-}
-
-/* ===============================================
-   NUEVOS ESTILOS PARA ENFOQUE EN GUÍAS
-   =============================================== */
-
-/* Guías especializadas */
-.guides-specialized {
-  background: var(--gray-50);
-  padding: 5rem 0;
-}
-
-.guides-specialized .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.guide-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.guide-card:hover .guide-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-/* Categorías */
-.categories-apple {
-  background: white;
-  padding: 5rem 0;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.category-card {
-  background: var(--gray-50);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  text-align: center;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.category-card:hover {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.category-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.category-card:hover .category-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.category-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--gray-900);
-  margin-bottom: 0.5rem;
-}
-
-.category-card p {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-
-.category-card.active {
-  background: white;
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Acceso rápido a productos (index.html y otros-productos.html) */
-.products-quick-access {
-  background: var(--gray-50);
-  padding: 4rem 0;
-  border-top: 1px solid var(--gray-200);
-}
-
-.products-quick-access .tool-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.products-quick-access .tool-card {
-  padding: 1rem;
-  background: white;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
-  transition: all 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-.products-quick-access .tool-photo-container {
-  height: 120px;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.75rem;
-  background: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.products-quick-access .tool-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.products-quick-access .tool-card:hover .tool-photo {
-  transform: scale(1.05);
-}
-
-.products-quick-access .tool-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.products-quick-access .tool-meta {
-  margin-bottom: 0.5rem;
-}
-
-.products-quick-access .tool-rating {
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
-.products-quick-access .tool-price {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.products-quick-access .tool-description {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  margin-bottom: 0.75rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: var(--gray-600);
-}
-
-.products-quick-access .tool-actions {
-  gap: 0.5rem;
-}
-
-.products-quick-access .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-}
-
-.products-quick-access .btn-amazon {
-  padding: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.pagination-btn {
-  padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid var(--gray-300);
-  border-radius: var(--radius);
-  color: var(--gray-700);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.pagination-btn:hover {
-  background: var(--gray-50);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.pagination-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: white;
-}
-
-.pagination-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.pagination-info {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  margin: 0 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 3rem;
-  font-weight: 400;
-}
-
-.products-cta {
-  text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
-}
-
-.products-cta p {
-  font-size: 1.1rem;
-  color: var(--gray-700);
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.btn-secondary-apple {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.875rem 2rem;
-  background: white;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: var(--radius-lg);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.btn-secondary-apple:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Responsive para las nuevas secciones */
-@media (max-width: 768px) {
-  .guides-specialized,
-  .categories-apple,
-  .products-quick-access {
-    padding: 1.5rem 0;
-  }
-  
-  .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .category-card {
-    padding: 1.5rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2.5rem;
-  }
-  
-  .products-cta {
-    margin-top: 2rem;
-    padding: 1.5rem;
-  }
-  
-  .products-cta p {
-    font-size: 1rem;
-  }
-  
-  .btn-secondary-apple {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 150px;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.8rem;
-    min-height: auto;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1rem;
-  }
-  
-  .products-quick-access .tool-description {
-    font-size: 0.85rem;
-    -webkit-line-clamp: 3;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: stretch;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    min-height: 24px;
-    width: 100%;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.65rem;
-    width: 100%;
-    min-height: 24px;
-    text-align: center;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    justify-content: center;
-  }
-  
-  .pagination-btn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
-    min-width: 38px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .categories-grid {
-    margin-top: 1.5rem;
-    gap: 1rem;
-  }
-  
-  .category-card {
-    padding: 1.25rem;
-  }
-  
-  .category-card h3 {
-    font-size: 1.1rem;
-  }
-  
-  .category-card p {
-    font-size: 0.9rem;
-  }
-  
-  .guide-icon,
-  .category-icon {
-    font-size: 2rem;
-  }
-  
-  .products-quick-access .tool-list {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .products-quick-access .tool-card {
-    padding: 1rem;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-  
-  .products-quick-access .tool-photo-container {
-    height: 200px;
-  }
-  
-  .products-quick-access .tool-photo {
-    object-fit: contain;
-    max-width: 90%;
-    max-height: 90%;
-  }
-  
-  .products-quick-access .tool-name {
-    font-size: 1rem;
-    line-height: 1.3;
-    -webkit-line-clamp: 2;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-rating {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  .products-quick-access .tool-price {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .products-quick-access .tool-description {
-    display: block;
-    font-size: 0.9rem;
-    -webkit-line-clamp: 4;
-    margin-bottom: 1rem;
-  }
-  
-  .products-quick-access .tool-actions {
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .products-quick-access .btn {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1;
-  }
-  
-  .products-quick-access .btn-amazon {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-    flex: 1.5;
-  }
-  
-  .pagination-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7rem;
-    min-width: 35px;
-  }
-  
-  .pagination-info {
-    width: 100%;
-    text-align: center;
-    order: -1;
-    margin: 0 0 0.4rem 0;
-    font-size: 0.7rem;
-  }
-}
-
-/* ================================
-   PRODUCTOS RECOMENDADOS STYLES (APPLE)
-   ================================ */
-
-.filters-bar-apple {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-
-.search-group-apple {
-  flex: 1;
-  min-width: 200px;
-}
-
-.search-input-apple {
-  width: 100%;
-  padding: 12px 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
-}
-
-.search-input-apple:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.filters-group-apple {
-  display: flex;
-  gap: 10px;
-}
-
-.filter-btn-apple {
-  padding: 10px 20px;
-  border: 2px solid #e0e0e0;
-  background: white;
-  color: #666;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn-apple:hover,
-.filter-btn-apple.active {
-  background: #007aff;
-  color: white;
-  border-color: #007aff;
-}
-
-.sort-group-apple {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sort-select-apple {
-  padding: 10px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 15px;
-  font-size: 14px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sort-select-apple:focus {
-  outline: none;
-  border-color: #007aff;
-}
-
-@media (max-width: 768px) {
-  .filters-bar-apple {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .search-group-apple {
-    width: 100%;
-  }
-  
-  .filters-group-apple {
-    justify-content: center;
-  }
-}
-
-@media (min-width: 1800px) {
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    max-width: 1800px;
-  }
-}
-
-/* Media queries para tablets y resoluciones intermedias */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1399px) {
-  .tool-list,
-  .tool-grid-apple {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-/* =================================
-   FORMULARIO DE CONTACTO APPLE
-   ================================= */
-
-.contact-form-apple {
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e0e0;
-}
-
-.form-row-apple {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple {
-  margin-bottom: 1.5rem;
-}
-
-.form-group-apple label {
-  display: block;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.form-group-apple input,
-.form-group-apple select,
-.form-group-apple textarea {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: all 0.3s ease;
-  background: #f9f9f9;
-  box-sizing: border-box;
-}
-
-.form-group-apple input:focus,
-.form-group-apple select:focus,
-.form-group-apple textarea:focus {
-  outline: none;
-  border-color: #007aff;
-  background: white;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-}
-
-.form-group-apple textarea {
-  resize: vertical;
-  min-height: 120px;
-  line-height: 1.5;
-}
-
-.form-group-apple select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2rem;
-  padding-right: 3rem;
-}
-
-.form-submit-apple {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.contact-form-apple .btn-primary-apple {
-  min-width: 200px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form-apple .btn-primary-apple:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.form-message-apple {
-  margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.form-message-apple.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.form-message-apple.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.form-message-apple.info {
-  background: #d1ecf1;
-  color: #0c5460;
-  border: 1px solid #bee5eb;
-}
-
-/* Animación de envío */
-.btn-loading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-loading::after {
-  content: '';
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid currentColor;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive para formulario */
-@media (max-width: 768px) {
-  .contact-form-apple {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-  
-  .form-row-apple {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .form-group-apple {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group-apple input,
-  .form-group-apple select,
-  .form-group-apple textarea {
-    padding: 0.875rem 1rem;
-  }
-  
-  .contact-form-apple .btn-primary-apple {
-    width: 100%;
-    min-width: auto;
-  }
-}
-
-/* =================================
-   MEJORAS PARA BOTONES EN TARJETAS
-   ================================= */
-
-/* Hacer los botones verticales para que quepan mejor */
-.tool-actions {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-  margin-top: auto !important;
-  padding-top: 1.25rem !important;
-}
-
-/* Botones más compactos */
-.tool-actions .btn {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  text-align: center !important;
-  min-height: 2.5rem !important;
-  gap: 0.375rem !important;
-}
-
-.tool-actions .btn-amazon {
-  padding: 0.625rem 1rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  gap: 0.375rem !important;
-}
-
-/* Más altura mínima para las tarjetas */
-.tool-card {
-  min-height: 520px !important;
-}
-
-/* Descripción más compacta */
-.tool-description {
-  max-height: 6em !important;
-  line-height: 1.4 !important;
-  margin-bottom: 1rem !important;
-}
-
-/* Mejor distribución del contenido */
-.tool-content {
-  padding: 1.75rem !important;
-  justify-content: space-between !important;
-}
-
-/* ===============================================
-   TOOL LIST STYLES - MEJOR FORMATO DE ENLACES
-   =============================================== */
-
-.tool-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.tool-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  transition: all 0.2s ease;
-}
-
-.tool-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  background: white;
-}
-
-.tool-desc {
-  color: var(--gray-700);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-
-.tool-item .btn-amazon {
-  align-self: flex-start;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .tool-list {
-    gap: 0.75rem;
-  }
-  
-  .tool-item {
-    padding: 0.75rem;
-  }
-  
-  .tool-desc {
-    font-size: 0.9rem;
-  }
-  
-  .tool-item .btn-amazon {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.75rem;
-    align-self: stretch;
-    text-align: center;
-  }
-}
-
-/* ===============================================
-   NUEVOS ESTILOS PARA ENFOQUE EN GUÍAS
-   =============================================== */
-
-/* Guías especializadas */
-.guides-specialized {
-  background: var(--gray-50);
-  padding: 5rem 0;
-}
-
-.guides-specialized .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.guide-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.guide-card:hover .guide-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
 /* ===============================================
    ESTILOS GUÍA DE MARCAS
    =============================================== */
@@ -6397,3 +3715,292 @@ button[aria-pressed="true"] {
   object-fit: contain;
     margin: 0 auto; /* Centra el logo si es más pequeño que el contenedor */
   }
+
+/* --- Estilos para la Guía Comparativa de Robots --- */
+.table-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #fff;
+}
+
+.table-container th,
+.table-container td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-container thead th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #555;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.table-container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-container tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.table-container tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.table-container td strong {
+  color: #333;
+}
+
+.btn-buy {
+  display: inline-block;
+  background-color: #007aff;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-buy:hover {
+  background-color: #0056cc;
+  transform: translateY(-2px);
+}
+
+/* ===============================================
+   ESTILOS GENERALES DE TARJETAS (Cards)
+   =============================================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.guide-card {
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #007aff;
+  color: #fff !important;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.card-link:hover {
+  background-color: #0056cc;
+}
+
+/* ===============================================
+   ESTILOS PARA PÁGINAS DE GUÍAS INDIVIDUALES
+   =============================================== */
+
+.guide-image-full {
+  width: 100%;
+  max-width: 600px; /* Reducimos el ancho máximo */
+  height: auto;
+  border-radius: 12px;
+  margin: 1rem auto 1.5rem; /* Centramos la imagen */
+  display: block; /* Aseguramos que el margen automático funcione */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===============================================
+   FIX: REGLAS PARA EL MENÚ MÓVIL
+   =============================================== */
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 64px; /* Altura de la barra de navegación */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-item a {
+    padding: 1rem 1.5rem;
+    display: block;
+    width: 100%;
+  }
+
+  /* El submenú por defecto estará oculto */
+  .nav-dropdown {
+    position: static;
+    display: none; 
+    width: 100%;
+    box-shadow: none;
+    max-height: none;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding-left: 1.5rem; /* Indentación para los sub-items */
+    border-radius: 0;
+  }
+
+  .nav-dropdown a {
+    padding: 0.8rem 1.5rem;
+    border-bottom: none;
+    font-size: 0.95rem;
+  }
+
+  /* Cuando el dropdown está abierto, se muestra */
+  .dropdown-open .nav-dropdown {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown-open .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* ===============================================
+   Filtros de Guías y Proyectos (index.html)
+   =============================================== */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem; /* 12px */
+  margin-bottom: 2.5rem; /* 40px */
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-200);
+  padding: 0.625rem 1.25rem; /* 10px 20px */
+  font-size: 0.95rem; /* 15px */
+  font-weight: 600;
+  border-radius: 9999px; /* Pill shape */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  text-align: center;
+}
+
+.filter-tab:hover {
+  background-color: var(--gray-200);
+  color: var(--gray-800);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.filter-tab.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3); /* Sombra azul suave */
+}
+
+.filter-tab.active:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .filter-tabs {
+    gap: 0.5rem;
+  }
+  .filter-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+</rewritten_file> 

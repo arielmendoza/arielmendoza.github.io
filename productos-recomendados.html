@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="es" itemscope itemtype="https://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo completo de productos recomendados por BricoExpertos. Selección experta de herramientas y productos útiles para tu taller y hogar con los mejores precios." />
+  <title>🛒 Productos Recomendados | BricoExpertos</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Menú de navegación -->
+  <script src="menu-navegacion.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero-apple">
+    <div class="container">
+      <h1 class="hero-title">Productos Recomendados</h1>
+      <p class="hero-subtitle">Selección experta de productos útiles para tu taller y hogar</p>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="values-apple">
+    <div class="container">
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🛒</div>
+          <h3>Catálogo completo</h3>
+          <p>Productos cuidadosamente seleccionados</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <h3>Mejor calidad</h3>
+          <p>Solo productos con las mejores valoraciones</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💰</div>
+          <h3>Mejores precios</h3>
+          <p>Monitoreamos ofertas constantemente</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-quick-access">
+    <div class="container">
+      <h2 class="section-title-apple">Productos destacados</h2>
+      <p class="section-subtitle">Descubre nuestra selección de productos útiles y accesorios</p>
+      
+      <!-- Filtros minimalistas -->
+      <div class="filters-apple">
+        <div class="search-apple">
+          <input type="search" id="search-input" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="offer">Ofertas</button>
+        </div>
+        <select id="sort-select" class="sort-apple">
+          <option value="default">Más relevantes</option>
+          <option value="price-asc">Precio menor</option>
+          <option value="price-desc">Precio mayor</option>
+          <option value="rating-desc">Mejor valoradas</option>
+        </select>
+      </div>
+
+      <div id="tool-list" class="tool-list">
+        <!-- Productos cargados dinámicamente -->
+      </div>
+      
+      <div id="pagination-container" class="pagination" style="display: none;">
+        <!-- Paginación generada dinámicamente -->
+      </div>
+      
+      <div class="affiliate-notice" style="margin-top: 2rem; padding: 1rem; background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); font-size: 0.85rem; color: var(--gray-600); text-align: center;">
+        <p>🔍 Los precios y la disponibilidad de los productos son precisos a partir de la fecha/hora indicada y están sujetos a cambios. Cualquier información de precio y disponibilidad que se muestre en Amazon.es en el momento de la compra se aplicará a este producto.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-disclaimers collapsed" id="disclaimers">
+        <p class="footer-disclaimer">
+          <strong>Programa de Afiliados de Amazon:</strong> BricoExpertos es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon. Te recomendamos verificar el precio final en Amazon antes de realizar tu compra.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
+        </p>
+      </div>
+      <button class="toggle-disclaimers" id="toggleBtn" aria-expanded="false" onclick="window.toggleDisclaimer()">
+        Ver más información <span class="icon">▼</span>
+      </button>
+      
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Sitio Web</h4>
+          <a href="sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="privacidad.html">Política de Privacidad</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Guías Básicas</h4>
+          <a href="guia-taladros-principiantes.html">Guía Taladros</a>
+          <a href="guia-sierras-de-calar.html">Sierras de Calar</a>
+          <a href="guia-martillos.html">Martillos</a>
+          <a href="guia-destornilladores.html">Destornilladores</a>
+          <a href="guia-llaves-inglesas.html">Llaves Inglesas</a>
+          <a href="guia-llaves-fijas.html">Llaves Fijas</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Guías Especializadas</h4>
+          <a href="guia-herramientas-inalambricas-vs-cable.html">Inalámbricas vs Cable</a>
+          <a href="guia-herramientas-bano.html">Herramientas Baño</a>
+          <a href="guia-herramientas-cocina.html">Herramientas Cocina</a>
+          <a href="guia-niveles-medicion.html">Niveles y Medición</a>
+          <a href="guia-alicates-tenazas.html">Alicates y Tenazas</a>
+          <a href="guia-herramientas-jardin.html">Herramientas Jardín</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Recursos</h4>
+          <a href="guia-principiantes-absolutos.html">Para Principiantes</a>
+          <a href="guia-mantenimiento-herramientas.html">Mantenimiento</a>
+          <a href="guia-seguridad-taller.html">Seguridad Taller</a>
+          <a href="10-herramientas-esenciales-bricolaje.html">10 Herramientas Esenciales</a>
+          <a href="herramientas-baratas-menos-50-euros.html">Herramientas Baratas</a>
+        </div>
+      </div>
+      
+      <p class="footer-copyright">© 2025 BricoExpertos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal para detalles -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 id="modal-title" class="modal-title"></h2>
+          <div class="modal-subtitle">
+            <div class="modal-rating"></div>
+            <div class="modal-price"></div>
+          </div>
+        </div>
+        
+        <div class="modal-gallery">
+          <div class="modal-main-photo">
+            <img src="" alt="" id="modal-main-photo" />
+          </div>
+          <div class="modal-thumbnails" aria-label="Galería de fotos del producto"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Descripción</h3>
+          <div id="modal-description" class="modal-info"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Análisis</h3>
+          <div class="modal-review" id="modal-review"></div>
+        </div>
+        
+        <div class="modal-section">
+          <h3 class="modal-section-title">Valoración</h3>
+          <div class="pros-cons-grid">
+            <div>
+              <h4 class="text-success font-semibold mb-2">Ventajas</h4>
+              <ul id="pros-list" class="pros-cons-list pros-list"></ul>
+            </div>
+            <div>
+              <h4 class="text-error font-semibold mb-2">Desventajas</h4>
+              <ul id="cons-list" class="pros-cons-list cons-list"></ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button id="back-to-list" class="btn btn-secondary">Volver al listado</button>
+          <a id="amazon-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-amazon">
+            <span class="icon">🛒</span>
+            Ver precio en Amazon
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de zoom -->
+  <div id="zoom-modal" class="zoom-modal" role="dialog" aria-modal="true" aria-label="Visor de imagen ampliada">
+    <button class="zoom-close" aria-label="Cerrar vista ampliada">&times;</button>
+    <div class="zoom-container">
+      <div class="zoom-navigation">
+        <button class="zoom-nav-button prev-image" aria-label="Imagen anterior">&#10094;</button>
+        <button class="zoom-nav-button next-image" aria-label="Siguiente imagen">&#10095;</button>
+      </div>
+      <img src="" alt="" class="zoom-image" id="zoom-image">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 

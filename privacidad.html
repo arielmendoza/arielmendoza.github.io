@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Política de privacidad de BricoExpertos. Conoce cómo protegemos y utilizamos tu información personal." />
   <title>Política de Privacidad - BricoExpertos</title>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
-  <script src="analytics.js"></script>
   
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -93,18 +92,64 @@
     </div>
   </main>
 
-  <!-- Footer dinámico -->
-  <div id="footer-container"></div>
-  <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-        // Inicializar el toggle del footer
-        setTimeout(() => {
-        }, 200);
-      });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-disclaimers collapsed" id="disclaimers">
+        <p class="footer-disclaimer">
+          <strong>Programa de Afiliados de Amazon:</strong> BricoExpertos es participante del Programa de Afiliados de Amazon ES, un programa de publicidad para afiliados diseñado para ofrecer a sitios web un modo de obtener comisiones por publicidad, publicitando e incluyendo enlaces a Amazon.es. Como participante de este programa, obtenemos ingresos por las compras realizadas a través de los enlaces de afiliado. Esto no supone ningún coste adicional para ti.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Precios y Disponibilidad:</strong> Los precios mostrados son orientativos y pueden variar sin previo aviso. La disponibilidad de los productos está sujeta al stock de Amazon. Te recomendamos verificar el precio final en Amazon antes de realizar tu compra.
+        </p>
+        <p class="footer-disclaimer">
+          <strong>Última Actualización:</strong> Los precios y la información de los productos se actualizan periódicamente, pero pueden existir variaciones entre el momento de la actualización y tu visita.
+        </p>
+      </div>
+      <button class="toggle-disclaimers" id="toggleBtn" aria-expanded="false" onclick="window.toggleDisclaimer()">
+        Ver más información <span class="icon">▼</span>
+      </button>
+      
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Sitio Web</h4>
+          <a href="sobre-nosotros.html">Sobre Nosotros</a>
+          <a href="privacidad.html">Política de Privacidad</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Guías Básicas</h4>
+          <a href="guia-taladros-principiantes.html">Guía Taladros</a>
+          <a href="guia-sierras-de-calar.html">Sierras de Calar</a>
+          <a href="guia-martillos.html">Martillos</a>
+          <a href="guia-destornilladores.html">Destornilladores</a>
+          <a href="guia-llaves-inglesas.html">Llaves Inglesas</a>
+          <a href="guia-llaves-fijas.html">Llaves Fijas</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Guías Especializadas</h4>
+          <a href="guia-herramientas-inalambricas-vs-cable.html">Inalámbricas vs Cable</a>
+          <a href="guia-herramientas-bano.html">Herramientas Baño</a>
+          <a href="guia-herramientas-cocina.html">Herramientas Cocina</a>
+          <a href="guia-niveles-medicion.html">Niveles y Medición</a>
+          <a href="guia-alicates-tenazas.html">Alicates y Tenazas</a>
+          <a href="guia-herramientas-jardin.html">Herramientas Jardín</a>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Recursos</h4>
+          <a href="guia-principiantes-absolutos.html">Para Principiantes</a>
+          <a href="guia-mantenimiento-herramientas.html">Mantenimiento</a>
+          <a href="guia-seguridad-taller.html">Seguridad Taller</a>
+          <a href="10-herramientas-esenciales-bricolaje.html">10 Herramientas Esenciales</a>
+          <a href="herramientas-baratas-menos-50-euros.html">Herramientas Baratas</a>
+        </div>
+      </div>
+      
+      <p class="footer-copyright">© 2025 BricoExpertos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
   
   <script src="script.js"></script>
 </body>

@@ -14,6 +14,7 @@ const menuHTML = `
         <a href="#" class="dropdown-toggle">Guías <span class="dropdown-arrow">▼</span></a>
         <div class="nav-dropdown">
           <p class="dropdown-header">PROYECTOS Y TEMAS</p>
+          <a href="guia-comparativa-robot-aspirador.html">🤖 Comparativa Robots Aspirador</a>
           <a href="guia-instalar-ventilador-techo.html">💡 Instalar Ventilador de Techo</a>
           <a href="guia-pegar-cesped-artificial.html">🌿 Pegar Césped Artificial</a>
           <a href="guia-mantenimiento-piscina.html">💧 Mantenimiento de Piscinas</a>
