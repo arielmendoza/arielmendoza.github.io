@@ -311,6 +311,9 @@ img {
 
   .nav-links.active {
     display: flex;
+    transform: translateX(0);
+    max-height: calc(100vh - 64px); /* Altura del viewport menos la barra de nav */
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
   }
 
   .nav-links a.active::after {
