@@ -41,7 +41,6 @@ const menuHTML = `
           <a href="guia-seguridad-taller.html">⚠️ Seguridad en el Taller</a>
         </div>
       </li>
-      <li><a href="productos-recomendados.html">Productos Recomendados</a></li>
       <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
     </ul>
   </div>

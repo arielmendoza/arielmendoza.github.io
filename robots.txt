@@ -1,22 +1,17 @@
 User-agent: *
-Allow: /
-
-# Permitir todos los archivos importantes
+# Permitir archivos y directorios principales
+Allow: /$
 Allow: /index.html
-Allow: /otros-productos.html
+Allow: /guia-
+Allow: /herramientas-
+Allow: /10-herramientas-
 Allow: /sobre-nosotros.html
-Allow: /guia-*.html
+Allow: /privacidad.html
 
-# Bloquear archivos innecesarios para SEO
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.php$
-Disallow: /search?*
-Disallow: /*?utm_*
-Disallow: /*?fbclid=*
-Disallow: /*?gclid=*
+# Bloquear el resto por defecto
+Disallow: /
 
-# Permitir bots importantes
+# Permitir bots importantes acceso total
 User-agent: Googlebot
 Allow: /
 

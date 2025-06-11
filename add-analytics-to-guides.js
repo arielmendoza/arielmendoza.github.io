@@ -87,7 +87,6 @@ function verifyAnalytics() {
   
   const allFiles = [
     'index.html',
-    'otros-productos.html', 
     'sobre-nosotros.html',
     'privacidad.html',
     'guia-taladros-principiantes.html',

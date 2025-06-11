@@ -6,7 +6,6 @@ const path = require('path');
 
 // Lista de archivos HTML a actualizar
 const archivosHTML = [
-  'otros-productos.html',
   'sobre-nosotros.html',
   'privacidad.html',
   'guia-taladros-principiantes.html',
