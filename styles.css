@@ -181,9 +181,10 @@ img {
 .nav-dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: auto;
+  right: 0;
   background: white;
-  min-width: 250px;
+  min-width: max-content;
   max-height: 400px;
   overflow-y: auto;
   box-shadow: var(--shadow-md);
@@ -213,6 +214,7 @@ img {
   font-weight: 500;
   border-bottom: 1px solid var(--gray-100);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-dropdown a:last-child {
@@ -344,12 +346,14 @@ img {
     margin: 0.5rem 0 0 1rem;
     background: var(--gray-50);
     border-radius: var(--radius);
+    width: auto;
   }
 
   .nav-dropdown a {
     padding: 0.5rem 1rem;
     border-bottom: none;
     font-size: 0.9rem;
+    white-space: normal;
   }
 
   .dropdown-arrow {
