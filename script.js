@@ -1,4 +1,72 @@
+// Función para cargar contenido HTML dinámicamente
+async function loadHTML(url, containerId) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error al cargar ${url}: ${response.statusText}`);
+    }
+    const text = await response.text();
+    const container = document.getElementById(containerId);
+    if (container) {
+      container.innerHTML = text;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Función para el toggle del disclaimer del footer
+window.toggleDisclaimer = function() {
+  const disclaimers = document.getElementById('disclaimers');
+  const toggleBtn = document.getElementById('toggleBtn');
+  if (disclaimers && toggleBtn) {
+    const isExpanded = disclaimers.classList.toggle('expanded');
+    disclaimers.classList.toggle('collapsed', !isExpanded);
+    toggleBtn.setAttribute('aria-expanded', isExpanded);
+    
+    // Cambiar texto del botón
+    const btnText = toggleBtn.querySelector('span:not(.icon)');
+    const icon = toggleBtn.querySelector('.icon');
+    if (isExpanded) {
+      toggleBtn.innerHTML = 'Ver menos información <span class="icon">▲</span>';
+    } else {
+      toggleBtn.innerHTML = 'Ver más información <span class="icon">▼</span>';
+    }
+  }
+};
+
+// Cargar componentes comunes y ejecutar scripts cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
+  // Cargar footer
+  loadHTML('footer.html', 'footer-container').then(() => {
+    // Una vez cargado el footer, la función toggleDisclaimer ya está disponible globalmente
+  });
+
+  // Lógica para filtrar guías en la página principal
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const guideCards = document.querySelectorAll('.guide-card');
+
+  if (filterTabs.length > 0 && guideCards.length > 0) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const category = tab.dataset.category;
+
+        // Manejar la clase activa
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Filtrar las tarjetas
+        guideCards.forEach(card => {
+          if (category === 'todos' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
   // Variables principales
   const container = document.getElementById('tool-list');
   const modal = document.getElementById('modal');
@@ -727,31 +795,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', e => e.target === modal && closeModal());
     document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
   }
-
-  // Función global para el toggle del footer
-  window.toggleDisclaimer = function() {
-    const disclaimers = document.getElementById('disclaimers');
-    const button = document.getElementById('toggleBtn');
-    
-    if (!disclaimers || !button) {
-      console.log('Elementos del footer no encontrados');
-      return;
-    }
-    
-    const isCollapsed = disclaimers.classList.contains('collapsed');
-    
-    if (isCollapsed) {
-      disclaimers.classList.remove('collapsed');
-      disclaimers.classList.add('expanded');
-      button.innerHTML = 'Ver menos información <span class="icon">▲</span>';
-      button.setAttribute('aria-expanded', 'true');
-    } else {
-      disclaimers.classList.remove('expanded');
-      disclaimers.classList.add('collapsed');
-      button.innerHTML = 'Ver más información <span class="icon">▼</span>';
-      button.setAttribute('aria-expanded', 'false');
-    }
-  };
 
   // Footer toggle usando event delegation para que funcione siempre
   document.addEventListener('click', function(e) {

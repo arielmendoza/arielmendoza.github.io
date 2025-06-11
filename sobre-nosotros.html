@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
@@ -21,27 +21,27 @@
   <script src="menu-navegacion.js"></script>
 
   <!-- Hero Section -->
-  <section class="about-hero-apple">
+  <section class="hero-apple">
     <div class="container">
-      <h1 class="about-title-apple">Pasión por las Herramientas</h1>
-      <p class="about-subtitle-apple">Creamos, construimos y transformamos proyectos con las mejores herramientas del mercado.</p>
+      <h1 class="hero-title">Pasión por las Herramientas</h1>
+      <p class="hero-subtitle">Creamos, construimos y transformamos proyectos con las mejores herramientas del mercado.</p>
     </div>
   </section>
 
-  <main class="about-content-apple">
+  <main class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
     <!-- Nuestros Valores -->
-    <section class="section-apple">
-      <h2 class="section-title-guide-apple">Nuestros Valores</h2>
-      <div class="spec-grid-apple">
-        <div class="spec-card-apple">
+    <section class="guides-apple" style="padding-top: 0; padding-bottom: 2rem;">
+      <h2 class="section-title-apple">Nuestros Valores</h2>
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="value-card">
           <h4>💯 Honestidad</h4>
           <p>Nuestras opiniones no están en venta. Recomendamos lo que de verdad funciona, explicando tanto lo bueno como lo malo.</p>
         </div>
-        <div class="spec-card-apple">
+        <div class="value-card">
           <h4>🛠️ Experiencia Real</h4>
           <p>Somos apasionados del bricolaje. Usamos, probamos y ensuciamos las herramientas que analizamos.</p>
         </div>
-        <div class="spec-card-apple">
+        <div class="value-card">
           <h4>🧠 Conocimiento</h4>
           <p>Queremos que entiendas el "porqué". Te damos la información clave para que tomes la mejor decisión para tu proyecto.</p>
         </div>
@@ -49,16 +49,18 @@
     </section>
 
     <!-- Declaración de Afiliación -->
-    <section class="section-apple">
-      <h2 class="section-title-guide-apple">Nuestra Transparencia</h2>
-      <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; font-size: 1.1rem; color: #555;">Como Afiliados de Amazon, recibimos una pequeña comisión por las compras realizadas a través de nuestros enlaces, <strong>sin que a ti te cueste un céntimo más.</strong> Esto nos permite mantener la web y seguir creando contenido de calidad.</p>
+    <section class="guides-apple" style="padding-bottom: 2rem;">
+      <h2 class="section-title-apple">Nuestra Transparencia</h2>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+        <p>Como Afiliados de Amazon, recibimos una pequeña comisión por las compras realizadas a través de nuestros enlaces, <strong>sin que a ti te cueste un céntimo más.</strong> Esto nos permite mantener la web y seguir creando contenido de calidad.</p>
+      </div>
       
-      <div class="spec-grid-apple" style="--columns: 2;">
-        <div class="spec-card-apple">
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); --gap: 1.5rem;">
+        <div class="value-card">
           <h4>✅ Recomendaciones Independientes</h4>
           <p>Nuestro análisis es objetivo. Si un producto no da la talla, no lo recomendamos.</p>
         </div>
-        <div class="spec-card-apple">
+        <div class="value-card">
           <h4>💰 Sin Coste Adicional para Ti</h4>
           <p>El precio del producto es exactamente el mismo comprando desde nuestro enlace o directamente en Amazon.</p>
         </div>
@@ -66,120 +68,17 @@
     </section>
 
     <!-- Nuestro Compromiso -->
-    <section class="about-section-apple" style="background-color: #f9f9f9; padding: 3rem; border-radius: 12px; text-align: center;">
-      <h2 class="section-title-guide-apple">Nuestro Compromiso Contigo</h2>
+    <section class="guides-apple" style="background-color: var(--gray-50); padding: 3rem; border-radius: var(--radius-lg); text-align: center;">
+      <h2 class="section-title-apple" style="margin-bottom: 1rem;">Nuestro Compromiso Contigo</h2>
       <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><strong>Nunca recomendaremos una herramienta que no usaríamos en nuestros propios proyectos.</strong> Cada guía es el resultado de horas de investigación, pruebas y experiencia práctica.</p>
     </section>
 
-    <!-- Formulario de Contacto -->
-    <section class="section-apple">
-      <h2 class="section-title-guide-apple">¿Hablamos?</h2>
-      <p style="text-align: center; margin-bottom: 2rem; color: #666;">Tu opinión es importante. Escríbenos si tienes dudas, sugerencias o simplemente quieres saludar.</p>
-      
-      <form id="contact-form" class="contact-form-apple">
-        <div class="form-row-apple">
-          <div class="form-group-apple">
-            <label for="user_name">Nombre *</label>
-            <input type="text" id="user_name" name="user_name" required>
-          </div>
-          <div class="form-group-apple">
-            <label for="user_email">Email *</label>
-            <input type="email" id="user_email" name="user_email" required>
-          </div>
-        </div>
-        
-        <div class="form-group-apple">
-          <label for="subject">Asunto *</label>
-          <select id="subject" name="subject" required>
-            <option value="">Selecciona un tema</option>
-            <option value="Consulta sobre herramientas">Consulta sobre herramientas</option>
-            <option value="Sugerencia de producto">Sugerencia de producto</option>
-            <option value="Error en la información">Error en la información</option>
-            <option value="Colaboración">Colaboración</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-        
-        <div class="form-group-apple">
-          <label for="message">Mensaje *</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos tu consulta, experiencia o sugerencia..."></textarea>
-        </div>
-        
-        <div class="form-submit-apple">
-          <button type="submit" class="btn-primary-apple">
-            <span class="btn-text">Enviar Mensaje</span>
-            <span class="btn-loading" style="display: none;">Enviando...</span>
-          </button>
-        </div>
-        
-        <div id="form-message" class="form-message-apple" style="display: none;"></div>
-      </form>
-    </section>
   </main>
 
   <!-- Footer dinámico -->
   <div id="footer-container"></div>
-  <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      });
-  </script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-        const submitButton = contactForm?.querySelector('button[type="submit"]');
-
-        if (!contactForm) return;
-
-        const setLoadingState = (isLoading) => {
-            const btnText = submitButton.querySelector('.btn-text');
-            const btnLoading = submitButton.querySelector('.btn-loading');
-            if (isLoading) {
-                submitButton.disabled = true;
-                btnText.style.display = 'none';
-                btnLoading.style.display = 'inline-block';
-            } else {
-                submitButton.disabled = false;
-                btnText.style.display = 'inline-block';
-                btnLoading.style.display = 'none';
-            }
-        };
-
-        const showMessage = (message, type) => {
-            formMessage.textContent = message;
-            formMessage.className = `form-message-apple ${type}`;
-            formMessage.style.display = 'block';
-        };
-
-        const hideMessage = () => {
-            formMessage.style.display = 'none';
-        };
-
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            setLoadingState(true);
-            hideMessage();
-
-            try {
-                // Simulamos un envío exitoso después de 1.5 segundos
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                showMessage('✅ ¡Mensaje enviado! Gracias por contactarnos. Te responderemos pronto.', 'success');
-                contactForm.reset();
-
-            } catch (error) {
-                showMessage('❌ Error al enviar el mensaje. Por favor, inténtalo de nuevo.', 'error');
-            } finally {
-                setLoadingState(false);
-            }
-        });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html> 
 
