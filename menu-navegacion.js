@@ -68,29 +68,39 @@ function setupNavigation() {
     }
   });
 
-  // Lógica para el menú móvil
-  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const navLinksContainer = document.querySelector('.nav-links');
+  // --- LÓGICA DE EVENTOS DELEGADOS (REFACTORIZADO) ---
+  document.body.addEventListener('click', function(e) {
+    const mobileMenuBtn = e.target.closest('.mobile-menu-btn');
+    const dropdownToggle = e.target.closest('.dropdown-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
 
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
+    // 1. Click en el botón del menú móvil
+    if (mobileMenuBtn) {
+      e.preventDefault();
       navLinksContainer.classList.toggle('active');
       mobileMenuBtn.classList.toggle('active');
-    });
-  }
+      return;
+    }
 
-  // Lógica MEJORADA para el dropdown en móvil
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-  dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault(); // Prevenir la navegación en el enlace '#'
-        const navItem = toggle.closest('.nav-item');
-        if (navItem) {
-          navItem.classList.toggle('dropdown-open');
-        }
+    // 2. Click en el toggle del dropdown (solo en móvil)
+    if (dropdownToggle && window.innerWidth <= 768) {
+      e.preventDefault();
+      dropdownToggle.closest('.nav-item').classList.toggle('dropdown-open');
+      return;
+    }
+
+    // 3. Click fuera del menú para cerrarlo (solo en móvil)
+    if (window.innerWidth <= 768 && navLinksContainer && navLinksContainer.classList.contains('active')) {
+      const mainNav = e.target.closest('.main-nav');
+      if (!mainNav) {
+        navLinksContainer.classList.remove('active');
+        document.querySelector('.mobile-menu-btn').classList.remove('active');
+        // Cerrar también los submenús
+        document.querySelectorAll('.nav-item.dropdown-open').forEach(item => {
+          item.classList.remove('dropdown-open');
+        });
       }
-    });
+    }
   });
 }
 

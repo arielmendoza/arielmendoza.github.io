@@ -181,8 +181,8 @@ img {
 .nav-dropdown {
   position: absolute;
   top: 100%;
-  left: auto;
   right: 0;
+  left: auto;
   background: white;
   min-width: max-content;
   max-height: 400px;
@@ -338,6 +338,7 @@ img {
   }
 
   .nav-dropdown {
+    display: none; /* Oculto por defecto en móvil */
     position: static;
     opacity: 1;
     visibility: visible;
@@ -347,6 +348,19 @@ img {
     background: var(--gray-50);
     border-radius: var(--radius);
     width: auto;
+    /* Reset desktop styles */
+    min-width: unset;
+    left: unset;
+    right: unset;
+    border: none;
+    max-height: none; /* Permitir que se expanda */
+    pointer-events: auto;
+    z-index: auto;
+    margin-top: 0;
+  }
+
+  .nav-item.dropdown-open .nav-dropdown {
+    display: block; /* Mostrar en clic */
   }
 
   .nav-dropdown a {
@@ -4159,5 +4173,33 @@ button[aria-pressed="true"] {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+/* ===============================================
+   FIX URGENTE PARA DROPDOWN EN MÓVIL
+   =============================================== */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    display: none !important;
+    position: static !important;
+    width: auto !important;
+    box-shadow: none !important;
+    margin: 0.5rem 0 0 1rem !important;
+    background: var(--gray-50) !important;
+    border: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    z-index: auto !important;
+  }
+
+  .nav-item.dropdown-open .nav-dropdown {
+    display: block !important;
+  }
+
+  .nav-dropdown a {
+    white-space: normal !important;
+  }
 }
 
