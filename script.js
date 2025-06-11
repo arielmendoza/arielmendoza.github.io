@@ -1,3 +1,29 @@
+function toggleDisclaimer() {
+  const disclaimers = document.getElementById('disclaimers');
+  const button = document.getElementById('toggleBtn');
+  
+  if (!disclaimers || !button) {
+    console.error('Elementos del disclaimer no encontrados.');
+    return;
+  }
+  
+  const isCollapsed = disclaimers.classList.contains('collapsed');
+  
+  if (isCollapsed) {
+    disclaimers.classList.remove('collapsed');
+    disclaimers.classList.add('expanded');
+    button.innerHTML = 'Ver menos información <span class="icon">▲</span>';
+    button.setAttribute('aria-expanded', 'true');
+  } else {
+    disclaimers.classList.remove('expanded');
+    disclaimers.classList.add('collapsed');
+    button.innerHTML = 'Ver más información <span class="icon">▼</span>';
+    button.setAttribute('aria-expanded', 'false');
+  }
+}
+
+window.toggleDisclaimer = toggleDisclaimer;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Variables principales
   const container = document.getElementById('tool-list');
@@ -50,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let filteredToolsCache = [];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const xmlFile = currentPage === 'index.html' ? 'tools.xml' : 'otros-productos.xml';
+  const xmlFile = 'tools.xml';
   const paginationContainer = document.getElementById('pagination-container');
 
   // Funciones auxiliares XML
@@ -228,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getImageUrls(tool) {
     const photoNodes = tool.querySelectorAll('photos photo');
     const baseUrl = 'https://arielmendoza.github.io/';
-    const imagesFolder = currentPage === 'index.html' ? 'images' : 'images_otros';
+    const imagesFolder = 'images';
     
     return Array.from(photoNodes).map((photo, index) => {
       const photoNumber = photo.textContent.trim();
@@ -550,13 +576,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Usar paginación tanto en index.html como en otros-productos.html
-    const shouldPaginate = currentPage === 'index.html' || currentPage === 'otros-productos.html';
+    // Usar paginación solo en index.html
+    const shouldPaginate = currentPage === 'index.html';
     const toolsToRender = shouldPaginate ? 
                          getPaginatedTools(filteredTools, currentPageNum) : 
                          filteredTools;
     
-    // Renderizar paginación para ambas páginas
+    // Renderizar paginación
     if (shouldPaginate) {
       renderPagination(filteredTools.length);
     }
@@ -727,31 +753,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', e => e.target === modal && closeModal());
     document.addEventListener('keydown', e => e.key === 'Escape' && closeModal());
   }
-
-  // Función global para el toggle del footer
-  window.toggleDisclaimer = function() {
-    const disclaimers = document.getElementById('disclaimers');
-    const button = document.getElementById('toggleBtn');
-    
-    if (!disclaimers || !button) {
-      console.log('Elementos del footer no encontrados');
-      return;
-    }
-    
-    const isCollapsed = disclaimers.classList.contains('collapsed');
-    
-    if (isCollapsed) {
-      disclaimers.classList.remove('collapsed');
-      disclaimers.classList.add('expanded');
-      button.innerHTML = 'Ver menos información <span class="icon">▲</span>';
-      button.setAttribute('aria-expanded', 'true');
-    } else {
-      disclaimers.classList.remove('expanded');
-      disclaimers.classList.add('collapsed');
-      button.innerHTML = 'Ver más información <span class="icon">▼</span>';
-      button.setAttribute('aria-expanded', 'false');
-    }
-  };
 
   // Footer toggle usando event delegation para que funcione siempre
   document.addEventListener('click', function(e) {
