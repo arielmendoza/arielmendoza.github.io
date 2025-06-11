@@ -42,6 +42,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Una vez cargado el footer, la función toggleDisclaimer ya está disponible globalmente
   });
 
+  // Lógica para el menú de navegación móvil
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita que el clic se propague al documento
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
+    });
+  }
+
+  // Lógica para los submenús en móvil
+  const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+
+  if (dropdownItems.length > 0 && mobileMenuBtn) {
+    dropdownItems.forEach(item => {
+      const dropdownToggle = item.querySelector('a');
+      
+      dropdownToggle.addEventListener('click', (e) => {
+        if (window.getComputedStyle(mobileMenuBtn).display !== 'none') {
+          // Si el menú tiene un enlace real, navega en el segundo toque
+          const isLink = dropdownToggle.getAttribute('href') && dropdownToggle.getAttribute('href') !== '#';
+          if (isLink && item.classList.contains('dropdown-open')) {
+            return; 
+          }
+
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Cerrar otros dropdowns
+          dropdownItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('dropdown-open');
+            }
+          });
+
+          item.classList.toggle('dropdown-open');
+        }
+      });
+    });
+  }
+
+  // Cierra el menú móvil si se hace clic fuera de él
+  document.addEventListener('click', (e) => {
+    if (navLinks && navLinks.classList.contains('active')) {
+      if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn && !mobileMenuBtn.contains(e.target)) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        dropdownItems.forEach(item => item.classList.remove('dropdown-open'));
+      }
+    }
+  });
+
   // Lógica para filtrar guías en la página principal
   const filterTabs = document.querySelectorAll('.filter-tab');
   const guideCards = document.querySelectorAll('.guide-card');
@@ -64,6 +118,47 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       });
+    });
+  }
+
+  // Lógica del formulario de contacto en sobre-nosotros.html
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    const formMessage = document.getElementById('form-message');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    const setLoadingState = (isLoading) => {
+      const btnText = submitButton.querySelector('.btn-text');
+      const btnLoading = submitButton.querySelector('.btn-loading');
+      if (isLoading) {
+        submitButton.disabled = true;
+        if (btnText) btnText.style.display = 'none';
+        if (btnLoading) btnLoading.style.display = 'inline-block';
+      } else {
+        submitButton.disabled = false;
+        if (btnText) btnText.style.display = 'inline-block';
+        if (btnLoading) btnLoading.style.display = 'none';
+      }
+    };
+
+    const showMessage = (message, type) => {
+      formMessage.textContent = message;
+      formMessage.className = `form-message-apple ${type}`;
+      formMessage.style.display = 'block';
+    };
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setLoadingState(true);
+
+      // Simulación de envío
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      // Simulamos un resultado exitoso
+      showMessage('¡Mensaje enviado con éxito!', 'success');
+      contactForm.reset();
+      
+      setLoadingState(false);
     });
   }
 
