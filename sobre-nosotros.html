@@ -73,12 +73,115 @@
       <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;"><strong>Nunca recomendaremos una herramienta que no usaríamos en nuestros propios proyectos.</strong> Cada guía es el resultado de horas de investigación, pruebas y experiencia práctica.</p>
     </section>
 
+    <!-- Formulario de Contacto -->
+    <section class="guides-apple" style="padding-top: 2rem;">
+      <h2 class="section-title-apple">¿Hablamos?</h2>
+      <p style="text-align: center; margin-bottom: 2rem; color: #666;">Tu opinión es importante. Escríbenos si tienes dudas, sugerencias o simplemente quieres saludar.</p>
+      
+      <form id="contact-form" class="contact-form-apple">
+        <div class="form-row-apple">
+          <div class="form-group-apple">
+            <label for="user_name">Nombre *</label>
+            <input type="text" id="user_name" name="user_name" required>
+          </div>
+          <div class="form-group-apple">
+            <label for="user_email">Email *</label>
+            <input type="email" id="user_email" name="user_email" required>
+          </div>
+        </div>
+        
+        <div class="form-group-apple">
+          <label for="subject">Asunto *</label>
+          <select id="subject" name="subject" required>
+            <option value="">Selecciona un tema</option>
+            <option value="Consulta sobre herramientas">Consulta sobre herramientas</option>
+            <option value="Sugerencia de producto">Sugerencia de producto</option>
+            <option value="Error en la información">Error en la información</option>
+            <option value="Colaboración">Colaboración</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        
+        <div class="form-group-apple">
+          <label for="message">Mensaje *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos tu consulta, experiencia o sugerencia..."></textarea>
+        </div>
+        
+        <div class="form-submit-apple">
+          <button type="submit" class="btn-primary-apple">
+            <span class="btn-text">Enviar Mensaje</span>
+            <span class="btn-loading" style="display: none;">Enviando...</span>
+          </button>
+        </div>
+        
+        <div id="form-message" class="form-message-apple" style="display: none;"></div>
+      </form>
+    </section>
   </main>
 
   <!-- Footer dinámico -->
   <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      });
+  </script>
   
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const submitButton = contactForm?.querySelector('button[type="submit"]');
+
+        if (!contactForm) return;
+
+        const setLoadingState = (isLoading) => {
+            const btnText = submitButton.querySelector('.btn-text');
+            const btnLoading = submitButton.querySelector('.btn-loading');
+            if (isLoading) {
+                submitButton.disabled = true;
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline-block';
+            } else {
+                submitButton.disabled = false;
+                btnText.style.display = 'inline-block';
+                btnLoading.style.display = 'none';
+            }
+        };
+
+        const showMessage = (message, type) => {
+            formMessage.textContent = message;
+            formMessage.className = `form-message-apple ${type}`;
+            formMessage.style.display = 'block';
+        };
+
+        const hideMessage = () => {
+            formMessage.style.display = 'none';
+        };
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            setLoadingState(true);
+            hideMessage();
+
+            try {
+                // Simulamos un envío exitoso después de 1.5 segundos
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                showMessage('✅ ¡Mensaje enviado! Gracias por contactarnos. Te responderemos pronto.', 'success');
+                contactForm.reset();
+
+            } catch (error) {
+                showMessage('❌ Error al enviar el mensaje. Por favor, inténtalo de nuevo.', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        });
+    });
+  </script>
 </body>
 </html> 
 
