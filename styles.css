@@ -2573,16 +2573,21 @@ button[aria-pressed="true"] {
 }
 
 /* =================================
-   ESTILOS APPLE - PÁGINA PRINCIPAL
+   ESTILOS APPLE - MODERNOS Y MINIMALISTAS
    ================================= */
 
 /* Hero Section - Estilo Apple */
 .hero-apple {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 8rem 0 6rem 0;
-  text-align: center;
+  background: linear-gradient(180deg, #f0f4f8, #ffffff);
+  padding: 5rem 1.5rem;
   position: relative;
   overflow: hidden;
+  text-align: center;
+}
+
+.hero-apple .hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-apple::before {
@@ -2594,26 +2599,32 @@ button[aria-pressed="true"] {
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="500" cy="500" r="400" fill="url(%23a)"/></svg>') center/cover;
   pointer-events: none;
+  transform: rotate(15deg) translateY(-20%);
 }
 
-.hero-title {
-  font-size: 4rem;
-  font-weight: 300;
+.hero-apple .hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
   color: #1d1d1f;
   margin: 0 0 1.5rem 0;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #86868b;
-  margin: 0 0 3rem 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.4;
+.hero-apple .hero-subtitle {
+  color: var(--gray-500);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 1rem auto 0;
+}
+
+.hero-apple .hero-category {
+  color: var(--secondary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .hero-cta {
