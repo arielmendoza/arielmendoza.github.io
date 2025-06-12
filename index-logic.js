@@ -3,17 +3,17 @@
 // =================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const filterTabs = document.querySelectorAll('.filter-tab');
+    const filterButtons = document.querySelectorAll('.filter-btn-apple');
     const guideCards = document.querySelectorAll('#guides-container .guide-card');
 
-    if (filterTabs.length > 0 && guideCards.length > 0) {
-        filterTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
+    if (filterButtons.length > 0 && guideCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
                 // 1. Gestionar el estado activo de los botones
-                filterTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+                filterButtons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
 
-                const selectedCategory = tab.getAttribute('data-category');
+                const selectedCategory = button.getAttribute('data-category');
 
                 // 2. Filtrar las tarjetas de guía
                 guideCards.forEach(card => {
