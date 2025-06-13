@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirección Inteligente | BricoExpertos</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Estilos para la página -->
+  <style>
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; }
+    .container { padding: 2rem; }
+    .card { background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-width: 450px; width: 90%; margin: 0 auto; }
+    .spinner { width: 50px; height: 50px; border: 4px solid #f3f3f3; border-top: 4px solid #007bff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.5rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { color: #333; margin-bottom: 1rem; font-size: 1.6rem; font-weight: 600; }
+    p { color: #666; margin-bottom: 1.5rem; line-height: 1.5; }
+    .product-info { background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 1rem; color: #495057; }
+    .home-link { display: inline-block; padding: 0.75rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.3s ease; }
+    .home-link:hover { background-color: #0056b3; }
+    .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  </style>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGY8WKCEQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FGY8WKCEQJ');
+  </script>
+
+  <!-- Base de datos de enlaces -->
+  <script src="/links.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div id="redirect-display" class="card" style="display: none;">
+      <div class="icon">📦</div>
+      <div class="spinner"></div>
+      <h1>Redirigiendo a Amazon...</h1>
+      <p>Te estamos llevando al producto seleccionado. ¡Gracias por tu paciencia!</p>
+      <div class="product-info">
+        <strong>Producto:</strong> <span id="product-name"></span>
+      </div>
+    </div>
+
+    <div id="not-found-display" class="card" style="display: none;">
+      <div class="icon">🤷‍♂️</div>
+      <h1>Error 404 - Página No Encontrada</h1>
+      <p>Lo sentimos, la página que buscas no existe o ha sido movida.</p>
+      <a href="/" class="home-link">← Volver al Inicio</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const path = window.location.pathname;
+      const goPrefix = '/go/';
+      
+      // Comprobar si la URL es para una redirección de afiliado
+      if (path.startsWith(goPrefix)) {
+        const productId = path.substring(goPrefix.length).replace(/\/$/, ''); // Elimina la barra final si existe
+        
+        if (productId && affiliateLinks[productId]) {
+          const link = affiliateLinks[productId];
+          
+          // Mostrar la pantalla de redirección
+          document.getElementById('product-name').textContent = link.name;
+          document.getElementById('redirect-display').style.display = 'block';
+          
+          // Registrar evento en Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'affiliate_redirect', {
+              'product_id': productId,
+              'product_name': link.name,
+              'affiliate_url': link.url,
+              'event_category': 'Affiliate'
+            });
+          }
+          
+          // Redirigir al usuario
+          setTimeout(() => {
+            window.location.href = link.url;
+          }, 1500);
+          
+        } else {
+          // El ID del producto no existe, mostrar error 404
+          showNotFound();
+        }
+      } else {
+        // No es una URL de redirección, mostrar error 404
+        showNotFound();
+      }
+      
+      function showNotFound() {
+        document.title = '404 - Página No Encontrada';
+        document.getElementById('not-found-display').style.display = 'block';
+        
+        // Opcional: registrar evento de 404 en Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', '404_not_found', {
+            'path': path,
+            'event_category': 'Error'
+          });
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html> 
