@@ -31,7 +31,7 @@
   </script>
 
   <!-- Base de datos de enlaces -->
-  <script src="/links.js"></script>
+  <script src="links.js"></script>
 </head>
 <body>
 
@@ -57,13 +57,16 @@
   <script>
     (function() {
       const path = window.location.pathname;
-      const goPrefix = '/go/';
-      
+      const goSegment = '/go/';
+      const pathSegments = path.split(goSegment);
+
       // Comprobar si la URL es para una redirección de afiliado
-      if (path.startsWith(goPrefix)) {
-        const productId = path.substring(goPrefix.length).replace(/\/$/, ''); // Elimina la barra final si existe
+      if (pathSegments.length > 1) {
+        // Obtener la última parte de la URL (el ID) y limpiar la barra final si existe
+        const productId = pathSegments.pop().replace(/\/$/, '');
         
-        if (productId && affiliateLinks[productId]) {
+        // Verificar que affiliateLinks se haya cargado y que el producto exista
+        if (productId && typeof affiliateLinks !== 'undefined' && affiliateLinks[productId]) {
           const link = affiliateLinks[productId];
           
           // Mostrar la pantalla de redirección
@@ -86,17 +89,25 @@
           }, 1500);
           
         } else {
-          // El ID del producto no existe, mostrar error 404
-          showNotFound();
+          // El ID del producto no existe en links.js
+          showNotFound(`El producto con ID "${productId}" no fue encontrado.`);
         }
       } else {
-        // No es una URL de redirección, mostrar error 404
-        showNotFound();
+        // No es una URL de redirección, mostrar error 404 estándar
+        showNotFound('La página que buscas no existe o ha sido movida.');
       }
       
-      function showNotFound() {
+      function showNotFound(message) {
         document.title = '404 - Página No Encontrada';
-        document.getElementById('not-found-display').style.display = 'block';
+        const notFoundDisplay = document.getElementById('not-found-display');
+        
+        // Actualizar mensaje de error
+        const errorMessageElement = notFoundDisplay.querySelector('p');
+        if (errorMessageElement) {
+            errorMessageElement.textContent = message;
+        }
+
+        notFoundDisplay.style.display = 'block';
         
         // Opcional: registrar evento de 404 en Analytics
         if (typeof gtag !== 'undefined') {
