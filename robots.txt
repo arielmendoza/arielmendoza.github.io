@@ -10,8 +10,9 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# Sitemap
+# Sitemaps
 Sitemap: https://www.herramientasbricolaje.info/sitemap.xml
+Sitemap: https://www.herramientasbricolaje.info/sitemap-google.xml
 
 # Crawl delay para evitar sobrecarga
 Crawl-delay: 1 
