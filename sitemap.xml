@@ -4,7 +4,6 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Página principal -->
   <url>
     <loc>https://www.herramientasbricolaje.info/</loc>
     <lastmod>2025-01-27</lastmod>
@@ -12,7 +11,6 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Páginas principales -->
   <url>
     <loc>https://www.herramientasbricolaje.info/privacidad.html</loc>
     <lastmod>2025-01-27</lastmod>
@@ -41,7 +39,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Guías de herramientas -->
   <url>
     <loc>https://www.herramientasbricolaje.info/guia-taladros-principiantes.html</loc>
     <lastmod>2025-01-27</lastmod>
