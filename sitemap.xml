@@ -6,7 +6,7 @@
 
   <!-- Página principal -->
   <url>
-    <loc>https://tu-dominio.com/</loc>
+    <loc>https://www.herramientasbricolaje.info/</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,120 +14,183 @@
 
   <!-- Páginas principales -->
   <url>
-    <loc>https://tu-dominio.com/privacidad.html</loc>
+    <loc>https://www.herramientasbricolaje.info/privacidad.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/sobre-nosotros.html</loc>
+    <loc>https://www.herramientasbricolaje.info/sobre-nosotros.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/otros-productos.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/productos-recomendados.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- Guías de herramientas -->
   <url>
-    <loc>https://tu-dominio.com/guia-taladros-principiantes.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-taladros-principiantes.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-sierras-de-calar.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-sierras-de-calar.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-martillos.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-martillos.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-herramientas-inalambricas-vs-cable.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-herramientas-inalambricas-vs-cable.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-herramientas-bano.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-herramientas-bano.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-llaves-inglesas.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-llaves-inglesas.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-destornilladores.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-destornilladores.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-llaves-fijas.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-llaves-fijas.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-niveles-medicion.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-niveles-medicion.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-herramientas-cocina.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-herramientas-cocina.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-alicates-tenazas.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-alicates-tenazas.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-principiantes-absolutos.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-principiantes-absolutos.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-herramientas-jardin.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-herramientas-jardin.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-mantenimiento-herramientas.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-mantenimiento-herramientas.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://tu-dominio.com/guia-seguridad-taller.html</loc>
+    <loc>https://www.herramientasbricolaje.info/guia-seguridad-taller.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/guia-aires-acondicionados.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/guia-comparativa-robot-aspirador.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/guia-instalar-ventilador-techo.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/guia-mantenimiento-piscina.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/guia-pegar-cesped-artificial.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/10-herramientas-esenciales-bricolaje.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.herramientasbricolaje.info/herramientas-baratas-menos-50-euros.html</loc>
     <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
