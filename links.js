@@ -1,6 +1,6 @@
 const affiliateLinks = {
   // Taladros
-  'taladro-bosch-psb-1800': { url: 'https://amzn.to/3C8vK2L', name: 'Taladro Bosch PSB 1800' },
+  'taladro-bosch-psb-1800': { url: 'https://amzn.to/45N07HE', name: 'Taladro Bosch PSB 1800' },
   'taladro-black-decker-bdcdd12': { url: 'https://amzn.to/3ZxY4mN', name: 'Taladro Black+Decker BDCDD12' },
   'taladro-makita-hp333d': { url: 'https://amzn.to/4aB5cD6', name: 'Taladro Makita HP333D' },
   
