@@ -37,13 +37,41 @@
         <li>No recopilamos datos personales identificables</li>
       </ul>
 
-      <h2>Uso de cookies</h2>
-      <p>Utilizamos cookies para mejorar la funcionalidad del sitio web y proporcionar analytics. Estas cookies:</p>
+      <h2>Uso de cookies y tecnologías similares</h2>
+      <p>Utilizamos cookies y tecnologías similares para mejorar tu experiencia y analizar el uso de nuestro sitio web. Te damos control total sobre estas cookies:</p>
+      
+      <h3>Tipos de cookies que utilizamos:</h3>
+      
+      <h4>🔧 Cookies Necesarias (Siempre activas)</h4>
       <ul>
-        <li>Mejoran la experiencia de navegación</li>
-        <li>Nos ayudan a entender el uso del sitio</li>
-        <li>No almacenan información personal</li>
-        <li>Puedes deshabilitarlas en tu navegador</li>
+        <li>Esenciales para el funcionamiento básico del sitio</li>
+        <li>Recuerdan tus preferencias de cookies</li>
+        <li>No pueden ser desactivadas</li>
+        <li>No almacenan información personal identificable</li>
+      </ul>
+
+      <h4>📊 Cookies Analíticas (Opcionales)</h4>
+      <ul>
+        <li>Google Analytics para entender el uso del sitio</li>
+        <li>Datos agregados y anónimos sobre navegación</li>
+        <li>Nos ayudan a mejorar el contenido y la experiencia</li>
+        <li>Puedes desactivarlas en cualquier momento</li>
+      </ul>
+
+      <h4>📢 Cookies de Marketing (Opcionales)</h4>
+      <ul>
+        <li>Personalizan anuncios según tus intereses</li>
+        <li>Seguimiento de conversiones para enlaces de afiliado</li>
+        <li>Pueden ser proporcionadas por terceros (Amazon, Google)</li>
+        <li>Totalmente opcionales y configurables</li>
+      </ul>
+
+      <h3>Tus opciones de cookies:</h3>
+      <ul>
+        <li><strong>Configurar:</strong> Puedes elegir qué tipos de cookies aceptar</li>
+        <li><strong>Cambiar:</strong> Modifica tus preferencias en cualquier momento desde el footer</li>
+        <li><strong>Rechazar:</strong> Puedes rechazar todas las cookies opcionales</li>
+        <li><strong>Navegador:</strong> También puedes configurarlas directamente en tu navegador</li>
       </ul>
 
       <h2>Google Analytics</h2>
@@ -151,6 +179,75 @@
     </div>
   </footer>
   
+  <!-- Banner de Cookies GDPR -->
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p><strong>🍪 Utilizamos cookies para mejorar tu experiencia</strong></p>
+        <p>Utilizamos cookies propias y de terceros para análisis, publicidad personalizada y funcionamiento de la web. <a href="privacidad.html">Política de Privacidad</a></p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Rechazar</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookie-settings">Configurar</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Configuración de Cookies -->
+  <div id="cookie-settings-modal" class="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <div class="cookie-settings-header">
+        <h3>Configuración de Cookies</h3>
+        <p>Puedes configurar qué cookies quieres aceptar. Ten en cuenta que si deshabilitas algunas, tu experiencia de navegación puede verse afectada.</p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies Necesarias</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="necessary-cookies" checked disabled>
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Estas cookies son esenciales para el funcionamiento básico del sitio web y no se pueden desactivar.
+        </p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies Analíticas</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="analytics-cookies">
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Nos ayudan a entender cómo los visitantes interactúan con el sitio web, recopilando información de forma anónima.
+        </p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies de Marketing</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="marketing-cookies">
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Se utilizan para personalizar anuncios y contenido según tus intereses y comportamiento de navegación.
+        </p>
+      </div>
+
+      <div class="cookie-settings-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookie-settings-decline">Rechazar todas</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookie-settings-save">Guardar configuración</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html> 

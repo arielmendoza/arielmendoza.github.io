@@ -423,6 +423,75 @@
     </div>
   </div>
 
+  <!-- Banner de Cookies GDPR -->
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p><strong>🍪 Utilizamos cookies para mejorar tu experiencia</strong></p>
+        <p>Utilizamos cookies propias y de terceros para análisis, publicidad personalizada y funcionamiento de la web. <a href="privacidad.html">Política de Privacidad</a></p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Rechazar</button>
+        <button class="cookie-btn cookie-btn-settings" id="cookie-settings">Configurar</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Configuración de Cookies -->
+  <div id="cookie-settings-modal" class="cookie-settings-modal">
+    <div class="cookie-settings-content">
+      <div class="cookie-settings-header">
+        <h3>Configuración de Cookies</h3>
+        <p>Puedes configurar qué cookies quieres aceptar. Ten en cuenta que si deshabilitas algunas, tu experiencia de navegación puede verse afectada.</p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies Necesarias</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="necessary-cookies" checked disabled>
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Estas cookies son esenciales para el funcionamiento básico del sitio web y no se pueden desactivar.
+        </p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies Analíticas</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="analytics-cookies">
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Nos ayudan a entender cómo los visitantes interactúan con el sitio web, recopilando información de forma anónima.
+        </p>
+      </div>
+
+      <div class="cookie-category">
+        <div class="cookie-category-header">
+          <h4>Cookies de Marketing</h4>
+          <label class="cookie-toggle">
+            <input type="checkbox" id="marketing-cookies">
+            <span class="cookie-toggle-slider"></span>
+          </label>
+        </div>
+        <p class="cookie-category-description">
+          Se utilizan para personalizar anuncios y contenido según tus intereses y comportamiento de navegación.
+        </p>
+      </div>
+
+      <div class="cookie-settings-actions">
+        <button class="cookie-btn cookie-btn-decline" id="cookie-settings-decline">Rechazar todas</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookie-settings-save">Guardar configuración</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="script.js"></script>
   <script src="index-logic.js"></script>
