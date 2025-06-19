@@ -1277,4 +1277,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar gestión de cookies
   CookieBanner.init();
 
+  // Funciones globales para compatibilidad con onclick events
+  window.acceptAllCookies = function() {
+    CookieBanner.acceptAll();
+  };
+
+  window.declineOptionalCookies = function() {
+    CookieBanner.declineAll();
+  };
+
+  window.saveCustomCookieSettings = function() {
+    CookieBanner.saveSettings();
+  };
+
 }); 

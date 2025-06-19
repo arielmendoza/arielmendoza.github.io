@@ -18,6 +18,7 @@ const menuHTML = `
           <a href="guia-instalar-ventilador-techo.html">💡 Instalar Ventilador de Techo</a>
           <a href="guia-pegar-cesped-artificial.html">🌿 Pegar Césped Artificial</a>
           <a href="guia-mantenimiento-piscina.html">💧 Mantenimiento de Piscinas</a>
+          <a href="guia-restaurar-reja-oxidada.html">🔧 Restaurar Reja Oxidada</a>
           <a href="guia-herramientas-jardin.html">🌳 Herramientas de Jardín</a>
           <a href="guia-herramientas-bano.html">🚿 Herramientas para Baño</a>
           <a href="guia-herramientas-cocina.html">🍳 Herramientas para Cocina</a>

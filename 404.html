@@ -27,6 +27,69 @@
     gtag('config', 'G-FGY8WKCEQJ');
   </script>
 
+  <!-- CSS para Banner de Cookies -->
+  <style>
+    /* Banner de cookies simplificado para página 404 */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1e293b;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      z-index: 10000;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      font-size: 0.875rem;
+    }
+    
+    #cookie-banner.show {
+      transform: translateY(0);
+    }
+    
+    .cookie-buttons {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cookie-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .cookie-btn-accept {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .cookie-btn-decline {
+      background: transparent;
+      color: white;
+      border: 1px solid #64748b;
+    }
+    
+    @media (max-width: 480px) {
+      #cookie-banner {
+        font-size: 0.75rem;
+        padding: 0.75rem;
+      }
+      
+      .cookie-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+
 </head>
 <body>
 
@@ -121,6 +184,58 @@
             'event_category': 'Error'
           });
         }
+      }
+    })();
+  </script>
+
+  <!-- Banner de Cookies Simple -->
+  <div id="cookie-banner">
+    <p><strong>🍪 Utilizamos cookies para mejorar tu experiencia</strong></p>
+    <p>Utilizamos cookies para análisis y funcionamiento de la web. <a href="/privacidad.html" style="color: #94a3b8;">Política de Privacidad</a></p>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Rechazar</button>
+      <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- Script para cookies simplificado -->
+  <script>
+    (function() {
+      const banner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('cookie-accept');
+      const declineBtn = document.getElementById('cookie-decline');
+
+      // Mostrar banner si no hay preferencias
+      if (!localStorage.getItem('cookiePreferences')) {
+        setTimeout(() => banner.classList.add('show'), 1000);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiePreferences', JSON.stringify({
+          necessary: true, analytics: true, marketing: true, timestamp: Date.now()
+        }));
+        banner.classList.remove('show');
+        if (typeof gtag !== 'undefined') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      });
+
+      declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiePreferences', JSON.stringify({
+          necessary: true, analytics: false, marketing: false, timestamp: Date.now()
+        }));
+        banner.classList.remove('show');
+        if (typeof gtag !== 'undefined') {
+          gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
+      });
+
+      // Configurar consentimiento por defecto
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied'
+        });
       }
     })();
   </script>
