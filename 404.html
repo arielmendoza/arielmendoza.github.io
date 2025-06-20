@@ -188,57 +188,5 @@
     })();
   </script>
 
-  <!-- Banner de Cookies Simple -->
-  <div id="cookie-banner">
-    <p><strong>🍪 Utilizamos cookies para mejorar tu experiencia</strong></p>
-    <p>Utilizamos cookies para análisis y funcionamiento de la web. <a href="/privacidad.html" style="color: #94a3b8;">Política de Privacidad</a></p>
-    <div class="cookie-buttons">
-      <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Rechazar</button>
-      <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar</button>
-    </div>
-  </div>
-
-  <!-- Script para cookies simplificado -->
-  <script>
-    (function() {
-      const banner = document.getElementById('cookie-banner');
-      const acceptBtn = document.getElementById('cookie-accept');
-      const declineBtn = document.getElementById('cookie-decline');
-
-      // Mostrar banner si no hay preferencias
-      if (!localStorage.getItem('cookiePreferences')) {
-        setTimeout(() => banner.classList.add('show'), 1000);
-      }
-
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiePreferences', JSON.stringify({
-          necessary: true, analytics: true, marketing: true, timestamp: Date.now()
-        }));
-        banner.classList.remove('show');
-        if (typeof gtag !== 'undefined') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        }
-      });
-
-      declineBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiePreferences', JSON.stringify({
-          necessary: true, analytics: false, marketing: false, timestamp: Date.now()
-        }));
-        banner.classList.remove('show');
-        if (typeof gtag !== 'undefined') {
-          gtag('consent', 'update', { 'analytics_storage': 'denied' });
-        }
-      });
-
-      // Configurar consentimiento por defecto
-      if (typeof gtag !== 'undefined') {
-        gtag('consent', 'default', {
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied'
-        });
-      }
-    })();
-  </script>
-
-</body>
+  </body>
 </html> 
