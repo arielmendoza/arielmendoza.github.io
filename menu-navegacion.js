@@ -23,6 +23,9 @@ const menuHTML = `
           <a href="guia-herramientas-bano.html">🚿 Herramientas para Baño</a>
           <a href="guia-herramientas-cocina.html">🍳 Herramientas para Cocina</a>
 
+          <p class="dropdown-header">SUPERVIVENCIA Y EMERGENCIA</p>
+          <a href="guia-kit-supervivencia-emergencia.html">🚨 Kits de Supervivencia</a>
+
           <p class="dropdown-header">HERRAMIENTAS</p>
           <a href="guia-taladros-principiantes.html">🔧 Guía de Taladros</a>
           <a href="guia-sierras-de-calar.html">🪚 Guía Sierras de Calar</a>
