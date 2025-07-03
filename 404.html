@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirección de Afiliados | BricoExpertos</title>
+  <title>Buscando producto...</title>
   <meta name="robots" content="noindex, nofollow">
   
-  <!-- Estilos para la página de error -->
+  <!-- Estilos de la página de redirección/error -->
   <style>
-    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; }
     .container { padding: 2rem; }
-    .card { background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-width: 450px; width: 90%; margin: 0 auto; }
-    h1 { color: #333; margin-bottom: 1rem; font-size: 1.6rem; font-weight: 600; }
-    p { color: #666; margin-bottom: 1.5rem; line-height: 1.5; }
-    .home-link { display: inline-block; padding: 0.75rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.3s ease; }
-    .home-link:hover { background-color: #0056b3; }
+    .card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 450px; width: 90%; margin: 0 auto; }
+    .spinner { border: 4px solid rgba(0, 0, 0, 0.1); border-top: 4px solid #007bff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 1rem; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    h1 { color: #333; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 600; }
+    p { color: #555; margin-bottom: 1.5rem; line-height: 1.5; }
+    .link { display: inline-block; padding: 0.75rem 1.5rem; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; transition: background-color 0.3s ease; }
+    .link:hover { background-color: #0056b3; }
     .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .product-info { background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: left; font-size: 0.9rem; }
+    .product-info strong { color: #333; }
   </style>
   
   <!-- Google Analytics -->
@@ -94,101 +98,115 @@
 <body>
 
   <div class="container">
-    <div id="not-found-display" class="card" style="display: none;">
-      <div class="icon">🤷‍♂️</div>
-      <h1>Error 404 - Página No Encontrada</h1>
-      <p>Lo sentimos, la página que buscas no existe o ha sido movida.</p>
-      <a href="/" class="home-link">← Volver al Inicio</a>
+    <div id="display-area" class="card">
+      <!-- El contenido se generará dinámicamente -->
     </div>
   </div>
 
   <script>
+    /**
+     * Manejador Universal de Enlaces para 404.html
+     * 
+     * Este script intenta "rescatar" URLs rotas extrayendo un posible ASIN 
+     * y buscando una coincidencia en `links.txt`.
+     */
     (async function() {
+      const displayArea = document.getElementById('display-area');
       let affiliateLinks = {};
 
+      // 1. Cargar la base de datos de enlaces
       try {
         const response = await fetch('/links.txt');
-        if (!response.ok) {
-          throw new Error('No se pudo cargar la base de datos de enlaces.');
-        }
-        const textData = await response.text();
+        if (!response.ok) throw new Error('No se pudo cargar la base de datos de enlaces.');
         
+        const textData = await response.text();
         textData.split('\n').forEach(line => {
           if (line.trim() !== '') {
             const [id, url, ...nameParts] = line.split(';');
-            const name = nameParts.join(';');
-            if (id && url && name) {
-              affiliateLinks[id.trim()] = { url: url.trim(), name: name.trim() };
+            if (id && url && nameParts.length > 0) {
+              affiliateLinks[id.trim()] = { 
+                url: url.trim(), 
+                name: nameParts.join(';').trim() 
+              };
             }
           }
         });
-
-        console.log(`✅ Cargados ${Object.keys(affiliateLinks).length} enlaces de afiliado`);
+        console.log(`✅ ${Object.keys(affiliateLinks).length} enlaces cargados.`);
       } catch (error) {
         console.error('❌ Error cargando enlaces:', error);
-        showNotFound('Error al cargar los recursos necesarios para la redirección.');
-        return; // Detiene la ejecución si los enlaces no se cargan
+        renderNotFound('Error del sistema', 'No se pudieron cargar los recursos de redirección.');
+        return;
       }
 
+      // 2. Intentar extraer un ASIN de la URL
       const path = window.location.pathname;
-      const goSegment = '/go/';
-      const pathSegments = path.split(goSegment);
+      const asinMatch = path.match(/([A-Z0-9]{10})/);
+      const asin = asinMatch ? asinMatch[1] : null;
 
-      if (pathSegments.length > 1) {
-        const productId = pathSegments.pop().replace(/\/$/, '');
+      // 3. Validar y redirigir si se encuentra el ASIN
+      if (asin && affiliateLinks[asin]) {
+        const product = affiliateLinks[asin];
+        renderRedirecting(asin, product);
         
-        if (productId && affiliateLinks[productId]) {
-          const link = affiliateLinks[productId];
-          
-          const performRedirect = () => {
-            // Evita que el script siga ejecutándose después de iniciar la redirección
-            if (!window.location.href.includes(link.url)) {
-              window.location.href = link.url;
-            }
-          };
-          
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'affiliate_redirect', {
-              'product_id': productId,
-              'product_name': link.name,
-              'affiliate_url': link.url,
-              'event_category': 'Affiliate',
-              'event_callback': performRedirect,
-              'event_timeout': 400 // Failsafe: redirige después de 400ms si GA no responde
-            });
-          } else {
-            // Si gtag no está disponible, redirige inmediatamente
-            performRedirect();
-          }
-          
-        } else {
-          showNotFound(`El producto con ID "${productId}" no fue encontrado.`);
+        // Registrar evento y redirigir
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'affiliate_redirect_404', {
+            'product_id': asin,
+            'product_name': product.name,
+            'affiliate_url': product.url,
+            'event_category': 'Affiliate Rescue',
+            'event_label': `Rescatado desde: ${path}`,
+            'event_callback': () => { window.location.href = product.url; },
+            'event_timeout': 500
+          });
         }
+        
+        // Redirección de respaldo
+        setTimeout(() => {
+          window.location.href = product.url;
+        }, 2000);
+
       } else {
-        showNotFound('La página que buscas no existe o ha sido movida.');
-      }
-      
-      function showNotFound(message) {
-        document.title = '404 - Página No Encontrada';
-        const notFoundDisplay = document.getElementById('not-found-display');
-        
-        const errorMessageElement = notFoundDisplay.querySelector('p');
-        if (errorMessageElement) {
-            errorMessageElement.textContent = message;
-        }
-
-        notFoundDisplay.style.display = 'block';
+        // 4. Si no hay ASIN o no se encuentra, mostrar 404
+        const reason = asin ? `El producto con ID "${asin}" no fue encontrado.` : 'La página que buscas no existe o ha sido movida.';
+        renderNotFound('Error 404', reason);
         
         if (typeof gtag !== 'undefined') {
           gtag('event', '404_not_found', {
             'path': path,
+            'searched_asin': asin,
             'event_category': 'Error'
           });
         }
       }
+
+      // --- Funciones de renderizado ---
+
+      function renderRedirecting(asin, product) {
+        document.title = `Redirigiendo a ${product.name}...`;
+        displayArea.innerHTML = `
+          <div class="spinner"></div>
+          <h1>Redirección en curso</h1>
+          <p>Hemos encontrado el producto que buscabas. Te estamos redirigiendo a Amazon.</p>
+          <div class="product-info">
+            <strong>Producto:</strong> ${product.name}<br>
+            <strong>ASIN:</strong> ${asin}
+          </div>
+          <p style="font-size: 0.9rem; color: #888;">Si no eres redirigido, <a href="${product.url}" class="link">haz clic aquí</a>.</p>
+        `;
+      }
+
+      function renderNotFound(title, message) {
+        document.title = '404 - Página No Encontrada';
+        displayArea.innerHTML = `
+          <div class="icon">🤷‍♂️</div>
+          <h1>${title}</h1>
+          <p>${message}</p>
+          <a href="/" class="link">← Volver al Inicio</a>
+        `;
+      }
     })();
   </script>
 
- 
 </body>
 </html> 
