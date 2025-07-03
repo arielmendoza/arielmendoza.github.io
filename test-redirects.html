@@ -153,7 +153,7 @@
             </div>
             <div class="stat-card">
                 <h3>2</h3>
-                <p>Endpoints Activos</p>
+                <p>Métodos de URL</p>
             </div>
             <div class="stat-card">
                 <h3>100%</h3>
@@ -163,21 +163,21 @@
 
         <div class="instructions">
             <h3>📋 Instrucciones</h3>
-            <p>Este sistema maneja redirecciones usando ASINs de Amazon. Cada producto tiene un código único (ASIN) que se usa en las URLs de redirección. Puedes usar cualquiera de los dos endpoints disponibles.</p>
+            <p>Este sistema funciona solo con HTML y JavaScript, perfecto para GitHub Pages. Usa ASINs de Amazon para crear redirecciones automáticas a productos con tu código de afiliado.</p>
         </div>
 
         <div class="test-section">
-            <h2>🛠️ Endpoints de Redirección</h2>
+            <h2>🛠️ Métodos de Redirección</h2>
             <div class="test-links">
                 <div class="test-link">
-                    <h3>Endpoint Principal</h3>
-                    <div class="api-endpoint">/api/redirect/{ASIN}/</div>
-                    <p>Endpoint principal para redirecciones de productos</p>
+                    <h3>URL Parameters</h3>
+                    <div class="api-endpoint">/redirect.html?asin={ASIN}</div>
+                    <p>Método usando parámetros de URL</p>
                 </div>
                 <div class="test-link">
-                    <h3>Endpoint Alternativo</h3>
-                    <div class="api-endpoint">/go/{ASIN}/</div>
-                    <p>Endpoint más corto para compartir enlaces</p>
+                    <h3>Hash Fragment</h3>
+                    <div class="api-endpoint">/redirect.html#{ASIN}</div>
+                    <p>Método usando hash para GitHub Pages</p>
                 </div>
             </div>
         </div>
@@ -188,14 +188,14 @@
                 <div class="test-link">
                     <h3>Adidas Runfalcon 5</h3>
                     <p>Zapatillas de running para hombre</p>
-                    <a href="/api/redirect/B0CKS2TSG6/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0CKS2TSG6/" target="_blank">Probar → /go/</a>
+                    <a href="/redirect.html?asin=B0CKS2TSG6" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B0CKS2TSG6" target="_blank">Probar → Hash</a>
                 </div>
                 <div class="test-link">
-                    <h3>Nike Revolution 7</h3>
-                    <p>Zapatillas de running</p>
-                    <a href="/api/redirect/B0C7J8D9F2/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0C7J8D9F2/" target="_blank">Probar → /go/</a>
+                    <h3>Ginebra Citadelle</h3>
+                    <p>Ginebra Original, 70 cl</p>
+                    <a href="/redirect.html?asin=B01AWLIQX4" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B01AWLIQX4" target="_blank">Probar → Hash</a>
                 </div>
             </div>
         </div>
@@ -204,16 +204,16 @@
             <h2>🎮 Videojuegos</h2>
             <div class="test-links">
                 <div class="test-link">
-                    <h3>Call of Duty: Modern Warfare III</h3>
-                    <p>PS5 - Videojuego de acción</p>
-                    <a href="/api/redirect/B0CHQR8KL3/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0CHQR8KL3/" target="_blank">Probar → /go/</a>
+                    <h3>Spider-Man 2 PS5</h3>
+                    <p>Videojuego Original PlayStation</p>
+                    <a href="/redirect.html?asin=B0C7X5Q6R1" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B0C7X5Q6R1" target="_blank">Probar → Hash</a>
                 </div>
                 <div class="test-link">
-                    <h3>Super Mario Bros. Wonder</h3>
+                    <h3>Bluey: El Videojuego</h3>
                     <p>Nintendo Switch</p>
-                    <a href="/api/redirect/B0C7JBKLRG/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0C7JBKLRG/" target="_blank">Probar → /go/</a>
+                    <a href="/redirect.html?asin=B0CHVTW5YH" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B0CHVTW5YH" target="_blank">Probar → Hash</a>
                 </div>
             </div>
         </div>
@@ -222,16 +222,16 @@
             <h2>👔 Ropa y Accesorios</h2>
             <div class="test-links">
                 <div class="test-link">
-                    <h3>Tommy Hilfiger Polo</h3>
-                    <p>Polo slim fit para hombre</p>
-                    <a href="/api/redirect/B07GDQVX4J/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B07GDQVX4J/" target="_blank">Probar → /go/</a>
+                    <h3>Tommy Hilfiger Camiseta</h3>
+                    <p>Camiseta de manga corta</p>
+                    <a href="/redirect.html?asin=B07QVTQ4R7" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B07QVTQ4R7" target="_blank">Probar → Hash</a>
                 </div>
                 <div class="test-link">
                     <h3>Levi's 511 Slim Jeans</h3>
                     <p>Pantalones vaqueros para hombre</p>
-                    <a href="/api/redirect/B07BHGXG4P/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B07BHGXG4P/" target="_blank">Probar → /go/</a>
+                    <a href="/redirect.html?asin=B0916LVFGR" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B0916LVFGR" target="_blank">Probar → Hash</a>
                 </div>
             </div>
         </div>
@@ -240,16 +240,16 @@
             <h2>🏠 Electrodomésticos</h2>
             <div class="test-links">
                 <div class="test-link">
-                    <h3>Batidora Bosch CleverMixx</h3>
-                    <p>Batidora de brazo con accesorios</p>
-                    <a href="/api/redirect/B087TXPQG8/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B087TXPQG8/" target="_blank">Probar → /go/</a>
+                    <h3>Braun Minipimer 7</h3>
+                    <p>Batidora de mano 1000W</p>
+                    <a href="/redirect.html?asin=B07YNBNB9C" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B07YNBNB9C" target="_blank">Probar → Hash</a>
                 </div>
                 <div class="test-link">
-                    <h3>Philips Cafetera Senseo</h3>
-                    <p>Cafetera de monodosis</p>
-                    <a href="/api/redirect/B0794W5ZQS/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0794W5ZQS/" target="_blank">Probar → /go/</a>
+                    <h3>Dolce Gusto Piccolo XS</h3>
+                    <p>Cafetera de cápsulas</p>
+                    <a href="/redirect.html?asin=B07VW7HR8Y" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B07VW7HR8Y" target="_blank">Probar → Hash</a>
                 </div>
             </div>
         </div>
@@ -258,16 +258,16 @@
             <h2>📱 Tecnología</h2>
             <div class="test-links">
                 <div class="test-link">
-                    <h3>iPhone 15 Pro</h3>
-                    <p>Smartphone Apple último modelo</p>
-                    <a href="/api/redirect/B0CHX3TLJX/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0CHX3TLJX/" target="_blank">Probar → /go/</a>
+                    <h3>SanDisk SSD PLUS 240GB</h3>
+                    <p>Disco duro SSD interno</p>
+                    <a href="/redirect.html?asin=B01F9G43WU" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B01F9G43WU" target="_blank">Probar → Hash</a>
                 </div>
                 <div class="test-link">
-                    <h3>Samsung Galaxy S24</h3>
-                    <p>Smartphone Samsung</p>
-                    <a href="/api/redirect/B0CRQJBG5J/" target="_blank">Probar → /api/redirect/</a>
-                    <a href="/go/B0CRQJBG5J/" target="_blank">Probar → /go/</a>
+                    <h3>Logitech G512 Teclado</h3>
+                    <p>Teclado gaming mecánico RGB</p>
+                    <a href="/redirect.html?asin=B07W7M8CLV" target="_blank">Probar → URL Param</a>
+                    <a href="/redirect.html#B07W7M8CLV" target="_blank">Probar → Hash</a>
                 </div>
             </div>
         </div>
@@ -278,14 +278,14 @@
                 <div class="test-link">
                     <h3>ASIN Inexistente</h3>
                     <p>Prueba con un código que no existe</p>
-                    <a href="/api/redirect/NOEXISTE/" target="_blank">Probar Error → /api/redirect/</a>
-                    <a href="/go/NOEXISTE/" target="_blank">Probar Error → /go/</a>
+                    <a href="/redirect.html?asin=NOEXISTE123" target="_blank">Probar Error → URL Param</a>
+                    <a href="/redirect.html#NOEXISTE123" target="_blank">Probar Error → Hash</a>
                 </div>
                 <div class="test-link">
-                    <h3>URL Malformada</h3>
-                    <p>Prueba sin especificar ASIN</p>
-                    <a href="/api/redirect/" target="_blank">Probar Vacío → /api/redirect/</a>
-                    <a href="/go/" target="_blank">Probar Vacío → /go/</a>
+                    <h3>Sin ASIN</h3>
+                    <p>Página de instrucciones</p>
+                    <a href="/redirect.html" target="_blank">Ver Instrucciones</a>
+                    <a href="/redirect.html?" target="_blank">URL Vacía</a>
                 </div>
             </div>
         </div>

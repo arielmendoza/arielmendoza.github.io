@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo a Amazon...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #232F3E 0%, #131A22 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .redirect-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .amazon-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #ff9900;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .product-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .manual-link {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 2px solid #ff9900;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .manual-link:hover {
+            background: #ff9900;
+            color: #131A22;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff9900;
+        }
+        .usage-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .usage-example {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .test-link {
+            display: block;
+            padding: 1rem;
+            background: rgba(255, 153, 0, 0.2);
+            border: 2px solid #ff9900;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .test-link:hover {
+            background: #ff9900;
+            color: #131A22;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="amazon-logo">📦</div>
+        <div class="spinner" id="spinner"></div>
+        <h1 id="title">Redirigiendo a Amazon...</h1>
+        <p id="description">Te estamos llevando al producto seleccionado en Amazon España.</p>
+        
+        <div class="product-info" id="product-info" style="display: none;">
+            <strong>ASIN:</strong> <span id="asin-display"></span><br>
+            <strong>Producto:</strong> <span id="product-name"></span>
+        </div>
+        
+        <p id="countdown-text" style="display: none;">
+            Serás redirigido automáticamente en <span class="countdown" id="countdown">3</span> segundos
+        </p>
+        
+        <div id="manual-links" style="display: none;">
+            <p style="font-size: 0.85rem; color: #999;">
+                Si no eres redirigido automáticamente:
+            </p>
+            <a href="#" id="amazon-link" class="manual-link">
+                🛒 Ir a Amazon ahora
+            </a>
+            <a href="/" class="manual-link">
+                🏠 Volver al inicio
+            </a>
+        </div>
+
+        <!-- Página de instrucciones cuando no hay ASIN -->
+        <div id="instructions" style="display: none;">
+            <div class="usage-info">
+                <h2>📋 Cómo usar el sistema de redirección</h2>
+                <p>Este sistema maneja redirecciones a Amazon usando ASINs (códigos de producto).</p>
+                
+                <h3>💡 Métodos de uso:</h3>
+                <div class="usage-example">
+                    <strong>Método 1:</strong> /redirect.html?asin=B01AWLIQX4<br>
+                    <strong>Método 2:</strong> /redirect.html#B01AWLIQX4<br>
+                    <strong>Método 3:</strong> /redirect.html?id=B01AWLIQX4
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem;">
+                <h3>📊 Estadísticas</h3>
+                <p><strong id="total-products">-</strong> productos disponibles</p>
+                <p>Tag de afiliado: <strong>herramientasbricolaje-21</strong></p>
+            </div>
+            
+            <h2>🧪 Enlaces de Prueba</h2>
+            <div class="test-links">
+                <a href="/redirect.html?asin=B01AWLIQX4" class="test-link">
+                    🍸 Ginebra Citadelle<br>
+                    <small>B01AWLIQX4</small>
+                </a>
+                <a href="/redirect.html?asin=B0CKS2TSG6" class="test-link">
+                    👟 Adidas Runfalcon<br>
+                    <small>B0CKS2TSG6</small>
+                </a>
+                <a href="/redirect.html?asin=B0C7X5Q6R1" class="test-link">
+                    🎮 Spider-Man 2 PS5<br>
+                    <small>B0C7X5Q6R1</small>
+                </a>
+                <a href="/redirect.html?asin=B07VW7HR8Y" class="test-link">
+                    ☕ Dolce Gusto<br>
+                    <small>B07VW7HR8Y</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sistema de redirección JavaScript para GitHub Pages
+        let affiliateLinks = {};
+
+        // Cargar enlaces desde links.txt
+        async function loadAffiliateLinks() {
+            try {
+                const response = await fetch('/links.txt');
+                if (!response.ok) {
+                    throw new Error('No se pudo cargar la base de datos de enlaces.');
+                }
+                const textData = await response.text();
+                
+                textData.split('\n').forEach(line => {
+                    if (line.trim() !== '') {
+                        const [id, url, ...nameParts] = line.split(';');
+                        const name = nameParts.join(';');
+                        if (id && url && name) {
+                            affiliateLinks[id.trim()] = { 
+                                url: url.trim(), 
+                                name: name.trim() 
+                            };
+                        }
+                    }
+                });
+
+                console.log(`✅ Cargados ${Object.keys(affiliateLinks).length} enlaces de afiliado`);
+                return true;
+            } catch (error) {
+                console.error('❌ Error cargando enlaces:', error);
+                return false;
+            }
+        }
+
+        // Extraer ASIN de la URL
+        function getASINFromURL() {
+            // Método 1: Parámetros de URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const asin = urlParams.get('asin') || urlParams.get('id');
+            if (asin) return asin;
+            
+            // Método 2: Hash fragment
+            const hash = window.location.hash.substring(1);
+            if (hash && hash.match(/^[A-Z0-9]{10}$/i)) {
+                return hash.toUpperCase();
+            }
+            
+            // Método 3: Pathname para URLs como /redirect.html/B01AWLIQX4
+            const pathname = window.location.pathname;
+            const matches = pathname.match(/\/redirect\.html\/([A-Z0-9]{10})/i);
+            if (matches) {
+                return matches[1].toUpperCase();
+            }
+            
+            return null;
+        }
+
+        // Mostrar información del producto
+        function showProductInfo(asin, productData) {
+            document.getElementById('asin-display').textContent = asin;
+            document.getElementById('product-name').textContent = productData.name;
+            document.getElementById('product-info').style.display = 'block';
+            document.getElementById('amazon-link').href = productData.url;
+            document.getElementById('manual-links').style.display = 'block';
+            document.getElementById('countdown-text').style.display = 'block';
+        }
+
+        // Mostrar error
+        function showError(title, message) {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('title').textContent = title;
+            document.getElementById('description').innerHTML = message;
+            document.querySelector('.amazon-logo').textContent = '❌';
+        }
+
+        // Mostrar página de instrucciones
+        function showInstructions() {
+            document.getElementById('spinner').style.display = 'none';
+            document.getElementById('title').textContent = '🔗 Sistema de Redirección';
+            document.getElementById('description').textContent = 'Configura tu redirección a Amazon usando ASINs';
+            document.getElementById('instructions').style.display = 'block';
+            document.querySelector('.amazon-logo').textContent = '📋';
+            
+            // Mostrar estadísticas
+            document.getElementById('total-products').textContent = Object.keys(affiliateLinks).length;
+        }
+
+        // Iniciar contador regresivo
+        function startCountdown(redirectUrl) {
+            let countdown = 3;
+            const countdownElement = document.getElementById('countdown');
+            
+            const timer = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    countdownElement.textContent = '0';
+                    window.location.href = redirectUrl;
+                }
+            }, 1000);
+        }
+
+        // Función principal de redirección
+        async function redirect() {
+            // Cargar enlaces
+            const linksLoaded = await loadAffiliateLinks();
+            if (!linksLoaded) {
+                showError('Error de Sistema', 'No se pudo cargar la base de datos de enlaces.');
+                return;
+            }
+
+            // Obtener ASIN del producto
+            const asin = getASINFromURL();
+            if (!asin) {
+                showInstructions();
+                return;
+            }
+
+            // Buscar el producto
+            const productData = affiliateLinks[asin];
+            if (!productData) {
+                showError('Producto No Encontrado', `No se encontró el enlace para: <strong>${asin}</strong>`);
+                return;
+            }
+
+            // Mostrar información del producto
+            showProductInfo(asin, productData);
+            
+            // Registrar evento en Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'affiliate_redirect', {
+                    'product_id': asin,
+                    'affiliate_url': productData.url,
+                    'event_category': 'affiliate',
+                    'event_label': asin,
+                    'redirect_method': 'html'
+                });
+            }
+            
+            // Iniciar contador regresivo
+            startCountdown(productData.url);
+        }
+
+        // Ejecutar cuando la página cargue
+        document.addEventListener('DOMContentLoaded', redirect);
+    </script>
+</body>
+</html> 
