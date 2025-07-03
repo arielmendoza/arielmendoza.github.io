@@ -123,8 +123,9 @@
           }
         });
 
+        console.log(`✅ Cargados ${Object.keys(affiliateLinks).length} enlaces de afiliado`);
       } catch (error) {
-        console.error(error);
+        console.error('❌ Error cargando enlaces:', error);
         showNotFound('Error al cargar los recursos necesarios para la redirección.');
         return; // Detiene la ejecución si los enlaces no se cargan
       }
